@@ -8,20 +8,8 @@ from django.utils import timezone
 # maybe this should be in student Module?
 #def select_major(models.Model):
 
-def compare_lists(l1, l2):
-	count = 0
-	for i in range(0, len(l1)):
-		for j in range(0, len(l2)):
-			if (i == j):
-				count+=1
-	return count
 
-class COS_BSE(models.Model):
-	major_name="Computer Science B.S.E."
-	#bse = [mat201, mat202...etc]...will do later
-	theory = [1047, 196, 929]
-	systems = [898, 934, 733]
-	applications = [617, 864, 976, 384, 1052, 83]
+
 
 
 class Major(models.Model):
@@ -39,7 +27,7 @@ class Major(models.Model):
 		'''Text which is shown to the public'''
 		return self.major_text
 
-	#def get_requirements(code):
+#	def get_requirements(code):
 		# now what we want to do here, is look at SQL table that corresponds with major code, 
 		# then grab all lists from that - want to return N number of lists (4 for COS?) 
 	#	return ["WrSem", "SA"]
@@ -50,56 +38,20 @@ class Major(models.Model):
 		#add major-specific requirments (Have list of requirments in a dictionary and return all relevent ones to the major)
 		#return the requirments list?
 
-class Course(models.Model):
-	identification = models.CharField(max_length = 30)
-	listings = models.CharField(max_length = 30, primary_key = True)
-	courseid = models.CharField(max_length = 30)
-	title = models.CharField(max_length = 30)
-	area = models.CharField(max_length = 30)
-	semester = models.CharField(max_length = 30)
-	year = models.CharField(max_length = 30)
-	description = models.CharField(max_length = 30)
-
-	def __str__(self):
-		return self.listings
-
-class StudentCourse(models.Model):
-	student_id = models.CharField(max_length = 30, primary_key = True)
-	course_id = models.CharField(max_length = 30)
-
-	def __str__(self):
-		return self.student_id
 
 class Student(models.Model):
 	'''Object which is unique to each student user.'''
 	first_name = models.CharField(max_length = 30)
 	last_name = models.CharField(max_length = 30)
 	student_id = models.CharField(max_length = 9, primary_key = True) #NOT SECURE < will probably need to get from CASS login!
-	#student_major = models.CharField(max_length = 30)
-	#var = "ELE" # another table or choices attribute
-	# WE NEED THIS ....student_major = models.ForeignKey(COS_BSE, on_delete=models.CASCADE)
-	# cos BSE
-	#s = Student(first_name, last_name, student_id, student_major)
-	#s.save()
+	student_major = models.ForeignKey(Major, on_delete=models.CASCADE)
 
 	def __str__(self):
-		return self.first_name 
-		#" " student_last_name
+		return student_first_name #" " student_last_name
 
-	def add_course(course, student):
-		# put student ID and course ID into student-course DB
-		s = StudentCourse(student.student_id, course.course_id)
-		s.save()
-
-	#def courses_taken(self):
-		# SELECT * 
-		#FROM  `TigerPath_student` 
-		#WHERE  `student_id` =1
-		#LIMIT 0 , 30
-
-	#def required_areas(self):
-		#'''returns a list of distribution and concentration specific requirements. * need
-		#to append certificate-specific requirements'''
+#	def required_areas(self):
+		'''returns a list of distribution and concentration specific requirements. * need
+		to append certificate-specific requirements'''
 	#	return student_major.get_requirements(student_major.major_code)
 	#student_certificates = [] #How to get multiple certificates?
 	#Should we consider linking in other information? i.e. rescollege, biodata, etc? or na
