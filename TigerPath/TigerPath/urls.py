@@ -19,6 +19,6 @@ from django.contrib import admin
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     #url(r'^fouryear/', include('fouryear.urls')),
-    #url(r'^home/fouryear/$', views.four_year),
-    #url(r'^home/degreeprogress/$', views.degree_progress),
+    url(r'^home/fouryear/$', views.four_year),
+    url(r'^home/degreeprogress/$', views.degree_progress),
 ]
