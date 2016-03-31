@@ -1,12 +1,12 @@
 
 {% extends "base.html" %}
 
-{% block title %}Courses for {{ s_id }}{% endblock %}
+{% block title %}Courses for {{ student }}{% endblock %}
 
 {% block content %}
-<h1>Courses for {{ s_id }}</h1>
+<h1>Courses for {{ student }}</h1>
 
-{% for c in student_courses_list %}
+{% for c in c_names %}
     <p>{{ c.listings }}</p>
 {% endfor %}
 {% endblock %}

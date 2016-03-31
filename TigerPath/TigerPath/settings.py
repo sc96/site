@@ -11,6 +11,9 @@ https://docs.djangoproject.com/en/1.9/ref/settings/
 """
 
 import os
+#import os.path
+#import django
+#django.setup()
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -83,10 +86,6 @@ DATABASES = {
         'PASSWORD': 'barbecue18',
         'HOST': 'dascpan204l.princeton.edu',
         'PORT': '3306',
-       # 'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-       # 'OPTIONS': {
-       #     'read_default_file': 
-       #     }
     }
 }
 
@@ -126,5 +125,9 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.9/howto/static-files/
+
+DIRNAME = os.path.dirname(__file__)
+
+STATIC_ROOT = os.path.join(DIRNAME, 'static')
 
 STATIC_URL = '/static/'

@@ -15,10 +15,11 @@ Including another URLconf
 """
 from django.conf.urls import url, include
 from django.contrib import admin
+from . import views
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     #url(r'^fouryear/', include('fouryear.urls')),
-    url(r'^home/fouryear/$', views.four_year),
-    url(r'^home/degreeprogress/$', views.degree_progress),
+    url(r'^fouryear/([1-9]{1})/$', views.four_year),
+    #url(r'^home/degreeprogress/$', views.degree_progress),
 ]
