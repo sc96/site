@@ -1,0 +1,10 @@
+div {
+    -webkit-column-count: 3; /* Chrome, Safari, Opera */
+    -moz-column-count: 3; /* Firefox */
+    column-count: 3;
+}
+
+h1 {
+    -webkit-column-span: all; /* Chrome, Safari, Opera */
+    column-span: all;
+}
