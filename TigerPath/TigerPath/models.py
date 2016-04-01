@@ -69,6 +69,7 @@ class Course(models.Model):
 class StudentCourse(models.Model):
 	student_id = models.CharField(max_length = 30, primary_key = True)
 	course_id = models.CharField(max_length = 30)
+	semester = models.CharField(max_length = 30)
 
 	def __str__(self):
 		return self.student_id
