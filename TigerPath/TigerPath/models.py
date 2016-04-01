@@ -125,12 +125,9 @@ class Student(models.Model):
 	first_name = models.CharField(max_length = 30)
 	last_name = models.CharField(max_length = 30)
 	student_id = models.CharField(max_length = 9, primary_key = True) #NOT SECURE < will probably need to get from CASS login!
-	#student_major = models.CharField(max_length = 30)
-	#var = "ELE" # another table or choices attribute
-	# WE NEED THIS ....student_major = models.ForeignKey(COS_BSE, on_delete=models.CASCADE)
-	# cos BSE
-	#s = Student(first_name, last_name, student_id, student_major)
-	#s.save()
+	student_major = models.ForeignKey
+	student_courses = models.ManyToManyField(Course)
+	
 
 	def __str__(self):
 		return self.first_name 
@@ -140,6 +137,14 @@ class Student(models.Model):
 		# put student ID and course ID into student-course DB
 		s = StudentCourse(student.student_id, course.course_id)
 		s.save()
+
+	#WILLIAM ADDED
+	# def add_course(Course, semester):
+	# 	self.student_courses.add(course)
+	# 	self.save()
+
+	# def drop_course(course, semester):
+	# 	self.student_courses.remove(course)
 
 	#def courses_taken(self):
 		# SELECT * 
