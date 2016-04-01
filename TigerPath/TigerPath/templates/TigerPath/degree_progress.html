@@ -1,0 +1,12 @@
+
+{% extends "base.html" %}
+
+{% block title %}Courses for {{ student }}{% endblock %}
+
+{% block content %}
+<h1>Degree Progress for {{ student }}</h1>
+
+{% for c in c_names %}
+    <p>{{ c.listings }}</p>
+{% endfor %}
+{% endblock %}

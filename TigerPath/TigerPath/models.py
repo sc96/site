@@ -18,11 +18,14 @@ def compare_lists(l1, l2):
 
 class COS_BSE(models.Model):
 	major_name="Computer Science B.S.E."
-	#bse = [mat201, mat202...etc]...will do later
-	theory = [1047, 196, 929]
-	systems = [898, 934, 733]
-	applications = [617, 864, 976, 384, 1052, 83]
+	course_id = models.CharField(max_length = 30, primary_key=True)
+	theory = models.CharField(max_length = 30)
+	applications = models.CharField(max_length = 30)
+	systems = models.CharField(max_length = 30)
+	core = models.CharField(max_length = 30)
 
+	def __str__(self):
+		return self.course_id
 
 class Major(models.Model):
 	""" The major object is a general major with selections etc bla"""
@@ -75,9 +78,6 @@ class Student(models.Model):
 	first_name = models.CharField(max_length = 30)
 	last_name = models.CharField(max_length = 30)
 	student_id = models.CharField(max_length = 9, primary_key = True) #NOT SECURE < will probably need to get from CASS login!
-	student_courses = models.ManyToManyField(Course)
-
-
 	#student_major = models.CharField(max_length = 30)
 	#var = "ELE" # another table or choices attribute
 	# WE NEED THIS ....student_major = models.ForeignKey(COS_BSE, on_delete=models.CASCADE)
@@ -89,14 +89,11 @@ class Student(models.Model):
 		return self.first_name 
 		#" " student_last_name
 
-	def add_course(Course, semester):
-		self.student_courses.add(course)
-		self.save()
+	def add_course(course, student):
+		# put student ID and course ID into student-course DB
+		s = StudentCourse(student.student_id, course.course_id)
+		s.save()
 
-	def drop_course(course, semester):
-		self.student_courses.remove(course)
-
-		
 	#def courses_taken(self):
 		# SELECT * 
 		#FROM  `TigerPath_student` 

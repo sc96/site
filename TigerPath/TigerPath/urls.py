@@ -21,5 +21,6 @@ urlpatterns = [
     url(r'^admin/', admin.site.urls),
     #url(r'^fouryear/', include('fouryear.urls')),
     url(r'^fouryear/([1-9]{1})/$', views.four_year),
+    url(r'^degreeprogress/([1-9]{1})/([0-9]{1})/$', views.degree_progress),
     #url(r'^home/degreeprogress/$', views.degree_progress),
 ]
