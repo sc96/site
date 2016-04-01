@@ -75,6 +75,9 @@ class Student(models.Model):
 	first_name = models.CharField(max_length = 30)
 	last_name = models.CharField(max_length = 30)
 	student_id = models.CharField(max_length = 9, primary_key = True) #NOT SECURE < will probably need to get from CASS login!
+	student_courses = models.ManyToManyField(Course)
+
+
 	#student_major = models.CharField(max_length = 30)
 	#var = "ELE" # another table or choices attribute
 	# WE NEED THIS ....student_major = models.ForeignKey(COS_BSE, on_delete=models.CASCADE)
@@ -86,11 +89,14 @@ class Student(models.Model):
 		return self.first_name 
 		#" " student_last_name
 
-	def add_course(course, student):
-		# put student ID and course ID into student-course DB
-		s = StudentCourse(student.student_id, course.course_id)
-		s.save()
+	def add_course(Course, semester):
+		self.student_courses.add(course)
+		self.save()
 
+	def drop_course(course, semester):
+		self.student_courses.remove(course)
+
+		
 	#def courses_taken(self):
 		# SELECT * 
 		#FROM  `TigerPath_student` 
