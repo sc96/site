@@ -5,6 +5,7 @@
 
 {% block content %}
 <h1>Degree Progress for {{ student }}</h1>
+<div>
 <p><b>Theory</b></p>
 {% for t in theory_on %}
     <p><font color="red">{{ t.course_id }}</font></p>
@@ -37,4 +38,6 @@
     <p>{{ t.course_id }}</p>
 {% endfor %}
 
+</div>
+    
 {% endblock %}
