@@ -19,13 +19,59 @@ def compare_lists(l1, l2):
 class COS_BSE(models.Model):
 	major_name="Computer Science B.S.E."
 	course_id = models.CharField(max_length = 30, primary_key=True)
-	theory = models.CharField(max_length = 30)
-	applications = models.CharField(max_length = 30)
-	systems = models.CharField(max_length = 30)
-	core = models.CharField(max_length = 30)
+	theory = models.IntegerField()
+	applications = models.IntegerField()
+	systems = models.IntegerField()
+	core = models.IntegerField()
 
 	def __str__(self):
-		return self.course_id
+		return self.major_name
+
+class ELE(models.Model):
+	major_name="Electrical Engineering"
+	course_id = models.CharField(max_length = 30, primary_key=True)
+	theory = models.IntegerField()
+	applications = models.IntegerField()
+	systems = models.IntegerField()
+	core = models.IntegerField()
+
+	def __str__(self):
+		return self.major_name
+
+class MAE(models.Model):
+	major_name="Mechanical and Aerospace Engineering"
+	course_id = models.CharField(max_length = 30, primary_key=True)
+	theory = models.IntegerField()
+	applications = models.IntegerField()
+	systems = models.IntegerField()
+	core = models.IntegerField()
+
+	def __str__(self):
+		return self.major_name
+
+class GEN_BSE(models.Model):
+	major_name="General B.S.E. Requirements"
+	course_id = models.CharField(max_length = 30, primary_key=True)
+	physics = models.IntegerField()
+	math = models.IntegerField()
+	chem = models.IntegerField()
+	computer = models.IntegerField()
+
+	# don't need these as list, instead this will be in business logic
+	# basically want to have lists of EM, EC, HA, LA, SA, Language and then add course
+	# the student has taken to those
+	#ec = models.IntegerField()
+	#em = models.IntegerField()
+	#ha = models.IntegerField()
+	#la = models.IntegerField()
+	#sa = models.IntegerField()
+	#language = models.IntegerField()
+	#writing seminar
+
+	#gen AB and gen BSE logic would be same across majors within those fields
+
+	def __str__(self):
+		return self.major_name
 
 class Major(models.Model):
 	""" The major object is a general major with selections etc bla"""
