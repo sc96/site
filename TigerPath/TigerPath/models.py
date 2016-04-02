@@ -30,10 +30,13 @@ class COS_BSE(models.Model):
 class ELE(models.Model):
 	major_name="Electrical Engineering"
 	course_id = models.CharField(max_length = 30, primary_key=True)
-	theory = models.IntegerField()
-	applications = models.IntegerField()
-	systems = models.IntegerField()
+	foundation = models.IntegerField()
 	core = models.IntegerField()
+	math = models.IntegerField()
+	breadth = models.IntegerField()
+	engineering_science = models.IntegerField()
+	balance = models.IntegerField()
+	design = models.IntegerField()
 
 	def __str__(self):
 		return self.major_name
@@ -41,9 +44,11 @@ class ELE(models.Model):
 class MAE(models.Model):
 	major_name="Mechanical and Aerospace Engineering"
 	course_id = models.CharField(max_length = 30, primary_key=True)
-	theory = models.IntegerField()
-	applications = models.IntegerField()
-	systems = models.IntegerField()
+	intro = models.IntegerField()
+	math_app = models.IntegerField()
+	mech_engineer = models.IntegerField()
+	aero_engineer = models.IntegerField()
+	mae_engineer = models.IntegerField()
 	core = models.IntegerField()
 
 	def __str__(self):
@@ -81,8 +86,6 @@ class Major(models.Model):
 	)
 	major_text = models.CharField(max_length = 50)	# Text form of major i.e. Computer Science
 	major_code = models.CharField(max_length = 2, choices=MAJOR_CODES, default='Computer Science')
-#	major_requirements = get_requirements()
-	#etc. (feel free to change this stuff)
 
 	def __str__(self):
 		'''Text which is shown to the public'''
@@ -91,7 +94,6 @@ class Major(models.Model):
 	#def get_requirements(code):
 		# now what we want to do here, is look at SQL table that corresponds with major code, 
 		# then grab all lists from that - want to return N number of lists (4 for COS?) 
-	#	return ["WrSem", "SA"]
 
 		#Based on major code (i.e. COS, WWS, POL, etc):
 		#requirments = [] -> list of objects?
@@ -125,7 +127,9 @@ class Student(models.Model):
 	first_name = models.CharField(max_length = 30)
 	last_name = models.CharField(max_length = 30)
 	student_id = models.CharField(max_length = 9, primary_key = True) #NOT SECURE < will probably need to get from CASS login!
-	#student_major = models.CharField(max_length = 30)
+	student_major = models.CharField(max_length = 30) # the student's major
+	student_sub_conc = models.CharField(max_length = 30) # the student's concentration within a major (relevant for ELE and MAE)
+
 	#var = "ELE" # another table or choices attribute
 	# WE NEED THIS ....student_major = models.ForeignKey(COS_BSE, on_delete=models.CASCADE)
 	# cos BSE
