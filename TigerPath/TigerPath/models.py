@@ -5,8 +5,6 @@ from django.db import models
 from django.utils import timezone
 # Create your models here.
 
-# maybe this should be in student Module?
-#def select_major(models.Model):
 
 def compare_lists(l1, l2):
 	count = 0
@@ -46,10 +44,59 @@ class MAE(models.Model):
 	course_id = models.CharField(max_length = 30, primary_key=True)
 	intro = models.IntegerField()
 	math_app = models.IntegerField()
+	engineer_design = models.IntegerField()
+	senior_thesis = models.IntegerField()
+
+	# these are sub-concentrations within MAE
 	mech_engineer = models.IntegerField()
 	aero_engineer = models.IntegerField()
-	mae_engineer = models.IntegerField()
+	mae_engineer = models.IntsegerField()
+
+	def __str__(self):
+		return self.major_name
+
+class CEE(models.Model):
+	major_name="Civil and Environmental Engineering"
+	course_id = models.CharField(max_length = 30, primary_key=True)
+	foundation = models.IntegerField()
 	core = models.IntegerField()
+	math = models.IntegerField()
+	breadth = models.IntegerField()
+	engineering_science = models.IntegerField()
+	balance = models.IntegerField()
+	design = models.IntegerField()
+
+	def __str__(self):
+		return self.major_name
+
+class ORF(models.Model):
+	major_name="Operations Research and Financial Engineering"
+	course_id = models.CharField(max_length = 30, primary_key=True)
+	core = models.IntegerField()
+	math = models.IntegerField()
+	dept_electives = models.IntegerField()
+
+	def __str__(self):
+		return self.major_name
+
+class CBE(models.Model):
+	major_name="Chemical and Biological Engineering"
+	course_id = models.CharField(max_length = 30, primary_key=True)
+	core = models.IntegerField()
+	diff_eq = models.IntegerField()
+	chem = models.IntegerField()
+	orgo = models.IntegerField()
+	mol_bio = models.IntegerField()
+	adv_chem = models.IntegerField()
+	adv_cbe = models.IntegerField()
+
+	# these are sub-concentrations within cbe
+	biotech = models.IntegerField()
+	entrepreneurship = models.IntegerField()
+	energy = models.IntegerField()
+	materials = models.IntegerField()
+	optimization = models.IntegerField()
+	new_tech = models.IntegerField()
 
 	def __str__(self):
 		return self.major_name
@@ -132,9 +179,10 @@ class Student(models.Model):
 
 	#var = "ELE" # another table or choices attribute
 	# WE NEED THIS ....student_major = models.ForeignKey(COS_BSE, on_delete=models.CASCADE)
-	# cos BSE
 	#s = Student(first_name, last_name, student_id, student_major)
 	#s.save()
+	student_major = models.ForeignKey
+	student_courses = models.ManyToManyField(Course)
 
 	def __str__(self):
 		return self.first_name 
@@ -144,6 +192,16 @@ class Student(models.Model):
 		# put student ID and course ID into student-course DB
 		s = StudentCourse(student.student_id, course.course_id)
 		s.save()
+
+	def select_major(models.Model):
+
+	#WILLIAM ADDED
+	# def add_course(Course, semester):
+	# 	self.student_courses.add(course)
+	# 	self.save()
+
+	# def drop_course(course, semester):
+	# 	self.student_courses.remove(course)
 
 	#def courses_taken(self):
 		# SELECT * 

@@ -86,3 +86,42 @@ def four_year(request, s_id):
 	'fresh_fall': fresh_fall, 'fresh_spring': fresh_spring, 'soph_fall': soph_fall, 'soph_spring': soph_spring,
 	'junior_fall': junior_fall, 'junior_spring': junior_spring, 'senior_fall': senior_fall, 'senior_spring': senior_spring}
 	return render(request, 'TigerPath/four_year.html', context)
+
+
+##Will's new four_year file based on ManyToManyField representation
+# def four_year(request, s_id):
+#"""Filters data for presentation. NOT CHECKED YET (I still can't use MySQL) """
+	# fresh_fall=[]
+	# fresh_spring=[]
+	# soph_fall=[]
+	# soph_spring=[]
+	# junior_fall=[]
+	# junior_spring=[]
+	# senior_fall=[]
+	# senior_spring=[]
+	# student_courses_list = StudentCourse.objects.filter(student_id=s_id)
+	# student = Student.objects.filter(student_id=s_id)
+	# name = student[0].first_name + " " + student[0].last_name
+	# courses_list = Course.objects.all()
+	# for s in student.student_courses:
+		#if (s.course_id == c.identification):
+	# 		if (s.semester=="FRF"):
+	# 				fresh_fall.append(c)
+	# 			elif(s.semester=="FRS"):
+	# 				fresh_spring.append(c)
+	# 			elif(s.semester=="SOF"):
+	# 				soph_fall.append(c)
+	# 			elif(s.semester=="SOS"):
+	# 				soph_spring.append(c)
+	# 			elif(s.semester=="JRF"):
+	# 				junior_fall.append(c)
+	# 			elif(s.semester=="JRS"):
+	# 				junior_spring.append(c)
+	# 			elif(s.semester=="SRF"):
+	# 				senior_fall.append(c)
+	# 			elif(s.semester=="SRS"):
+	# 				senior_spring.append(c)
+	# context = {'student_courses_list': student_courses_list,'student_id': s_id, 'student': student,
+	# 'fresh_fall': fresh_fall, 'fresh_spring': fresh_spring, 'soph_fall': soph_fall, 'soph_spring': soph_spring,
+	# 'junior_fall': junior_fall, 'junior_spring': junior_spring, 'senior_fall': senior_fall, 'senior_spring': senior_spring}
+	# return render(request, 'TigerPath/four_year.html', context)
