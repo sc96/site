@@ -101,16 +101,16 @@ WSGI_APPLICATION = 'TigerPath.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/1.9/ref/settings/#databases
 
-#DATABASES = {
- #   'default': {
-  #      'ENGINE': 'django.db.backends.mysql',
-   #     'NAME': 'nwertz_natalietest',
-    #    'USER': 'nwertz_django',
-     #   'PASSWORD': 'barbecue18',
-      #  'HOST': 'dascpan204l.princeton.edu',
-       # 'PORT': '3306',
-#    }
-#}
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'nwertz_natalietest',
+        'USER': 'nwertz_django',
+        'PASSWORD': 'barbecue18',
+        'HOST': 'dascpan204l.princeton.edu',
+        'PORT': '3306',
+    }
+}
 
 
 #Entered for heroku
