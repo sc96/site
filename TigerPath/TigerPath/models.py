@@ -193,8 +193,8 @@ class Student(models.Model):
 		s = StudentCourse(student.student_id, course.course_id)
 		s.save()
 
-	def select_major(models.Model):
-		a = 2
+#	def select_major(models.Model):
+#		a = 2
 
 	#WILLIAM ADDED
 	# def add_course(Course, semester):
