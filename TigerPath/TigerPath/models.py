@@ -194,6 +194,7 @@ class Student(models.Model):
 		s.save()
 
 	def select_major(models.Model):
+		a = 2
 
 	#WILLIAM ADDED
 	# def add_course(Course, semester):
