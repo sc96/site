@@ -50,7 +50,7 @@ class MAE(models.Model):
 	# these are sub-concentrations within MAE
 	mech_engineer = models.IntegerField()
 	aero_engineer = models.IntegerField()
-	mae_engineer = models.IntsegerField()
+	mae_engineer = models.IntegerField()
 
 	def __str__(self):
 		return self.major_name
