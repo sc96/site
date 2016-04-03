@@ -1,0 +1,17 @@
+{
+  "name": "app.jsonfile",
+  "scripts": {
+  },
+  "env": {
+  },
+  "addons": [
+    "cleardb",
+    "logentries",
+    "newrelic"
+  ],
+  "buildpacks": [
+    {
+      "url": "heroku/python"
+    }
+  ]
+}
