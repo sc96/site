@@ -1,1 +1,1 @@
-web: gunicorn tigerpath.wsgi --log-file -
+web: gunicorn TigerPath.wsgi --log-file -
