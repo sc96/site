@@ -1,7 +1,10 @@
 from django.shortcuts import render
 
 from .models import Student, Course, StudentCourse, COS_BSE
+from django.contrib.auth.decorators import login_required
 
+
+@login_required # Cas authentication for this url.
 def degree_progress(request, s_id, major_id):
 	theory_on=[]
 	theory_off=[]
@@ -49,6 +52,9 @@ def degree_progress(request, s_id, major_id):
 	 	'core_on': core_on, 'core_off': core_off, 'student': student}
 	return render(request, 'TigerPath/degree_progress_cos_bse.html', context)
  
+
+
+@login_required # Cas authentication for this url.
 def four_year(request, s_id):
 	fresh_fall=[]
 	fresh_spring=[]

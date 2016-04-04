@@ -16,6 +16,7 @@ Including another URLconf
 from django.conf.urls import url, include
 from django.contrib import admin
 from . import views
+import cas.views
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
@@ -23,4 +24,8 @@ urlpatterns = [
     url(r'^fouryear/([1-9]{1})/$', views.four_year),
     url(r'^degreeprogress/([1-9]{1})/([0-9]{1})/$', views.degree_progress),
     #url(r'^home/degreeprogress/$', views.degree_progress),
+
+    # CAS. No changes needed for the other urls.
+    url(r'^login$', cas.views.login, name='login'),
+    url(r'^logout$', cas.views.login, name='logout'),
 ]

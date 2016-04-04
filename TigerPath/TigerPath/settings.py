@@ -64,6 +64,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'cas',
 ]
 
 MIDDLEWARE_CLASSES = [
@@ -75,6 +76,7 @@ MIDDLEWARE_CLASSES = [
     'django.contrib.auth.middleware.SessionAuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'cas.middleware.CASMiddleware',
 ]
 
 ROOT_URLCONF = 'TigerPath.urls'
@@ -96,6 +98,27 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'TigerPath.wsgi.application'
+
+
+# CAS Authentication stuff
+
+AUTHENTICATION_BACKENDS = (
+    'django.contrib.auth.backends.ModelBackend',
+    'cas.backends.CASBackend',
+)
+
+CAS_SERVER_URL = 'http://cast.cs.princeton.edu/'
+# CAS_SERVER_URL = 'https://fed.princeton.edu/cas/'
+
+CAS_REDIRECT_URL = '/'
+
+CAS_EMAIL_DOMAIN = 'princeton.edu'
+
+LOGIN_URL = '/login'
+
+
+# END AUTHENTICATION CONFIGURATION
+
 
 
 # Database
