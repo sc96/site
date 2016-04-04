@@ -64,7 +64,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'cast',
+    'django.contrib.auth.backends.ModelBackend',
+    #'cas',
 ]
 
 MIDDLEWARE_CLASSES = [
