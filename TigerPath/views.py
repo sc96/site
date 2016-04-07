@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from .models import Student, Course, StudentCourse, COS_BSE
+from .models import Student, Course,  COS_BSE #StudentCourse,
 from django.contrib.auth.decorators import login_required
 
 @login_required # Cas authentication for this url.
