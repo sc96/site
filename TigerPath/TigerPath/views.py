@@ -1,11 +1,9 @@
 from django.shortcuts import render
-
 from .models import Student, Course, StudentCourse, COS_BSE
 from django.contrib.auth.decorators import login_required
 
-
 @login_required # Cas authentication for this url.
-def degree_progress(request, s_id, major_id):
+def degree_progress(request):
 	theory_on=[]
 	theory_off=[]
 	systems_on=[]
@@ -52,11 +50,12 @@ def degree_progress(request, s_id, major_id):
 	 	'core_on': core_on, 'core_off': core_off, 'student': student}
 	return render(request, 'TigerPath/degree_progress_cos_bse.html', context)
  
-
-
 @login_required # Cas authentication for this url.
-def four_year(request, s_id):
-	fresh_fall=[]
+def four_year(request):
+	current_user = request.user
+	context = {'user': current_user.username}
+	return render(request, 'TigerPath/four_year.html', context)
+	'''fresh_fall=[]
 	fresh_spring=[]
 	soph_fall=[]
 	soph_spring=[]
@@ -92,6 +91,18 @@ def four_year(request, s_id):
 	'fresh_fall': fresh_fall, 'fresh_spring': fresh_spring, 'soph_fall': soph_fall, 'soph_spring': soph_spring,
 	'junior_fall': junior_fall, 'junior_spring': junior_spring, 'senior_fall': senior_fall, 'senior_spring': senior_spring}
 	return render(request, 'TigerPath/four_year.html', context)
+
+# Natalie's code for displaying BSE requirements for all BSE students
+# not added to either view yet though, so not sure if it works
+ec_requirements = Course.objects.filter(area='EC')
+em_requirements = Course.objects.filter(area='EM')
+la_requirements = Course.objects.filter(area='LA')
+sa_requirements = Course.objects.filter(area='SA')
+ha_requirements = Course.objects.filter(area='HA')
+writing_sem = Course.objects.filter(listings__regex='WRI1')
+foreign_lang = Course.objects.filter(listings__regex='(ARA|BCS|CHI|CZE|FRE|GER|HEB|HIN|ITA|JPN|KOR|LAT|POL|POR|RUS|SPA|SWA|TUR|TWI|URD)')'''
+
+
 
 
 ##Will's new four_year file based on ManyToManyField representation
