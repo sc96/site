@@ -1,49 +1,9 @@
 
 {% extends "base.html" %}
 
-{% block title %}Courses for {{ student }}{% endblock %}
+{% block title %}Courses for {{ user }}{% endblock %}
 
 {% block content %}
-<h1>Courses for {{ student }}</h1>
-
-<p><b>Freshman Fall</b></p>
-{% for c in fresh_fall %}
-    <p>{{ c.listings }}</p>
-{% endfor %}
-
-<p><b>Freshman Spring</b></p>
-{% for c in fresh_spring %}
-    <p>{{ c.listings }}</p>
-{% endfor %}
-
-<p><b>Sophomore Fall</b></p>
-{% for c in soph_fall %}
-    <p>{{ c.listings }}</p>
-{% endfor %}
-
-<p><b>Sophomore Spring</b></p>
-{% for c in soph_spring %}
-    <p>{{ c.listings }}</p>
-{% endfor %}
-
-<p><b>Junior Fall</b></p>
-{% for c in junior_fall %}
-    <p>{{ c.listings }}</p>
-{% endfor %}
-
-<p><b>Junior Spring</b></p>
-{% for c in junior_spring %}
-    <p>{{ c.listings }}</p>
-{% endfor %}
-
-<p><b>Senior Fall</b></p>
-{% for c in senior_fall %}
-    <p>{{ c.listings }}</p>
-{% endfor %}
-
-<p><b>Senior Spring</b></p>
-{% for c in senior_spring %}
-    <p>{{ c.listings }}</p>
-{% endfor %}
+<h1>Courses for {{ user }}</h1>
 
 {% endblock %}
