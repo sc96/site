@@ -14,6 +14,32 @@ def compare_lists(l1, l2):
 				count+=1
 	return count
 
+def compare_lists2(classes_taken, possible_requirements):
+	"""Compares a student's classes taken with a list of required classes,
+		returns dictionary with similarities, extra courses student has taken,
+		and additional courses which fulfill requirments """
+	L1_sorted = classes_taken.sort();
+	L2_sorted = possible_requirements.sort();
+	sim = []
+	extra_classes_taken = []
+	additional_possible_requirements = []
+	for x in L1_sorted:
+		if in L2_sorted:
+			sim.append(x)
+			L1_sorted.delete(x)
+			L2_sorted.delete(x)
+		else
+			extra_classes_taken.append(x)
+			L1_sorted.delete(x)
+	for x in L2_sorted:
+		additional_possible_requirements.append(x)
+
+	return {"similarities": sim, "extra_taken": extra_classes_taken, ...
+		 "possible": additional_possible_requirements}
+
+
+
+
 class COS_BSE(models.Model):
 	major_name="Computer Science B.S.E."
 	course_id = models.CharField(max_length = 30, primary_key=True)
