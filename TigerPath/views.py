@@ -2,7 +2,7 @@ from django.shortcuts import render
 from .models import Student, Course,  COS_BSE #StudentCourse,
 from django.contrib.auth.decorators import login_required
 
-@login_required # Cas authentication for this url.
+#@login_required # Cas authentication for this url.
 def degree_progress(request):
 	theory_on=[]
 	theory_off=[]
@@ -50,7 +50,7 @@ def degree_progress(request):
 	 	'core_on': core_on, 'core_off': core_off, 'student': student}
 	return render(request, 'TigerPath/degree_progress_cos_bse.html', context)
  
-@login_required # Cas authentication for this url.
+#@login_required # Cas authentication for this url.
 def four_year(request):
 	current_user = request.user
 	context = {'user': current_user.username}
