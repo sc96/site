@@ -150,25 +150,28 @@ class Major(models.Model):
 
 class Course(models.Model):
 	identification = models.CharField(max_length = 30)
-	listings = models.CharField(max_length = 30, primary_key = True)
-	courseid = models.CharField(max_length = 30)
+	listings = models.CharField(max_length = 30)
+	courseid = models.CharField(max_length = 30, primary_key = True)
 	title = models.CharField(max_length = 30)
 	area = models.CharField(max_length = 30)
-	semester = models.CharField(max_length = 30)
-	year = models.CharField(max_length = 30)
+	S15 = models.IntegerField()
+	F15 = models.IntegerField()
+	S16 = models.IntegerField()
+	F16 = models.IntegerField()
 	description = models.CharField(max_length = 30)
 
 	def __str__(self):
 		return self.listings
 
-class StudentCourse(models.Model):
-	student_id = models.CharField(max_length = 30, primary_key = True)
-	course_id = models.CharField(max_length = 30)
-	semester = models.CharField(max_length = 30)
+#class StudentCourse(models.Model):
+#	student_id = models.CharField(max_length = 30, primary_key = True)
+#	course_id = models.CharField(max_length = 30)
+#	semester = models.CharField(max_length = 30)
 
-	def __str__(self):
-		return self.student_id
+#	def __str__(self):
+#		return self.student_id
 
+# need to check if authenticated user is already in student database at some point (amybe when they're on that page where they select the major)
 class Student(models.Model):
 	'''Object which is unique to each student user.'''
 	first_name = models.CharField(max_length = 30)
@@ -181,8 +184,15 @@ class Student(models.Model):
 	# WE NEED THIS ....student_major = models.ForeignKey(COS_BSE, on_delete=models.CASCADE)
 	#s = Student(first_name, last_name, student_id, student_major)
 	#s.save()
-	student_major = models.ForeignKey
-	student_courses = models.ManyToManyField(Course)
+	#student_major = models.ForeignKey
+	fresh_fall_courses = models.ManyToManyField(Course)
+	fresh_spring_courses = models.ManyToManyField(Course)
+	soph_fall_courses = models.ManyToManyField(Course)
+	soph_spring_courses = models.ManyToManyField(Course)
+	junior_fall_courses = models.ManyToManyField(Course)
+	junior_spring_courses = models.ManyToManyField(Course)
+	senior_fall_courses = models.ManyToManyField(Course)
+	senior_spring_courses = models.ManyToManyField(Course)
 
 	def __str__(self):
 		return self.first_name 
@@ -193,8 +203,7 @@ class Student(models.Model):
 		s = StudentCourse(student.student_id, course.course_id)
 		s.save()
 
-#	def select_major(models.Model):
-#		a = 2
+	#def select_major():
 
 	#WILLIAM ADDED
 	# def add_course(Course, semester):
@@ -223,3 +232,4 @@ class Student(models.Model):
 #	def get_classes(self):
 		# want to return a list of all of the classes the student has stored in their four year plan
 	#	return self.student_id.( #.....
+
