@@ -65,7 +65,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    #'cas', ### I dont think this is right? seems to crash the app
+    'cas', ### this was working with me and sam - maybe its heroku?
 ]
 
 MIDDLEWARE_CLASSES = [
