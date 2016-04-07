@@ -11,6 +11,32 @@ https://docs.djangoproject.com/en/1.9/ref/settings/
 """
 
 import os
+import dj_database_url
+#import os.path
+#import django
+#django.setup()
+
+#Entered for heroku
+#db_from_env = dj_database_url.config(conn_max_age=500)
+#DATABASES['default'].update(db_from_env)
+
+
+# Static files (CSS, JavaScript, Images)
+# https://docs.djangoproject.com/en/1.9/howto/static-files/
+
+PROJECT_ROOT = os.path.dirname(os.path.abspath(__file__))
+
+STATIC_ROOT = os.path.join(PROJECT_ROOT, 'staticfiles')
+STATIC_URL = '/static/'
+
+# Extra places for collectstatic to find static files.
+#STATICFILES_DIRS = (
+#    os.path.join(PROJECT_ROOT, 'static'),
+#)
+STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'
+
+###########HEROKU END
+
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -38,6 +64,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    #'cas', ### I dont think this is right? seems to crash the app
 ]
 
 MIDDLEWARE_CLASSES = [
@@ -49,6 +76,7 @@ MIDDLEWARE_CLASSES = [
     'django.contrib.auth.middleware.SessionAuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'cas.middleware.CASMiddleware',
 ]
 
 ROOT_URLCONF = 'TigerPath.urls'
@@ -72,19 +100,47 @@ TEMPLATES = [
 WSGI_APPLICATION = 'TigerPath.wsgi.application'
 
 
+# CAS Authentication stuff
+
+AUTHENTICATION_BACKENDS = (
+    'django.contrib.auth.backends.ModelBackend',
+    'cas.backends.CASBackend',
+)
+
+CAS_SERVER_URL = 'http://cast.cs.princeton.edu/'
+# CAS_SERVER_URL = 'https://fed.princeton.edu/cas/'
+
+CAS_REDIRECT_URL = '/'
+
+CAS_EMAIL_DOMAIN = 'princeton.edu'
+
+LOGIN_URL = '/login'
+
+
+# END AUTHENTICATION CONFIGURATION
+
+
+
 # Database
 # https://docs.djangoproject.com/en/1.9/ref/settings/#databases
 
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-       # 'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-       # 'OPTIONS': {
-       #     'read_default_file': 
-       #     }
+        'NAME': 'nwertz_natalietest',
+        'USER': 'nwertz_django',
+        'PASSWORD': 'barbecue18',
+        'HOST': 'dascpan204l.princeton.edu',
+        'PORT': '3306',
     }
 }
 
+
+#Entered for heroku
+
+DATABASES['default'] = dj_database_url.parse('mysql://nwertz_django:barbecue18@dascpan204l.princeton.edu:3306/nwertz_natalietest', conn_max_age=600)
+#db_from_env = dj_database_url.config(conn_max_age=500)
+#DATABASES['default'].update(db_from_env)
 
 # Password validation
 # https://docs.djangoproject.com/en/1.9/ref/settings/#auth-password-validators
@@ -121,5 +177,9 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.9/howto/static-files/
+
+DIRNAME = os.path.dirname(__file__)
+
+STATIC_ROOT = os.path.join(DIRNAME, 'static')
 
 STATIC_URL = '/static/'
