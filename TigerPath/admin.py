@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from .models import Student, Course, StudentCourse, COS_BSE
+from .models import Student, Course,  COS_BSE #StudentCourse,
 
 admin.site.register(Student)
 #admin.site.register(Course)
