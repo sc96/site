@@ -12,7 +12,7 @@ https://docs.djangoproject.com/en/1.9/ref/settings/
 """
 
 import os
-#import dj_database_url # this crashes the app! - apr 7
+import dj_database_url # this crashes the app! - apr 7
 #import os.path
 #import django
 #django.setup()
