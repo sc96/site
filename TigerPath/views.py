@@ -48,13 +48,13 @@ def degree_progress(request):
 	context = {'theory_on': theory_on, 'theory_off': theory_off, 'apps_on': apps_on,
 		'apps_off': apps_off, 'systems_off': systems_off, 'systems_on': systems_on,
 	 	'core_on': core_on, 'core_off': core_off, 'student': student}
-	return render(request, 'TigerPath/degree_progress_cos_bse.html', context)
+	return render(request, 'pages/degree_progress_cos_bse.html', context)
  
 #@login_required # Cas authentication for this url.
 def four_year(request):
 	current_user = request.user
 	context = {'user': current_user.username}
-	return render(request, 'TigerPath/four_year.html', context)
+	return render(request, 'pages/four_year.html', context)
 	'''fresh_fall=[]
 	fresh_spring=[]
 	soph_fall=[]
