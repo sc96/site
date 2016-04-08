@@ -124,7 +124,7 @@ DATABASES = {
         'NAME': 'nwertz_natalietest',
         'USER': 'nwertz_django',
         'PASSWORD': 'barbecue18',
-        'HOST': 'localhost',#dascpan204l.princeton.edu
+        'HOST': 'https://dascpan204l.princeton.edu',#dascpan204l.princeton.edu
         'PORT': '3306',
     }
 }
