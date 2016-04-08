@@ -11,7 +11,7 @@ https://docs.djangoproject.com/en/1.9/ref/settings/
 """
 
 import os
-#import dj_database_url
+import dj_database_url
 #import os.path
 #import django
 #django.setup()
@@ -124,7 +124,7 @@ DATABASES = {
         'NAME': 'nwertz_natalietest',
         'USER': 'nwertz_django',
         'PASSWORD': 'barbecue18',
-        'HOST': '128.112.52.76',#dascpan204l.princeton.edu
+        'HOST': 'dascpan204l.princeton.edu',#dascpan204l.princeton.edu
         'PORT': '3306',
     }
 }
