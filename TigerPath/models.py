@@ -125,6 +125,7 @@ class GEN_BSE(models.Model):
 	def __str__(self):
 		return self.major_name
 
+# this might eventually get deleted
 class Major(models.Model):
 	""" The major object is a general major with selections etc bla"""
 
@@ -138,20 +139,11 @@ class Major(models.Model):
 		'''Text which is shown to the public'''
 		return self.major_text
 
-	#def get_requirements(code):
-		# now what we want to do here, is look at SQL table that corresponds with major code, 
-		# then grab all lists from that - want to return N number of lists (4 for COS?) 
-
-		#Based on major code (i.e. COS, WWS, POL, etc):
-		#requirments = [] -> list of objects?
-		#add gen-ed requirments (if BSE: add these classes/ dist reqs, elif AB: ...)
-		#add major-specific requirments (Have list of requirments in a dictionary and return all relevent ones to the major)
-		#return the requirments list?
 
 class Course(models.Model):
-	identification = models.CharField(max_length = 30)
+	course_id = models.CharField(max_length = 30, primary_key = True)
 	listings = models.CharField(max_length = 30)
-	courseid = models.CharField(max_length = 30, primary_key = True)
+	#courseid = models.CharField(max_length = 30, primary_key = True)
 	title = models.CharField(max_length = 30)
 	area = models.CharField(max_length = 30)
 	S15 = models.IntegerField()
@@ -163,45 +155,35 @@ class Course(models.Model):
 	def __str__(self):
 		return self.listings
 
-#class StudentCourse(models.Model):
-#	student_id = models.CharField(max_length = 30, primary_key = True)
-#	course_id = models.CharField(max_length = 30)
-#	semester = models.CharField(max_length = 30)
-
-#	def __str__(self):
-#		return self.student_id
 
 # need to check if authenticated user is already in student database at some point (amybe when they're on that page where they select the major)
 class Student(models.Model):
 	'''Object which is unique to each student user.'''
 	first_name = models.CharField(max_length = 30)
 	last_name = models.CharField(max_length = 30)
-	student_id = models.CharField(max_length = 9, primary_key = True) #NOT SECURE < will probably need to get from CASS login!
+	student_id = models.CharField(max_length = 20, primary_key = True) #NOT SECURE < will probably need to get from CASS login!
 	student_major = models.CharField(max_length = 30) # the student's major
-	student_sub_conc = models.CharField(max_length = 30) # the student's concentration within a major (relevant for ELE and MAE)
-
-	#var = "ELE" # another table or choices attribute
-	# WE NEED THIS ....student_major = models.ForeignKey(COS_BSE, on_delete=models.CASCADE)
-	#s = Student(first_name, last_name, student_id, student_major)
-	#s.save()
-	#student_major = models.ForeignKey
-	fresh_fall_courses = models.ManyToManyField(Course)
-	fresh_spring_courses = models.ManyToManyField(Course)
-	soph_fall_courses = models.ManyToManyField(Course)
-	soph_spring_courses = models.ManyToManyField(Course)
-	junior_fall_courses = models.ManyToManyField(Course)
-	junior_spring_courses = models.ManyToManyField(Course)
-	senior_fall_courses = models.ManyToManyField(Course)
-	senior_spring_courses = models.ManyToManyField(Course)
+	student_sub_conc = models.CharField(max_length = 30) # the student's concentration within a major (relevant for ELE and MAE and others)
+	courses = models.ManyToManyField(Course, through='Entry')
 
 	def __str__(self):
-		return self.first_name 
+		return self.student_id
 		#" " student_last_name
 
-	def add_course(course, student):
+	def add_course(course, student, sem):
 		# put student ID and course ID into student-course DB
-		s = StudentCourse(student.student_id, course.course_id)
-		s.save()
+		s = student
+		c = course
+		e = Entry(student=s, course=c, semester=sem)
+		e.save()
+
+# Relevant when they are "adding" a course to their four year plan
+class Entry(models.Model):
+	student = models.ForeignKey(Student, on_delete=models.CASCADE)
+	course = models.ForeignKey(Course, on_delete=models.CASCADE)
+	semester = models.CharField(max_length=30, primary_key = True)
+	#list_were_adding_it_to
+
 
 	#def select_major():
 
@@ -232,4 +214,3 @@ class Student(models.Model):
 #	def get_classes(self):
 		# want to return a list of all of the classes the student has stored in their four year plan
 	#	return self.student_id.( #.....
-

@@ -1,4 +1,3 @@
-#Hello World
 """
 Django settings for TigerPath project.
 
@@ -12,7 +11,7 @@ https://docs.djangoproject.com/en/1.9/ref/settings/
 """
 
 import os
-import dj_database_url #
+#import dj_database_url
 #import os.path
 #import django
 #django.setup()
@@ -20,12 +19,9 @@ import dj_database_url #
 #Entered for heroku
 #db_from_env = dj_database_url.config(conn_max_age=500)
 #DATABASES['default'].update(db_from_env)
-
-
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.9/howto/static-files/
 
-# the next 3 lines also crash the app - apr 7
 #PROJECT_ROOT = os.path.dirname(os.path.abspath(__file__))
 
 #STATIC_ROOT = os.path.join(PROJECT_ROOT, 'staticfiles')
@@ -35,8 +31,6 @@ import dj_database_url #
 #STATICFILES_DIRS = (
 #    os.path.join(PROJECT_ROOT, 'static'),
 #)
-# this also crashes the app - apr 7
-#STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'
 
 ###########HEROKU END
 
@@ -67,7 +61,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'cas', ### this was working with me and sam - maybe its heroku?
+    'cas',
 ]
 
 MIDDLEWARE_CLASSES = [
@@ -102,9 +96,7 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'TigerPath.wsgi.application'
 
-
-# CAS Authentication stuff
-
+#CAS Authentication
 AUTHENTICATION_BACKENDS = (
     'django.contrib.auth.backends.ModelBackend',
     'cas.backends.CASBackend',
@@ -123,7 +115,6 @@ LOGIN_URL = '/login'
 # END AUTHENTICATION CONFIGURATION
 
 
-
 # Database
 # https://docs.djangoproject.com/en/1.9/ref/settings/#databases
 
@@ -138,12 +129,6 @@ DATABASES = {
     }
 }
 
-
-#Entered for heroku
-
-DATABASES['default'] = dj_database_url.parse('mysql://nwertz_django:barbecue18@dascpan204l.princeton.edu:3306/nwertz_natalietest', conn_max_age=600)
-#db_from_env = dj_database_url.config(conn_max_age=500)
-#DATABASES['default'].update(db_from_env)
 
 # Password validation
 # https://docs.djangoproject.com/en/1.9/ref/settings/#auth-password-validators
