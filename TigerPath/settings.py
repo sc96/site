@@ -46,9 +46,9 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = 'b%5tu%(nr6=@t)_mz)3e03ntd$svm!!w6t0mmi-#@4-r=z0xr&'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['tigerpath.herokuapp.com']
 
 
 # Application definition
@@ -121,14 +121,13 @@ LOGIN_URL = '/login'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'nwertz_natalietest',
-        'USER': 'nwertz_django',
-        'PASSWORD': 'barbecue18',
-        'HOST': 'dascpan204l.princeton.edu',#dascpan204l.princeton.edu
-        'PORT': '3306',
     }
 }
-
+        #'NAME': 'nwertz_natalietest',
+        #'USER': 'nwertz_django',
+        #'PASSWORD': 'barbecue18',
+        #'HOST': 'dascpan204l.princeton.edu',#dascpan204l.princeton.edu
+        #'PORT': '3306',
 
 # Password validation
 # https://docs.djangoproject.com/en/1.9/ref/settings/#auth-password-validators
@@ -171,3 +170,26 @@ DIRNAME = os.path.dirname(__file__)
 STATIC_ROOT = os.path.join(DIRNAME, 'static')
 
 STATIC_URL = '/static/'
+
+
+
+
+
+
+
+
+
+ALLOWED_HOSTS = ['*']
+
+# Parse database configuration from $DATABASE_URL
+
+DATABASES = { 'default' : dj_database_url.config()}
+
+# Honor the 'X-Forwarded-Proto' header for request.is_secure()
+SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
+
+# try to load local_settings.py if it exists
+try:
+  from local_settings import *
+except Exception as e:
+  pass
