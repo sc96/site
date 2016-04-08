@@ -1,1 +1,3 @@
 Things to Note:
+1. Not covering corner case where a course (COS 320 in ELE major) can count for 2 requirements. Instead giving it an artificial heiarchy
+in terms of the requirement lists. 
