@@ -6,4 +6,44 @@
 {% block content %}
 <h1>Courses for {{ user }}</h1>
 
+<p><b>Freshman Fall</b></p>
+{% for x in fresh_fall %}
+    <p>{{ x.course }}</p>
+{% endfor %}
+
+<p><b>Freshman Spring</b></p>
+{% for x in fresh_spring %}
+    <p>{{ x.course }}</p>
+{% endfor %}
+
+<p><b>Sophomore Fall</b></p>
+{% for x in soph_fall %}
+    <p>{{ x.course }}</p>
+{% endfor %}
+
+<p><b>Sophomore Spring</b></p>
+{% for x in soph_spring %}
+    <p>{{ x.course }}</p>
+{% endfor %}
+
+<p><b>Junior Fall</b></p>
+{% for x in junior_fall %}
+    <p>{{ x.course }}</p>
+{% endfor %}
+
+<p><b>Junior Spring</b></p>
+{% for x in junior_spring %}
+    <p>{{ x.course }}</p>
+{% endfor %}
+
+<p><b>Senior Fall</b></p>
+{% for x in senior_fall %}
+    <p>{{ x.course }}</p>
+{% endfor %}
+
+<p><b>Senior Spring</b></p>
+{% for x in senior_spring %}
+    <p>{{ x.course }}</p>
+{% endfor %}
+
 {% endblock %}
