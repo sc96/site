@@ -34,8 +34,7 @@ def compare_lists2(classes_taken, possible_requirements):
 	for x in L2_sorted:
 		additional_possible_requirements.append(x)
 
-	return {"similarities": sim, "extra_taken": extra_classes_taken, ...
-		 "possible": additional_possible_requirements}
+	return {"similarities": sim, "extra_taken": extra_classes_taken, "possible": additional_possible_requirements}
 
 
 
