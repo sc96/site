@@ -11,45 +11,43 @@ https://docs.djangoproject.com/en/1.9/ref/settings/
 """
 
 import os
-import sys
-import urlparse
-#import os.path
-#import django
-#django.setup()
+#import sys
+#import urlparse
+
 
 #Entered for heroku
 
 
-urlparse.uses_netloc.append('mysql')
+#urlparse.uses_netloc.append('mysql')
 
-try:
+#try:
 
     # Check to make sure DATABASES is set in settings.py file.
     # If not default to {}
 
-    if 'DATABASES' not in locals():
-        DATABASES = {}
+ #   if 'DATABASES' not in locals():
+  #      DATABASES = {}
 
-    if 'DATABASE_URL' in os.environ:
-        url = urlparse.urlparse(os.environ['DATABASE_URL'])
+   # if 'DATABASE_URL' in os.environ:
+    #    url = urlparse.urlparse(os.environ['DATABASE_URL'])
 
         # Ensure default database exists.
-        DATABASES['default'] = DATABASES.get('default', {})
+     #   DATABASES['default'] = DATABASES.get('default', {})
 
         # Update with environment configuration.
-        DATABASES['default'].update({
-            'NAME': url.path[1:],
-            'USER': url.username,
-            'PASSWORD': url.password,
-            'HOST': url.hostname,
-            'PORT': url.port,
-        })
+      #  DATABASES['default'].update({
+       #     'NAME': url.path[1:],
+        #    'USER': url.username,
+         #   'PASSWORD': url.password,
+          #  'HOST': url.hostname,
+           # 'PORT': url.port,
+        #})
 
 
-        if url.scheme == 'mysql':
-            DATABASES['default']['ENGINE'] = 'django.db.backends.mysql'
-except Exception:
-    print 'Unexpected error:', sys.exc_info()
+        #if url.scheme == 'mysql':
+         #   DATABASES['default']['ENGINE'] = 'django.db.backends.mysql'
+#except Exception:
+ #   print 'Unexpected error:', sys.exc_info()
 #db_from_env = dj_database_url.config(conn_max_age=500)
 #DATABASES['default'].update(db_from_env)
 # Static files (CSS, JavaScript, Images)
@@ -152,20 +150,20 @@ LOGIN_URL = '/login'
 # https://docs.djangoproject.com/en/1.9/ref/settings/#databases
 
 #DATABASES = {
- #   'default': {
-  #      'ENGINE': 'django.db.backends.mysql',
-   #     'NAME': 'nwertz_natalietest',
-    #    'USER': 'nwertz_django',
-     #   'PASSWORD': 'barbecue18',
-      #  'HOST': 'dascpan204l.princeton.edu',#dascpan204l.princeton.edu
-       # 'PORT': '3306',
-    #}
-#}
-        #'NAME': 'nwertz_natalietest',
-        #'USER': 'nwertz_django',
-        #'PASSWORD': 'barbecue18',
-        #'HOST': 'dascpan204l.princeton.edu',#dascpan204l.princeton.edu
-        #'PORT': '3306',
+    'default': {
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'nwertz_natalietest',
+        'USER': 'nwertz_django',
+        'PASSWORD': 'barbecue18',
+        'HOST': 'dascpan204l.princeton.edu',#dascpan204l.princeton.edu
+        'PORT': '3306',
+    }
+}
+        'NAME': 'nwertz_natalietest',
+        'USER': 'nwertz_django',
+        'PASSWORD': 'barbecue18',
+        'HOST': 'dascpan204l.princeton.edu',#dascpan204l.princeton.edu
+        'PORT': '3306',
 
 # Password validation
 # https://docs.djangoproject.com/en/1.9/ref/settings/#auth-password-validators
