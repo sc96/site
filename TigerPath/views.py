@@ -59,7 +59,7 @@ def degree_progress(request):
 def four_year(request):
 	#current_user = request.user
 	#student = Student.objects.get(student_id=current_user.username)
-	student = Student.objects.get(student_id="nwertz")
+	student = Student.objects
 	# getting list of courses for each semester
 	fresh_fall = Entry.objects.filter(student_id=current_user.username, semester="FRF")
 	fresh_spring = Entry.objects.filter(student_id=current_user.username, semester="FRS")
