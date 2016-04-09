@@ -11,34 +11,34 @@
 <div>
 <p><b>Theory</b></p>
 {% for t in theory_on %}
-    <p><font color="fuchsia">{{ t.course_id }}</font></p>
+    <p><font color="fuchsia">{{ t}}</font></p>
 {% endfor %} 
 {% for t in theory_off %}
-    <p>{{ t.course_id }}</p>
+    <p>{{ t }}</p>
 {% endfor %}
 
 <p><b>Applications</b></p>
 {% for t in apps_on %}
-    <p><font color="fuchsia">{{ t.course_id }}</font></p>
+    <p><font color="fuchsia">{{ t }}</font></p>
 {% endfor %}
 {% for t in apps_off %}
-    <p>{{ t.course_id }}</p>
+    <p>{{ t }}</p>
 {% endfor %}
 
 <p><b>Systems</b></p>
 {% for t in systems_on %}
-    <p><font color="fuchsia">{{ t.course_id }}</font></p>
+    <p><font color="fuchsia">{{ t }}</font></p>
 {% endfor %}
 {% for t in systems_off %}
-    <p>{{ t.course_id }}</p>
+    <p>{{ t }}</p>
 {% endfor %}
 
 <p><b>Core</b></p>
 {% for t in core_on %}
-    <p><font color="fuchsia">{{ t.course_id }}</font></p>
+    <p><font color="fuchsia">{{ t }}</font></p>
 {% endfor %}
 {% for t in core_off %}
-    <p>{{ t.course_id }}</p>
+    <p>{{ t }}</p>
 {% endfor %}
 </div>
 {% endblock %}
