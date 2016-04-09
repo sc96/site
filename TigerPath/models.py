@@ -24,7 +24,7 @@ def compare_lists2(classes_taken, possible_requirements):
 	extra_classes_taken = []
 	additional_possible_requirements = []
 	for x in L1_sorted:
-		if in L2_sorted:
+		if x in L2_sorted:
 			sim.append(x)
 			L1_sorted.delete(x)
 			L2_sorted.delete(x)
