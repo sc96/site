@@ -14,31 +14,6 @@ def compare_lists(l1, l2):
 				count+=1
 	return count
 
-def compare_lists2(classes_taken, possible_requirements):
-	"""Compares a student's classes taken with a list of required classes,
-		returns dictionary with similarities, extra courses student has taken,
-		and additional courses which fulfill requirments """
-	L1_sorted = classes_taken.sort();
-	L2_sorted = possible_requirements.sort();
-	sim = []
-	extra_classes_taken = []
-	additional_possible_requirements = []
-	for x in L1_sorted:
-		if x in L2_sorted:
-			sim.append(x)
-			L1_sorted.delete(x)
-			L2_sorted.delete(x)
-		else:
-			extra_classes_taken.append(x)
-			L1_sorted.delete(x)
-	for x in L2_sorted:
-		additional_possible_requirements.append(x)
-
-	return {"similarities": sim, "extra_taken": extra_classes_taken, "possible": additional_possible_requirements}
-
-
-
-
 class COS_BSE(models.Model):
 	major_name="Computer Science B.S.E."
 	course_id = models.CharField(max_length = 30, primary_key=True)
@@ -46,10 +21,12 @@ class COS_BSE(models.Model):
 	applications = models.IntegerField()
 	systems = models.IntegerField()
 	core = models.IntegerField()
+	other = models.IntegerField()
+	iw = models.IntegerField()
 
 	def __str__(self):
-		return self.major_name
-
+		return str(self.course_id)
+'''
 class ELE(models.Model):
 	major_name="Electrical Engineering"
 	course_id = models.CharField(max_length = 30, primary_key=True)
@@ -161,8 +138,7 @@ class Major(models.Model):
 	major_code = models.CharField(max_length = 2, choices=MAJOR_CODES, default='Computer Science')
 
 	def __str__(self):
-		'''Text which is shown to the public'''
-		return self.major_text
+		return self.major_text'''
 
 
 class Course(models.Model):
@@ -207,7 +183,7 @@ class Entry(models.Model):
 	student = models.ForeignKey(Student, on_delete=models.CASCADE)
 	course = models.ForeignKey(Course, on_delete=models.CASCADE)
 	semester = models.CharField(max_length=30, primary_key = True)
-	#list_were_adding_it_to
+	#requirement_list = models.CharField(max_length=30) # we need to know which requirement list its in
 
 
 	#def select_major():
