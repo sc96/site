@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from .models import Student, Course, COS_BSE, Entry
+from .models import Student, Course, COS_BSE, Entry, Approved_Course
 from django.contrib.auth.decorators import login_required
 
 def compare_lists(stud, cour):
@@ -20,7 +20,10 @@ def title(list):
 		new_list.append(Course.objects.get(course_id=i).listings)
 	return new_list
 
-#add will's similarities and differences thing tomorrow
+
+# i mean we could make a view for every certificate...but that wouldn't cover people doing two certificates...would want to show on
+# same page
+
 @login_required # Cas authentication for this url.
 def degree_progress(request):
 	current_user = request.user
@@ -29,6 +32,7 @@ def degree_progress(request):
 	all_courses = Entry.objects.filter(student_id=current_user.username).values_list('course_id', flat=True).order_by('course_id') # all of the student's courses
 	# something to think about: COS 340 can't pop up in "Other" and in "Theory"
 	# all of the requirement lists
+	# can probably combine a lot of things here into one function - maybe i want the approved courses in their own list? idk
 	if (student_major=="COS_BSE"):
 		# can probably shorten this a little bit
 		theory_courses = COS_BSE.objects.filter(theory=1).values_list('course_id', flat=True).order_by('course_id')
@@ -37,29 +41,59 @@ def degree_progress(request):
 		core_courses = COS_BSE.objects.filter(core=1).values_list('course_id', flat=True).order_by('course_id')
 		other_courses = COS_BSE.objects.filter(other=1).values_list('course_id', flat=True).order_by('course_id')
 		iw_courses = COS_BSE.objects.filter(iw=1).values_list('course_id', flat=True).order_by('course_id')
-		theory_on = title(compare_lists(all_courses, theory_courses)["similarities"])
+		
+		theory_on = compare_lists(all_courses, theory_courses)["similarities"]
+		other_theory = Approved_Course.objects.filter(requirement="Theory")
+		for t in other_theory:
+			theory_on.append(t.course_id)
+		theory_on = title(theory_on)
 		theory_off = title(compare_lists(all_courses, theory_courses)["differences"])
-		systems_on = title(compare_lists(all_courses, systems_courses)["similarities"])
+		
+		systems_on = compare_lists(all_courses, systems_courses)["similarities"]
+		other_sys = Approved_Course.objects.filter(requirement="Systems")
+		for t in other_sys:
+			systems_on.append(t.course_id)
+		systems_on = title(systems_on)
 		systems_off = title(compare_lists(all_courses, systems_courses)["differences"])
-		apps_on = title(compare_lists(all_courses, apps_courses)["similarities"])
+
+		apps_on = compare_lists(all_courses, apps_courses)["similarities"]
+		other_apps = Approved_Course.objects.filter(requirement="Applications")
+		for t in other_apps:
+			apps_on.append(t.course_id)
+		apps_on = title(apps_on)
 		apps_off = title(compare_lists(all_courses, apps_courses)["differences"])
-		other_on = title(compare_lists(all_courses, other_courses)["similarities"])
+
+		# other should have all classes in "other" that the user hasn't already taken
+		# will fix this bug a little later... 4/9/2016
+		other_on = compare_lists(all_courses, other_courses)["similarities"]
+		other_other = Approved_Course.objects.filter(requirement="Other")
+		for t in other_other:
+			other_on.append(t.course_id)
+		other_on = title(other_on)
 		other_off = title(compare_lists(all_courses, other_courses)["differences"])
-		iw_on = title(compare_lists(all_courses, iw_courses)["similarities"]) #iw is for BSE only
+
+		iw_on = compare_lists(all_courses, iw_courses)["similarities"] #iw is for BSE only
+		other_iw = Approved_Course.objects.filter(requirement="Independent")
+		for t in other_iw:
+			iw_on.append(t.course_id)
+		iw_on = title(iw_on)
 		iw_off = title(compare_lists(all_courses, iw_courses)["differences"])
+
 		core_on = title(compare_lists(all_courses, core_courses)["similarities"])
 		core_off = title(compare_lists(all_courses, core_courses)["differences"])
-
+		
+		# also need to add BSE requirements here and distributions
+		# could literally just pass every certificate thing to this page....but that would be really dumb and bad
 		context = {'theory_on': theory_on, 'theory_off': theory_off, 'systems_on': systems_on, 'systems_off': systems_off,
 		'apps_on': apps_on, 'apps_off': apps_off, 'other_on': other_on, 'other_off': other_off,
-		'iw_on': iw_on, 'iw_off': iw_off, 'core_on': core_on, 'core_off': core_off}#, #'theory_off': theory_off}
+		'iw_on': iw_on, 'iw_off': iw_off, 'core_on': core_on, 'core_off': core_off, 'other_theory': other_theory}#, #'theory_off': theory_off}
 		return render(request, 'TigerPath/degree_progress_cos_bse.html', context)
  
 @login_required # Cas authentication for this url.
 def four_year(request):
-	#current_user = request.user
-	#student = Student.objects.get(student_id=current_user.username)
-	student = Student.objects.get(student_id="nwertz") # just testing to see if Heroku changes...it doesn't
+	current_user = request.user
+	student = Student.objects.get(student_id=current_user.username)
+
 	# getting list of courses for each semester
 	fresh_fall = Entry.objects.filter(student_id=current_user.username, semester="FRF")
 	fresh_spring = Entry.objects.filter(student_id=current_user.username, semester="FRS")
@@ -73,6 +107,18 @@ def four_year(request):
 	'soph_fall': soph_fall, 'soph_spring': soph_spring, 'junior_fall': junior_fall, 'junior_spring': junior_spring,
 	'senior_fall': senior_fall, 'senior_spring': senior_spring}
 	return render(request, 'TigerPath/four_year.html', context)
+
+@login_required # Cas authentication for this url.
+# if you got a course at Princeton to count as a COS departmental
+def princeton_course_approval(request):
+	current_user = request.user
+	student = Student.objects.get(student_id=current_user.username)
+
+@login_required # Cas authentication for this url.
+# if you got a course at Princeton to count as a COS departmental
+def outside_course_approval(request):
+	current_user = request.user
+	student = Student.objects.get(student_id=current_user.username)
 
 # Natalie's code for displaying BSE requirements for all BSE students
 # not added to either view yet though, so not sure if it works

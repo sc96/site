@@ -5,6 +5,7 @@ from django.db import models
 from django.utils import timezone
 # Create your models here.
 
+# need functions to add outside course and to add princeton approved course
 
 def compare_lists(l1, l2):
 	count = 0
@@ -14,6 +15,7 @@ def compare_lists(l1, l2):
 				count+=1
 	return count
 
+#have an object for each certificate, have an array of names of areas (for buttons for front end)
 class COS_BSE(models.Model):
 	major_name="Computer Science B.S.E."
 	course_id = models.CharField(max_length = 30, primary_key=True)
@@ -26,6 +28,12 @@ class COS_BSE(models.Model):
 
 	def __str__(self):
 		return str(self.course_id)
+
+# if you did Princeton in Beijing or something (summer course, global sem, study abroad)..courses from other univiersitites
+#class Outside_Course(models.Model):
+
+
+
 '''
 class ELE(models.Model):
 	major_name="Electrical Engineering"
@@ -185,6 +193,14 @@ class Entry(models.Model):
 	semester = models.CharField(max_length=30, primary_key = True)
 	#requirement_list = models.CharField(max_length=30) # we need to know which requirement list its in
 
+#for classes that were approved for major or certificate
+class Approved_Course(models.Model):
+	student = models.ForeignKey(Student, on_delete=models.CASCADE)
+	course = models.ForeignKey(Course, on_delete=models.CASCADE) # will be something from our courses list
+	semester = models.CharField(max_length=30, primary_key = True)
+	requirement = models.CharField(max_length=30) # Theory, Technology and Society IT Track, etc.
+	major = models.CharField(max_length=30) #COS_BSE or COS_AB
+	certificate = models.CharField(max_length=30) #GSS or EAS or another certificate code
 
 	#def select_major():
 

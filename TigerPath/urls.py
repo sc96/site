@@ -23,6 +23,8 @@ urlpatterns = [
     #url(r'^fouryear/', include('fouryear.urls')),
     url(r'^fouryear/$', views.four_year),
     url(r'^degreeprogress/$', views.degree_progress),
+    url(r'^princeton_course_approval/$', views.princeton_course_approval),
+    url(r'^outside_course_approval/$', views.outside_course_approval),
     #url(r'^home/degreeprogress/$', views.degree_progress),
     # CAS. No changes needed for the other urls.
     url(r'^login$', cas.views.login, name='login'),
