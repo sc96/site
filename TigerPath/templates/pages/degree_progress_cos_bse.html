@@ -40,5 +40,22 @@
 {% for t in core_off %}
     <p>{{ t }}</p>
 {% endfor %}
+
+<p><b>Other</b></p>
+{% for t in other_on %}
+    <p><font color="fuchsia">{{ t}}</font></p>
+{% endfor %} 
+{% for t in other_off %}
+    <p>{{ t }}</p>
+{% endfor %}
+
+<p><b>Independent Work</b></p>
+{% for t in iw_on %}
+    <p><font color="fuchsia">{{ t}}</font></p>
+{% endfor %} 
+{% for t in iw_off %}
+    <p>{{ t }}</p>
+{% endfor %}
+
 </div>
 {% endblock %}
