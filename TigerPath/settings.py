@@ -149,7 +149,7 @@ LOGIN_URL = '/login'
 # Database
 # https://docs.djangoproject.com/en/1.9/ref/settings/#databases
 
-#DATABASES = {
+DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'nwertz_natalietest',
@@ -159,11 +159,6 @@ LOGIN_URL = '/login'
         'PORT': '3306',
     }
 }
-        'NAME': 'nwertz_natalietest',
-        'USER': 'nwertz_django',
-        'PASSWORD': 'barbecue18',
-        'HOST': 'dascpan204l.princeton.edu',#dascpan204l.princeton.edu
-        'PORT': '3306',
 
 # Password validation
 # https://docs.djangoproject.com/en/1.9/ref/settings/#auth-password-validators
