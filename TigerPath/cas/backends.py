@@ -231,7 +231,7 @@ class CASBackend(object):
             if settings.CAS_AUTO_CREATE_USER:
                 user = User.objects.create_user(username, '')
                 user.save()
-                s = Student(student_id="kanye")
+                s = Student(student_id=username)
                 s.save()
             else:
                 user = None
