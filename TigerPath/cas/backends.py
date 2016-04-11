@@ -1,6 +1,7 @@
 import logging
 from xml.dom import minidom
 import time
+import Student
 
 try:
     from xml.etree import ElementTree
@@ -230,6 +231,8 @@ class CASBackend(object):
             if settings.CAS_AUTO_CREATE_USER:
                 user = User.objects.create_user(username, '')
                 user.save()
+                s = Student(student_id="kanye")
+                s.save()
             else:
                 user = None
         return user
