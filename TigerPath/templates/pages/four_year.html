@@ -14,23 +14,17 @@
     <script type="text/babel">
     var Comment = React.createClass({
        getInitialState: function() {
-        return {
-          value: 'COS 226'
-        };
-      },
-      handleChange: function(event) {
-        this.setState({value: event.target.value});
-      },
-      handleClick: function(event){
-        if (this.value = 'COS 226') {this.setState({value: ''})};
-      },
-      render: function() {
-        return (
-          <input
-            type="text"
-            value={this.state.value}
-            onClick={this.handleClick}
-            onChange={this.handleChange} />
+    return {value: 'Course1'};
+  },
+  handleChange: function(event) {
+    this.setState({value: event.target.value});
+  },
+  render: function() {
+    return (
+      <input
+        type="text"
+        value={this.state.value}
+        onChange={this.handleChange} />
       
     );
   }
