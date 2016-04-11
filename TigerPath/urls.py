@@ -21,6 +21,8 @@ import cas.views
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     #url(r'^fouryear/', include('fouryear.urls')),
+    url(r'^home/$', views.home),
+    #url(r'^user_profile/$', views.user_profile),
     url(r'^fouryear/$', views.four_year),
     url(r'^degreeprogress/$', views.degree_progress),
     url(r'^princeton_course_approval/$', views.princeton_course_approval),

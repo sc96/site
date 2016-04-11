@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from .models import Student, Course, COS_BSE, Entry, Approved_Course
+from .models import Student, Course, COS_BSE, Entry, Approved_Course, Outside_Course
 from django.contrib.auth.decorators import login_required
 import re
 
@@ -27,6 +27,13 @@ def title(list):
 # same page....could be possible if we used buttons though
 
 @login_required # Cas authentication for this url.
+def home(request):
+	return render(request, 'TigerPath/home.html', context)
+
+#@login_required # Cas authentication for this url.
+#def user_profile(request):
+
+@login_required # Cas authentication for this url.
 def degree_progress(request):
 	# Natalie's code for displaying BSE requirements for all BSE students
 	# not added to either view yet though, so not sure if it works
@@ -45,11 +52,6 @@ def degree_progress(request):
 	writing_sem = Course.objects.filter(listings__regex='WRI1')
 	foreign_lang = Course.objects.filter(listings__regex='(ARA|BCS|CHI|CZE|FRE|GER|HEB|HIN|ITA|JPN|KOR|LAT|POL|POR|RUS|SPA|SWA|TUR|TWI|URD)')'''
 	current_user = request.user
-	try:
-   		s = Student.objects.get(student_id=current_user)
-	except Student.DoesNotExist:
-   		s = Student(student_id=current_user)
-   		s.save()
 	student = Student.objects.get(student_id=current_user.username)
 	student_major = student.student_major
 	all_courses = Entry.objects.filter(student_id=current_user.username).values_list('course_id', flat=True).order_by('course_id') # all of the student's courses
@@ -83,7 +85,7 @@ def degree_progress(request):
 		iw_courses = COS_BSE.objects.filter(iw=1).values_list('course_id', flat=True).order_by('course_id')
 		
 		theory_on = compare_lists(all_courses, theory_courses)["similarities"]
-		other_theory = Approved_Course.objects.filter(requirement="Theory")
+		other_theory = Approved_Course.objects.filter(requirement="Theory") # this needs to filter by netid too!!
 		for t in other_theory:
 			theory_on.append(t.course_id)
 		theory_on = title(theory_on)
@@ -122,38 +124,34 @@ def degree_progress(request):
 		core_on = title(compare_lists(all_courses, core_courses)["similarities"])
 		core_off = title(compare_lists(all_courses, core_courses)["differences"])
 
+		# Distribution Requirements
 		student_sa=title(student_sa)
 		student_la=title(student_la)
 		student_ha=title(student_ha)
 		student_em=title(student_em)
 		student_ec=title(student_ec)
-		# doing distribution requirements
 
-		
+		# Outside Courses
+		# Note: should probably do Outside Courses/Approved Courses first, then add to LA/SA/Theory/etc. THEN consolidate lists 
+		student_outside=[]
+		outside_courses = Outside_Course.objects.filter(student_id=current_user.username) # list of the student's outside courses
+		for c in outside_courses.iterator():
+			student_outside.append(c.course_name)
+
 		# also need to add BSE requirements here and distributions
 		# could literally just pass every certificate thing to this page....but that would be really dumb and bad
-		# still in the process of getting new ideas for certificates...it can def be done tho
+		# still in the process of getting new ideas for certificates...it can def be done tho...still thinking
 		context = {'theory_on': theory_on, 'theory_off': theory_off, 'systems_on': systems_on, 'systems_off': systems_off,
 		'apps_on': apps_on, 'apps_off': apps_off, 'other_on': other_on, 'other_off': other_off,
 		'iw_on': iw_on, 'iw_off': iw_off, 'core_on': core_on, 'core_off': core_off, 'other_theory': other_theory,
-		'student_sa': student_sa}#, #'theory_off': theory_off}
-		return render(request, 'pages/degree_progress_cos_bse.html', context)
+		'student_sa': student_sa, 'student_la': student_la, 'student_ha': student_ha, 'student_ec': student_ec,
+		'student_em': student_em, 'student_foreign': student_foreign, 'student_wri': student_wri, 'outside_courses': student_outside}
+		return render(request, 'TigerPath/degree_progress_cos_bse.html', context)
  
 @login_required # Cas authentication for this url.
 def four_year(request):
-        #s = Student(student_id=username)
-        #s.save()
-        
 	current_user = request.user
-	try:
-   		s = Student.objects.get(student_id=current_user)
-	except Student.DoesNotExist:
-   		s = Student(student_id=current_user)
-   		s.save()
-	#if (Student.objects.filter(student_id=current_user)
-	#s = Student(student_id=current_user)
-	#s.save()
-	#student = Student.objects.get(student_id=current_user.username)
+	student = Student.objects.get(student_id=current_user.username)
 
 	# getting list of courses for each semester
 	fresh_fall = Entry.objects.filter(student_id=current_user.username, semester="FRF")
@@ -167,7 +165,7 @@ def four_year(request):
 	context = {'user': current_user.username,'fresh_fall': fresh_fall, 'fresh_spring': fresh_spring, 
 	'soph_fall': soph_fall, 'soph_spring': soph_spring, 'junior_fall': junior_fall, 'junior_spring': junior_spring,
 	'senior_fall': senior_fall, 'senior_spring': senior_spring}
-	return render(request, 'pages/four_year.html', context)
+	return render(request, 'TigerPath/four_year.html', context)
 
 @login_required # Cas authentication for this url.
 # if you got a course at Princeton to count as a COS departmental
@@ -180,7 +178,6 @@ def princeton_course_approval(request):
 def outside_course_approval(request):
 	current_user = request.user
 	student = Student.objects.get(student_id=current_user.username)
-
 
 @login_required # Cas authentication for this url.
 def schedule_sharing(request):
