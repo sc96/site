@@ -87,7 +87,7 @@ def degree_progress(request):
 		context = {'theory_on': theory_on, 'theory_off': theory_off, 'systems_on': systems_on, 'systems_off': systems_off,
 		'apps_on': apps_on, 'apps_off': apps_off, 'other_on': other_on, 'other_off': other_off,
 		'iw_on': iw_on, 'iw_off': iw_off, 'core_on': core_on, 'core_off': core_off, 'other_theory': other_theory}#, #'theory_off': theory_off}
-		return render(request, 'templates/pages/degree_progress_cos_bse.html', context)
+		return render(request, 'pages/degree_progress_cos_bse.html', context)
  
 @login_required # Cas authentication for this url.
 def four_year(request):
