@@ -8,12 +8,13 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.8.24/browser.min.js"></script>
   </head>
   <body>
-  <a> "Course 1" </a>
+  <a> "Course 1:" </a>
     <div id="message" align="center"></div>
 
     <script type="text/babel">
     var Comment = React.createClass({
        getInitialState: function() {
+
         return {
           value: 'COS 226'
         };
@@ -31,6 +32,17 @@
             value={this.state.value}
             onClick={this.handleClick}
             onChange={this.handleChange} />
+    return {value: {{ user }}};
+  },
+  handleChange: function(event) {
+    this.setState({value: event.target.value});
+  },
+  render: function() {
+    return (
+      <input
+        type="text"
+        value={this.state.value}
+        onChange={this.handleChange} />
       
     );
   }
