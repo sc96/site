@@ -8,7 +8,6 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.8.24/browser.min.js"></script>
   </head>
   <body>
-  <a><b> Welcome {{ user }} </b> </a>
     <div id="message" align="center"></div>
 
     <script type="text/babel">
@@ -21,16 +20,18 @@
       handleChange: function(event) {
         this.setState({value: event.target.value});
       },
+     {/*
       handleClick: function(event){
         if (this.value == 'COS 226')
          {this.setState({value: ''})}
       },
+   */}
       render: function() {
         return (
           <input
             type="text"
             value={this.state.value}
-            onClick={this.handleClick}
+            {/*onClick={this.handleClick}*/}
             onChange={this.handleChange} />
           );
        }
