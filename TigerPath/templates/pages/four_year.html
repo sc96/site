@@ -2,20 +2,20 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <title>A textbox example</title>
+    <title>Current Courses</title>
     <script src="/../../static/scripts/react.js"></script>
     <script src="/../../static/scripts/react-dom.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.8.24/browser.min.js"></script>
   </head>
   <body>
-  <a> {{ user }} </a>
+  <a><b> Welcome {{ user }} </b> </a>
     <div id="message" align="center"></div>
 
     <script type="text/babel">
     var Comment = React.createClass({
        getInitialState: function() {
         return {
-           return {value: {{ user }}};
+           return {value: 'COS 226'};
         };
       },
       handleChange: function(event) {
@@ -35,6 +35,7 @@
           );
        }
     });
+
 
       ReactDOM.render(
         <Comment />,
