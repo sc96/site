@@ -45,6 +45,11 @@ def degree_progress(request):
 	writing_sem = Course.objects.filter(listings__regex='WRI1')
 	foreign_lang = Course.objects.filter(listings__regex='(ARA|BCS|CHI|CZE|FRE|GER|HEB|HIN|ITA|JPN|KOR|LAT|POL|POR|RUS|SPA|SWA|TUR|TWI|URD)')'''
 	current_user = request.user
+	try:
+   		s = Student.objects.get(student_id=current_user)
+	except Student.DoesNotExist:
+   		s = Student(student_id=current_user)
+   		s.save()
 	student = Student.objects.get(student_id=current_user.username)
 	student_major = student.student_major
 	all_courses = Entry.objects.filter(student_id=current_user.username).values_list('course_id', flat=True).order_by('course_id') # all of the student's courses
