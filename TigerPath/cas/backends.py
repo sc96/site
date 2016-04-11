@@ -1,7 +1,7 @@
 import logging
 from xml.dom import minidom
 import time
-import Student
+from .models import Student
 
 try:
     from xml.etree import ElementTree
