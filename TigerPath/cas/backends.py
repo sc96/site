@@ -227,12 +227,12 @@ class CASBackend(object):
         try:
             user = User.objects.get(username__iexact=username)
         except User.DoesNotExist:
+            s = Student(student_id=username)
+            s.save()
             # user will have an "unusable" password
             if settings.CAS_AUTO_CREATE_USER:
                 user = User.objects.create_user(username, '')
                 user.save()
-                s = Student(student_id=username)
-                s.save()
             else:
                 user = None
         return user
