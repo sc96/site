@@ -140,8 +140,14 @@ def four_year(request):
         #s.save()
         
 	current_user = request.user
-	s = Student(student_id=current_user)
-	s.save()
+	try:
+   		s = Student.objects.get(student_id=current_user)
+	except Student.DoesNotExist:
+   		s = Student(student_id=current_user)
+   		s.save()
+	#if (Student.objects.filter(student_id=current_user)
+	#s = Student(student_id=current_user)
+	#s.save()
 	#student = Student.objects.get(student_id=current_user.username)
 
 	# getting list of courses for each semester
