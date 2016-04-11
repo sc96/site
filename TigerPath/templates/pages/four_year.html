@@ -12,17 +12,19 @@
   <div id="message" align="center"></div>
 
   <script type="text/babel">
-  var Comment = React.createClass({
+  var CourseSearch = React.createClass({
      getInitialState: function() {
       return {
          value: 'COS 226'
+         courses: {}
       };
     },
     handleChange: function(ev) {
       this.setState({value: ev.target.value});
     },
     handleClick: function(ev){
-      this.setState({value: ''});
+      if (this.state.value == 'COS 226'){
+            this.setState({value: ''})}
     },
     submit: function(ev) {
       ev.preventDefault();
@@ -30,18 +32,34 @@
     },
     render: function() {
       return (
+        <div><b>Add a course:<b></div>
+        <div>
         <form onSubmit={this.submit}>
           <input type="text" value={this.state.value}
             onClick={this.handleClick}
             onChange={this.handleChange} />
           <input type="submit" value="Search" />
         </form>
-        );
+        </div>
+      );
+     }
+  });
+
+  var Courses = React.createClass({
+    getInitialState: function() {
+      return {
+        matches: {}
+      }
+    }
+    render: function() {
+      return (
+        <div>Sample Filler</div>
+      );
      }
   });
 
     ReactDOM.render(
-      <Comment />,
+      <CourseSearch />,
       document.getElementById('message')
     );
   </script>
