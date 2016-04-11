@@ -132,7 +132,7 @@ def degree_progress(request):
 		'apps_on': apps_on, 'apps_off': apps_off, 'other_on': other_on, 'other_off': other_off,
 		'iw_on': iw_on, 'iw_off': iw_off, 'core_on': core_on, 'core_off': core_off, 'other_theory': other_theory,
 		'student_sa': student_sa}#, #'theory_off': theory_off}
-		return render(request, 'TigerPath/degree_progress_cos_bse.html', context)
+		return render(request, 'pages/degree_progress_cos_bse.html', context)
  
 @login_required # Cas authentication for this url.
 def four_year(request):
@@ -151,7 +151,7 @@ def four_year(request):
 	context = {'user': current_user.username,'fresh_fall': fresh_fall, 'fresh_spring': fresh_spring, 
 	'soph_fall': soph_fall, 'soph_spring': soph_spring, 'junior_fall': junior_fall, 'junior_spring': junior_spring,
 	'senior_fall': senior_fall, 'senior_spring': senior_spring}
-	return render(request, 'TigerPath/four_year.html', context)
+	return render(request, 'pages/four_year.html', context)
 
 @login_required # Cas authentication for this url.
 # if you got a course at Princeton to count as a COS departmental
