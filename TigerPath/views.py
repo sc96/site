@@ -136,8 +136,13 @@ def degree_progress(request):
  
 @login_required # Cas authentication for this url.
 def four_year(request):
+        #s = Student(student_id=username)
+        #s.save()
+        
 	current_user = request.user
-	student = Student.objects.get(student_id=current_user.username)
+	s = Student(student_id=current_user)
+	s.save()
+	#student = Student.objects.get(student_id=current_user.username)
 
 	# getting list of courses for each semester
 	fresh_fall = Entry.objects.filter(student_id=current_user.username, semester="FRF")
