@@ -29,125 +29,6 @@ class COS_BSE(models.Model):
 	def __str__(self):
 		return str(self.course_id)
 
-# if you did Princeton in Beijing or something (summer course, global sem, study abroad)..courses from other univiersitites
-#class Outside_Course(models.Model):
-
-
-
-'''
-class ELE(models.Model):
-	major_name="Electrical Engineering"
-	course_id = models.CharField(max_length = 30, primary_key=True)
-	foundation = models.IntegerField()
-	core = models.IntegerField()
-	math = models.IntegerField()
-	breadth = models.IntegerField()
-	engineering_science = models.IntegerField()
-	balance = models.IntegerField()
-	design = models.IntegerField()
-
-	def __str__(self):
-		return self.major_name
-
-class MAE(models.Model):
-	major_name="Mechanical and Aerospace Engineering"
-	course_id = models.CharField(max_length = 30, primary_key=True)
-	intro = models.IntegerField()
-	math_app = models.IntegerField()
-	engineer_design = models.IntegerField()
-	senior_thesis = models.IntegerField()
-
-	# these are sub-concentrations within MAE
-	mech_engineer = models.IntegerField()
-	aero_engineer = models.IntegerField()
-	mae_engineer = models.IntegerField()
-
-	def __str__(self):
-		return self.major_name
-
-class CEE(models.Model):
-	major_name="Civil and Environmental Engineering"
-	course_id = models.CharField(max_length = 30, primary_key=True)
-	foundation = models.IntegerField()
-	core = models.IntegerField()
-	math = models.IntegerField()
-	breadth = models.IntegerField()
-	engineering_science = models.IntegerField()
-	balance = models.IntegerField()
-	design = models.IntegerField()
-
-	def __str__(self):
-		return self.major_name
-
-class ORF(models.Model):
-	major_name="Operations Research and Financial Engineering"
-	course_id = models.CharField(max_length = 30, primary_key=True)
-	core = models.IntegerField()
-	math = models.IntegerField()
-	dept_electives = models.IntegerField()
-
-	def __str__(self):
-		return self.major_name
-
-class CBE(models.Model):
-	major_name="Chemical and Biological Engineering"
-	course_id = models.CharField(max_length = 30, primary_key=True)
-	core = models.IntegerField()
-	diff_eq = models.IntegerField()
-	chem = models.IntegerField()
-	orgo = models.IntegerField()
-	mol_bio = models.IntegerField()
-	adv_chem = models.IntegerField()
-	adv_cbe = models.IntegerField()
-
-	# these are sub-concentrations within cbe
-	biotech = models.IntegerField()
-	entrepreneurship = models.IntegerField()
-	energy = models.IntegerField()
-	materials = models.IntegerField()
-	optimization = models.IntegerField()
-	new_tech = models.IntegerField()
-
-	def __str__(self):
-		return self.major_name
-
-class GEN_BSE(models.Model):
-	major_name="General B.S.E. Requirements"
-	course_id = models.CharField(max_length = 30, primary_key=True)
-	physics = models.IntegerField()
-	math = models.IntegerField()
-	chem = models.IntegerField()
-	computer = models.IntegerField()
-
-	# don't need these as list, instead this will be in business logic
-	# basically want to have lists of EM, EC, HA, LA, SA, Language and then add course
-	# the student has taken to those
-	#ec = models.IntegerField()
-	#em = models.IntegerField()
-	#ha = models.IntegerField()
-	#la = models.IntegerField()
-	#sa = models.IntegerField()
-	#language = models.IntegerField()
-	#writing seminar
-
-	#gen AB and gen BSE logic would be same across majors within those fields
-
-	def __str__(self):
-		return self.major_name
-
-# this might eventually get deleted
-class Major(models.Model):
-	""" The major object is a general major with selections etc bla"""
-
-	MAJOR_CODES = (
-	('Computer Science', '00'),	
-	)
-	major_text = models.CharField(max_length = 50)	# Text form of major i.e. Computer Science
-	major_code = models.CharField(max_length = 2, choices=MAJOR_CODES, default='Computer Science')
-
-	def __str__(self):
-		return self.major_text'''
-
 
 class Course(models.Model):
 	course_id = models.CharField(max_length = 30, primary_key = True)
@@ -172,12 +53,16 @@ class Student(models.Model):
 	last_name = models.CharField(max_length = 30)
 	student_id = models.CharField(max_length = 20, primary_key = True) #NOT SECURE < will probably need to get from CASS login!
 	student_major = models.CharField(max_length = 30) # the student's major
-	student_sub_conc = models.CharField(max_length = 30) # the student's concentration within a major (relevant for ELE and MAE and others)
+	#student_sub_conc = models.CharField(max_length = 30) # the student's concentration within a major (relevant for ELE and MAE and others)
 	courses = models.ManyToManyField(Course, through='Entry')
+	cert1=models.CharField(max_length = 30)
+	cert2=models.CharField(max_length = 30)
+	cert3=models.CharField(max_length = 30)
+	cert4=models.CharField(max_length = 30)
+	cert5=models.CharField(max_length = 30)
 
 	def __str__(self):
 		return self.student_id
-		#" " student_last_name
 
 	def add_course(course, student, sem):
 		# put student ID and course ID into student-course DB
@@ -201,6 +86,17 @@ class Approved_Course(models.Model):
 	requirement = models.CharField(max_length=30) # Theory, Technology and Society IT Track, etc.
 	major = models.CharField(max_length=30) #COS_BSE or COS_AB
 	certificate = models.CharField(max_length=30) #GSS or EAS or another certificate code
+
+
+# if you did Princeton in Beijing or something (summer course, global sem, study abroad)..courses from other univiersitites
+# can you use one course to count as, lets say Theory for COS and also tech and society? Maybe need two requirement parameters?
+class Outside_Course(models.Model):
+	student = models.ForeignKey(Student, on_delete=models.CASCADE)
+	course_name=models.CharField(max_length=30, primary_key = True)
+	requirement = models.CharField(max_length=30) # Theory, Systems, Technology and Society IT Track, etc.
+	major = models.CharField(max_length=30) #COS_BSE or COS_AB
+	certificate = models.CharField(max_length=30) #GSS or EAS or another certificate code
+	distribution = models.CharField(max_length=30) #LA or SA or something
 
 	#def select_major():
 
