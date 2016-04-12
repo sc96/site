@@ -9,7 +9,7 @@
 </head>
 <body>
 
-<div><b> Welcome back, <a>{{ user }}</div>!</b></div>
+<div><b> Welcome back, <a>{{ user }}</a>!</b></div>
 
   <div id="message" align="center"></div>
 
@@ -62,9 +62,9 @@
     },
     searchCourses: function(ev) {
       var matchedcourses = [];
-      var all_courses = "{{all_courses}}"
+      var stuff = "{{all_courses}}"
       var j = 0;
-      for (x in all_courses) {
+      for (x in stuff) {
         if (j > 10) {break;}
         matchedcourses.push(x);
         j = j + 1;
@@ -80,7 +80,7 @@
   });
 
     ReactDOM.render(
-      <CourseSearch username=login/>,
+      <CourseSearch username="login"/>,
       document.getElementById('message')
     );
   </script>
