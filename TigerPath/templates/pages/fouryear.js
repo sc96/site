@@ -66,5 +66,5 @@ var Courses = React.createClass({
 
 ReactDOM.render(
     <CourseSearch username="login"/>,
-    document.getElementById('message')
+    document.getElementById('nice')
   );
