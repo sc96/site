@@ -17,7 +17,7 @@
      getInitialState: function() {
       return {
          value: 'COS 226',
-         courses: {}
+         courses: []
       };
     },
     handleChange: function(ev) {
@@ -29,8 +29,7 @@
     },
     submit: function(ev) {
       ev.preventDefault();
-      var matchedCourses = <Courses query={this.state.value} />
-      this.setState({value: ''});
+      var matchedCourses = <Courses query={this.state.value} />;
     },
     render: function() {
       return (
@@ -54,30 +53,26 @@
     },
 
     searchCourses: function(ev) {
-      var courses = [];
+      var matchedcourses = [];
       var j = 0;
       for (x in all_courses) {
-        
         if (j > 10) {break;}
-        courses.push(x);
+        matchedcourses.push(x);
         j = j + 1;
       }
-      return courses;
+      return matchedcourses;
     }
 
 
     render: function() {
       return (
-        <div>Sample Filler
-
-        </div>
+        <div>Sample Filler </div>
       );
      }
   });
 
     ReactDOM.render(
       <CourseSearch />,
-      <Courses/>,
       document.getElementById('message')
     );
   </script>
