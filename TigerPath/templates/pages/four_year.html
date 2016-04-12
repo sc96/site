@@ -9,7 +9,7 @@
 </head>
 <body>
 
-<a><b> Welcome, {{ user }}!</b> </a>
+<a><b> Welcome back, {{ user }}!</b> </a>
   <div id="message" align="center"></div>
 
   <script type="text/babel">
@@ -69,7 +69,7 @@
 
     render: function() {
       return (
-        <div><a {'https://tigerbook.herokuapp.com/student/' + this.props.username}>{this.state.matches}</a></div>
+        <div><a href={'https://tigerbook.herokuapp.com/student/' + this.props.username}>{this.state.matches}</a></div>
       );
      }
   });
