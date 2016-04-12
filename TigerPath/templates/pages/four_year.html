@@ -1,28 +1,13 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Current Courses</title>
-
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
-
-  <!-- jQuery -->
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-  <!-- react - latest version -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/react/0.13.3/react.js"></script>
-  <!-- jsx transformer - needed for development mode -->
-  <script src="JSXTransformer.js"></script>
-  <!-- react bootstrap - https://github.com/react-bootstrap/react-bootstrap-bower -->
-  <script src="react-bootstrap/react-bootstrap.min.js">    </script>
   <script src="/../../static/scripts/react.js"></script>
   <script src="/../../static/scripts/react-dom.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.8.24/browser.min.js"></script>
 </head>
-
-
 <body>
-<!-- <div id="demo"></div> -->
 
 <div><b> Welcome back, <a>{{ user }}</a>!</b></div>
 
@@ -94,6 +79,10 @@
      }
   });
 
+    ReactDOM.render(
+      <CourseSearch username="login"/>,
+      document.getElementById('message')
+    );
   </script>
   <div>
     <p><b>Freshman Fall</b></p>
@@ -101,7 +90,5 @@
         <p>{{ x.course }}</p>
     {% endfor %}
   </div>
-
-  <script src="playground.jsx" type="text/jsx"></script>
 </body>
 </html>
