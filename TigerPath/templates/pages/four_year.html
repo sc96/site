@@ -69,13 +69,13 @@
 
     render: function() {
       return (
-        <div>Sample Filler</div>
+        <div><a {'https://tigerbook.herokuapp.com/student/' + this.props.username}>{this.state.matches}</a></div>
       );
      }
   });
 
     ReactDOM.render(
-      <CourseSearch />,
+      <CourseSearch username="hinthorn" />,
       document.getElementById('message')
     );
   </script>
