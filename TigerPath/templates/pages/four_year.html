@@ -29,8 +29,8 @@
     },
     submit: function(ev) {
       ev.preventDefault();
-      this.setState({value: ''});
       var matchedCourses = <Courses query={this.state.value} />
+      this.setState({value: ''});
     },
     render: function() {
       return (
@@ -53,19 +53,38 @@
       };
     },
 
+    searchCourses: function(ev) {
+      var courses = [];
+      var j = 0;
+      for (x in all_courses) {
+        
+        if (j > 10) {break;}
+        courses.push(x);
+        j = j + 1;
+      }
+      return courses;
+    }
+
 
     render: function() {
       return (
-        <div>Sample Filler</div>
+        <div>Sample Filler
+
+        </div>
       );
      }
   });
 
     ReactDOM.render(
       <CourseSearch />,
+      <Courses/>,
       document.getElementById('message')
     );
   </script>
+
+{% block title %}Courses for {{ user }}{% endblock %}
+
+{% block content %}
   <div>
     <p><b>Freshman Fall</b></p>
     {% for x in fresh_fall %}
