@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
+<<<<<<< HEAD
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Current Courses</title>
 
@@ -15,11 +16,22 @@
   <script src="JSXTransformer.js"></script>
   <!-- react bootstrap - https://github.com/react-bootstrap/react-bootstrap-bower -->
   <script src="react-bootstrap/react-bootstrap.min.js">    </script>
+=======
+  <title>TigerPath | Current Courses</title>
+  <script src="/../../static/scripts/react.js"></script>
+>>>>>>> cbaf797c65c83c4aec3c3d149f7696e358044d51
   <script src="/../../static/scripts/react-dom.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.8.24/browser.min.js"></script>
 </head>
 <body>
+<<<<<<< HEAD
 <div id="demo"></div>
+=======
+  
+  
+
+
+>>>>>>> cbaf797c65c83c4aec3c3d149f7696e358044d51
 <div><b> Welcome back, <a>{{ user }}</a>!</b></div>
 
   <div id="message" align="center"></div>
@@ -90,6 +102,31 @@
      }
   });
 
+
+
+const navbarInstance = (
+  <Navbar>
+    <Navbar.Header>
+      <Navbar.Brand>
+        <a href="#">React-Bootstrap</a>
+      </Navbar.Brand>
+    </Navbar.Header>
+    <Nav>
+      <NavItem eventKey={1} href="#">Link</NavItem>
+      <NavItem eventKey={2} href="#">Link</NavItem>
+      <NavDropdown eventKey={3} title="Dropdown" id="basic-nav-dropdown">
+        <MenuItem eventKey={3.1}>Action</MenuItem>
+        <MenuItem eventKey={3.2}>Another action</MenuItem>
+        <MenuItem eventKey={3.3}>Something else here</MenuItem>
+        <MenuItem divider />
+        <MenuItem eventKey={3.3}>Separated link</MenuItem>
+      </NavDropdown>
+    </Nav>
+  </Navbar>
+);
+
+
+ReactDOM.render(navbarInstance, mountNode);
     ReactDOM.render(
       <CourseSearch username="login"/>,
       document.getElementById('message')
