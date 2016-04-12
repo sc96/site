@@ -52,6 +52,8 @@
         matches: {}
       };
     },
+
+
     render: function() {
       return (
         <div>Sample Filler</div>
@@ -64,5 +66,11 @@
       document.getElementById('message')
     );
   </script>
+  <div>
+    <p><b>Freshman Fall</b></p>
+    {% for x in fresh_fall %}
+        <p>{{ x.course }}</p>
+    {% endfor %}
+  </div>
 </body>
 </html>
