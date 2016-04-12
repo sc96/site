@@ -17,7 +17,7 @@
      getInitialState: function() {
       return {
          value: 'COS 226',
-         courses: {}
+         courses: []
       };
     },
     handleChange: function(ev) {
@@ -30,7 +30,8 @@
     submit: function(ev) {
       ev.preventDefault();
       var matchedCourses = <Courses query={this.state.value} />
-      this.setState({value: ''});
+      this.setState({value: '', courses: ["hi"].concat(matchedCourses)});
+      
     },
     render: function() {
       return (
@@ -42,6 +43,9 @@
             onChange={this.handleChange} />
           <input type="submit" value="Search" />
         </form>
+        <div>
+        {this.state.courses}
+        </div>
         </div>
       );
      }
@@ -49,48 +53,37 @@
   var Courses = React.createClass({
     getInitialState: function() {
       return {
-        matches: {}
+        matches: ["wow"]
       };
     },
-
     searchCourses: function(ev) {
-      var courses = [];
+      var matchedcourses = [];
       var j = 0;
       for (x in all_courses) {
-        
         if (j > 10) {break;}
-        courses.push(x);
+        matchedcourses.push(x);
         j = j + 1;
       }
-      return courses;
-    }
-
+      this.setState({matches: matchedcourses});
+    },
 
     render: function() {
       return (
-        <div>Sample Filler
-
-        </div>
+        <div>Sample Filler</div>
       );
      }
   });
 
     ReactDOM.render(
       <CourseSearch />,
-      <Courses/>,
       document.getElementById('message')
     );
   </script>
-
-{% block title %}Courses for {{ user }}{% endblock %}
-
-{% block content %}
   <div>
     <p><b>Freshman Fall</b></p>
     {% for x in fresh_fall %}
         <p>{{ x.course }}</p>
     {% endfor %}
   </div>
-{% endblock %}
 </body>
 </html>
