@@ -1,3 +1,8 @@
+ReactDOM.render(
+  <h1>Hello, world!</h1>,
+  document.getElementById('example')
+);
+
 var login = "{{ user }}"
 var CourseSearch = React.createClass({
    getInitialState: function() {
