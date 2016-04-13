@@ -16,6 +16,10 @@
 
 <div><b> Welcome back, {{ user }}!</b></div>
 
+
+
+
+
   <script type="text/babel">
 
   var login = "{{ user }}"
@@ -107,13 +111,20 @@
   }
 });
 //
-ReactDOM.render(<NavDropdownExample />, document.getElementById('mountNode'));
+
 
   ReactDOM.render(
       <CourseSearch username="login"/>,
       document.getElementById('message')
     );
+ReactDOM.render(<NavDropdownExample />, document.getElementById('mountNode'));
+
   </script>
+
+
+
+
+
 <div id="message"></div>
 <div id="example"></div>
 <div id="mountNode"></div>
@@ -124,6 +135,7 @@ ReactDOM.render(<NavDropdownExample />, document.getElementById('mountNode'));
         <p>{{ x.course }}</p>
     {% endfor %}
   </div>
+
 
 
  <script src="fouryear.jsx" type="text/babel"></script>
