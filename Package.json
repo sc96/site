@@ -1,5 +1,5 @@
 {
-  "name": "simple-heroku",
+  "name": "tigerpath-heroku",
   "version": "1.0.0",
   "description": "Our simple set up for React on Heroku",
   "main": "index.js",
