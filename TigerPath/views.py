@@ -28,7 +28,7 @@ def title(list):
 
 @login_required # Cas authentication for this url.
 def home(request):
-	return render(request, 'TigerPath/home.html', context)
+	return render(request, 'pages/index.html', context)
 
 #@login_required # Cas authentication for this url.
 #def user_profile(request):
