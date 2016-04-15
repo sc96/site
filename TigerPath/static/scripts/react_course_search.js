@@ -26,7 +26,7 @@
 
         <div className="row">
         <div className="col-md-12">
-        <h5>Search for your class</h5>
+        <h5>Add a class to a semester</h5>
             <div id="custom-search">
                 <form onSubmit={this.submit}>
                 <div className="input-group col-md-12">
