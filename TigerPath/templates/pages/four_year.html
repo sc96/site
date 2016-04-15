@@ -102,6 +102,12 @@ for (x in "{{fresh_fall|safe}}") {
       <p>Class 1</p>
       <p>Class 2</p>
     </div>
+     <div class="col-sm-2">
+     <h3>Fresh Fall</h3>
+     {% for x in fresh_fall %}
+     	<p>{{ x.course }}</p>
+     {% endfor %}
+     </div>
     <div class="col-sm-2">
     <h3>Independent</h3> 
       <p>Class 1</p>
