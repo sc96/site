@@ -12,7 +12,7 @@
     },
     handleClick: function(ev){
       e.preventDefault();
-      this.setState({value: ''})
+      this.setState({value: ''});
     },
     submit: function(ev) {
       ev.preventDefault();
@@ -31,7 +31,7 @@
                 <div className="input-group col-md-12">
                     <input type="text" className="form-control input-lg" placeholder="COS 226" onClick={this.handleClick} onChange={this.handleChange}/>
                     <span className="input-group-btn">
-                        <button  onClick={this.handleClick} className="btn btn-info btn-lg" type="button">
+                        <button  id="search-btn" className="btn btn-info btn-lg" type="button">
                             <i className="glyphicon glyphicon-search"></i>
                         </button>
                     </span>
