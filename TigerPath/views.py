@@ -28,6 +28,15 @@ def title(list):
 
 @login_required # Cas authentication for this url.
 def home(request):
+	current_user = request.user
+
+	# create our custom Student object if there is no current student with net id
+	try:
+   		s = Student.objects.get(student_id=current_user)
+	except Student.DoesNotExist:
+   		s = Student(student_id=current_user)
+   		s.save()
+	student = Student.objects.get(student_id=current_user.username)
 	context = {'user': current_user.username}
 	return render(request, 'pages/index.html', context)
 
