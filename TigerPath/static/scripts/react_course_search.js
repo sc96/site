@@ -30,7 +30,7 @@
                 <div className="input-group col-md-12">
                     <input type="text" className="form-control input-lg" placeholder="COS 226" onClick={this.handleClick} onChange={this.handleChange}/>
                     <span className="input-group-btn">
-                        <button  onClick="alert('You clicked the button using Javascript.');" className="btn btn-info btn-lg" type="button">
+                        <button  onClick={alert('You clicked the button using Javascript.');} className="btn btn-info btn-lg" type="button">
                             <i className="glyphicon glyphicon-search"></i>
                         </button>
                     </span>
