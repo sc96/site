@@ -92,100 +92,21 @@
       <h3>Other</h3> 
       <p>Class 1</p>
       <p>Class 2</p>
-    </div>
-            
-        
-        
-        
-        
-        
+    </div>        
 	</div>
 </div>
 
-<div id="message" align="center"></div>
 
-  <script type="text/babel">
-  var login = "{{ user }}"
-  var CourseSearch = React.createClass({
-     getInitialState: function() {
-      return {
-         value: 'COS 226',
-         courses: []
-      };
-    },
-    handleChange: function(ev) {
-      this.setState({value: ev.target.value});
-    },
-    handleClick: function(ev){
-      if (this.state.value == 'COS 226'){
-            this.setState({value: ''})}
-    },
-    submit: function(ev) {
-      ev.preventDefault();
-      var matchedCourses = <Courses query={this.state.value} username={this.props.username}/>
-      this.setState({value: '', courses: ["hi"].concat(matchedCourses)});
-      
-    },
-    render: function() {
-      return (
-
-        <div class="row">
-        <div class="col-md-12">
+<div class="container">
+  <div class="row">
+        <div class="col-md-12" id="message">
         <h5>Search for your class</h5>
-            <div id="custom-search">
-                <form onSubmit={this.submit}>
-                <div class="input-group col-md-12">
-                    <input type="text" class="form-control input-lg" placeholder="COS 226" onClick={this.handleClick} onChnange={this.handleChange}/>
-                    <span class="input-group-btn">
-                        <button class="btn btn-info btn-lg" type="button">
-                            <i class="glyphicon glyphicon-search"></i>
-                        </button>
-                    </span>
-                </div>
-                </form>
-            </div>
-        </div> 
-     </div>
-
-      );
-     }
-  });
-  var Courses = React.createClass({
-    getInitialState: function() {
-      return {
-        matches: "{{all_courses}}"
-      };
-    },
-    searchCourses: function(ev) {
-      var matchedcourses = [];
-      var all_courses = "{{all_courses}}"
-      var j = 0;
-      for (x in all_courses) {
-        if (j > 10) {break;}
-        matchedcourses.push(x);
-        j = j + 1;
-      }
-      this.setState({matches: matchedcourses});
-    },
-
-    render: function() {
-      return (
-        <div>{this.state.matches}</div>
-      );
-     }
-  });
-
-    ReactDOM.render(
-      <CourseSearch username={login}/>,
-      document.getElementById('message')
-    );
-  </script>
-  <div>
-    <p><b>Freshman Fall</b></p>
-    {% for x in fresh_fall %}
-        <p>{{ x.course }}</p>
-    {% endfor %}
+        </div>
   </div>
+</div>
+
+  <script type="text/babel" src="/../../static/scripts/react_course_search.js"></script>
+  
 
 
 <!--<script type="text/babel" src="/../../static/scripts/fouryear.jsx"></script>-->
