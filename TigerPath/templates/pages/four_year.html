@@ -28,8 +28,8 @@ var myJSONList = (("{{fresh_fall|safe}}").replace(/&(l|g|quo)t;/g, function(a,b)
 
 console.log("done");
 console.log(myJSONList.values);
-console.log("{{fresh_fall}}.values");
-console.log("{{fresh_fall|safe}}");
+console.log("{{fresh_fall}}".values);
+console.log("{{fresh_fall|safe}}".values);
 for (x in "{{fresh_fall|safe}}") {
   console.log(x[0]);
   console.log(x[1]);
