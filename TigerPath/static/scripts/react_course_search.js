@@ -8,11 +8,11 @@
       };
     },
     handleChange: function(ev) {
-      e.preventDefault();
+      ev.preventDefault();
       this.setState({value: ev.target.value});
     },
     handleClick: function(ev){
-      e.preventDefault();
+      ev.preventDefault();
       this.setState({value: ''});
     },
     submit: function(ev) {
