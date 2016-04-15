@@ -201,10 +201,18 @@ USE_TZ = True
 
 DIRNAME = os.path.dirname(__file__)
 
-STATIC_ROOT = os.path.join(DIRNAME, 'static')
+CURRENT_PATH = os.path.abspath(os.path.dirname(__file__).decode('utf-8'))
+
+MEDIA_ROOT = os.path.join(CURRENT_PATH, 'media')
+
+MEDIA_URL = '/media/'
+
+STATIC_ROOT = 'static/'
 
 STATIC_URL = '/static/'
 
-
+STATICFILES_DIRS = (
+                    os.path.join(CURRENT_PATH, 'static'),
+)
 
 
