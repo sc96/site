@@ -18,10 +18,13 @@
 
 <script>
 console.log("{{user}}");
-for (x in "{fresh_fall}") {
-  console.log(x)
-}
 console.log("{fresh_fall}");
+console.log("{{fresh_fall}}");
+for (x in "{fresh_fall}") {
+  console.log(x[0]);
+  console.log(x[1]);
+}
+
 </script>
     
 <nav class="navbar navbar-inverse">
