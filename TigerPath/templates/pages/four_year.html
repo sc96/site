@@ -17,6 +17,8 @@
 <body>
 
 <script>
+var fall = "{{fresh_fall}}";
+console.log(fall);
 console.log("{{user}}");
 var myJSONList = (("{{fresh_fall|safe}}").replace(/&(l|g|quo)t;/g, function(a,b){
                 return {
@@ -28,7 +30,7 @@ var myJSONList = (("{{fresh_fall|safe}}").replace(/&(l|g|quo)t;/g, function(a,b)
 
 console.log(myJSONList);
 console.log("{{fresh_fall}}");
-  console.log("{{fresh_fall|safe}}");
+console.log("{{fresh_fall|safe}}");
 for (x in "{{fresh_fall|safe}}") {
   console.log(x[0]);
   console.log(x[1]);
