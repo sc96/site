@@ -24,7 +24,7 @@
 
         <div class="row">
         <div class="col-md-12">
-        <h5>Search for your class</h5>
+        <h5>"Search for your class"</h5>
             <div id="custom-search">
                 <form onSubmit={this.submit}>
                 <div class="input-group col-md-12">
@@ -39,19 +39,6 @@
             </div>
         </div> 
      </div>
-
-        </div>
-        Add a Course:
-        <form onSubmit={this.submit}>
-          <input type="text" value={this.state.value}
-            onClick={this.handleClick}
-            onChange={this.handleChange} />
-          <input type="submit" value="Search" />
-        </form>
-        <div>
-        {this.state.courses}
-        </div>
-        </div>
       );
      }
   });
