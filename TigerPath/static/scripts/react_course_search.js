@@ -8,6 +8,7 @@
       };
     },
     handleChange: function(ev) {
+      e.preventDefault();
       this.setState({value: ev.target.value});
     },
     handleClick: function(ev){
