@@ -28,7 +28,7 @@
             <div id="custom-search">
                 <form onSubmit={this.submit}>
                 <div className="input-group col-md-12">
-                    <input type="text" className="form-control input-lg" placeholder="COS 226" onClick={this.handleClick} onChnange={this.handleChange}/>
+                    <input type="text" className="form-control input-lg" placeholder="COS 226" onClick={this.handleClick} onChange={this.handleChange}/>
                     <span className="input-group-btn">
                         <button className="btn btn-info btn-lg" type="button" onClick={this.submit}>
                             <i className="glyphicon glyphicon-search"></i>
