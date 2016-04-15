@@ -82,7 +82,55 @@ for (x in "{{fresh_fall|safe}}") {
      </div>
 
         <div class="row">
-        	<div class="col-sm-2">
+     <div class="col-sm-2">
+     <h3>Freshman Fall</h3>
+     {% for x in fresh_fall %}
+     	<p>{{ x.course }}</p>
+     {% endfor %}
+     </div>
+     <div class="col-sm-2">
+     <h3>Freshman Spring</h3>
+     {% for x in fresh_spring %}
+     	<p>{{ x.course }}</p>
+     {% endfor %}
+     </div>
+     <div class="col-sm-2">
+     <h3>Sophomore Fall</h3>
+     {% for x in soph_fall %}
+     	<p>{{ x.course }}</p>
+     {% endfor %}
+     </div>
+     <div class="col-sm-2">
+     <h3>Sophomore Spring</h3>
+     {% for x in soph_spring %}
+     	<p>{{ x.course }}</p>
+     {% endfor %}
+     </div>
+     <div class="col-sm-2">
+     <h3>Junior Fall</h3>
+     {% for x in junior_fall %}
+     	<p>{{ x.course }}</p>
+     {% endfor %}
+     </div>
+     <div class="col-sm-2">
+     <h3>Junior Spring</h3>
+     {% for x in junior_spring %}
+     	<p>{{ x.course }}</p>
+     {% endfor %}
+     </div>
+     <div class="col-sm-2">
+     <h3>Senior Fall</h3>
+     {% for x in senior_fall %}
+     	<p>{{ x.course }}</p>
+     {% endfor %}
+     </div>
+     <div class="col-sm-2">
+     <h3>Senior Spring</h3>
+     {% for x in senior_spring %}
+     	<p>{{ x.course }}</p>
+     {% endfor %}
+     </div>
+             	<div class="col-sm-2">
             <h3>Core</h3> 
       <p>Class 1</p>
       <p>Class 2</p>
@@ -102,12 +150,6 @@ for (x in "{{fresh_fall|safe}}") {
       <p>Class 1</p>
       <p>Class 2</p>
     </div>
-     <div class="col-sm-2">
-     <h3>Fresh Fall</h3>
-     {% for x in fresh_fall %}
-     	<p>{{ x.course }}</p>
-     {% endfor %}
-     </div>
     <div class="col-sm-2">
     <h3>Independent</h3> 
       <p>Class 1</p>
