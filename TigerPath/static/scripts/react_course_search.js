@@ -22,16 +22,16 @@
     render: function() {
       return (
 
-        <div class="row">
-        <div class="col-md-12">
+        <div className="row">
+        <div className="col-md-12">
         <h5>"Search for your class"</h5>
             <div id="custom-search">
                 <form onSubmit={this.submit}>
-                <div class="input-group col-md-12">
-                    <input type="text" class="form-control input-lg" placeholder="COS 226" onClick={this.handleClick} onChnange={this.handleChange}/>
-                    <span class="input-group-btn">
-                        <button class="btn btn-info btn-lg" type="button">
-                            <i class="glyphicon glyphicon-search"></i>
+                <div className="input-group col-md-12">
+                    <input type="text" className="form-control input-lg" placeholder="COS 226" onClick={this.handleClick} onChnange={this.handleChange}/>
+                    <span className="input-group-btn">
+                        <button className="btn btn-info btn-lg" type="button">
+                            <i className="glyphicon glyphicon-search"></i>
                         </button>
                     </span>
                 </div>
