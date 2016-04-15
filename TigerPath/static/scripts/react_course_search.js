@@ -24,13 +24,13 @@
 
         <div className="row">
         <div className="col-md-12">
-        <h5>"Search for your class"</h5>
+        <h5>Search for your class</h5>
             <div id="custom-search">
                 <form onSubmit={this.submit}>
                 <div className="input-group col-md-12">
                     <input type="text" className="form-control input-lg" placeholder="COS 226" onClick={this.handleClick} onChnange={this.handleChange}/>
                     <span className="input-group-btn">
-                        <button className="btn btn-info btn-lg" type="button">
+                        <button className="btn btn-info btn-lg" type="button" onClick={this.submit}>
                             <i className="glyphicon glyphicon-search"></i>
                         </button>
                     </span>
