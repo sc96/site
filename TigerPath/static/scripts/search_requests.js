@@ -1,3 +1,5 @@
+console.log("Printing the tango from Django");
+
 $(document).ready( function() {
     $("#search-btn").click( function(event) {
         console.log("Click thing worked");
