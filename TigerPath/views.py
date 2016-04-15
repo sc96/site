@@ -28,6 +28,7 @@ def title(list):
 
 @login_required # Cas authentication for this url.
 def home(request):
+	context = {'user': current_user.username}
 	return render(request, 'pages/index.html', context)
 
 #@login_required # Cas authentication for this url.
