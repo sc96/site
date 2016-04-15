@@ -201,10 +201,6 @@ USE_TZ = True
 
 DIRNAME = os.path.dirname(__file__)
 
-STATIC_ROOT = os.path.join(DIRNAME, 'static')
+STATIC_ROOT = os.path.join(DIRNAME, 'static')		 
 
 STATIC_URL = '/static/'
-
-
-
-
