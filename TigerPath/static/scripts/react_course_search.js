@@ -30,7 +30,7 @@
                 <div className="input-group col-md-12">
                     <input type="text" className="form-control input-lg" placeholder="COS 226" onClick={this.handleClick} onChange={this.handleChange}/>
                     <span className="input-group-btn">
-                        <button className="btn btn-info btn-lg" type="button" onClick={this.submit}>
+                        <button id="search-btn" className="btn btn-info btn-lg" type="button">
                             <i className="glyphicon glyphicon-search"></i>
                         </button>
                     </span>
