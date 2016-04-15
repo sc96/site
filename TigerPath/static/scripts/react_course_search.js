@@ -1,4 +1,6 @@
-   var CourseSearch = React.createClass({
+ var login = "{{ user }}"
+
+  var CourseSearch = React.createClass({
      getInitialState: function() {
       return {
          value: 'COS 226',
