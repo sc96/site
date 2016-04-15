@@ -11,8 +11,8 @@
       this.setState({value: ev.target.value});
     },
     handleClick: function(ev){
-      if (this.state.value == 'COS 226'){
-            this.setState({value: ''})}
+      e.preventDefault();
+      this.setState({value: ''})
     },
     submit: function(ev) {
       ev.preventDefault();
@@ -31,7 +31,7 @@
                 <div className="input-group col-md-12">
                     <input type="text" className="form-control input-lg" placeholder="COS 226" onClick={this.handleClick} onChange={this.handleChange}/>
                     <span className="input-group-btn">
-                        <button  id="search-btn" className="btn btn-info btn-lg" type="button">
+                        <button  onClick={this.handleClick} className="btn btn-info btn-lg" type="button">
                             <i className="glyphicon glyphicon-search"></i>
                         </button>
                     </span>
