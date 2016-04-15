@@ -1,28 +1,4 @@
- var login = "{{ user }}"
-
- var LikeButton = React.createClass({
-  getInitialState: function() {
-    return {liked: false};
-  },
-  handleClick: function(event) {
-    this.setState({liked: !this.state.liked});
-  },
-  render: function() {
-    var text = this.state.liked ? 'like' : 'haven\'t liked';
-    return (
-      <p onClick={this.handleClick}>
-        You {text} this. Click to toggle.
-      </p>
-    );
-  }
-});
-
-ReactDOM.render(
-  <LikeButton />,
-  document.getElementById('example')
-);
-
-  var CourseSearch = React.createClass({
+   var CourseSearch = React.createClass({
      getInitialState: function() {
       return {
          value: 'COS 226',
@@ -53,7 +29,7 @@ ReactDOM.render(
                 <div className="input-group col-md-12">
                     <input type="text" className="form-control input-lg" placeholder="COS 226" onClick={this.handleClick} onChange={this.handleChange}/>
                     <span className="input-group-btn">
-                        <button  onClick={alert('You clicked the button using Javascript.')} className="btn btn-info btn-lg" type="button">
+                        <button  id="search-btn" className="btn btn-info btn-lg" type="button">
                             <i className="glyphicon glyphicon-search"></i>
                         </button>
                     </span>
