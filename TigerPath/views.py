@@ -37,7 +37,7 @@ def home(request):
 	student = Student.objects.get(student_id=current_user.username)
 
 	context = {'user': current_user.username}
-	return render(request, 'pages/index.html', context)
+	return render(request, 'index.html', context)
 
 #@login_required # Cas authentication for this url.
 #def user_profile(request):
@@ -160,7 +160,7 @@ def degree_progress(request):
 		'iw_on': iw_on, 'iw_off': iw_off, 'core_on': core_on, 'core_off': core_off, 'other_theory': other_theory,
 		'student_sa': student_sa, 'student_la': student_la, 'student_ha': student_ha, 'student_ec': student_ec,
 		'student_em': student_em, 'student_foreign': student_foreign, 'student_wri': student_wri, 'outside_courses': student_outside}
-		return render(request, 'pages/degree_progress_cos_bse.html', context)
+		return render(request, 'degree_progress_cos_bse.html', context)
  
 @login_required # Cas authentication for this url.
 def four_year(request):
@@ -184,7 +184,7 @@ def four_year(request):
 	context = {'user': current_user.username,'fresh_fall': fresh_fall, 'fresh_spring': fresh_spring, 
 	'soph_fall': soph_fall, 'soph_spring': soph_spring, 'junior_fall': junior_fall, 'junior_spring': junior_spring,
 	'senior_fall': senior_fall, 'senior_spring': senior_spring}
-	return render(request, 'static/pages/four_year.html', context)
+	return render(request, 'four_year.html', context)
 
 @login_required # Cas authentication for this url.
 # if you got a course at Princeton to count as a COS departmental
