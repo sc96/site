@@ -158,7 +158,7 @@ def degree_progress(request):
 		'iw_on': iw_on, 'iw_off': iw_off, 'core_on': core_on, 'core_off': core_off, 'other_theory': other_theory,
 		'student_sa': student_sa, 'student_la': student_la, 'student_ha': student_ha, 'student_ec': student_ec,
 		'student_em': student_em, 'student_foreign': student_foreign, 'student_wri': student_wri, 'outside_courses': student_outside}
-		return render(request, 'degree_progress_cos_bse.html', context)
+		return render(request, 'test/suggest.html', context)
  
 @login_required # Cas authentication for this url.
 def four_year(request):
