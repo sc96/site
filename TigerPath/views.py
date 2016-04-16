@@ -35,7 +35,7 @@ def home(request):
 	# student = Student.objects.get(student_id=current_user.username)
 
 	# context = {'user': current_user.username}
-	return render(request, 'index.html', context)
+	return render(request, 'index.html')
 
 #@login_required # Cas authentication for this url.
 #def user_profile(request):
