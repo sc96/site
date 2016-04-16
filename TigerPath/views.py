@@ -25,17 +25,16 @@ def title(list):
 
 # i mean we could make a view for every certificate...but that wouldn't cover people doing two certificates...would want to show on
 # same page....could be possible if we used buttons though
-
 def home(request):
-	current_user = request.user
-	try:
-   		s = Student.objects.get(student_id=current_user)
-	except Student.DoesNotExist:
-   		s = Student(student_id=current_user)
-   		s.save()
-	student = Student.objects.get(student_id=current_user.username)
+	# current_user = request.user
+	# try:
+ #  		s = Student.objects.get(student_id=current_user)
+	# except Student.DoesNotExist:
+ #  		s = Student(student_id=current_user)
+ #  		s.save()
+	# student = Student.objects.get(student_id=current_user.username)
 
-	context = {'user': current_user.username}
+	# context = {'user': current_user.username}
 	return render(request, 'index.html', context)
 
 #@login_required # Cas authentication for this url.
