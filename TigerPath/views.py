@@ -26,7 +26,6 @@ def title(list):
 # i mean we could make a view for every certificate...but that wouldn't cover people doing two certificates...would want to show on
 # same page....could be possible if we used buttons though
 
-@login_required # Cas authentication for this url.
 def home(request):
 	current_user = request.user
 	try:
