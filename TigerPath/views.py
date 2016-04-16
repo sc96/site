@@ -184,7 +184,7 @@ def four_year(request):
 	context = {'user': current_user.username,'fresh_fall': fresh_fall, 'fresh_spring': fresh_spring, 
 	'soph_fall': soph_fall, 'soph_spring': soph_spring, 'junior_fall': junior_fall, 'junior_spring': junior_spring,
 	'senior_fall': senior_fall, 'senior_spring': senior_spring}
-	return render(request, 'pages/four_year.html', context)
+	return render(request, 'static/pages/four_year.html', context)
 
 @login_required # Cas authentication for this url.
 # if you got a course at Princeton to count as a COS departmental
