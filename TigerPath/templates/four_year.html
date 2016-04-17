@@ -51,19 +51,23 @@ for (x in "{{fresh_fall|safe}}") {
         <a class="dropdown-toggle" data-toggle="dropdown" href="/profile">{{ user }}
         <span class="caret"></span></a>
         <ul class="dropdown-menu">
-          <li><a href="/logout"><span class="glyphicon glyphicon-log-in"></span> Log out</a></li>
+          <li><a href="http://tigerpath.herokuapp.com/logout"><span class="glyphicon glyphicon-log-in"></span> Log out</a></li>
         </ul>
-      </li>      
+      </li>
+        
+        
+      
     </ul>
   </div>
 </nav>
 
 
 <div class="container">
-	<div class="row">
+
+    <div class="row">
         <h5>Add a class in a semester</h5>
             <div id="custom-search">
-                <form role="search" method="get" action="{% url 'four_year' "search" %}">
+                <form role="search" method="get" action="">
                 <div class="input-group col-md-12">
                     <input type="text" class="form-control input-lg" placeholder="Type course (e.g. COS 126)" name="q"/>
                     <span class="input-group-btn">
@@ -74,8 +78,9 @@ for (x in "{{fresh_fall|safe}}") {
                 </div>
                 </form>
             </div>
-
-
+            
+	<div class="row">
+        
         <div class="col-md-3" id="message">
         <h5>Add a class in a semester</h5>
         </div>
@@ -141,7 +146,7 @@ for (x in "{{fresh_fall|safe}}") {
      {% for x in senior_spring %}
      	<p>{{ x.course }}</p>
      {% endfor %}
-    </div>
+         </div>
             </div>
              </div>
 </div>
