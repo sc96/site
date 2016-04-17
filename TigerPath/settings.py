@@ -139,7 +139,7 @@ AUTHENTICATION_BACKENDS = (
 CAS_SERVER_URL = 'http://cast.cs.princeton.edu/'
 # CAS_SERVER_URL = 'https://fed.princeton.edu/cas/'
 
-CAS_REDIRECT_URL = '/'
+CAS_REDIRECT_URL = 'tigerpath.herokuapp.com'
 
 CAS_EMAIL_DOMAIN = 'princeton.edu'
 
