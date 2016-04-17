@@ -23,7 +23,8 @@ urlpatterns = [
     #url(r'^fouryear/', include('fouryear.urls')),
     url(r'^$', views.home),
     #url(r'^user_profile/$', views.user_profile),
-    url(r'^fouryear/$', views.four_year, name='Your Plan'),
+    url(r'^fouryear/<search>$', views.four_year, name='Your Plan'),
+    url(r'^/fouryear/(?P<search>[a-zA-Z]*)/$', views.four_year, name='Find a Course'), #searchfunction
     url(r'^degreeprogress/$', views.degree_progress),
     url(r'^princeton_course_approval/$', views.princeton_course_approval),
     url(r'^outside_course_approval/$', views.outside_course_approval),
