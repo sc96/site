@@ -82,6 +82,7 @@ for (x in "{{fresh_fall|safe}}") {
     <!-- List the matche courses below -->
     {% if matched_courses %}
         <div class="row">
+        <p>Matched Courses</p>
         {% for x in matched_courses %}
             <p>{{x.listings}}</p>
         {% endfor %}
