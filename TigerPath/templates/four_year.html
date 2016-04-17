@@ -79,15 +79,16 @@ for (x in "{{fresh_fall|safe}}") {
                 </form>
             </div>
     </div>
-    <p>Search Term</p>
-    <p>{{test}}</p>
+
     <!-- List the matche courses below -->
     {% if matched_courses %}
         <div class="row">
-        <p>Matched Courses</p>
-        {% for x in matched_courses %}
-            <p>{{x.listings}}</p>
-        {% endfor %}
+            <div class="list-group">
+            <p>Matched Courses</p>
+            {% for x in matched_courses %}
+                <a href="#" class="list-group-item">{{x.listings}}</a>
+            {% endfor %}
+            </div>
         </div>
     {% endif %}
 
