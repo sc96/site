@@ -175,6 +175,8 @@ def degree_progress(request):
 def course_search(query):
 	terms = query.split()
 	matched_courses = Course.objects.all()
+	if len(query) == 0:
+		return [""]
 	for x in terms:
 		if len(x) <= 0:
 			continue;
@@ -195,9 +197,13 @@ def four_year(request,search):
 	student = Student.objects.get(student_id=current_user.username)
 
 	matched_courses = []
-	test = request.GET["q"]
+	test = ""
+	if 'q' in request.GET
+		test = request.GET["q"]
 	if len(test) > 0:
 		matched_courses = course_search(test);
+	else:
+		matched_courses = ""
 	# if q:
 	# 	if search:
 	# 		query = True
