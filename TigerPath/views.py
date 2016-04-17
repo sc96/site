@@ -193,7 +193,7 @@ def four_year(request,search):
 	student = Student.objects.get(student_id=current_user.username)
 
 	
-	test = search
+	test = request.GET["q"]
 	# if q:
 	# 	if search:
 	# 		query = True
