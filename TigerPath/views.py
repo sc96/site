@@ -162,13 +162,30 @@ def degree_progress(request):
  
 @login_required # Cas authentication for this url.
 def four_year(request):
-	current_user = request.user
+	current_user = request.user;
+	
 	try:
    		s = Student.objects.get(student_id=current_user)
 	except Student.DoesNotExist:
    		s = Student(student_id=current_user)
    		s.save()
 	student = Student.objects.get(student_id=current_user.username)
+
+	#If query is made, return relevant course results##
+	matched_courses = []
+	if 'q' in request.GET and request.GET['q']:
+		q = request.GET['q']
+		number= ""
+		dpt = ""
+		for i in q:
+			if isdigit(i):
+				number += i;
+			if isalpha(i):
+				dpt += i;
+		matched_courses = Course.objects.filter(listings_icontains=dpt)
+		matched_courses = matched_courses.filter(listings.icontains=number)
+
+
 
 	# getting list of courses for each semester
 	fresh_fall = Entry.objects.filter(student_id=current_user.username, semester="FRF")
@@ -181,8 +198,12 @@ def four_year(request):
 	senior_spring = Entry.objects.filter(student_id=current_user.username, semester="SRS")
 	context = {'user': current_user.username,'fresh_fall': fresh_fall, 'fresh_spring': fresh_spring, 
 	'soph_fall': soph_fall, 'soph_spring': soph_spring, 'junior_fall': junior_fall, 'junior_spring': junior_spring,
-	'senior_fall': senior_fall, 'senior_spring': senior_spring}
+	'senior_fall': senior_fall, 'senior_spring': senior_spring, 'matched_courses': matched_courses}
 	return render(request, 'four_year.html', context)
+
+
+
+
 
 @login_required # Cas authentication for this url.
 # if you got a course at Princeton to count as a COS departmental
