@@ -182,19 +182,19 @@ def four_year(request):
 	student = Student.objects.get(student_id=current_user.username)
 
 	search = False
-	# get the q 
-	# if 'q' in request.GET and request.GET['q']:
-	# 	search = True
-	# 	q = request.GET['q']
-	# 	number= ""
-	# 	dpt = ""
-	# 	for i in q:
-	# 		if isdigit(i):
-	# 			number += i;
-	# 		if isalpha(i):
-	# 			dpt += i;
-	# 	matched_courses = Course.objects.filter(listings_icontains=dpt)
-	# 	matched_courses = matched_courses.filter(listings_icontains=number)
+	#Check if user is searching
+	if 'q' in request.GET and request.GET['q']:
+		search = True
+		q = request.GET['q']
+		number= ""
+		dpt = ""
+		for i in q:
+			if isdigit(i):
+				number += i;
+			if isalpha(i):
+				dpt += i;
+		matched_courses = Course.objects.filter(listings_icontains=dpt)
+		matched_courses = matched_courses.filter(listings_icontains=number)
 
 
 	# getting list of courses for each semester
