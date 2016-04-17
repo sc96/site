@@ -173,17 +173,17 @@ def four_year(request):
 
 	#If query is made, return relevant course results##
 	matched_courses = []
-	if 'q' in request.GET and request.GET['q']:
-		q = request.GET['q']
-		number= ""
-		dpt = ""
-		for i in q:
-			if isdigit(i):
-				number += i;
-			if isalpha(i):
-				dpt += i;
-		matched_courses = Course.objects.filter(listings_icontains=dpt)
-		matched_courses = matched_courses.filter(listings_icontains=number)
+	# if 'q' in request.GET and request.GET['q']:
+	# 	q = request.GET['q']
+	# 	number= ""
+	# 	dpt = ""
+	# 	for i in q:
+	# 		if isdigit(i):
+	# 			number += i;
+	# 		if isalpha(i):
+	# 			dpt += i;
+	# 	matched_courses = Course.objects.filter(listings_icontains=dpt)
+	# 	matched_courses = matched_courses.filter(listings_icontains=number)
 
 
 
