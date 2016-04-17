@@ -145,6 +145,8 @@ CAS_EMAIL_DOMAIN = 'princeton.edu'
 
 LOGIN_URL = '/login'
 
+LOGOUT_URL = '/logout'
+
 
 # END AUTHENTICATION CONFIGURATION
 
