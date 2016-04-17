@@ -37,8 +37,19 @@ def home(request):
 	# context = {'user': current_user.username}
 	return render(request, 'index.html')
 
-#@login_required # Cas authentication for this url.
-#def user_profile(request):
+@login_required # Cas authentication for this url.
+def profile(request):
+	current_user = request.user;
+
+	try:
+   		s = Student.objects.get(student_id=current_user)
+	except Student.DoesNotExist:
+   		s = Student(student_id=current_user)
+   		s.save()
+	student = Student.objects.get(student_id=current_user.username)
+
+	context = {'user': current_user.username}
+	return render(request, 'profile.html', context)
 
 @login_required # Cas authentication for this url.
 def degree_progress(request):
