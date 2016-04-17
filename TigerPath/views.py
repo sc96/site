@@ -172,7 +172,7 @@ def degree_progress(request):
 		return render(request, 'degree_progress_cos_bse.html', context)
  
 @login_required # Cas authentication for this url.
-def four_year(request):
+def four_year(request,search):
 	current_user = request.user
 	try:
    		s = Student.objects.get(student_id=current_user)
@@ -181,20 +181,21 @@ def four_year(request):
    		s.save()
 	student = Student.objects.get(student_id=current_user.username)
 
-	search = False
-	#Check if user is searching
+	query = False
+	#Check if user is querying
 	if 'q' in request.GET and request.GET['q']:
-		search = True
-		q = request.GET['q']
-		number= ""
-		dpt = ""
-		for i in q:
-			if isdigit(i):
-				number += i;
-			if isalpha(i):
-				dpt += i;
-		matched_courses = Course.objects.filter(listings_icontains=dpt)
-		matched_courses = matched_courses.filter(listings_icontains=number)
+		if search:
+			query = True
+			q = request.GET['q']
+			number= ""
+			dpt = ""
+			for i in q:
+				if isdigit(i):
+					number += i;
+				if isalpha(i):
+					dpt += i;
+			matched_courses = Course.objects.filter(listings_icontains=dpt)
+			matched_courses = matched_courses.filter(listings_icontains=number)
 
 
 	# getting list of courses for each semester
@@ -209,7 +210,7 @@ def four_year(request):
 	context = {'user': current_user.username,'fresh_fall': fresh_fall, 'fresh_spring': fresh_spring, 
 	'soph_fall': soph_fall, 'soph_spring': soph_spring, 'junior_fall': junior_fall, 'junior_spring': junior_spring,
 	'senior_fall': senior_fall, 'senior_spring': senior_spring}
-	# if search:
+	# if query:
 	# 	context.update({'matched_courses': matched_courses})
 	return render(request, 'four_year.html', context)
 
