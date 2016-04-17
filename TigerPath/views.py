@@ -179,7 +179,7 @@ def course_search(query):
 		if len(x) <= 0:
 			continue;
 		if x.isalpha() or xisdigit():
-			matched_courses = matched_courses.filter(listings_icontains=x)
+			matched_courses = matched_courses.filter(listings__icontains=x)
 	return matched_courses
 
 
