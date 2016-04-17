@@ -136,7 +136,6 @@ AUTHENTICATION_BACKENDS = (
     'cas.backends.CASBackend',
 )
 
-#CAS_SERVER_URL = 'http://cast.cs.princeton.edu/'
 CAS_SERVER_URL = 'https://fed.princeton.edu/cas/'
 
 CAS_REDIRECT_URL = '/'
@@ -147,7 +146,6 @@ LOGIN_URL = '/login'
 
 LOGOUT_URL = '/logout'
 
-CAS_PROVIDE_URL_TO_LOGOUT = True
 
 # END AUTHENTICATION CONFIGURATION
 
