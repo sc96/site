@@ -171,6 +171,17 @@ def degree_progress(request):
 		'student_em': student_em, 'student_foreign': student_foreign, 'student_wri': student_wri, 'outside_courses': student_outside}
 		return render(request, 'degree_progress_cos_bse.html', context)
  
+
+def course_search(query):
+	terms = query.split()
+	matched_courses = Course.objects.all()
+	for x in terms:
+		if isalpha(x) or isdigit(x):
+			matched_courses = matched_courses.filter(listings_icontains=x)
+	return matched_courses
+
+
+
 @login_required # Cas authentication for this url.
 def four_year(request,search):
 	current_user = request.user
@@ -183,19 +194,22 @@ def four_year(request,search):
 
 	query = False
 	#Check if user is querying
-	if 'q' in request.GET and request.GET['q']:
-		if search:
-			query = True
-			q = request.GET['q']
-			number= ""
-			dpt = ""
-			for i in q:
-				if isdigit(i):
-					number += i;
-				if isalpha(i):
-					dpt += i;
-			matched_courses = Course.objects.filter(listings_icontains=dpt)
-			matched_courses = matched_courses.filter(listings_icontains=number)
+	q = request.GET.get("q")
+	print(search)
+	matched_courses = course_search(search);
+	# if q:
+	# 	if search:
+	# 		query = True
+	# 		q = request.GET['q']
+	# 		number= ""
+	# 		dpt = search
+			# for i in search:
+			# 	if isdigit(i):
+			# 		number += i;
+			# 	if isalpha(i):
+			# 		dpt += i;
+			
+			# matched_courses = matched_courses.filter(listings_icontains=number)
 
 
 	# getting list of courses for each semester
