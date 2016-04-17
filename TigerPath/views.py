@@ -201,9 +201,7 @@ def four_year(request):
 	'senior_fall': senior_fall, 'senior_spring': senior_spring, 'matched_courses': matched_courses}
 	return render(request, 'four_year.html', context)
 
-@login_required # Cas authentication for this url.
-def four_year_search(request):
-	if 
+
 
 
 
