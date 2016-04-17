@@ -184,19 +184,20 @@ def four_year(request,search):
 	query = False
 	#Check if user is querying
 	q = request.GET.get("q")
-	if q:
-		if search:
-			query = True
-			q = request.GET['q']
-			number= ""
-			dpt = search
-			# for i in search:
-			# 	if isdigit(i):
-			# 		number += i;
-			# 	if isalpha(i):
-			# 		dpt += i;
-			matched_courses = Course.objects.filter(listings_icontains=dpt)
-			# matched_courses = matched_courses.filter(listings_icontains=number)
+	matched_courses = search
+	# if q:
+	# 	if search:
+	# 		query = True
+	# 		q = request.GET['q']
+	# 		number= ""
+	# 		dpt = search
+	# 		# for i in search:
+	# 		# 	if isdigit(i):
+	# 		# 		number += i;
+	# 		# 	if isalpha(i):
+	# 		# 		dpt += i;
+	# 		matched_courses = Course.objects.filter(listings_icontains=dpt)
+	# 		# matched_courses = matched_courses.filter(listings_icontains=number)
 
 
 	# getting list of courses for each semester
@@ -211,8 +212,7 @@ def four_year(request,search):
 	context = {'user': current_user.username,'fresh_fall': fresh_fall, 'fresh_spring': fresh_spring, 
 	'soph_fall': soph_fall, 'soph_spring': soph_spring, 'junior_fall': junior_fall, 'junior_spring': junior_spring,
 	'senior_fall': senior_fall, 'senior_spring': senior_spring}
-	if query:
-	 	context.update({'matched_courses': matched_courses})
+	context.update({'matched_courses': matched_courses})
 	return render(request, 'four_year.html', context)
 
 @login_required # Cas authentication for this url.
