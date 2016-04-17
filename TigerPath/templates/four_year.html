@@ -79,6 +79,13 @@ for (x in "{{fresh_fall|safe}}") {
                 </form>
             </div>
     </div>
+    {% if matched_courses %}
+        <div class="row">
+        {% for x in matched_courses %}
+            <p>{{x.listings}}</p>
+        </div>
+    {% endif %}
+
 	<div class="row">
         
         <div class="col-md-3" id="message">
