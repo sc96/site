@@ -129,7 +129,7 @@ def _login_url(service, ticket='ST', gateway=False):
     return urlparse.urljoin(settings.CAS_SERVER_URL, login_type) + '?' + urlencode(params)
 
 
-def _logout_url(request, next_page=True):
+def _logout_url(request, next_page="/"):
     """
     Generates CAS logout URL
 
@@ -208,7 +208,7 @@ def login(request, next_page=None, required=False, gateway=False):
             return HttpResponseRedirect(_login_url(service, ticket, False))
 
 
-def logout(request, next_page=True):
+def logout(request, next_page="/"):
     """
     Redirects to CAS logout page
 
