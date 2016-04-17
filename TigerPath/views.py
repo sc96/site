@@ -195,7 +195,7 @@ def four_year(request,search):
 	query = False
 	#Check if user is querying
 	q = request.GET.get("q")
-	print(search)
+	print search
 	matched_courses = course_search(search);
 	# if q:
 	# 	if search:
