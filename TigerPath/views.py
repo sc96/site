@@ -210,8 +210,8 @@ def four_year(request,search):
 	context = {'user': current_user.username,'fresh_fall': fresh_fall, 'fresh_spring': fresh_spring, 
 	'soph_fall': soph_fall, 'soph_spring': soph_spring, 'junior_fall': junior_fall, 'junior_spring': junior_spring,
 	'senior_fall': senior_fall, 'senior_spring': senior_spring}
-	# if query:
-	# 	context.update({'matched_courses': matched_courses})
+	if query:
+	 	context.update({'matched_courses': matched_courses})
 	return render(request, 'four_year.html', context)
 
 @login_required # Cas authentication for this url.
