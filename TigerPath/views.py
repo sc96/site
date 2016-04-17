@@ -183,7 +183,7 @@ def four_year(request):
 			if isalpha(i):
 				dpt += i;
 		matched_courses = Course.objects.filter(listings_icontains=dpt)
-		matched_courses = matched_courses.filter(listings.icontains=number)
+		matched_courses = matched_courses.filter(listings_icontains=number)
 
 
 
