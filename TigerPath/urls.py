@@ -30,5 +30,5 @@ urlpatterns = [
     #url(r'^home/degreeprogress/$', views.degree_progress),
     # CAS. No changes needed for the other urls.
     url(r'^login$', cas.views.login, name='login'),
-    url(r'^logout$', cas.views.login, name='logout'),
+    url(r'^logout$', cas.views.logout, name='logout'),
 ]
