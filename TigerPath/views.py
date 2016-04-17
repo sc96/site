@@ -178,7 +178,7 @@ def course_search(query):
 	for x in terms:
 		if len(x) <= 0:
 			continue;
-		if isalpha(x) or isdigit(x):
+		if x.isalpha() or xisdigit():
 			matched_courses = matched_courses.filter(listings_icontains=x)
 	return matched_courses
 
