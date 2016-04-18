@@ -170,12 +170,12 @@ for (x in "{{fresh_fall|safe}}") {
         </div>
             {% for x in matched_courses %}
                 <div class= "row">
-                <div class="col-lg-12 pull-right">
+                <div class="col-lg-12">
                 <span href="#" class="list-group-item"> {{x.listings}}  {{x.title}}  {{x.area}}</span>
                     <span class="dropdown">
-                        <button class="btn btn-primary dropdown-toggle active" type="button" data-toggle="dropdown">Add Class
+                        <button class="btn btn-primary dropdown-toggle pull-right active" type="button" data-toggle="dropdown">Add Class
                         <span class="caret"></span></button>
-                    <ul class="dropdown-menu">
+                    <ul class="dropdown-menu-right">
                       <li><a href="FrF">Freshman Fall</a></li>
                       <li><a href="FrS">Freshman Spring</a></li>
                       <li><a href="SoF">Sophomore Fall</a></li>
