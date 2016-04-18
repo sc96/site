@@ -176,7 +176,8 @@ def course_search(query):
 	terms = query.split()
 	matched_courses = Course.objects.all()
 	if len(query) == 0:
-		return [""]
+		matched_courses = Course.objects.none()
+		return matched_courses
 	for x in terms:
 		if len(x) <= 0:
 			continue;
@@ -196,29 +197,12 @@ def four_year(request,search):
    		s.save()
 	student = Student.objects.get(student_id=current_user.username)
 
-	matched_courses = []
+	#Return matched courses for search bar
 	test = ""
 	if 'q' in request.GET
 		test = request.GET["q"]
-	if len(test) > 0:
-		matched_courses = course_search(test);
-	else:
-		matched_courses = 【】
-	# if q:
-	# 	if search:
-	# 		query = True
-	# 		q = request.GET['q']
-	# 		number= ""
-	# 		dpt = search
-			# for i in search:
-			# 	if isdigit(i):
-			# 		number += i;
-			# 	if isalpha(i):
-			# 		dpt += i;
-			
-			# matched_courses = matched_courses.filter(listings_icontains=number)
-
-
+	matched_courses = course_search(test);
+	
 	# getting list of courses for each semester
 	fresh_fall = Entry.objects.filter(student_id=current_user.username, semester="FRF")
 	fresh_spring = Entry.objects.filter(student_id=current_user.username, semester="FRS")
