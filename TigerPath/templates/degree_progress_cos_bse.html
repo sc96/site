@@ -1,61 +1,48 @@
-
+<!DOCTYPE html>
+<html>
 <head>
-<link rel="stylesheet" type="text/css" href="mystyle.css">
+  <meta charset="utf-8">
+  <title>TigerPath | Current Courses</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/latest/css/bootstrap.min.css">
+  <script  src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+  <script  src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.8.24/browser.min.js"></script>
+  <script  src="/../../static/js/react.js"></script>
+  <script  src="/../../static/js/react-dom.js"></script>
+  <script  src="/../../static/js/react-bootstrap.min.js"></script>
+  <script  src="/../../static/js/JSXTransformer.js"></script>
+  <script  src="/../../static/js/bootstrap.js"></script>
+  <script  src="/../../static/js/bootstrap-hover-dropdown.js"></script>
+   
 </head>
-{% extends "base.html" %}
+<body>
 
-{% block title %}Courses for {{ student }}{% endblock %}
+    
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
 
-{% block content %}
-<h1>Degree Progress for {{ student }}</h1>
-<div>
-<p><b>Theory</b></p>
-{% for t in theory_on %}
-    <p><font color="fuchsia">{{ t}}</font></p>
-{% endfor %} 
-{% for t in theory_off %}
-    <p>{{ t }}</p>
-{% endfor %}
+    <ul class="nav navbar-nav">
+      <li class="active"><a href="#">Four Year</a></li>
+      <li><a href="/degreeprogress">Degree Progress</a></li> 
+    </ul>
+    <ul class="nav navbar-nav navbar-right">
+        
+        <li class="dropdown">  
+    <a href="/profile" class="dropdown-toggle" data-hover="dropdown" data-delay="100" data-close-others="false">
+        {{ user }} <b class="caret"></b>
+    </a>
+    <ul class="dropdown-menu">
+        <li><a href="/logout"><span class="glyphicon glyphicon-log-in"></span> Log out</a></li>
+    </ul>
+</li>  
+   
+      
+    </ul>
+  </div>
+</nav>
 
-<p><b>Applications</b></p>
-{% for t in apps_on %}
-    <p><font color="fuchsia">{{ t }}</font></p>
-{% endfor %}
-{% for t in apps_off %}
-    <p>{{ t }}</p>
-{% endfor %}
 
-<p><b>Systems</b></p>
-{% for t in systems_on %}
-    <p><font color="fuchsia">{{ t }}</font></p>
-{% endfor %}
-{% for t in systems_off %}
-    <p>{{ t }}</p>
-{% endfor %}
 
-<p><b>Core</b></p>
-{% for t in core_on %}
-    <p><font color="fuchsia">{{ t }}</font></p>
-{% endfor %}
-{% for t in core_off %}
-    <p>{{ t }}</p>
-{% endfor %}
 
-<p><b>Other</b></p>
-{% for t in other_on %}
-    <p><font color="fuchsia">{{ t}}</font></p>
-{% endfor %} 
-{% for t in other_off %}
-    <p>{{ t }}</p>
-{% endfor %}
 
-<p><b>Independent Work</b></p>
-{% for t in iw_on %}
-    <p><font color="fuchsia">{{ t}}</font></p>
-{% endfor %} 
-{% for t in iw_off %}
-    <p>{{ t }}</p>
-{% endfor %}
-
-</div>
-{% endblock %}
+</body>
+</html>
