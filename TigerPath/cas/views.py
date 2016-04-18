@@ -222,10 +222,10 @@ def logout(request, next_page="https://www.google.com"):
     if not next_page:
         next_page = _redirect_url(request)
 
-    if settings.CAS_LOGOUT_COMPLETELY:
-        return HttpResponseRedirect(_logout_url(request, next_page))
-    else:
-        return HttpResponseRedirect(next_page)
+    # if settings.CAS_LOGOUT_COMPLETELY:
+    #     return HttpResponseRedirect(_logout_url(request, next_page))
+    # else:
+    return HttpResponseRedirect(next_page)
 
 
 def proxy_callback(request):
