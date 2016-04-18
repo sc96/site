@@ -199,8 +199,8 @@ def four_year(request,search):
 
 	#Return matched courses for search bar
 	test = ""
-	if 'q' in request.GET
-		test = request.GET["q"]
+	if 'q' in request.GET:
+		GET = request.GET["q"]
 	matched_courses = course_search(test);
 	
 	# getting list of courses for each semester
