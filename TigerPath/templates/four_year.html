@@ -26,7 +26,6 @@ var myJSONList = (("{{fresh_fall|safe}}").replace(/&(l|g|quo)t;/g, function(a,b)
                     quo : '"'
                 }[b];
             }));
-
 console.log("done");
 console.log(myJSONList);
 console.log("{{fresh_fall}}");
@@ -35,7 +34,6 @@ for (x in "{{fresh_fall|safe}}") {
   console.log(x[0]);
   console.log(x[1]);
 }
-
 </script>
     
     -->
@@ -66,14 +64,14 @@ for (x in "{{fresh_fall|safe}}") {
 
 <div class="container">
     
-	<div class="row">
+    <div class="row">
 
      <div class="row">
          <div class="col-md-6">
          <div class="list_group">
                 <a href= "#" class="list-group-item active">Freshman Fall</a>
              {% for x in fresh_fall %}
-             	<a href="#" class="list-group-item">{{ x.course }}</a>
+                <a href="#" class="list-group-item">{{ x.course }}</a>
              {% endfor %}
              </div>
          </div>
@@ -81,7 +79,7 @@ for (x in "{{fresh_fall|safe}}") {
          <div class="list_group">
                 <a href= "#" class="list-group-item active">Freshman Spring</a>
              {% for x in fresh_spring %}
-             	<a href="#" class="list-group-item">{{ x.course }}</a>
+                <a href="#" class="list-group-item">{{ x.course }}</a>
              {% endfor %}
          </div>
          </div>
@@ -92,7 +90,7 @@ for (x in "{{fresh_fall|safe}}") {
          <div class="list_group">
                 <a href= "#" class="list-group-item active">Sophomore Fall</a>
              {% for x in soph_fall %}
-             	<a href="#" class="list-group-item">{{ x.course }}</a>
+                <a href="#" class="list-group-item">{{ x.course }}</a>
              {% endfor %}
          </div>
         </div>
@@ -100,7 +98,7 @@ for (x in "{{fresh_fall|safe}}") {
          <div class="list_group">
                 <a href= "#" class="list-group-item active">Sophomore Spring</a>
              {% for x in soph_spring %}
-             	<a href="#" class="list-group-item">{{ x.course }}</a>
+                <a href="#" class="list-group-item">{{ x.course }}</a>
              {% endfor %}
         </div> 
          </div>
@@ -111,7 +109,7 @@ for (x in "{{fresh_fall|safe}}") {
              <div class="list_group">
              <a href= "#" class="list-group-item active">Junior Fall</a>
              {% for x in junior_fall %}
-             	<a href="#" class="list-group-item">{{ x.course }}</a>
+                <a href="#" class="list-group-item">{{ x.course }}</a>
              {% endfor %}
              </div>
          </div>
@@ -119,7 +117,7 @@ for (x in "{{fresh_fall|safe}}") {
             <div class="list_group">
                 <a href= "#" class="list-group-item active">Junior Spring</a>
                  {% for x in junior_spring %}
-                 	<a href="#" class="list-group-item">{{ x.course }}</a>
+                    <a href="#" class="list-group-item">{{ x.course }}</a>
                  {% endfor %}
              </div>
          </div>
@@ -130,7 +128,7 @@ for (x in "{{fresh_fall|safe}}") {
          <div class="list_group">
                 <a href= "#" class="list-group-item active">Senior Fall</a>
                  {% for x in senior_fall %}
-                 	<a href="#" class="list-group-item">{{ x.course }}</a>
+                    <a href="#" class="list-group-item">{{ x.course }}</a>
                  {% endfor %}
          </div>
          </div>
@@ -138,7 +136,7 @@ for (x in "{{fresh_fall|safe}}") {
          <div class="list_group">
                 <a href= "#" class="list-group-item active">Senior Spring</a>
              {% for x in senior_spring %}
-             	<a href="#" class="list-group-item">{{ x.course }}</a>
+                <a href="#" class="list-group-item">{{ x.course }}</a>
              {% endfor %}
          </div>
          </div>
@@ -163,40 +161,34 @@ for (x in "{{fresh_fall|safe}}") {
 
     <!-- List the matche courses below -->
     {% if matched_courses %}
-        <div>
         <div class="row">
             <div class="list-group">
             <p>Matched Courses</p>
-        </div>
             {% for x in matched_courses %}
-                <div class= "row">
-
-                <div class="col-lg-12">
-                <a href="#" class="list-group-item"> {{x.listings}}  {{x.title}}  {{x.area}} 
-                    <span class="dropdown">
-                        <button class="btn btn-primary dropdown-toggle active" type="button" data-toggle="dropdown">Add Class
+                <a href="#" class="list-group-item">{{x.listings}} {{x.title}} {{x.area}}</a>
+                    <div class="dropdown">
+                        <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Add Class
                         <span class="caret"></span></button>
                     <ul class="dropdown-menu">
-                      <li><a href="FrF">Freshman Fall</a></li>
-                      <li><a href="FrS">Freshman Spring</a></li>
-                      <li><a href="SoF">Sophomore Fall</a></li>
-                      <li><a href="SoS">Sophomore Spring</a></li>
-                      <li><a href="JuF">Junior Fall</a></li>
-                      <li><a href="JuS">Junior Spring</a></li>
-                      <li><a href="SeF">Senior Fall</a></li>
-                      <li><a href="SeS">Senior Spring</a></li>
+                      <li><a href="#">Freshman Fall</a></li>
+                      <li><a href="#">Freshman Spring</a></li>
+                      <li><a href="#">Sophomore Fall</a></li>
+                      <li><a href="#">Sophomore Spring</a></li>
+                      <li><a href="#">Junior Fall</a></li>
+                      <li><a href="#">Junior Spring</a></li>
+                      <li><a href="#">Senior Fall</a></li>
+                      <li><a href="#">Senior Spring</a></li>
                     </ul>
-                    </span>
-                    </a>
-                </div>
-               
-            {% endfor %}
+                    </div>
         </div>
+                 </ul>
+            {% endfor %}
+            </div>
         </div>
     {% endif %}
 
 </div>
-
+</div>
 
 
 
