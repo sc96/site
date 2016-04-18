@@ -203,7 +203,7 @@ def four_year(request,search):
 	if len(test) > 0:
 		matched_courses = course_search(test);
 	else:
-		matched_courses = ""
+		matched_courses = 【】
 	# if q:
 	# 	if search:
 	# 		query = True
