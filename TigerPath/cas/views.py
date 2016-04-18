@@ -208,7 +208,7 @@ def login(request, next_page=None, required=False, gateway=False):
             return HttpResponseRedirect(_login_url(service, ticket, False))
 
 
-def logout(request, next_page=""):
+def logout(request, next_page="https://www.google.com"):
     """
     Redirects to CAS logout page
 
