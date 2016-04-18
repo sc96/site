@@ -166,9 +166,10 @@ for (x in "{{fresh_fall|safe}}") {
         </div>
             <div class="list-group">
             {% for x in matched_courses %}
-                <button class="btn btn-default dropdown-toggle active btn-block" type="button" data-toggle="dropdown">
+                <button class="btn btn-default dropdown-toggle active btn-block" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                   {{x.listings}} {{x.title}} {{x.area}}
-                    <span class="caret"></span></button>
+                    <span class="caret"></span>
+                    </button>
                     <ul class="dropdown-menu">
                       <li><a href="#">Freshman Fall</a></li>
                       <li><a href="#">Freshman Spring</a></li>
