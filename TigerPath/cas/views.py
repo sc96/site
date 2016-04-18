@@ -143,8 +143,8 @@ def _logout_url(request, next_page=None):
     if next_page and getattr(settings, 'CAS_PROVIDE_URL_TO_LOGOUT', True):
         protocol = ('http://', 'https://')[request.is_secure()]
         host = request.get_host()
-        # url += '?' + urlencode({'url': protocol + host + next_page})
-        url = next_page
+        url += '?' + urlencode({'url': protocol + host + next_page})
+        #url = next_page
 
     return url
 
