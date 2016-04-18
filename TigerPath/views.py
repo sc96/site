@@ -98,7 +98,7 @@ def degree_progress(request):
 	# something to think about: COS 340 can't pop up in "Other" and in "Theory"
 	# all of the requirement lists
 	# can probably combine a lot of things here into one function - maybe i want the approved courses in their own list? idk
-	if (student_major=="COS_BSE"):
+#	if (student_major=="COS_BSE"):
 		# can probably shorten this a little bit
 		theory_courses = COS_BSE.objects.filter(theory=1).values_list('course_id', flat=True).order_by('course_id')
 		systems_courses = COS_BSE.objects.filter(systems=1).values_list('course_id', flat=True).order_by('course_id')
