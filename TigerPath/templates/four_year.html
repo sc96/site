@@ -170,21 +170,23 @@ for (x in "{{fresh_fall|safe}}") {
         </div>
             {% for x in matched_courses %}
                 <div class= "row">
-                <a href="#" class="list-group-item">{{x.listings}} | {{x.title}} | {{x.area}}</a>
+                <a href="#" class="list-group-item">{{x.listings}} | {{x.title}} | {{x.area}}
                     <span class="dropdown">
                         <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Add Class
                         <span class="caret"></span></button>
                     <ul class="dropdown-menu">
-                      <li><a href="#">Freshman Fall</a></li>
-                      <li><a href="#">Freshman Spring</a></li>
-                      <li><a href="#">Sophomore Fall</a></li>
-                      <li><a href="#">Sophomore Spring</a></li>
-                      <li><a href="#">Junior Fall</a></li>
-                      <li><a href="#">Junior Spring</a></li>
-                      <li><a href="#">Senior Fall</a></li>
-                      <li><a href="#">Senior Spring</a></li>
+                      <li><a href="FrF">Freshman Fall</a></li>
+                      <li><a href="FrS">Freshman Spring</a></li>
+                      <li><a href="SoF">Sophomore Fall</a></li>
+                      <li><a href="SoS">Sophomore Spring</a></li>
+                      <li><a href="JuF">Junior Fall</a></li>
+                      <li><a href="JuS">Junior Spring</a></li>
+                      <li><a href="SeF">Senior Fall</a></li>
+                      <li><a href="SeS">Senior Spring</a></li>
+                      <div role="separator" class="dropdown-divider"></div>
+                      <li><a class="dropdown-item" href="#">Summer Course</a></li>
                     </ul>
-                    </span>
+                    </span></a>
                 </div>
                 {% endfor %}
              </div>
