@@ -171,9 +171,10 @@ for (x in "{{fresh_fall|safe}}") {
                   {{x.listings}} {{x.title}} {{x.area}}
                   <span class = "pull-right">
                     <div class="dropdown">
-                        <button class="btn btn-primary dropdown-toggle active" type="button" data-toggle="dropdown">Add Class
+                        <button class="btn btn-primary dropdown-toggle active" type="button" id="dropdownmenu1" data-toggle="dropdown">
+                        Add Class
                         <span class="caret"></span></button>
-                    <ul class="dropdown-menu">
+                    <ul class="dropdown-menu" aria-labelledby="dropdownmenu1">
                       <li><a href="#">Freshman Fall</a></li>
                       <li><a href="#">Freshman Spring</a></li>
                       <li><a href="#">Sophomore Fall</a></li>
