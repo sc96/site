@@ -173,11 +173,12 @@ def degree_progress(request):
  
 
 def course_search(query):
-	terms = query.split()
-	matched_courses = Course.objects.all()
 	if len(query) == 0:
 		matched_courses = Course.objects.none()
 		return matched_courses
+
+	terms = query.split()
+	matched_courses = Course.objects.all()	
 	for x in terms:
 		if len(x) <= 0:
 			continue;
@@ -200,7 +201,7 @@ def four_year(request,search):
 	#Return matched courses for search bar
 	test = ""
 	if 'q' in request.GET:
-		GET = request.GET["q"]
+		test = request.GET["q"]
 	matched_courses = course_search(test);
 	
 	# getting list of courses for each semester
