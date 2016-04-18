@@ -87,7 +87,7 @@ for (x in "{{fresh_fall|safe}}") {
             <div class="list-group">
             <p>Matched Courses</p>
             {% for x in matched_courses %}
-                <a href="#" class="list-group-item">{{x.listings}}</a>
+                <a href="#" class="list-group-item">{{x.listings}} {{x.title}}</a>
             {% endfor %}
             </div>
         </div>
