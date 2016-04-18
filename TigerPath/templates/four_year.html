@@ -169,12 +169,11 @@ for (x in "{{fresh_fall|safe}}") {
                 <div class="row">
                 <a href="#" class="list-group-item">
                   {{x.listings}} {{x.title}} {{x.area}}
-                  <span class = "pull-right">
                     <div class="dropdown">
-                        <button class="btn btn-primary dropdown-toggle active" type="button" id="dropdownmenu1" data-toggle="dropdown">
+                        <button class="btn btn-default dropdown-toggle active pull-right" type="button" data-toggle="dropdown">
                         Add Class
                         <span class="caret"></span></button>
-                    <ul class="dropdown-menu" aria-labelledby="dropdownmenu1">
+                    <ul class="dropdown-menu dropdown-menu-right">
                       <li><a href="#">Freshman Fall</a></li>
                       <li><a href="#">Freshman Spring</a></li>
                       <li><a href="#">Sophomore Fall</a></li>
@@ -185,7 +184,6 @@ for (x in "{{fresh_fall|safe}}") {
                       <li><a href="#">Senior Spring</a></li>
                     </ul>
                     </div>
-                    </span>
                 </a>
                 </div>
           {% endfor %}
