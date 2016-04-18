@@ -172,18 +172,18 @@ def degree_progress(request):
  
 
 def course_search(query):
-	dist = [la, sa, ha, em, ec, qr, stl, stn]
-	dep = [AAS, AFS, AMS, ANT, AOS, APC, ARA, ARC, ART, AST, 
-			ATL, BCS, CBE, CEE, CGS, CHI, CHM, CHV, CLA, CLG, 
-			COM, COS, CWR, CZE, DAN, EAS, ECO, ECS, EEB, EGR, 
-			ELE, ENE, ENG, ENV, EPS, FIN, FRE, FRS, GEO, GER, 
-			GHP, GLS, GSS, HEB, HIN, HIS, HLS, HOS, HPD, HUM,
-			 ISC, ITA, JDS, JPN, JRN, KOR, LAO, LAS, LAT, LIN, 
-			 MAE, MAT, MED, MOD, MOG, MOL, MSE, MTD, MUS, NEX, 
-			 MTD, MUS, NES, NEU, ORF, PAW, PER, PHI, PHY, PLS,
-			  POL, POP, POR, PSY, QCB, REL, RES, RUS, SAN, SAS, 
-			  SLA, SML, SOC, SPA, STC, SWA, THR, TPP, TRA, TUR, 
-			  TWI, URB, URD, VIS, WRI, WWS]
+	dist = ["la", "sa", "ha", "em", "ec", "qr", "stl", "stn"]
+	dep = ["AAS", "AFS", "AMS", "ANT", "AOS", "APC", "ARA", 'ARC', 'ART', 'AST', 
+			'ATL', 'BCS', 'CBE', 'CEE', 'CGS', 'CHI', 'CHM', 'CHV', 'CLA', 'CLG', 
+			'COM', 'COS', 'CWR', 'CZE', 'DAN', 'EAS', 'ECO', 'ECS', 'EEB', 'EGR', 
+			'ELE', 'ENE', 'ENG', 'ENV', 'EPS', 'FIN', 'FRE', 'FRS', 'GEO', 'GER', 
+			'GHP', 'GLS', 'GSS', 'HEB', 'HIN', 'HIS', 'HLS', 'HOS', 'HPD', 'HUM',
+			 'ISC', 'ITA', 'JDS', 'JPN', 'JRN', 'KOR', 'LAO', 'LAS', 'LAT', 'LIN', 
+			 'MAE', 'MAT', 'MED', 'MOD', 'MOG', 'MOL', 'MSE', 'MTD', 'MUS', 'NEX', 
+			 'MTD', 'MUS', 'NES', 'NEU', 'ORF', 'PAW', 'PER', 'PHI', 'PHY', 'PLS',
+			  'POL', 'POP', 'POR', 'PSY', 'QCB', 'REL', 'RES', 'RUS', 'SAN', 'SAS', 
+			  'SLA', 'SML', 'SOC', 'SPA', 'STC', 'SWA', 'THR', 'TPP', 'TRA', 'TUR', 
+			  'TWI', 'URB', 'URD', 'VIS', 'WRI', 'WWS']
 	if len(query) == 0:
 		matched_courses = Course.objects.none()
 		return matched_courses
