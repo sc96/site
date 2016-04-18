@@ -182,8 +182,13 @@ def course_search(query):
 	for x in terms:
 		if len(x) <= 0:
 			continue;
-		if x.isalpha() or x.isdigit():
+		elif len(x) == 3 and (x.isdigit() or x.isalpha()):
 			matched_courses = matched_courses.filter(listings__icontains=x)
+		elif len(x) == 6:
+			matched_courses = matched_courses.filter(listings__icontains=x)
+		else:
+			matched_courses = Course.objects.none()
+
 	return matched_courses
 
 
