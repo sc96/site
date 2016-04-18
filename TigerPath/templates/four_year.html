@@ -66,55 +66,8 @@ for (x in "{{fresh_fall|safe}}") {
     
     <div class="row">
 
-<div class="col-md-3">
-  <h5>Add a class in a semester</h5>
-            <div id="custom-search">
-                <form class = "form-inline" action = "" method = "get">
-                    <div class="input-group col-md-12">
-                        <input type="text" class="form-control input-lg" placeholder="Type course (e.g. COS 126)" value = "{{test}}" name="q"/>
-                        <span class="input-group-btn">
-                            <button  id="search-btn" class="btn btn-info btn-lg" type="submit" >
-                                <i class="glyphicon glyphicon-search"></i>
-                            </button>
-                        </span>
-                    </div>
-                </form>
-            </div>
-            
-            {% if matched_courses %}
-        <div class="row">
-            <p>Matched Courses</p>
-        </div>
-            <div class="list-group">
-            {% for x in matched_courses %}
-                <div class="row">
-                <a href="#" class="list-group-item">
-                  <div class="dropdown">
-                  {{x.listings}} {{x.title}} {{x.area}}
-                        <button class="btn btn-primary dropdown-toggle active" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        Add Class
-                        <span class="caret"></span></button>
-                    <ul class="dropdown-menu">
-                      <li><a href="#">Freshman Fall</a></li>
-                      <li><a href="#">Freshman Spring</a></li>
-                      <li><a href="#">Sophomore Fall</a></li>
-                      <li><a href="#">Sophomore Spring</a></li>
-                      <li><a href="#">Junior Fall</a></li>
-                      <li><a href="#">Junior Spring</a></li>
-                      <li><a href="#">Senior Fall</a></li>
-                      <li><a href="#">Senior Spring</a></li>
-                    </ul>
-                    </div>
-                </a>
-                </div>
-          {% endfor %}
-            </div>
-    {% endif %}
-    </div>
-            
-      <div class="col-md-9">      
-  <div class="row">
-           <div class="col-md-6">
+     <div class="row">
+         <div class="col-md-6">
          <div class="list_group">
                 <a href= "#" class="list-group-item active">Freshman Fall</a>
              {% for x in fresh_fall %}
@@ -191,13 +144,52 @@ for (x in "{{fresh_fall|safe}}") {
  </div>
 
  <div class="row">
-        
+        <h5>Add a class in a semester</h5>
+            <div id="custom-search">
+                <form class = "form-inline" action = "" method = "get">
+                    <div class="input-group col-md-12">
+                        <input type="text" class="form-control input-lg" placeholder="Type course (e.g. COS 126)" value = "{{test}}" name="q"/>
+                        <span class="input-group-btn">
+                            <button  id="search-btn" class="btn btn-info btn-lg" type="submit" >
+                                <i class="glyphicon glyphicon-search"></i>
+                            </button>
+                        </span>
+                    </div>
+                </form>
+            </div>
     </div>
 
     <!-- List the matche courses below -->
-    
+    {% if matched_courses %}
+        <div class="row">
+            <p>Matched Courses</p>
+        </div>
+            <div class="list-group">
+            {% for x in matched_courses %}
+                <div class="row">
+                <a href="#" class="list-group-item">
+                  <div class="dropdown">
+                  {{x.listings}} {{x.title}} {{x.area}}
+                        <button class="btn btn-primary dropdown-toggle active" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Add Class
+                        <span class="caret"></span></button>
+                    <ul class="dropdown-menu">
+                      <li><a href="#">Freshman Fall</a></li>
+                      <li><a href="#">Freshman Spring</a></li>
+                      <li><a href="#">Sophomore Fall</a></li>
+                      <li><a href="#">Sophomore Spring</a></li>
+                      <li><a href="#">Junior Fall</a></li>
+                      <li><a href="#">Junior Spring</a></li>
+                      <li><a href="#">Senior Fall</a></li>
+                      <li><a href="#">Senior Spring</a></li>
+                    </ul>
+                    </div>
+                </a>
+                </div>
+          {% endfor %}
+            </div>
+    {% endif %}
 
-</div>
 </div>
 
 
