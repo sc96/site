@@ -172,6 +172,18 @@ def degree_progress(request):
  
 
 def course_search(query):
+	dist = [la, sa, ha, em, ec, qr, stl, stn]
+	dep = [AAS, AFS, AMS, ANT, AOS, APC, ARA, ARC, ART, AST, 
+			ATL, BCS, CBE, CEE, CGS, CHI, CHM, CHV, CLA, CLG, 
+			COM, COS, CWR, CZE, DAN, EAS, ECO, ECS, EEB, EGR, 
+			ELE, ENE, ENG, ENV, EPS, FIN, FRE, FRS, GEO, GER, 
+			GHP, GLS, GSS, HEB, HIN, HIS, HLS, HOS, HPD, HUM,
+			 ISC, ITA, JDS, JPN, JRN, KOR, LAO, LAS, LAT, LIN, 
+			 MAE, MAT, MED, MOD, MOG, MOL, MSE, MTD, MUS, NEX, 
+			 MTD, MUS, NES, NEU, ORF, PAW, PER, PHI, PHY, PLS,
+			  POL, POP, POR, PSY, QCB, REL, RES, RUS, SAN, SAS, 
+			  SLA, SML, SOC, SPA, STC, SWA, THR, TPP, TRA, TUR, 
+			  TWI, URB, URD, VIS, WRI, WWS]
 	if len(query) == 0:
 		matched_courses = Course.objects.none()
 		return matched_courses
@@ -181,12 +193,16 @@ def course_search(query):
 	for x in terms:
 		if len(x) <= 0:
 			continue;
-		elif len(x) == 3 and (x.isdigit() or x.isalpha()):
+		if x in dist:
+			matched_courses = matched_courses.filter(area__icontains=x)
+		elif len(x) == 3 and x.isalpha() and x.upper() in dep:
 			matched_courses = matched_courses.filter(listings__icontains=x)
-		elif len(x) == 6:
+		elif len(x) <= 3 and x.isdigit():
+			matched_courses = matched_courses.filter(listings__icontains=x)
+		elif len(x) == 6 and x[3:].isdigit() and x[:3].isalpha():
 			matched_courses = matched_courses.filter(listings__icontains=x)
 		else:
-			matched_courses = Course.objects.none()
+			matched_courses = matched_courses.filter(title__icontains=x)
 
 	return matched_courses
 
