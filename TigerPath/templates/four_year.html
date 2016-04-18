@@ -168,7 +168,7 @@ for (x in "{{fresh_fall|safe}}") {
             {% for x in matched_courses %}
                 <a href="#" class="list-group-item">
                   {{x.listings}} {{x.title}} {{x.area}}
-                  <div class="dropdown">
+                  <span class="pull-right">
                         <button class="btn btn-primary dropdown-toggle active" type="button" data-toggle="dropdown">
                         Add Class
                         <span class="caret"></span></button>
@@ -182,7 +182,7 @@ for (x in "{{fresh_fall|safe}}") {
                       <li><a href="#">Senior Fall</a></li>
                       <li><a href="#">Senior Spring</a></li>
                     </ul>
-                    </div>
+                    </span>
                 </a>
           {% endfor %}
             </div>
