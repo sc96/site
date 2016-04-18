@@ -22,6 +22,7 @@ urlpatterns = [
     url(r'^admin/', admin.site.urls),
     #url(r'^fouryear/', include('fouryear.urls')),
     url(r'^$', views.home),
+    url(r'^home$', views.home),
     #url(r'^user_profile/$', views.user_profile),
     url(r'^fouryear/(?P<search>$)', views.four_year, name='Your Plan'),
     url(r'^/fouryear/(?P<search>.*)/$', views.four_year, name='Find a Course'), #searchfunction
