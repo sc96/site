@@ -164,7 +164,7 @@ for (x in "{{fresh_fall|safe}}") {
         <div class="row">
             <p>Matched Courses</p>
         </div>
-            <div class="list-group">
+            <div class="list-group; overflow: auto;">
             {% for x in matched_courses %}
                 <a href="#" class="list-group-item">
                   {{x.listings}} {{x.title}} {{x.area}}
