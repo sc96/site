@@ -143,7 +143,8 @@ def _logout_url(request, next_page=None):
     if next_page and getattr(settings, 'CAS_PROVIDE_URL_TO_LOGOUT', True):
         protocol = ('http://', 'https://')[request.is_secure()]
         host = request.get_host()
-        url += '?' + urlencode({'url': protocol + host + next_page})
+        # url += '?' + urlencode({'url': protocol + host + next_page})
+        url = next_page
 
     return url
 
@@ -208,7 +209,7 @@ def login(request, next_page=None, required=False, gateway=False):
             return HttpResponseRedirect(_login_url(service, ticket, False))
 
 
-def logout(request, next_page="https://www.google.com"):
+def logout(request, next_page="https://www.tigerpath.heroku.com"):
     """
     Redirects to CAS logout page
 
@@ -222,10 +223,10 @@ def logout(request, next_page="https://www.google.com"):
     if not next_page:
         next_page = _redirect_url(request)
 
-    # if settings.CAS_LOGOUT_COMPLETELY:
-    #     return HttpResponseRedirect(_logout_url(request, next_page))
-    # else:
-    return HttpResponseRedirect(next_page)
+    if settings.CAS_LOGOUT_COMPLETELY:
+        return HttpResponseRedirect(_logout_url(request, next_page))
+    else:
+        return HttpResponseRedirect(next_page)
 
 
 def proxy_callback(request):
