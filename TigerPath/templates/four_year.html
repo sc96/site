@@ -18,6 +18,11 @@
 <body style="padding-top: 70px; padding-bottom: 70px;">
 
 <!--Colors used: dark orange: #FF8F00; light orange for hover: #FFB352-->
+<script>
+function rmv() {
+    document.getElementById("remove_class").submit();
+}
+</script>
 
     
 <nav class="navbar navbar-inverse navbar-fixed-top">
@@ -63,8 +68,8 @@
          <div class="list_group">
                 <a href= "#" class="list-group-item active">Freshman Fall</a>
              {% for x in fresh_fall %}
-               <form class= "form-inline" action= "wat" method= "post">{% csrf_token %}
-                <a  class="list-group-item" onclick="this.form.submit()">{{ x.course }} {{x.course.title}}<i class="glyphicon glyphicon-minus"></i></a>
+               <form class= "form-inline" id = "remove_class" action= "wat" method= "post">{% csrf_token %}
+                <a class="list-group-item" onclick="rmv()">{{ x.course }} {{x.course.title}}<i class="glyphicon glyphicon-minus"></i></a>
                 <input type="hidden" name="remove" value={{x.listings}}>
               </form>
              {% endfor %}
@@ -156,6 +161,9 @@
     {% if test_course %}
 
     <div> You have added {{test_course}} {{test_course.title}} to {{sem}}</div>
+    {% endif %}
+    {% if removed_class %}
+    <div> You have removed {{removed_class}}. </div>
     {% endif %}
     <!-- List the matche courses below -->
     {% if matched_courses %}
