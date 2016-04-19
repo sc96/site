@@ -218,6 +218,9 @@ def add_class(student, course, semester):
 
 @login_required # Cas authentication for this url.
 def four_year(request,search):
+	time = {"Freshman Fall": "FRF", "Freshman Spring": "FRS",
+	"Sophomore Fall": "SOF","Sophomore Spring": "SOS",
+	"Junior Fall":  "JRF","Junior Spring": "JRS","Senior Fall": "SRF","Senior Spring": "SRS"}
 	current_user = request.user
 	try:
    		s = Student.objects.get(student_id=current_user)
@@ -232,6 +235,7 @@ def four_year(request,search):
 	if request.method == 'POST':
 		added_class = request.POST['listing']
 		semester = request.POST['semester']
+		semester = time[semester]
 		#add_class(student, added_class, semester)
 
 
