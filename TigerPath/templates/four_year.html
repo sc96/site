@@ -183,20 +183,19 @@ for (x in "{{fresh_fall|safe}}") {
             <div class="list-group">
               <div class="btn-group">
               <form class= "form-inline" action= "" method= "post">
-                  <button class="btn btn-default dropdown-toggle active btn-block" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    {{x.listings}} {{x.title}} {{x.area}}
-                    <span class="caret"></span>
-                  </button>
-                  <select class="form-control" id="sel1">
-                    <option>Freshman Fall</option>
-                    <option>Freshman Spring</option>
-                    <option>Sophomore Fall</option>
-                    <option>Sophomore Spring</option>
-                    <option>Junior Fall</option>
-                    <option>Junior Spring</option>
-                    <option>Senior Fall</option>
-                    <option>Senior Spring</option>
-                  </select>
+                  <li class="list-group-item">{{x.listings}} {{x.title}} {{x.area}}
+                    <select class="form-control" id="sel1">
+                        <option>Freshman Fall</option>
+                        <option>Freshman Spring</option>
+                        <option>Sophomore Fall</option>
+                        <option>Sophomore Spring</option>
+                        <option>Junior Fall</option>
+                        <option>Junior Spring</option>
+                        <option>Senior Fall</option>
+                        <option>Senior Spring</option>
+                      </select>
+                      <input type="submit" class="btn btn-info" value="Add Class">
+                  </li>
               </form>
             </div>
             </div>
