@@ -2,7 +2,7 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <title>TigerPath | Culrrent Courses</title>
+  <title>TigerPath | Current Courses</title>
   <link rel="stylesheet" href="/../../static/css/bootstrap.css">
   <link rel="stylesheet" href="/../../static/css/syle.css">
   <script  src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
@@ -99,7 +99,9 @@ function remove_SRS() {
              {% for x in fresh_fall %}
                <span>
                <form class= "form-inline" name = "remove_FRF" id = "{{x.course}}" action= "" method= "post">{% csrf_token %}
-                <li><a class="list-group-item" >{{ x.course }} {{x.course.title}}<div style="display: inline-block;" onclick="remove_FRF()"><i class="glyphicon glyphicon-minus pull-right" style="color:#f00"></i></div></a></li>
+                <li><a class="list-group-item" >{{ x.course }} {{x.course.title}}
+                  <div class="pull-right" style="display: inline-block;" onclick="remove_FRF()">
+                    <i class="glyphicon glyphicon-minus" style="color:#f00"></i></div></a></li>
                 <input type="hidden" name="term" value ="FRF">
                 <input type="hidden" name="remove" value={{x.course.listings}}>
               </form>
