@@ -20,7 +20,7 @@
 <!--Colors used: dark orange: #FF8F00; light orange for hover: #FFB352-->
 <script>
 function remove_FRF() {
-    document.getElementById("remove_FRF").submit();
+    document.getElementByName("remove_FRF").submit();
 }
 function remove_FRS() {
     document.getElementById("remove_FRS").submit();
@@ -90,7 +90,7 @@ function remove_SRS() {
                 <a href= "#" class="list-group-item active">Freshman Fall</a>
              {% for x in fresh_fall %}
                <span>
-               <form class= "form-inline" id = "remove_FRF" action= "" method= "post">{% csrf_token %}
+               <form class= "form-inline" name = "remove_FRF" id = "{{x.course}}" action= "" method= "post">{% csrf_token %}
                 <li><a class="list-group-item" >{{ x.course }} {{x.course.title}}<div style="text-align:right" onclick="remove_FRF()"><i class="glyphicon glyphicon-minus"></i></div></a></li>
                 <input type="hidden" name="term" value ="FRF">
                 <input type="hidden" name="remove" value={{x.course.listings}}>
