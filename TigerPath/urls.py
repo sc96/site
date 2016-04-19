@@ -33,11 +33,10 @@ urlpatterns = [
     url(r'^princeton_course_approval/$', views.princeton_course_approval),
     url(r'^outside_course_approval/$', views.outside_course_approval),
     url(r'^profile/$', views.profile),
-    
     url(r'^about/$', views.about),
     url(r'^certificates/$', views.certificates),
-    url(r'^outsidecourseapproval/$', views.outside_course_approval),
-    url(r'^princetoncourseapproval/$', views.princeton_course_approval),
+    #url(r'^outsidecourseapproval/$', views.outside_course_approval),
+   # url(r'^princetoncourseapproval/$', views.princeton_course_approval),
     url(r'^schedulesharing/$', views.schedule_sharing),
     #url(r'^home/degreeprogress/$', views.degree_progress),
     # CAS. No changes needed for the other urls.
