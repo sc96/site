@@ -43,14 +43,18 @@ def profile(request):
 	try:
    		s = Student.objects.get(student_id=current_user)
 	except Student.DoesNotExist:
+		# creating new user. default values
    		s = Student(student_id=current_user)
+   		s = Student(first_name = "First")
+   		s = Student(last_name = "Last")
    		s.save()
 	student = Student.objects.get(student_id=current_user.username)
-	s = Student(first_name="test")
-	s.save()
-	firstN = student.first_name
 
-	context = {'user': current_user.username, 'firstName': firstN, 'studentO': student}
+	# getting strings for context variable
+	firstN = student.first_name
+	lastN = student.last_name
+
+	context = {'user': current_user.username, 'firstName': firstN, 'lastN': lastN}
 	return render(request, 'profile.html', context)
 
 @login_required # Cas authentication for this url.
