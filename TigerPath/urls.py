@@ -18,6 +18,8 @@ from django.contrib import admin
 from . import views
 import cas.views
 
+app_name = 'site'
+
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     #url(r'^fouryear/', include('fouryear.urls')),
