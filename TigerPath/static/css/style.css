@@ -1,6 +1,13 @@
 body { 
-
 padding-top: 70px;
 padding-bottom: 70px; 
+}
 
+
+footer{
+  text-align:center
+}
+
+jumbotron{
+   align:center
 }
