@@ -236,9 +236,9 @@ def four_year(request,search):
 		added_class = request.POST['listing']
 		added_class = Course.objects.get(listings=added_class)
 		semester = request.POST['semester']
-		semester = time[semester]
+		sem = time[semester]
 
-		student.add_course(added_class, student, semester)
+		student.add_course(added_class, student, sem)
 		#add_class(student, added_class, semester)
 
 
