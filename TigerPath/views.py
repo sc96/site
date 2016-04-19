@@ -232,7 +232,7 @@ def four_year(request,search):
 	added_class = ""
 	semester = ""
 	text = ""
-
+	removed_class = ""
 	#Check if student is adding or removing a class
 	if request.method == 'POST':
 		if 'remove' in request.POST:
@@ -270,7 +270,8 @@ def four_year(request,search):
 	context = {'user': current_user.username,'fresh_fall': fresh_fall, 'fresh_spring': fresh_spring, 
 	'soph_fall': soph_fall, 'soph_spring': soph_spring, 'junior_fall': junior_fall, 'junior_spring': junior_spring,
 	'senior_fall': senior_fall, 'senior_spring': senior_spring, 
-	'test': test, 'matched_courses': matched_courses, 'test_course': added_class, 'sem': semester}
+	'test': test, 'matched_courses': matched_courses, 'test_course': added_class, 'sem': semester,
+	 'removed_class': removed_class}
 
 	return render(request, 'four_year.html', context)
 
