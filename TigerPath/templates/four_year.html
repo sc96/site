@@ -91,7 +91,7 @@ function remove_SRS() {
              {% for x in fresh_fall %}
                <span>
                <form class= "form-inline" id = "remove_FRF" action= "" method= "post">{% csrf_token %}
-                <li><a class="list-group-item" onclick="remove_FRF()">{{ x.course }} {{x.course.title}}<div style="text-align:right"><i class="glyphicon glyphicon-minus"></i></div></a></li>
+                <li><a class="list-group-item" >{{ x.course }} {{x.course.title}}<div style="text-align:right" onclick="remove_FRF()"><i class="glyphicon glyphicon-minus"></i></div></a></li>
                 <input type="hidden" name="term" value ="FRF">
                 <input type="hidden" name="remove" value={{x.course.listings}}>
               </form>
@@ -105,7 +105,7 @@ function remove_SRS() {
              {% for x in fresh_spring %}
                 <span>
                 <form class= "form-inline" id = "remove_FRS" action= "" method= "post">{% csrf_token %}
-                <a class="list-group-item" onclick="remove_FRS()">{{ x.course }} {{x.course.title}}<i class="glyphicon glyphicon-minus"></i></a>
+                <li><a class="list-group-item" >{{ x.course }} {{x.course.title}}<div style="text-align:right" onclick="remove_FRS()"><i class="glyphicon glyphicon-minus"></i></div></a></li>
                 <input type="hidden" name="term" value ="FRS">
                 <input type="hidden" name="remove" value={{x.course.listings}}>
               </form>
