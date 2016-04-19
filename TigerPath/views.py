@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from .models import Student, Course, COS_BSE, Entry, Approved_Course, Outside_Course
+from .models import Student, Course, COS_BSE, Entry, Approved_Course, Outside_Course, AAS, AFS, AMS
 from django.contrib.auth.decorators import login_required
 import re
 from itertools import chain
