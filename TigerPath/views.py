@@ -47,8 +47,9 @@ def profile(request):
    		s = Student(student_id=current_user)
    		s.save()
 	student = Student.objects.get(student_id=current_user.username)
+	firstN = student.first_name
 
-	context = {'user': current_user.username}
+	context = {'user': current_user.username, 'firstName': firstN}
 	return render(request, 'profile.html', context)
 
 @login_required # Cas authentication for this url.
