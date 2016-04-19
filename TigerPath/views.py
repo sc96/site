@@ -47,14 +47,16 @@ def profile(request):
    		s = Student(student_id=current_user)
    		s = Student(first_name = "First")
    		s = Student(last_name = "Last")
+   		s = Student(engineerBool = True)
    		s.save()
 	student = Student.objects.get(student_id=current_user.username)
 
 	# getting strings for context variable
 	firstN = student.first_name
 	lastN = student.last_name
+	engineerBool = student.engineerBool
 
-	context = {'user': current_user.username, 'firstName': firstN, 'lastN': lastN}
+	context = {'user': current_user.username, 'firstName': firstN, 'lastN': lastN, 'engineerBool': engineerBool }
 	return render(request, 'profile.html', context)
 
 @login_required # Cas authentication for this url.
