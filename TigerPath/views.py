@@ -271,23 +271,33 @@ def four_year(request,search):
 def princeton_course_approval(request):
 	current_user = request.user
 	student = Student.objects.get(student_id=current_user.username)
+	context = {}
+	return render(request, 'ptonapproval.html', context)
 
 @login_required # Cas authentication for this url.
 # if you got a course at Princeton to count as a COS departmental
 def outside_course_approval(request):
 	current_user = request.user
 	student = Student.objects.get(student_id=current_user.username)
+	context = {}
+	return render(request, 'outapproval.html', context)
 
 @login_required # Cas authentication for this url.
 def schedule_sharing(request):
 	current_user = request.user
 	student = Student.objects.get(student_id=current_user.username)
+	context = {}
+	return render(request, 'sharing.html', context)
 
 @login_required # Cas authentication for this url.
 def certificates(request):
 	current_user = request.user
 	student = Student.objects.get(student_id=current_user.username)
+	context = {}
+	return render(request, 'certificates.html', context)
 
 def about(request):
 	current_user = request.user
 	student = Student.objects.get(student_id=current_user.username)
+	context = {}
+	return render(request, 'about.html', context)
