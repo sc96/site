@@ -234,6 +234,7 @@ def four_year(request,search):
 	#Check if student is adding a class
 	if request.method == 'POST':
 		added_class = request.POST['listing']
+		added_class = Course.objects.get(listings=added_class)
 		semester = request.POST['semester']
 		semester = time[semester]
 		#add_class(student, added_class, semester)
