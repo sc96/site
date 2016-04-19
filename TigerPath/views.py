@@ -297,7 +297,7 @@ def certificates(request):
 	return render(request, 'certificates.html', context)
 
 def about(request):
-	current_user = request.user
-	student = Student.objects.get(student_id=current_user.username)
-	context = {}
-	return render(request, 'about.html', context)
+	# current_user = request.user
+	# student = Student.objects.get(student_id=current_user.username)
+	# context = {}
+	return render(request, 'about.html')
