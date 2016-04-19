@@ -244,7 +244,7 @@ def four_year(request,search):
 	context = {'user': current_user.username,'fresh_fall': fresh_fall, 'fresh_spring': fresh_spring, 
 	'soph_fall': soph_fall, 'soph_spring': soph_spring, 'junior_fall': junior_fall, 'junior_spring': junior_spring,
 	'senior_fall': senior_fall, 'senior_spring': senior_spring, 
-	'test': test, 'matched_courses': matched_courses 'test_course': test_course}
+	'test': test, 'matched_courses': matched_courses, 'test_course': test_course}
 
 	return render(request, 'four_year.html', context)
 
