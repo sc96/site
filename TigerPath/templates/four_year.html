@@ -19,36 +19,37 @@
 
 <!--Colors used: dark orange: #FF8F00; light orange for hover: #FFB352-->
 <script>
-function remove(object) {
-    object.submit();
+function remove_FRF() {
+    var x = document.getElementById("remove_FRS");
+    x.submit();
 }
 function remove_FRS() {
-    var x = document.getElementsByName("remove_FRS");
-    x[0].submit();
+    var x = document.getElementById("remove_FRS");
+    x.submit();
 }
 function remove_SOF() {
-    var x = document.getElementsByName("remove_SOF");
-    x[0].submit();
+    var x = document.getElementById("remove_SOF");
+    x.submit();
 }
 function remove_SOS() {
-    var x = document.getElementsByName("remove_SOS");
-    x[0].submit();
+    var x = document.getElementById("remove_SOS");
+    x.submit();
 }
 function remove_JRF() {
-    var x = document.getElementsByName("remove_JRF");
-    x[0].submit();
+    var x = document.getElementById("remove_JRF");
+    x.submit();
 }
 function remove_JRS() {
-    var x = document.getElementsByName("remove_JRS");
-    x[0].submit();
+    var x = document.getElementById("remove_JRS");
+    x.submit();
 }
 function remove_SRF() {
-    var x = document.getElementsByName("remove_SRF");
-    x[0].submit();
+    var x = document.getElementById("remove_SRF");
+    x.submit();
 }
 function remove_SRS() {
-    var x = document.getElementsByName("remove_SRS");
-    x[0].submit();
+    var x = document.getElementById("remove_SRS");
+    x.submit();
 }
 </script>
 
@@ -97,7 +98,7 @@ function remove_SRS() {
                 <a class="list-group-item active">Freshman Fall</a>
              {% for x in fresh_fall %}
                <span>
-               <form class= "form-inline" id = {{x.course}} onclick="remove(this)" action= "" method= "post">{% csrf_token %}
+               <form class= "form-inline" id = "remove_FRF" action= "" method= "post">{% csrf_token %}
                 <a class="list-group-item" >{{ x.course }} {{x.course.title}}
                     <i class="glyphicon glyphicon-minus pull-right" style="color:#f00"></i></a>
                 <input type="hidden" name="term" value ="FRF">
@@ -112,7 +113,7 @@ function remove_SRS() {
                 <a class="list-group-item active">Freshman Spring</a>
              {% for x in fresh_spring %}
                 <span>
-                <form class= "form-inline" name = "remove_FRS" id = "{{x.course}}" action= "" method= "post">{% csrf_token %}
+                <form class= "form-inline" id = "remove_FRS" action= "" method= "post">{% csrf_token %}
                 <a class="list-group-item" onclick="remove_FRS()">{{ x.course }} {{x.course.title}}
                     <i class="glyphicon glyphicon-minus pull-right" style="color:#f00"></i></a>
                 <input type="hidden" name="term" value ="FRS">
@@ -130,7 +131,7 @@ function remove_SRS() {
                 <a class="list-group-item active">Sophomore Fall</a>
              {% for x in soph_fall %}
                 <span>
-                <form class= "form-inline" name = "remove_SOF" id = "{{x.course}}" action= "" method= "post">{% csrf_token %}
+                <form class= "form-inline" id = "remove_SOF"  action= "" method= "post">{% csrf_token %}
                 <a class="list-group-item" onclick="remove_SOF()">{{ x.course }} {{x.course.title}}
                 <i class="glyphicon glyphicon-minus pull-right" style="color:#f00"></i></a>
                 <input type="hidden" name="term" value ="SOF">
@@ -145,7 +146,7 @@ function remove_SRS() {
                 <a class="list-group-item active">Sophomore Spring</a>
              {% for x in soph_spring %}
                 <span>
-                 <form class= "form-inline" name = "remove_SOS" id = "{{x.course}}" action= "" method= "post">{% csrf_token %}
+                 <form class= "form-inline" id = "remove_SOS"  action= "" method= "post">{% csrf_token %}
                 <a class="list-group-item" onclick="remove_SOS()">{{ x.course }} {{x.course.title}}
                 <i class="glyphicon glyphicon-minus pull-right" style="color:#f00"></i></a>
                 <input type="hidden" name="term" value ="SOS">
@@ -163,7 +164,7 @@ function remove_SRS() {
              <a class="list-group-item active">Junior Fall</a>
              {% for x in junior_fall %}
              <span>
-                <form class= "form-inline" name = "remove_JRF" id = "{{x.course}}" action= "" method= "post">{% csrf_token %}
+                <form class= "form-inline" id = "remove_JRF" action= "" method= "post">{% csrf_token %}
                 <a class="list-group-item" onclick="remove_JRF()">{{ x.course }} {{x.course.title}}
                 <i class="glyphicon glyphicon-minus pull-right" style="color:#f00"></i></a>
                 <input type="hidden" name="term" value ="JRF">
@@ -178,7 +179,7 @@ function remove_SRS() {
                 <a class="list-group-item active">Junior Spring</a>
                  {% for x in junior_spring %}
                  <span>
-                    <form class= "form-inline" name = "remove_JRS" id = "{{x.course}}" action= "" method= "post">{% csrf_token %}
+                    <form class= "form-inline" id = "remove_JRS" action= "" method= "post">{% csrf_token %}
                 <a class="list-group-item" onclick="remove_JRS()">{{ x.course }} {{x.course.title}}
                 <i class="glyphicon glyphicon-minus pull-right" style="color:#f00"></i></a>
                 <input type="hidden" name="term" value ="JRS">
