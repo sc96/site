@@ -74,8 +74,7 @@ class Student(models.Model):
 		e.save()
 	def remove_course(self, course, student, sem):
 		obj = Entry.objects.filter(student=student, semester=sem, course=course)
-		if obj.exists():
-			obj.delete()
+		obj.delete()
 
 
 # Relevant when they are "adding" a course to their four year plan
