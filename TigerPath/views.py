@@ -1,13 +1,12 @@
 from django.shortcuts import render
-from .models import Student, Course, COS_BSE, Entry, Approved_Course, Outside_Course
+from .models import Student, Course, COS_BSE, Entry, Approved_Course, Outside_Course, AAS, AFS, AMS
 from django.contrib.auth.decorators import login_required
 import re
+from itertools import chain
 
 def compare_lists(stud, cour):
 	similarities=[]
 	differences=[]
-	#all_courses=classes.objects.values_list('course_id', flat=True).order_by('course_id')
-	#student_courses=student.objects.values_list('course_id', flat=True).order_by('course_id')
 	for i in cour:
 		if i in stud:
 			similarities.append(i)
@@ -54,8 +53,6 @@ def profile(request):
 
 @login_required # Cas authentication for this url.
 def degree_progress(request):
-	# Natalie's code for displaying BSE requirements for all BSE students
-	# not added to either view yet though, so not sure if it works
 	student_ec=[]
 	student_em=[]
 	student_la=[]
@@ -63,25 +60,14 @@ def degree_progress(request):
 	student_sa=[]
 	student_wri=[]
 	student_foreign=[]
-	'''ec_requirements = Course.objects.filter(area='EC')
-	em_requirements = Course.objects.filter(area='EM')
-	la_requirements = Course.objects.filter(area='LA')
-	sa_requirements = Course.objects.filter(area='SA')
-	ha_requirements = Course.objects.filter(area='HA')
-	writing_sem = Course.objects.filter(listings__regex='WRI1')
-	foreign_lang = Course.objects.filter(listings__regex='(ARA|BCS|CHI|CZE|FRE|GER|HEB|HIN|ITA|JPN|KOR|LAT|POL|POR|RUS|SPA|SWA|TUR|TWI|URD)')'''
 	current_user = request.user
-	try:
-   		s = Student.objects.get(student_id=current_user)
-	except Student.DoesNotExist:
-   		s = Student(student_id=current_user)
-   		s.save()
 	student = Student.objects.get(student_id=current_user.username)
 	student_major = student.student_major
 	all_courses = Entry.objects.filter(student_id=current_user.username).values_list('course_id', flat=True).order_by('course_id') # all of the student's courses
 	#dist_courses = Entry.objects.filter(student_id=current_user.username)
 	for d in all_courses:
 		course = Course.objects.get(course_id=d)
+		# need to add QR/STL/STN for AB majors
 		if (course.area=='SA'):
 			student_sa.append(d)
 		elif (course.area=='LA'):
@@ -96,81 +82,109 @@ def degree_progress(request):
 			student_wri.append(d)
 		elif(re.match(r'(ARA|BCS|CHI|CZE|FRE|GER|HEB|HIN|ITA|JPN|KOR|LAT|POL|POR|RUS|SPA|SWA|TUR|TWI|URD)', course.listings)):
 			student_foreign.append(d)
+
 	# something to think about: COS 340 can't pop up in "Other" and in "Theory"
 	# all of the requirement lists
 	# can probably combine a lot of things here into one function - maybe i want the approved courses in their own list? idk
-#	if (student_major=="COS_BSE"):
-		# can probably shorten this a little bit
-	theory_courses = COS_BSE.objects.filter(theory=1).values_list('course_id', flat=True).order_by('course_id')
-	systems_courses = COS_BSE.objects.filter(systems=1).values_list('course_id', flat=True).order_by('course_id')
-	apps_courses = COS_BSE.objects.filter(applications=1).values_list('course_id', flat=True).order_by('course_id')
-	core_courses = COS_BSE.objects.filter(core=1).values_list('course_id', flat=True).order_by('course_id')
-	other_courses = COS_BSE.objects.filter(other=1).values_list('course_id', flat=True).order_by('course_id')
-	iw_courses = COS_BSE.objects.filter(iw=1).values_list('course_id', flat=True).order_by('course_id')
-		
-	theory_on = compare_lists(all_courses, theory_courses)["similarities"]
-	other_theory = Approved_Course.objects.filter(requirement="Theory") # this needs to filter by netid too!!
-	for t in other_theory:
-		theory_on.append(t.course_id)
-	theory_on = title(theory_on)
-	theory_off = title(compare_lists(all_courses, theory_courses)["differences"])
-	
-	systems_on = compare_lists(all_courses, systems_courses)["similarities"]
-	other_sys = Approved_Course.objects.filter(requirement="Systems")
-	for t in other_sys:
-		systems_on.append(t.course_id)
-	systems_on = title(systems_on)
-	systems_off = title(compare_lists(all_courses, systems_courses)["differences"])
+	# COS BSE Major
+	if (student_major=="COS_BSE"):
+		# BSE requirements - all
+		math_1 = Course.objects.filter(listings__regex=r'MAT103')
+		math_2 = Course.objects.filter(listings__regex=r'MAT104')
+		math_3 = Course.objects.filter(listings__regex=r'(MAT201|MAT203|MAT218|EGR192)')
+		math_4 = Course.objects.filter(listings__regex=r'(MAT202|MAT204|MAT217)')
+		physics_1 = Course.objects.filter(listings__regex=r'(PHY103|PHY105|EGR191)')
+		physics_2 = Course.objects.filter(listings__regex=r'(PHY104|PHY106)')
+		chem_1 = Course.objects.filter(listings__regex=r'(CHM201|CHM207)')
+		cos_1 = Course.objects.filter(listings__regex=r'COS126')
 
-	apps_on = compare_lists(all_courses, apps_courses)["similarities"]
-	other_apps = Approved_Course.objects.filter(requirement="Applications")
-	for t in other_apps:
-		apps_on.append(t.course_id)
-	apps_on = title(apps_on)
-	apps_off = title(compare_lists(all_courses, apps_courses)["differences"])
+		# now I need to parse out which one they've taken it - math ON/math OFF
+
+
+		# can probably shorten this a little bit later...
+		theory_courses = COS_BSE.objects.filter(theory=1).values_list('course_id', flat=True).order_by('course_id')
+		systems_courses = COS_BSE.objects.filter(systems=1).values_list('course_id', flat=True).order_by('course_id')
+		apps_courses = COS_BSE.objects.filter(applications=1).values_list('course_id', flat=True).order_by('course_id')
+		core_courses = COS_BSE.objects.filter(core=1).values_list('course_id', flat=True).order_by('course_id')
+		other_courses = COS_BSE.objects.filter(other=1).values_list('course_id', flat=True).order_by('course_id')
+		iw_courses = COS_BSE.objects.filter(iw=1).values_list('course_id', flat=True).order_by('course_id')
+		
+		theory_on = compare_lists(all_courses, theory_courses)["similarities"]
+		other_theory = Approved_Course.objects.filter(student_id=current_user.username, requirement="Theory")
+		for t in other_theory:
+			theory_on.append(t.course_id)
+		theory_on = title(theory_on)
+		theory_off = title(compare_lists(all_courses, theory_courses)["differences"])
+		
+		systems_on = compare_lists(all_courses, systems_courses)["similarities"]
+		other_sys = Approved_Course.objects.filter(student_id=current_user.username, requirement="Systems")
+		for t in other_sys:
+			systems_on.append(t.course_id)
+		systems_on = title(systems_on)
+		systems_off = title(compare_lists(all_courses, systems_courses)["differences"])
+
+		apps_on = compare_lists(all_courses, apps_courses)["similarities"]
+		other_apps = Approved_Course.objects.filter(student_id=current_user.username, requirement="Applications")
+		for t in other_apps:
+			apps_on.append(t.course_id)
+		apps_on = title(apps_on)
+		apps_off = title(compare_lists(all_courses, apps_courses)["differences"])
 
 		# other should have all classes in "other" that the user hasn't already taken
 		# will fix this bug a little later... 4/9/2016
-	other_on = compare_lists(all_courses, other_courses)["similarities"]
-	other_other = Approved_Course.objects.filter(requirement="Other")
-	for t in other_other:
-		other_on.append(t.course_id)
-	other_on = title(other_on)
-	other_off = title(compare_lists(all_courses, other_courses)["differences"])
+		other_on = compare_lists(all_courses, other_courses)["similarities"]
+		other_other = Approved_Course.objects.filter(student_id=current_user.username, requirement="Other")
+		for t in other_other:
+			other_on.append(t.course_id)
+		other_on = title(other_on)
+		other_off = title(compare_lists(all_courses, other_courses)["differences"])
 
-	iw_on = compare_lists(all_courses, iw_courses)["similarities"] #iw is for BSE only
-	other_iw = Approved_Course.objects.filter(requirement="Independent")
-	for t in other_iw:
-		iw_on.append(t.course_id)
-	iw_on = title(iw_on)
-	iw_off = title(compare_lists(all_courses, iw_courses)["differences"])
-	core_on = title(compare_lists(all_courses, core_courses)["similarities"])
-	core_off = title(compare_lists(all_courses, core_courses)["differences"])
+		iw_on = compare_lists(all_courses, iw_courses)["similarities"] #iw is for BSE only
+		other_iw = Approved_Course.objects.filter(student_id=current_user.username, requirement="Independent")
+		for t in other_iw:
+			iw_on.append(t.course_id)
+		iw_on = title(iw_on)
+		iw_off = title(compare_lists(all_courses, iw_courses)["differences"])
 
-	# Distribution Requirements
-	student_sa=title(student_sa)
-	student_la=title(student_la)
-	student_ha=title(student_ha)
-	student_em=title(student_em)
-	student_ec=title(student_ec)
+		core_on = title(compare_lists(all_courses, core_courses)["similarities"])
+		core_off = title(compare_lists(all_courses, core_courses)["differences"])
+
+		# Need to add logic for only hilighting 2 theory courses then overflowing others into "other" section
+		# Maybe don't display everything...display ones that only have "other"
+
+
+		# Distribution Requirements
+		student_sa=title(student_sa)
+		student_la=title(student_la)
+		student_ha=title(student_ha)
+		student_em=title(student_em)
+		student_ec=title(student_ec)
+		student_wri=title(student_wri)
+		student_foreign=title(student_foreign)
 
 		# Outside Courses
 		# Note: should probably do Outside Courses/Approved Courses first, then add to LA/SA/Theory/etc. THEN consolidate lists 
-	student_outside=[]
-	outside_courses = Outside_Course.objects.filter(student_id=current_user.username) # list of the student's outside courses
-	for c in outside_courses.iterator():
-		student_outside.append(c.course_name)
+		student_outside=[]
+		outside_courses = Outside_Course.objects.filter(student_id=current_user.username) # list of the student's outside courses
+		for c in outside_courses.iterator():
+			student_outside.append(c.course_name)
 
-		# also need to add BSE requirements here and distributions
+
+		# AP Requirements - would affect BSE on
+
+
 		# could literally just pass every certificate thing to this page....but that would be really dumb and bad
 		# still in the process of getting new ideas for certificates...it can def be done tho...still thinking
-	context = {'theory_on': theory_on, 'theory_off': theory_off, 'systems_on': systems_on, 'systems_off': systems_off,
-	'apps_on': apps_on, 'apps_off': apps_off, 'other_on': other_on, 'other_off': other_off,
-	'iw_on': iw_on, 'iw_off': iw_off, 'core_on': core_on, 'core_off': core_off, 'other_theory': other_theory,
-	'student_sa': student_sa, 'student_la': student_la, 'student_ha': student_ha, 'student_ec': student_ec,
-	'student_em': student_em, 'student_foreign': student_foreign, 'student_wri': student_wri, 'outside_courses': student_outside}
-	return render(request, 'degree_progress.html', context)
- 
+		context = {'theory_on': theory_on, 'theory_off': theory_off, 'systems_on': systems_on, 'systems_off': systems_off,
+		'apps_on': apps_on, 'apps_off': apps_off, 'other_on': other_on, 'other_off': other_off,
+		'iw_on': iw_on, 'iw_off': iw_off, 'core_on': core_on, 'core_off': core_off, 'other_theory': other_theory,
+		'student_sa': student_sa, 'student_la': student_la, 'student_ha': student_ha, 'student_ec': student_ec,
+		'student_em': student_em, 'student_foreign': student_foreign, 'student_wri': student_wri, 'outside_courses': student_outside,
+		'math_1': math_1, 'math_2': math_2, 'math_3': math_3, 'math_4': math_4, 'physics_1': physics_1, 'physics_2': physics_2,
+		'chem_1': chem_1, 'cos_1': cos_1}
+		return render(request, 'degree_progress_cos_bse.html', context)
+	# COS AB Major	
+	#elif (student_major=="COS_AB"): 
 
 def course_search(query):
 	dist = ["la", "sa", "ha", "em", "ec", "qr", "stl", "stn"]
@@ -259,20 +273,40 @@ def four_year(request,search):
 	
 	# getting list of courses for each semester
 	fresh_fall = Entry.objects.filter(student_id=current_user.username, semester="FRF")
+	app_frf = Approved_Course.objects.filter(student_id=current_user.username, semester="FRF")
+	all_frf = chain(fresh_fall, app_frf)
 	fresh_spring = Entry.objects.filter(student_id=current_user.username, semester="FRS")
+	app_frs = Approved_Course.objects.filter(student_id=current_user.username, semester="FRS")
+	all_frs = chain(fresh_spring, app_frs)
 	soph_fall = Entry.objects.filter(student_id=current_user.username, semester="SOF")
+	app_sof = Approved_Course.objects.filter(student_id=current_user.username, semester="SOF")
+	all_sof = chain(soph_fall, app_sof)
 	soph_spring = Entry.objects.filter(student_id=current_user.username, semester="SOS")
+	app_sos = Approved_Course.objects.filter(student_id=current_user.username, semester="SOS")
+	all_sos = chain(soph_spring, app_sos)
 	junior_fall = Entry.objects.filter(student_id=current_user.username, semester="JRF")
+	app_jrf = Approved_Course.objects.filter(student_id=current_user.username, semester="JRF")
+	all_jrf = chain(junior_fall, app_jrf)
 	junior_spring = Entry.objects.filter(student_id=current_user.username, semester="JRS")
+	app_jrs = Approved_Course.objects.filter(student_id=current_user.username, semester="JRS")
+	all_jrs = chain(junior_spring, app_jrs)
 	senior_fall = Entry.objects.filter(student_id=current_user.username, semester="SRF")
+	app_srf = Approved_Course.objects.filter(student_id=current_user.username, semester="SRF")
+	all_srf = chain(senior_fall, app_srf)
 	senior_spring = Entry.objects.filter(student_id=current_user.username, semester="SRS")
-	context = {'user': current_user.username,'fresh_fall': fresh_fall, 'fresh_spring': fresh_spring, 
-	'soph_fall': soph_fall, 'soph_spring': soph_spring, 'junior_fall': junior_fall, 'junior_spring': junior_spring,
-	'senior_fall': senior_fall, 'senior_spring': senior_spring, 
-	'test': test, 'matched_courses': matched_courses, 'test_course': added_class, 'sem': semester,
-	 'removed_class': removed_class}
+	app_srs = Approved_Course.objects.filter(student_id=current_user.username, semester="SRS")
+	all_srs = chain(senior_spring, app_srs)
 
+	student_outside=[]
+	outside_courses = Outside_Course.objects.filter(student_id=current_user.username) # list of the student's outside courses
+	for c in outside_courses.iterator():
+		student_outside.append(c.course_name)
+
+	context = {'user': current_user.username,'fresh_fall': all_frf, 'fresh_spring': all_frf, 
+	'soph_fall': all_sof, 'soph_spring': all_sos, 'junior_fall': all_jrf, 'junior_spring': all_jrs,
+	'senior_fall': all_srf, 'senior_spring': all_srs, 'student_outside': student_outside}
 	return render(request, 'four_year.html', context)
+
 
 @login_required # Cas authentication for this url.
 # if you got a course at Princeton to count as a COS departmental
@@ -294,7 +328,35 @@ def outside_course_approval(request):
 def schedule_sharing(request):
 	current_user = request.user
 	student = Student.objects.get(student_id=current_user.username)
-	context = {}
+	nStudents = Student.objects.count
+	points_dict={}
+	# the user's courses
+	all_courses = Entry.objects.filter(student_id=current_user.username).values_list('course_id', flat=True)
+	all_sems = Entry.objects.filter(student_id=current_user.username).values_list('semester', flat=True)
+	for s in Student.objects.iterator():
+		# if its same semester and class = +2
+		# same class = +1
+		nSimilarClasses=0
+		# this student's classes (the student we're comparing against)
+		comp_courses = Entry.objects.filter(student_id=s.student_id).values_list('course_id', flat=True)
+		comp_sems = Entry.objects.filter(student_id=s.student_id).values_list('semester', flat=True)
+		# can add some more stuff in terms of (if same_certificate, then +2 or something)
+		for i in range(0, len(comp_courses)):
+			for j in range(0, len(all_courses)):
+				if (comp_courses[i]==all_courses[j] and comp_sems[i]==all_sems[j]):
+					nSimilarClasses+=2
+				elif (comp_courses[i]==all_courses[j]):
+					nSimilarClasses+=1
+		points_dict[s.student_id]=nSimilarClasses
+	length = len(points_dict)
+	top_5=[]
+	for i in range(0, 5):
+		maximum = max(points_dict, key=lambda i: points_dict[i])
+		top_5.append(maximum)
+		points_dict.pop(maximum, None)
+	# then can do a generic thing for clicking on one of top 5 students and it shows you their four year
+
+	context = {'user': current_user.username,'nStudents': nStudents, 'len': length, 'top_5': top_5}
 	return render(request, 'sharing.html', context)
 
 @login_required # Cas authentication for this url.
@@ -309,3 +371,88 @@ def about(request):
 	# student = Student.objects.get(student_id=current_user.username)
 	# context = {}
 	return render(request, 'about.html')
+
+@login_required # Cas authentication for this url.
+# African American Studies
+def aas(request):
+	current_user = request.user
+	student = Student.objects.get(student_id=current_user.username)
+	all_courses = Entry.objects.filter(student_id=current_user.username).values_list('course_id', flat=True).order_by('course_id') # all of the student's courses - course ID
+	intro = AAS.objects.filter(intro=1).values_list('course_id', flat=True).order_by('course_id')
+	survey = AAS.objects.filter(survey=1).values_list('course_id', flat=True).order_by('course_id')
+	other = AAS.objects.filter(other=1).values_list('course_id', flat=True).order_by('course_id')
+
+	intro_on = title(compare_lists(all_courses, intro)["similarities"])
+	intro_off = title(compare_lists(all_courses, intro)["differences"])
+
+	survey_on = title(compare_lists(all_courses, survey)["similarities"])
+	survey_off = title(compare_lists(all_courses, survey)["differences"])
+
+	other_on = title(compare_lists(all_courses, other)["similarities"])
+	other_off = title(compare_lists(all_courses, other)["differences"])
+	#other_off=[]
+
+	context = {'intro_on': intro_on, 'intro_off': intro_off, 'survey_on': survey_on, 'survey_off': survey_off,
+	'other_on': other_on, 'other_off': other_off}
+	return render(request, 'aas.html', context)
+
+@login_required # Cas authentication for this url.
+# African Studies
+def afs(request):
+	current_user = request.user
+	student = Student.objects.get(student_id=current_user.username)
+	all_courses = Entry.objects.filter(student_id=current_user.username).values_list('course_id', flat=True).order_by('course_id') # all of the student's courses
+	foundation = AFS.objects.filter(foundation=1).values_list('course_id', flat=True).order_by('course_id')
+	culture = AFS.objects.filter(culture=1).values_list('course_id', flat=True).order_by('course_id')
+	history = AFS.objects.filter(history=1).values_list('course_id', flat=True).order_by('course_id')
+	science = AFS.objects.filter(science=1).values_list('course_id', flat=True).order_by('course_id')
+	politics = AFS.objects.filter(politics=1).values_list('course_id', flat=True).order_by('course_id')
+	elective = AFS.objects.filter(elective=1).values_list('course_id', flat=True).order_by('course_id')
+
+	foundation_on = title(compare_lists(all_courses, foundation)["similarities"])
+	foundation_off = title(compare_lists(all_courses, foundation)["differences"])
+
+	culture_on = title(compare_lists(all_courses, culture)["similarities"])
+	culture_off = title(compare_lists(all_courses, culture)["differences"])
+
+	history_on = title(compare_lists(all_courses, history)["similarities"])
+	history_off = title(compare_lists(all_courses, history)["differences"])
+
+	science_on = title(compare_lists(all_courses, science)["similarities"])
+	science_off = title(compare_lists(all_courses, science)["differences"])
+
+	politics_on = title(compare_lists(all_courses, politics)["similarities"])
+	politics_off = title(compare_lists(all_courses, politics)["differences"])
+
+	elective_on = title(compare_lists(all_courses, elective)["similarities"])
+	elective_off = title(compare_lists(all_courses, elective)["differences"])
+
+	context = {'foundation_on': foundation_on, 'foundation_off': foundation_off, 'culture_on': culture_on, 'culture_off': culture_off,
+	'history_on': history_on, 'history_off': history_off, 'science_on': science_on, 'science_off': science_off, 'politics_on': politics_on, 'politics_off': politics_off,
+	'elective_on': elective_on, 'elective_off': elective_off}
+	return render(request, 'afs.html', context)
+
+@login_required # Cas authentication for this url.
+# American Studies
+def ams(request):
+	current_user = request.user
+	student = Student.objects.get(student_id=current_user.username)
+	all_courses = Entry.objects.filter(student_id=current_user.username).values_list('course_id', flat=True).order_by('course_id') # all of the student's courses
+	core = AMS.objects.filter(core=1).values_list('course_id', flat=True).order_by('course_id')
+	ams = AMS.objects.filter(ams=1).values_list('course_id', flat=True).order_by('course_id')
+	elective = AMS.objects.filter(elective=1).values_list('course_id', flat=True).order_by('course_id')
+
+	core_on = title(compare_lists(all_courses, core)["similarities"])
+	core_off = title(compare_lists(all_courses, core)["differences"])
+
+	ams_on = title(compare_lists(all_courses, ams)["similarities"])
+	ams_off = title(compare_lists(all_courses, ams)["differences"])
+
+	elective_on = title(compare_lists(all_courses, elective)["similarities"])
+	elective_off = title(compare_lists(all_courses, elective)["differences"])
+	#other_off=[]
+
+	context = {'core_on': core_on, 'core_off': core_off, 'ams_on': ams_on, 'ams_off': ams_off,
+	'elective_on': elective_on, 'elective_off': elective_off}
+	return render(request, 'ams.html', context)
+

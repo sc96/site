@@ -16,6 +16,41 @@ def compare_lists(l1, l2):
 	return count
 
 #have an object for each certificate, have an array of names of areas (for buttons for front end)
+
+
+class AAS(models.Model):
+	cert_name="African American Studies"
+	course_id = models.IntegerField(primary_key=True)
+	intro = models.IntegerField()
+	survey = models.IntegerField()
+	other = models.IntegerField()
+
+	def __str__(self):
+		return str(self.course_id)
+
+class AFS(models.Model):
+	cert_name="African Studies"
+	course_id = models.IntegerField(primary_key=True)
+	foundation = models.IntegerField()
+	culture = models.IntegerField()
+	history = models.IntegerField()
+	science = models.IntegerField()
+	politics = models.IntegerField()
+	elective = models.IntegerField()
+
+	def __str__(self):
+		return str(self.course_id)
+
+
+class AMS(models.Model):
+	cert_name="American Studies"
+	course_id = models.IntegerField(primary_key=True)
+	core = models.IntegerField()
+	ams = models.IntegerField()
+	elective = models.IntegerField()
+
+	def __str__(self):
+		return str(self.course_id)
 class COS_BSE(models.Model):
 	major_name="Computer Science B.S.E."
 	course_id = models.CharField(max_length = 30, primary_key=True)
