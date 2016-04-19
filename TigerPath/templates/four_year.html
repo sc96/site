@@ -98,11 +98,9 @@ function remove_SRS() {
                 <a href= "#" class="list-group-item active">Freshman Fall</a>
              {% for x in fresh_fall %}
                <span>
-               <form class= "form-inline" name = "remove_FRF" id={{x.course}} action= "" method= "post">{% csrf_token %}
-                <li><a class="list-group-item" >{{ x.course }} {{x.course.title}}
-                  <div class="pull-right" style="display: inline-block;" onclick="remove_FRF()">
-                    <i class="glyphicon glyphicon-minus" style="color:#f00"></i></div></a></li>
-
+               <form class= "form-inline" name = "remove_FRF" id = "{{x.course}}" action= "" method= "post">{% csrf_token %}
+                <a class="list-group-item" onclick="remove_FRF()">{{ x.course }} {{x.course.title}}
+                    <i class="glyphicon glyphicon-minus pull-right" style="color:#f00"></i></a>
                 <input type="hidden" name="term" value ="FRF">
                 <input type="hidden" name="remove" value={{x.course.listings}}>
               </form>
@@ -116,7 +114,8 @@ function remove_SRS() {
              {% for x in fresh_spring %}
                 <span>
                 <form class= "form-inline" name = "remove_FRS" id = "{{x.course}}" action= "" method= "post">{% csrf_token %}
-                <li><a class="list-group-item" >{{ x.course }} {{x.course.title}}<div style="text-align:right" onclick="remove_FRS()"><i class="glyphicon glyphicon-minus"></i></div></a></li>
+                <a class="list-group-item" onclick="remove_FRS()">{{ x.course }} {{x.course.title}}
+                    <i class="glyphicon glyphicon-minus"></i></a>
                 <input type="hidden" name="term" value ="FRS">
                 <input type="hidden" name="remove" value={{x.course.listings}}>
               </form>
@@ -133,7 +132,8 @@ function remove_SRS() {
              {% for x in soph_fall %}
                 <span>
                 <form class= "form-inline" name = "remove_SOF" id = "{{x.course}}" action= "" method= "post">{% csrf_token %}
-                <a class="list-group-item" onclick="remove_SOF()">{{ x.course }} {{x.course.title}}<i class="glyphicon glyphicon-minus"></i></a>
+                <a class="list-group-item" onclick="remove_SOF()">{{ x.course }} {{x.course.title}}
+                <i class="glyphicon glyphicon-minus"></i></a>
                 <input type="hidden" name="term" value ="SOF">
                 <input type="hidden" name="remove" value={{x.course.listings}}>
               </form>
