@@ -218,6 +218,14 @@ def four_year(request,search):
    		s.save()
 	student = Student.objects.get(student_id=current_user.username)
 
+	test_course = ""
+	#Check if student is adding a class
+	if request.method == 'POST':
+		added_class = request.POST.get()
+		test_course = added_class
+
+
+
 	#Return matched courses for search bar
 	test = ""
 	if 'q' in request.GET:
@@ -235,7 +243,8 @@ def four_year(request,search):
 	senior_spring = Entry.objects.filter(student_id=current_user.username, semester="SRS")
 	context = {'user': current_user.username,'fresh_fall': fresh_fall, 'fresh_spring': fresh_spring, 
 	'soph_fall': soph_fall, 'soph_spring': soph_spring, 'junior_fall': junior_fall, 'junior_spring': junior_spring,
-	'senior_fall': senior_fall, 'senior_spring': senior_spring, 'test': test, 'matched_courses': matched_courses}
+	'senior_fall': senior_fall, 'senior_spring': senior_spring, 
+	'test': test, 'matched_courses': matched_courses 'test_course': test_course}
 
 	return render(request, 'four_year.html', context)
 
