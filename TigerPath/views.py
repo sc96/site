@@ -221,7 +221,7 @@ def four_year(request,search):
 	test_course = "Hello"
 	#Check if student is adding a class
 	if request.method == 'POST':
-		added_class = request.POST
+		added_class = request.POST['semester']
 		test_course = added_class
 
 
