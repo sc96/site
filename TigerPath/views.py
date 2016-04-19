@@ -227,11 +227,12 @@ def four_year(request,search):
 	student = Student.objects.get(student_id=current_user.username)
 
 	test_course = "Hello"
+	semester = "hello2"
 	#Check if student is adding a class
 	if request.method == 'POST':
 		added_class = request.POST['listing']
 		semester = request.POST['semester']
-		add_class(student, added_class, semester)
+		#add_class(student, added_class, semester)
 
 
 
@@ -254,7 +255,7 @@ def four_year(request,search):
 	context = {'user': current_user.username,'fresh_fall': fresh_fall, 'fresh_spring': fresh_spring, 
 	'soph_fall': soph_fall, 'soph_spring': soph_spring, 'junior_fall': junior_fall, 'junior_spring': junior_spring,
 	'senior_fall': senior_fall, 'senior_spring': senior_spring, 
-	'test': test, 'matched_courses': matched_courses, 'test_course': test_course}
+	'test': test, 'matched_courses': matched_courses, 'test_course': added_class, 'sem': semester}
 
 	return render(request, 'four_year.html', context)
 
