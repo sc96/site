@@ -159,7 +159,7 @@ for (x in "{{fresh_fall|safe}}") {
  <div class="row">
         <h5>Add a class in a semester</h5>
             <div id="custom-search">
-                <form class = "form-inline" action = "{% url 'site:fouryear' "find" %}" method = "get">
+                <form class = "form-inline" action = "{% url 'site:search' "find" %}" method = "get">
                     <div class="input-group col-md-12">
                         <input type="text" class="form-control input-lg" placeholder="Type course (e.g. COS 126)" value = "{{test}}" name="q"/>
                         <span class="input-group-btn">
@@ -182,7 +182,7 @@ for (x in "{{fresh_fall|safe}}") {
             {% for x in matched_courses %}
             <div class="list-group">
               <div class="btn-group">
-              <form class= "form-inline" action= "{% url 'site:fouryear' "add" %}" method= "post">
+              <form class= "form-inline" action= "{% url 'site:add' "add" %}" method= "post">
                   <button class="btn btn-default dropdown-toggle active btn-block" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     {{x.listings}} {{x.title}} {{x.area}}
                     <span class="caret"></span>
