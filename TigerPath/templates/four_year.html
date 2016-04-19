@@ -95,7 +95,7 @@ function remove_SRS() {
      <div class="row">
          <div class="col-md-6">
          <div class="list_group">
-                <a href= "#" class="list-group-item active">Freshman Fall</a>
+                <a class="list-group-item active">Freshman Fall</a>
              {% for x in fresh_fall %}
                <span>
                <form class= "form-inline" name = "remove_FRF" id = "{{x.course}}" action= "" method= "post">{% csrf_token %}
@@ -110,7 +110,7 @@ function remove_SRS() {
          </div>
          <div class="col-md-6">
          <div class="list_group">
-                <a href= "#" class="list-group-item active">Freshman Spring</a>
+                <a class="list-group-item active">Freshman Spring</a>
              {% for x in fresh_spring %}
                 <span>
                 <form class= "form-inline" name = "remove_FRS" id = "{{x.course}}" action= "" method= "post">{% csrf_token %}
@@ -128,7 +128,7 @@ function remove_SRS() {
      <div class="row">
          <div class="col-md-6">
          <div class="list_group">
-                <a href= "#" class="list-group-item active">Sophomore Fall</a>
+                <a class="list-group-item active">Sophomore Fall</a>
              {% for x in soph_fall %}
                 <span>
                 <form class= "form-inline" name = "remove_SOF" id = "{{x.course}}" action= "" method= "post">{% csrf_token %}
@@ -143,7 +143,7 @@ function remove_SRS() {
         </div>
          <div class="col-md-6">
          <div class="list_group">
-                <a href= "#" class="list-group-item active">Sophomore Spring</a>
+                <a class="list-group-item active">Sophomore Spring</a>
              {% for x in soph_spring %}
                 <span>
                  <form class= "form-inline" name = "remove_SOS" id = "{{x.course}}" action= "" method= "post">{% csrf_token %}
@@ -161,7 +161,7 @@ function remove_SRS() {
      <div class="row">
          <div class="col-md-6">
              <div class="list_group">
-             <a href= "#" class="list-group-item active">Junior Fall</a>
+             <a class="list-group-item active">Junior Fall</a>
              {% for x in junior_fall %}
              <span>
                 <form class= "form-inline" name = "remove_JRF" id = "{{x.course}}" action= "" method= "post">{% csrf_token %}
@@ -176,7 +176,7 @@ function remove_SRS() {
          </div>
          <div class="col-md-6">
             <div class="list_group">
-                <a href= "#" class="list-group-item active">Junior Spring</a>
+                <a class="list-group-item active">Junior Spring</a>
                  {% for x in junior_spring %}
                  <span>
                     <form class= "form-inline" name = "remove_JRS" id = "{{x.course}}" action= "" method= "post">{% csrf_token %}
@@ -194,7 +194,7 @@ function remove_SRS() {
     <div class="row">
          <div class="col-md-6">
          <div class="list_group">
-                <a href= "#" class="list-group-item active">Senior Fall</a>
+                <a class="list-group-item active">Senior Fall</a>
                  {% for x in senior_fall %}
                   <span>
                     <form class= "form-inline" name = "remove_SRF" id = "{{x.course}}" action= "" method= "post">{% csrf_token %}
@@ -209,7 +209,7 @@ function remove_SRS() {
          </div>
          <div class="col-md-6">
          <div class="list_group">
-                <a href= "#" class="list-group-item active">Senior Spring</a>
+                <a class="list-group-item active">Senior Spring</a>
              {% for x in senior_spring %}
                 <span>
                 <form class= "form-inline" name = "remove_SRS" id = "{{x.course}}" action= "" method= "post">{% csrf_token %}
