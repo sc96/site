@@ -226,11 +226,10 @@ function remove_SRS() {
  </div>
 
  <div class="row">
-   <div class="col-md-12">
         <h5>Add a class in a semester</h5>
             <div id="custom-search">
                 <form class = "form-inline" action = "" method = "get" >
-                    <div class="input-group">
+                    <div class="input-group col-md-12">
                         <input type="text" class="form-control input-lg" placeholder="Type course (e.g. COS 126)" value = "{{test}}" name="q" />
                         <span class="input-group-btn">
                             <button  id="search-btn" class="btn btn-info btn-lg" type="submit" >
@@ -240,7 +239,6 @@ function remove_SRS() {
                     </div>
                 </form>
             </div>
-          </div>
     </div>
     {% if test_course %}
     <div class="alert alert-success" role="alert"> You have successfully added {{test_course}} {{test_course.title}} to {{sem}}</div>
