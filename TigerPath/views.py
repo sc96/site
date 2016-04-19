@@ -206,6 +206,13 @@ def course_search(query):
 
 	return matched_courses
 
+def add_class(student, course, semester):
+	time = {"Freshman Fall": "FRF", "Freshman Spring": "FRS",
+	"Sophomore Fall": "SOF","Sophomore Spring": "SOS",
+	"Junior Fall":  "JRF","Junior Spring": "JRS","Senior Fall": "SRF","Senior Spring": "SRS"}
+	course = Course.objects.get(listings=course)
+	student.add_course(course, student, time[semester])
+
 
 
 @login_required # Cas authentication for this url.
@@ -222,7 +229,9 @@ def four_year(request,search):
 	#Check if student is adding a class
 	if request.method == 'POST':
 		added_class = request.POST['listing']
-		test_course = added_class
+		semester = request.POST['semester']
+		add_class(student, added_class, semester)
+
 
 
 
