@@ -73,7 +73,9 @@ class Student(models.Model):
 		e = Entry(student=s, course=c, semester=sem)
 		e.save()
 	def remove_course(self, course, student, sem):
-		obj = Entry.objects.filter(student=student, semester=sem, course=course)
+		s = student
+		c = Course.objects.filter(listings=course);
+		obj = Entry.objects.filter(student=s, semester=sem, course=c)
 		obj.delete()
 
 
