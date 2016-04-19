@@ -98,7 +98,7 @@ function remove_SRS() {
                 <a href= "#" class="list-group-item active">Freshman Fall</a>
              {% for x in fresh_fall %}
                <span>
-               <form class= "form-inline" name = "remove_FRF" id = "{{x.course}}" action= "" method= "post">{% csrf_token %}
+               <form class= "form-inline" name = "remove_FRF" id={{x.course}}  action= "" method= "post">{% csrf_token %}
                 <li><a class="list-group-item" >{{ x.course }} {{x.course.title}}<div style="display: inline-block;" onclick="remove_FRF()"><i class="glyphicon glyphicon-minus pull-right" style="color:#f00"></i></div></a></li>
                 <input type="hidden" name="term" value ="FRF">
                 <input type="hidden" name="remove" value={{x.course.listings}}>
