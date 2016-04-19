@@ -19,29 +19,6 @@
 
 <!--Colors used: dark orange: #FF8F00; light orange for hover: #FFB352-->
 
-
-
-<!-- COnsole testing for React
-<script>
-console.log("{{user}}");
-var myJSONList = (("{{fresh_fall|safe}}").replace(/&(l|g|quo)t;/g, function(a,b){
-                return {
-                    l   : '<',
-                    g   : '>',
-                    quo : '"'
-                }[b];
-            }));
-console.log("done");
-console.log(myJSONList);
-console.log("{{fresh_fall}}");
-console.log("{{fresh_fall|safe}}");
-for (x in "{{fresh_fall|safe}}") {
-  console.log(x[0]);
-  console.log(x[1]);
-}
-</script>
-    
-    -->
     
 <nav class="navbar navbar-inverse navbar-fixed-top">
   <div class="container-fluid">
@@ -159,7 +136,7 @@ for (x in "{{fresh_fall|safe}}") {
  <div class="row">
         <h5>Add a class in a semester</h5>
             <div id="custom-search">
-                <form class = "form-inline" action = "" method = "get">
+                <form class = "form-inline" action = "" method = "get" >
                     <div class="input-group col-md-12">
                         <input type="text" class="form-control input-lg" placeholder="Type course (e.g. COS 126)" value = "{{test}}" name="q"/>
                         <span class="input-group-btn">
