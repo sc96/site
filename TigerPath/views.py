@@ -211,7 +211,8 @@ def add_class(student, course, semester):
 	"Sophomore Fall": "SOF","Sophomore Spring": "SOS",
 	"Junior Fall":  "JRF","Junior Spring": "JRS","Senior Fall": "SRF","Senior Spring": "SRS"}
 	course = Course.objects.get(listings=course)
-	student.add_course(course, student, time[semester])
+	sem = time[semester]
+	student.add_course(course, student, sem)
 
 
 
