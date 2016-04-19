@@ -239,7 +239,7 @@ def four_year(request,search):
 		if 'remove' in request.POST:
 			removed_class = request.POST['remove']
 			semester = request.POST['term']
-			sem = time[semester]
+			#sem = time[semester]
 			student.remove_course(removed_class, student, sem)
 
 		else:
