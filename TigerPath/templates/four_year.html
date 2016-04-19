@@ -240,10 +240,10 @@ function remove_SRS() {
             </div>
     </div>
     {% if test_course %}
-    <br><div class="alert alert-success col-md-12" role="alert"><b>Well Done!</b> You have successfully added {{test_course}} {{test_course.title}} to {{sem}}</div>
+    <br><div class="alert alert-success col-md-12" role="alert"><b>Well Done!</b> You have successfully added <b>{{test_course}} {{test_course.title}}</b> to <b>{{sem}}</b></div>
     {% endif %}
     {% if removed_class %}
-    <br><div class="alert alert-success col-md-12" role="alert"><b>Well Done!</b> You have successfully removed {{removed_class}}. </div>
+    <br><div class="alert alert-success col-md-12" role="alert"><b>Well Done!</b> You have successfully removed <b>{{removed_class}}</b>. </div>
     {% endif %}
     <!-- List the matche courses below -->
     {% if matched_courses %}
