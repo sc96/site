@@ -64,7 +64,7 @@
                 <a href= "#" class="list-group-item active">Freshman Fall</a>
              {% for x in fresh_fall %}
                <form class= "form-inline" action= "" method= "post">{% csrf_token %}
-                <a href="#" class="list-group-item" onchange="this.form.submit()">{{ x.course }} {{x.course.title}}<i class="glyphicon glyphicon-minus"></i></a>
+                <a href="#" class="list-group-item" onClick="this.form.submit()">{{ x.course }} {{x.course.title}}<i class="glyphicon glyphicon-minus"></i></a>
                 <input type="hidden" name="remove" value={{x.listings}}>
               </form>
              {% endfor %}
