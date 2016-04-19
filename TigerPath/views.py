@@ -50,7 +50,7 @@ def profile(request):
 	s.save()
 	firstN = student.first_name
 
-	context = {'user': current_user.username, 'firstName': firstN}
+	context = {'user': current_user.username, 'firstName': firstN, 'studentO': student}
 	return render(request, 'profile.html', context)
 
 @login_required # Cas authentication for this url.
