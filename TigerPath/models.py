@@ -64,7 +64,7 @@ class Student(models.Model):
 	def __str__(self):
 		return self.student_id
 
-	def add_course(course, student, sem):
+	def add_course(self, course, student, sem):
 		# put student ID and course ID into student-course DB
 		s = student
 		c = course
