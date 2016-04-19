@@ -257,7 +257,7 @@ function remove_SRS() {
               <div class="btn-group">
               <form class= "form-inline" action= "" method= "post">{% csrf_token %}
                   <li class="list-group-item">{{x.listings}} {{x.title}} {{x.area}}
-                    <select class="form-control" name="semester">
+                    <select class="form-control pull-right" name="semester">
                         <option>Freshman Fall</option>
                         <option>Freshman Spring</option>
                         <option>Sophomore Fall</option>
@@ -268,7 +268,7 @@ function remove_SRS() {
                         <option>Senior Spring</option>
                       </select>
                       <input type="hidden" name="listing" value={{x.listings}}>
-                      <input type="submit" class="btn btn-info" value="Add Class">
+                      <input type="submit" class="btn btn-info pull-right" value="Add Class">
                   </li>
               </form>
             </div>
