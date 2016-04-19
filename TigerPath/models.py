@@ -73,6 +73,7 @@ class Student(models.Model):
 
 # Relevant when they are "adding" a course to their four year plan
 class Entry(models.Model):
+	#id = models.AutoField(primary_key = True) # we need to update the db first
 	student = models.ForeignKey(Student, on_delete=models.CASCADE)
 	course = models.ForeignKey(Course, on_delete=models.CASCADE)
 	semester = models.CharField(max_length=30, primary_key = True)
