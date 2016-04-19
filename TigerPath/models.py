@@ -76,7 +76,7 @@ class Entry(models.Model):
 	#id = models.AutoField(primary_key = True) # we need to update the db first
 	student = models.ForeignKey(Student, on_delete=models.CASCADE)
 	course = models.ForeignKey(Course, on_delete=models.CASCADE)
-	semester = models.CharField(max_length=30, primary_key = True)
+	semester = models.CharField(max_length=30)#, primary_key = True)
 	#requirement_list = models.CharField(max_length=30) # we need to know which requirement list its in
 
 #for classes that were approved for major or certificate
