@@ -237,11 +237,11 @@ def four_year(request,search):
 	#Check if student is adding or removing a class
 	if request.method == 'POST':
 		if 'remove' in request.POST:
-			removed_class = request.POST['remove']
+			removed_class = request.POST.get('remove')
 			sem = request.POST['term']
 			#sem = time[semester]
 			student.remove_course(removed_class, student, sem)
-			removed_class = "Deleted a Course"
+			
 
 		else:
 			added_class = request.POST['listing']
