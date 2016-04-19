@@ -46,6 +46,7 @@ def profile(request):
    		s = Student(student_id=current_user)
    		s.save()
 	student = Student.objects.get(student_id=current_user.username)
+	student.first_name = "test"
 	firstN = student.first_name
 
 	context = {'user': current_user.username, 'firstName': firstN}
