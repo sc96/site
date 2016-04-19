@@ -148,9 +148,10 @@
                 </form>
             </div>
     </div>
+    {% if test_course %}
 
-    <div> Posted Course: {{test_course}} {{test_course.title}}</div>
-    <div> Posted SEmester: {{sem}}</div>
+    <div> You have added {{test_course}} {{test_course.title}} to {{sem}}</div>
+    {% endif %}
     <!-- List the matche courses below -->
     {% if matched_courses %}
         <div class="row">
