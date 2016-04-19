@@ -223,7 +223,6 @@ def four_year(request,search):
 	if request.method == 'POST':
 		added_class = request.POST
 		test_course = added_class
-		
 
 
 
