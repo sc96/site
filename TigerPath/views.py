@@ -238,7 +238,7 @@ def four_year(request,search):
 		semester = request.POST['semester']
 		semester = time[semester]
 
-		add_course(added_class, current_user.username, semester)
+		Student.add_course(added_class, current_user.username, semester)
 		#add_class(student, added_class, semester)
 
 
