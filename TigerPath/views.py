@@ -264,3 +264,12 @@ def outside_course_approval(request):
 def schedule_sharing(request):
 	current_user = request.user
 	student = Student.objects.get(student_id=current_user.username)
+
+@login_required # Cas authentication for this url.
+def certificates(request):
+	current_user = request.user
+	student = Student.objects.get(student_id=current_user.username)
+
+def about(request):
+	current_user = request.user
+	student = Student.objects.get(student_id=current_user.username)
