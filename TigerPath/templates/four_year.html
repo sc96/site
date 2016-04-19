@@ -182,7 +182,7 @@ for (x in "{{fresh_fall|safe}}") {
             {% for x in matched_courses %}
             <div class="list-group">
               <div class="btn-group">
-              <form class= "form-inline" action= "" method= "post">
+              <form class= "form-inline" action= "" method= "post">{% csrf_token %}
                   <li class="list-group-item">{{x.listings}} {{x.title}} {{x.area}}
                     <select class="form-control" id="sel1">
                         <option>Freshman Fall</option>
