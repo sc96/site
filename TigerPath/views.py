@@ -181,7 +181,7 @@ def degree_progress(request):
 		'student_em': student_em, 'student_foreign': student_foreign, 'student_wri': student_wri, 'outside_courses': student_outside,
 		'math_1': math_1, 'math_2': math_2, 'math_3': math_3, 'math_4': math_4, 'physics_1': physics_1, 'physics_2': physics_2,
 		'chem_1': chem_1, 'cos_1': cos_1}
-		return render(request, 'TigerPath/degree_progress_cos_bse.html', context)
+		return render(request, 'degree_progress_cos_bse.html', context)
 	# COS AB Major	
 	#elif (student_major=="COS_AB"): 
 
@@ -304,7 +304,7 @@ def four_year(request,search):
 	context = {'user': current_user.username,'fresh_fall': all_frf, 'fresh_spring': all_frf, 
 	'soph_fall': all_sof, 'soph_spring': all_sos, 'junior_fall': all_jrf, 'junior_spring': all_jrs,
 	'senior_fall': all_srf, 'senior_spring': all_srs, 'student_outside': student_outside}
-	return render(request, 'TigerPath/four_year.html', context)
+	return render(request, 'four_year.html', context)
 
 
 @login_required # Cas authentication for this url.
@@ -393,7 +393,7 @@ def aas(request):
 
 	context = {'intro_on': intro_on, 'intro_off': intro_off, 'survey_on': survey_on, 'survey_off': survey_off,
 	'other_on': other_on, 'other_off': other_off}
-	return render(request, 'TigerPath/aas.html', context)
+	return render(request, 'aas.html', context)
 
 @login_required # Cas authentication for this url.
 # African Studies
@@ -429,7 +429,7 @@ def afs(request):
 	context = {'foundation_on': foundation_on, 'foundation_off': foundation_off, 'culture_on': culture_on, 'culture_off': culture_off,
 	'history_on': history_on, 'history_off': history_off, 'science_on': science_on, 'science_off': science_off, 'politics_on': politics_on, 'politics_off': politics_off,
 	'elective_on': elective_on, 'elective_off': elective_off}
-	return render(request, 'TigerPath/afs.html', context)
+	return render(request, 'afs.html', context)
 
 @login_required # Cas authentication for this url.
 # American Studies
@@ -453,5 +453,5 @@ def ams(request):
 
 	context = {'core_on': core_on, 'core_off': core_off, 'ams_on': ams_on, 'ams_off': ams_off,
 	'elective_on': elective_on, 'elective_off': elective_off}
-	return render(request, 'TigerPath/ams.html', context)
+	return render(request, 'ams.html', context)
 
