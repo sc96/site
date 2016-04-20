@@ -21,12 +21,8 @@
 <!--Colors used: dark orange: #FF8F00; light orange for hover: #FFB352-->
 <script>
 function remove_FRF(object) {
-   if (confirm('Are you sure you want to remove ' + object + ' from your course list?')) {
-     var x = document.getElementById(String(object));
-      x.submit();
-    } else {
-       return;
-    }   
+  $('[data-toggle="confirmation"]').confirmation(title='Are you sure you want to remove this class?')
+ 
 }
 function remove_FRS(object) {
      if (confirm('Are you sure you want to remove ' + object + ' from your course list?')) {
