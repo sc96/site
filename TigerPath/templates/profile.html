@@ -90,8 +90,13 @@ not true then it creates a form (identical) but AB is selected -->
 <div class="form-group">
   <label for="sel1">Select Degree Type:</label>
   <select class="form-control" id="sel1", style="WIDTH: 500px">
+    {% if engineerBool %}
     <option selected>BSE</option>
     <option>AB </option>
+    {% else %}
+    <option>BSE</option>
+    <option selected>AB </option>
+    {% endif %}
   </select>
 </div>
 </div>
