@@ -13,6 +13,7 @@
   <script  src="/../../static/js/JSXTransformer.js"></script>
   <script  src="/../../static/js/bootstrap.js"></script>
   <script  src="/../../static/js/bootstrap-hover-dropdown.js"></script>
+  <script type="text/javascript" src="/../../static/js/bootstrap-confirmation.js"></script>
    
 </head>
 <body style="padding-top: 70px; padding-bottom: 70px;">
@@ -76,7 +77,7 @@ function remove_SRF(object) {
     }   
 }
 function remove_SRS(object) {
-    if (confirm('Are you sure you want to remove ' + object + ' from your course list?')) {
+    if (confrim('Are you sure you want to remove ' + object + ' from your course list?')) {
      var x = document.getElementById(String(object));
       x.submit();
     } else {
@@ -126,7 +127,7 @@ function remove_SRS(object) {
 </nav>
 <div class="jumbotron text-center">
   <div class='container' id='box'>
-  <h1 style='color:white'>Your Plan</h1>
+  <h1 style='color:white' background-image="/../../static/pics/bgtest.jpg">Your Plan</h1>
   </div>
 </div>
 <div class="container">
