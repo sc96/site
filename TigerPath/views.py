@@ -58,7 +58,7 @@ def profile(request):
 	engineerBool = student.engineerBool
 	publicBool = student.publicBool
 
-	context = {'user': current_user.username, 'firstName': firstN, 'lastN': lastN,
+	context = {'user': current_user.username, 'firstN': firstN, 'lastN': lastN,
 	 'engineerBool': engineerBool, 'publicBool': publicBool}
 	return render(request, 'profile.html', context)
 

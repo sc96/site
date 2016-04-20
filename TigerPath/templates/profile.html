@@ -16,6 +16,16 @@
 </head>
 <body style="padding-top: 70px; padding-bottom: 70px;">
 
+<!-- These are the rendered string varibles given by context for this page. 
+It'll be useful if we have these comments for each .html files??
+user
+firtN
+lastN
+engineerBool
+publicBool 
+-->
+
+
 <script>
 console.log("{{user}}");
 
@@ -91,6 +101,35 @@ not true then it creates a form (identical) but AB is selected -->
 </div>
 </div>
 
+{% endif %}
+
+<!-- This is equally janky. Same approach but for public or not form -->
+
+{% if !publicBool %}
+
+<div class="container">
+<div class="form-group">
+  <label for="sel1">Do you want your scheudule to be public?:</label>
+  <select class="form-control" id="sel1" value = "AB">
+    <option>Test</option>
+    <option>Public</option>
+    <option selected> Private </option>
+  </select>
+</div>
+</div>
+
+{% else %}
+
+<div class="container">
+<div class="form-group">
+  <label for="sel1">Do you want your scheudule to be public?:</label>
+  <select class="form-control" id="sel1" value = "AB">
+    <option>Test</option>
+    <option selected>Public</option>
+    <option>Private </option>
+  </select>
+</div>
+</div>
 {% endif %}
 
 
