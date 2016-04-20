@@ -57,8 +57,10 @@ def profile(request):
 	firstN = student.first_name
 	lastN = student.last_name
 	engineerBool = student.engineerBool
-#	publicBool = student.publicBool
-	publicBool = True
+	publicBool = student.publicBool
+
+#   test
+#	publicBool = True
 
 	context = {'user': current_user.username, 'firstN': firstN, 'lastN': lastN,
 	 'engineerBool': engineerBool, 'publicBool': publicBool}
