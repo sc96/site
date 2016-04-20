@@ -58,23 +58,7 @@ function remove_SRS(object) {
 
 </script>
 
-<script>
-    $('a').on('click', function(e) {
-        // prevent default anchor click behavior
-        e.preventDefault();
 
-        // store hash
-        var hash = this.hash;
-
-        if ($(hash).length) {
-            $('html, body').animate({
-                scrollTop: $(hash).offset().top
-            }, 300, function() {
-                // Do something fun if you want!
-            });
-        }
-    });
-</script>
 
 
     
@@ -108,7 +92,7 @@ function remove_SRS(object) {
   <div class="container"> 
   <div style="text-align:center"><br>
     TigerPath | COS 333 Project made by: Natalie Wertz, Sam Cheng, William Hinthorn, Viveque Ramji, Bennett Victor
-    </div>
+    </div>h
   </div>
 </nav>
 <div class="jumbotron text-center">
@@ -117,7 +101,6 @@ function remove_SRS(object) {
   </div>
 </div>
 <div class="container">
-    <a href="#here">Click here to add courses</a>
     <div class="row">
 
      <div class="row">
@@ -253,7 +236,7 @@ function remove_SRS(object) {
     </div>
  </div>
 <br>
- <div id="here" class="row">
+ <div class="row">
     <h5>Add a class to a semester</h5>
             <span id="custom-search">
                 <form class = "form-inline" action = "" method = "get" >
