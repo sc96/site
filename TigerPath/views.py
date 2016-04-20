@@ -50,22 +50,28 @@ def profile(request):
    		s = Student(engineerBool = True)
    		s = Student(publicBool = True)
    		s.save()
+
 	student = Student.objects.get(student_id=current_user.username)
 
+	if request.method == 'POST':
+		firstN = request.POST['firstN']
+		lastN = request.POST['lastN']
+		engineerBool = request.POST['engineerBool']
+		publicBool = request.POST['publicBool']
+		student.update_info(student, firstN, lastN, engineerBool, publicBool)
+			
 
 	# getting strings for context variable
 	firstN = student.first_name
 	lastN = student.last_name
 	engineerBool = student.engineerBool
 	publicBool = student.publicBool
-
-
-
 	context = {'user': current_user.username, 'firstN': firstN, 'lastN': lastN,
 	 'engineerBool': engineerBool, 'publicBool': publicBool}
 	return render(request, 'profile.html', context)
 
 
+# probs don't need this?
 def update_info(student, firstN, lastN, enginerBool, publicBool):
 	student.first_name = firstN
 	student.last_name = lastN
