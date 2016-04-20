@@ -62,15 +62,33 @@ console.log("{{user}}");
 </div>
 </div>
 
+{% if engineerBool %}
+
 <div class="container">
 <div class="form-group">
   <label for="sel1">Select Degree Type:</label>
   <select class="form-control" id="sel1" value = "AB">
-    <option>BSE</option>
-    <option>AB</option>
+    <option>Test</option>
+    <option selected>BSE</option>
+    <option>AB </option>
   </select>
 </div>
 </div>
+
+{% else %}
+
+<div class="container">
+<div class="form-group">
+  <label for="sel1">Select Degree Type:</label>
+  <select class="form-control" id="sel1" value = "AB">
+    <option>Test</option>
+    <option>BSE</option>
+    <option selected>AB </option>
+  </select>
+</div>
+</div>
+
+
 
 
 <nav class="navbar navbar-default navbar-fixed-bottom">
