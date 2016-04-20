@@ -63,6 +63,12 @@ console.log("{{user}}");
 
 
 <div class="container">
+  
+  <div class="page-header" style="color:#ff8f00">
+  <h1>Your Profile Settings</h1>
+</div>
+
+  
 <div class="form-group">
   <label for="usr">First Name:</label>
   <input type="text" class="form-control" id="firstname" maxlength = 30, 
@@ -105,6 +111,15 @@ not true then it creates a form (identical) but AB is selected -->
 {% endif %}
 
 <!-- This is equally janky. Same approach but for public or not form -->
+
+<div class="container">
+<div class="form-group">
+  <label for="sel1">Select Major:</label>
+  <select class="form-control" id="sel1", style="WIDTH: 500px">
+    <option>Computer Science</option>
+  </select>
+</div>
+</div>
 
 {% if publicBool %}
 
