@@ -344,6 +344,12 @@ def four_year(request,search):
 def princeton_course_approval(request):
 	current_user = request.user
 	student = Student.objects.get(student_id=current_user.username)
+	if request.method == 'POST':
+		added_class = request.POST['listing']
+		added_class = Course.objects.get(listings=added_class)
+		semester = request.POST['semester']
+		sem = time[semester]
+		student.add_course(added_class, student, sem)
 	context = {}
 	return render(request, 'ptonapproval.html', context)
 
