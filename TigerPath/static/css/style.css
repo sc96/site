@@ -1,18 +1,4 @@
-body { 
-padding-top: 70px;
-padding-bottom: 70px; 
-}
-
-
-.footer {
-  text-align:center
-}
-
-.jumbotron {
-   align:center
-}
-
-.jumbotron.img {
-  background-image: "/../pics/bgtest.jpg";
- 
+.link:hover {
+  width:120%;
+  cursor: pointer;
 }
