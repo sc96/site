@@ -12,11 +12,7 @@ padding-bottom: 70px;
    align:center
 }
 
-.jumbotron-img {
-  padding-top: 30px;
+.jumbotron.img {
   background-image: "/../pics/bgtest.jpg";
-  padding-bottom: 30px;
-  margin-bottom: 30px;
-  color: inherit;
-  background-color: #eee;
+ 
 }
