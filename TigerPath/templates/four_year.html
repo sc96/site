@@ -20,11 +20,15 @@
 <!--Colors used: dark orange: #FF8F00; light orange for hover: #FFB352-->
 <script>
 function remove_FRF(object) {
-    var x = document.getElementById(String(object));
-    console.log(object);
-    console.log(String(object));
-    console.log(x);
-    x.submit();
+   if (confirm('Are you sure you want to remove' + object + ' from your course list?')) {
+     var x = document.getElementById(String(object));
+      console.log(object);
+      console.log(String(object));
+      console.log(x);
+      x.submit();
+    } else {
+       return;
+    }   
 }
 function remove_FRS(object) {
     var x = document.getElementById(String(object));
