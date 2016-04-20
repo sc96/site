@@ -56,7 +56,7 @@ def profile(request):
 	# getting strings for context variable
 	firstN = student.first_name
 	lastN = student.last_name
-	engineerBool = False;
+	engineerBool = student.engineerBool
 	publicBool = student.publicBool
 
 #   test

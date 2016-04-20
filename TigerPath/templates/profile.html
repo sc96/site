@@ -68,21 +68,26 @@ console.log("{{user}}");
   <h1>Your Profile Settings</h1>
 </div>
 
-  
+<div class="container">
 <div class="form-group">
   <label for="usr">First Name:</label>
   <input type="text" class="form-control" id="firstname" maxlength = 30, 
   style="WIDTH: 500px", value = "{{ firstName }}">
+  <label for="text">tt:</label>
+  <input type="text" class="form-control" id="lastname" maxlength = 30, 
+  style="WIDTH: 500px", value = "{{ lastName }}">
 </div>
+</div>
+
+
+<!--
 <div class="form-group">
   <label for="text">Last Name:</label>
   <input type="text" class="form-control" id="lastname" maxlength = 30, 
   style="WIDTH: 500px", value = "{{ lastName }}">
 </div>
 </div>
-
-<!-- This is Janky af b/c it's repetitive but idk how else to do it. It checks the engineerBool variable and if its 'true' it creates a form with BSE selected, if it's
-not true then it creates a form (identical) but AB is selected -->
+-->
 
 
 
@@ -102,55 +107,31 @@ not true then it creates a form (identical) but AB is selected -->
 </div>
 
 
-<!--
-
-<div class="container">
-<div class="form-group">
-  <label for="sel1">Select Degree Type:</label>
-  <select class="form-control" id="sel1", style="WIDTH: 500px">
-    <option>BSE</option>
-    <option selected>AB </option>
-  </select>
-</div>
-</div>
-
--->
-
-<!-- This is equally janky. Same approach but for public or not form -->
-
+<!-- Do we need this? We're only doing COS majors -->
 <div class="container">
 <div class="form-group">
   <label for="sel1">Select Major:</label>
   <select class="form-control" id="sel1", style="WIDTH: 500px">
-    <option>Computer Science</option>
+    <option selected>Computer Science</option>
   </select>
 </div>
 </div>
 
-{% if publicBool %}
 
 <div class="container">
 <div class="form-group">
   <label for="sel1">Do you want your scheudule to be public?</label>
   <select class="form-control" id="sel1", style="WIDTH: 500px">
+    {% if publicBool %}
     <option selected>Public</option>
     <option> Private </option>
-  </select>
-</div>
-</div>
-
-{% else %}
-
-<div class="container">
-<div class="form-group">
-  <label for="sel1">Do you want your scheudule to be public?</label>
-  <select class="form-control" id="sel1", style="WIDTH: 500px">
+    {% else %}
     <option>Public</option>
     <option selected>Private </option>
+    {% endif %}
   </select>
 </div>
 </div>
-{% endif %}
 
 
 
