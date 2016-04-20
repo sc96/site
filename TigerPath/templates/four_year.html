@@ -142,7 +142,7 @@ function remove_SRS(object) {
                <span>
                <form class= "form-inline" id = "{{x.course.listings}}" action= "" method= "post">{% csrf_token %}
                 <a class="list-group-item" name ="{{x.course.listings}}" onclick="remove_FRF(this.name)">{{ x.course }} {{x.course.title}}
-                    <i class="glyphicon glyphicon-minus pull-right link" style="color:#f00"></i></a>
+                    <i class="glyphicon glyphicon-minus pull-right link"></i></a>
                 <input type="hidden" name="term" value ="FRF">
                 <input type="hidden" name="remove" value={{x.course.listings}}>
               </form>
@@ -157,7 +157,7 @@ function remove_SRS(object) {
                 <span>
                 <form class= "form-inline" id = "{{x.course.listings}}" action= "" method= "post">{% csrf_token %}
                 <a class="list-group-item" name ="{{x.course.listings}}" onclick="remove_FRS(this.name)">{{ x.course }} {{x.course.title}}
-                    <i class="glyphicon glyphicon-minus pull-right" style="color:#f00"></i></a>
+                    <i class="glyphicon glyphicon-minus pull-right link"></i></a>
                 <input type="hidden" name="term" value ="FRS">
                 <input type="hidden" name="remove" value={{x.course.listings}}>
               </form>
@@ -175,7 +175,7 @@ function remove_SRS(object) {
                 <span>
                 <form class= "form-inline" id = "{{x.course.listings}}"  action= "" method= "post">{% csrf_token %}
                 <a class="list-group-item" name = "{{x.course.listings}}" onclick="remove_SOF(this.name)">{{ x.course }} {{x.course.title}}
-                <i class="glyphicon glyphicon-minus pull-right" style="color:#f00"></i></a>
+                <i class="glyphicon glyphicon-minus pull-right link"></i></a>
                 <input type="hidden" name="term" value ="SOF">
                 <input type="hidden" name="remove" value={{x.course.listings}}>
               </form>
@@ -190,7 +190,7 @@ function remove_SRS(object) {
                 <span>
                  <form class= "form-inline" id = "{{x.course.listings}}"  action= "" method= "post">{% csrf_token %}
                 <a class="list-group-item" name="{{x.course.listings}}" onclick="remove_SOS(this.name)">{{ x.course }} {{x.course.title}}
-                <i class="glyphicon glyphicon-minus pull-right" style="color:#f00"></i></a>
+                <i class="glyphicon glyphicon-minus pull-right link"></i></a>
                 <input type="hidden" name="term" value ="SOS">
                 <input type="hidden" name="remove" value={{x.course.listings}}>
               </form>
@@ -208,7 +208,7 @@ function remove_SRS(object) {
              <span>
                 <form class= "form-inline" id = "{{x.course.listings}}" action= "" method= "post">{% csrf_token %}
                 <a class="list-group-item" name = "{{x.course.listings}}" onclick="remove_JRF(this.name)">{{ x.course }} {{x.course.title}}
-                <i class="glyphicon glyphicon-minus pull-right" style="color:#f00"></i></a>
+                <i class="glyphicon glyphicon-minus pull-right link"></i></a>
                 <input type="hidden" name="term" value ="JRF">
                 <input type="hidden" name="remove" value={{x.course.listings}}>
               </form>
@@ -223,7 +223,7 @@ function remove_SRS(object) {
                  <span>
                     <form class= "form-inline" id = "{{x.course.listings}}" action= "" method= "post">{% csrf_token %}
                 <a class="list-group-item" name="{{x.course.listings}}" onclick="remove_JRS(this.name)">{{ x.course }} {{x.course.title}}
-                <i class="glyphicon glyphicon-minus pull-right" style="color:#f00"></i></a>
+                <i class="glyphicon glyphicon-minus pull-right link"></i></a>
                 <input type="hidden" name="term" value ="JRS">
                 <input type="hidden" name="remove" value={{x.course.listings}}>
               </form>
@@ -241,7 +241,7 @@ function remove_SRS(object) {
                   <span>
                     <form class= "form-inline" id = "{{x.course.listings}}" action= "" method= "post">{% csrf_token %}
                 <a class="list-group-item" name="{{x.course.listings}}" onclick="remove_SRF(this.name)">{{ x.course }} {{x.course.title}}
-                <i class="glyphicon glyphicon-minus pull-right" style="color:#f00"></i></a>
+                <i class="glyphicon glyphicon-minus pull-right link"></i></a>
                 <input type="hidden" name="term" value ="SRF">
                 <input type="hidden" name="remove" value={{x.course.listings}}>
               </form>
@@ -256,7 +256,7 @@ function remove_SRS(object) {
                 <span>
                 <form class= "form-inline"id = "{{x.course.listings}}" action= "" method= "post">{% csrf_token %}
                 <a class="list-group-item" name="{{x.course.listings}}" onclick="remove_SRS(this.name)">{{ x.course }} {{x.course.title}}
-                <i class="glyphicon glyphicon-minus pull-right" style="color:#f00"></i></a>
+                <i class="glyphicon glyphicon-minus pull-right link"></i></a>
                 <input type="hidden" name="term" value ="SRS">
                 <input type="hidden" name="remove" value={{x.course.listings}}>
               </form>
