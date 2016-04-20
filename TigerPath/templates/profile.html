@@ -61,10 +61,12 @@ console.log("{{user}}");
   </div>
 </nav>
 
+
 <div class="container">
 <div class="form-group">
   <label for="usr">First Name:</label>
-  <input type="text" class="form-control" id="firstname" value = "{{ firstName }}">
+  <input type="text" class="form-control" id="firstname" maxlength = 30,
+  value = "{{ firstName }}">
 </div>
 <div class="form-group">
   <label for="text">Last Name:</label>
@@ -107,7 +109,7 @@ not true then it creates a form (identical) but AB is selected -->
 
 <div class="container">
 <div class="form-group">
-  <label for="sel1">Do you want your scheudule to be public?:</label>
+  <label for="sel1">Do you want your scheudule to be public?</label>
   <select class="form-control" id="sel1">
     <option selected>Public</option>
     <option> Private </option>
@@ -119,7 +121,7 @@ not true then it creates a form (identical) but AB is selected -->
 
 <div class="container">
 <div class="form-group">
-  <label for="sel1">Do you want your scheudule to be public?:</label>
+  <label for="sel1">Do you want your scheudule to be public?</label>
   <select class="form-control" id="sel1">
     <option>Public</option>
     <option selected>Private </option>
