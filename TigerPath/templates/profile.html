@@ -68,28 +68,45 @@ console.log("{{user}}");
   <h1>Your Profile Settings</h1>
 </div>
 
+<!-- Form with all sthe questions -->
+
 <div class="container">
 <div class="form-group">
   <label for="usr">First Name:</label>
   <input type="text" class="form-control" id="firstname" maxlength = 30, 
   style="WIDTH: 500px", value = "{{ firstName }}">
-  <label for="text">tt:</label>
+  <label for="text">Last Name:</label>
   <input type="text" class="form-control" id="lastname" maxlength = 30, 
   style="WIDTH: 500px", value = "{{ lastName }}">
+  <label for="sel1">Select Degree Type:</label>
+  <select class="form-control" id="sel1", style="WIDTH: 500px">
+    {% if engineerBool %}
+    <option selected>BSE</option>
+    <option>AB </option>
+    {% else %}
+    <option>BSE</option>
+    <option selected>AB </option>
+    {% endif %}
+  </select>
+  <label for="sel1">Select Major:</label>
+  <select class="form-control" id="sel1", style="WIDTH: 500px">
+    <option selected>Computer Science</option>
+  </select>
+  <label for="sel1">Do you want your scheudule to be public?</label>
+  <select class="form-control" id="sel1", style="WIDTH: 500px">
+    {% if publicBool %}
+    <option selected>Public</option>
+    <option> Private </option>
+    {% else %}
+    <option>Public</option>
+    <option selected>Private </option>
+    {% endif %}
+  </select>
 </div>
 </div>
 
 
 <!--
-<div class="form-group">
-  <label for="text">Last Name:</label>
-  <input type="text" class="form-control" id="lastname" maxlength = 30, 
-  style="WIDTH: 500px", value = "{{ lastName }}">
-</div>
-</div>
--->
-
-
 
 <div class="container">
 <div class="form-group">
@@ -105,9 +122,11 @@ console.log("{{user}}");
   </select>
 </div>
 </div>
+-->
 
+<!--
 
-<!-- Do we need this? We're only doing COS majors -->
+<!-- 
 <div class="container">
 <div class="form-group">
   <label for="sel1">Select Major:</label>
@@ -116,8 +135,9 @@ console.log("{{user}}");
   </select>
 </div>
 </div>
+ -->
 
-
+<!--
 <div class="container">
 <div class="form-group">
   <label for="sel1">Do you want your scheudule to be public?</label>
@@ -132,7 +152,7 @@ console.log("{{user}}");
   </select>
 </div>
 </div>
-
+-->
 
 
 <nav class="navbar navbar-default navbar-fixed-bottom">
