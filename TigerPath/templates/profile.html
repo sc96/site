@@ -80,8 +80,7 @@ not true then it creates a form (identical) but AB is selected -->
 <div class="container">
 <div class="form-group">
   <label for="sel1">Select Degree Type:</label>
-  <select class="form-control" id="sel1" value = "AB">
-    <option>Test</option>
+  <select class="form-control" id="sel1">
     <option selected>BSE</option>
     <option>AB </option>
   </select>
@@ -93,8 +92,7 @@ not true then it creates a form (identical) but AB is selected -->
 <div class="container">
 <div class="form-group">
   <label for="sel1">Select Degree Type:</label>
-  <select class="form-control" id="sel1" value = "AB">
-    <option>Test</option>
+  <select class="form-control" id="sel1">
     <option>BSE</option>
     <option selected>AB </option>
   </select>
@@ -105,15 +103,14 @@ not true then it creates a form (identical) but AB is selected -->
 
 <!-- This is equally janky. Same approach but for public or not form -->
 
-{% if not publicBool %}
+{% if publicBool %}
 
 <div class="container">
 <div class="form-group">
   <label for="sel1">Do you want your scheudule to be public?:</label>
-  <select class="form-control" id="sel1" value = "AB">
-    <option>Test</option>
-    <option>Public</option>
-    <option selected> Private </option>
+  <select class="form-control" id="sel1">
+    <option selected>Public</option>
+    <option> Private </option>
   </select>
 </div>
 </div>
@@ -123,10 +120,9 @@ not true then it creates a form (identical) but AB is selected -->
 <div class="container">
 <div class="form-group">
   <label for="sel1">Do you want your scheudule to be public?:</label>
-  <select class="form-control" id="sel1" value = "AB">
-    <option>Test</option>
-    <option selected>Public</option>
-    <option>Private </option>
+  <select class="form-control" id="sel1">
+    <option>Public</option>
+    <option selected>Private </option>
   </select>
 </div>
 </div>
