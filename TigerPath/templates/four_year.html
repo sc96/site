@@ -54,7 +54,24 @@ function remove_SRS(object) {
     var x = document.getElementById(String(object));
     x.submit();
 }
+
+    $('a').on('click', function(e) {
+        // prevent default anchor click behavior
+        e.preventDefault();
+
+        // store hash
+        var hash = this.hash;
+
+        if ($(hash).length) {
+            $('html, body').animate({
+                scrollTop: $(hash).offset().top
+            }, 300, function() {
+                // Do something fun if you want!
+            });
+        }
+    });
 </script>
+
 
     
 <nav class="navbar navbar-inverse navbar-fixed-top">
