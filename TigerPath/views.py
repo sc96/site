@@ -102,87 +102,87 @@ def degree_progress(request):
 	# all of the requirement lists
 	# can probably combine a lot of things here into one function - maybe i want the approved courses in their own list? idk
 	# COS BSE Major
-	if (student_major=="COS_BSE"):
+	# if (student_major=="COS_BSE"):
 		# BSE requirements - all
-		math_1 = Course.objects.filter(listings__regex=r'MAT103')
-		math_2 = Course.objects.filter(listings__regex=r'MAT104')
-		math_3 = Course.objects.filter(listings__regex=r'(MAT201|MAT203|MAT218|EGR192)')
-		math_4 = Course.objects.filter(listings__regex=r'(MAT202|MAT204|MAT217)')
-		physics_1 = Course.objects.filter(listings__regex=r'(PHY103|PHY105|EGR191)')
-		physics_2 = Course.objects.filter(listings__regex=r'(PHY104|PHY106)')
-		chem_1 = Course.objects.filter(listings__regex=r'(CHM201|CHM207)')
-		cos_1 = Course.objects.filter(listings__regex=r'COS126')
+	math_1 = Course.objects.filter(listings__regex=r'MAT103')
+	math_2 = Course.objects.filter(listings__regex=r'MAT104')
+	math_3 = Course.objects.filter(listings__regex=r'(MAT201|MAT203|MAT218|EGR192)')
+	math_4 = Course.objects.filter(listings__regex=r'(MAT202|MAT204|MAT217)')
+	physics_1 = Course.objects.filter(listings__regex=r'(PHY103|PHY105|EGR191)')
+	physics_2 = Course.objects.filter(listings__regex=r'(PHY104|PHY106)')
+	chem_1 = Course.objects.filter(listings__regex=r'(CHM201|CHM207)')
+	cos_1 = Course.objects.filter(listings__regex=r'COS126')
 
 		# now I need to parse out which one they've taken it - math ON/math OFF
 
 
 		# can probably shorten this a little bit later...
-		theory_courses = COS_BSE.objects.filter(theory=1).values_list('course_id', flat=True).order_by('course_id')
-		systems_courses = COS_BSE.objects.filter(systems=1).values_list('course_id', flat=True).order_by('course_id')
-		apps_courses = COS_BSE.objects.filter(applications=1).values_list('course_id', flat=True).order_by('course_id')
-		core_courses = COS_BSE.objects.filter(core=1).values_list('course_id', flat=True).order_by('course_id')
-		other_courses = COS_BSE.objects.filter(other=1).values_list('course_id', flat=True).order_by('course_id')
-		iw_courses = COS_BSE.objects.filter(iw=1).values_list('course_id', flat=True).order_by('course_id')
+	theory_courses = COS_BSE.objects.filter(theory=1).values_list('course_id', flat=True).order_by('course_id')
+	systems_courses = COS_BSE.objects.filter(systems=1).values_list('course_id', flat=True).order_by('course_id')
+	apps_courses = COS_BSE.objects.filter(applications=1).values_list('course_id', flat=True).order_by('course_id')
+	core_courses = COS_BSE.objects.filter(core=1).values_list('course_id', flat=True).order_by('course_id')
+	other_courses = COS_BSE.objects.filter(other=1).values_list('course_id', flat=True).order_by('course_id')
+	iw_courses = COS_BSE.objects.filter(iw=1).values_list('course_id', flat=True).order_by('course_id')
 		
-		theory_on = compare_lists(all_courses, theory_courses)["similarities"]
-		other_theory = Approved_Course.objects.filter(student_id=current_user.username, requirement="Theory")
-		for t in other_theory:
-			theory_on.append(t.course_id)
-		theory_on = title(theory_on)
-		theory_off = title(compare_lists(all_courses, theory_courses)["differences"])
+	theory_on = compare_lists(all_courses, theory_courses)["similarities"]
+	other_theory = Approved_Course.objects.filter(student_id=current_user.username, requirement="Theory")
+	for t in other_theory:
+		theory_on.append(t.course_id)
+	theory_on = title(theory_on)
+	theory_off = title(compare_lists(all_courses, theory_courses)["differences"])
 		
-		systems_on = compare_lists(all_courses, systems_courses)["similarities"]
-		other_sys = Approved_Course.objects.filter(student_id=current_user.username, requirement="Systems")
-		for t in other_sys:
-			systems_on.append(t.course_id)
-		systems_on = title(systems_on)
-		systems_off = title(compare_lists(all_courses, systems_courses)["differences"])
+	systems_on = compare_lists(all_courses, systems_courses)["similarities"]
+	other_sys = Approved_Course.objects.filter(student_id=current_user.username, requirement="Systems")
+	for t in other_sys:
+		systems_on.append(t.course_id)
+	systems_on = title(systems_on)
+	systems_off = title(compare_lists(all_courses, systems_courses)["differences"])
 
-		apps_on = compare_lists(all_courses, apps_courses)["similarities"]
-		other_apps = Approved_Course.objects.filter(student_id=current_user.username, requirement="Applications")
-		for t in other_apps:
-			apps_on.append(t.course_id)
-		apps_on = title(apps_on)
-		apps_off = title(compare_lists(all_courses, apps_courses)["differences"])
+	apps_on = compare_lists(all_courses, apps_courses)["similarities"]
+	other_apps = Approved_Course.objects.filter(student_id=current_user.username, requirement="Applications")
+	for t in other_apps:
+		apps_on.append(t.course_id)
+	apps_on = title(apps_on)
+	apps_off = title(compare_lists(all_courses, apps_courses)["differences"])
 
 		# other should have all classes in "other" that the user hasn't already taken
 		# will fix this bug a little later... 4/9/2016
-		other_on = compare_lists(all_courses, other_courses)["similarities"]
-		other_other = Approved_Course.objects.filter(student_id=current_user.username, requirement="Other")
-		for t in other_other:
-			other_on.append(t.course_id)
-		other_on = title(other_on)
-		other_off = title(compare_lists(all_courses, other_courses)["differences"])
+	other_on = compare_lists(all_courses, other_courses)["similarities"]
+	other_other = Approved_Course.objects.filter(student_id=current_user.username, requirement="Other")
+	for t in other_other:
+		other_on.append(t.course_id)
+	other_on = title(other_on)
+	other_off = title(compare_lists(all_courses, other_courses)["differences"])
 
-		iw_on = compare_lists(all_courses, iw_courses)["similarities"] #iw is for BSE only
-		other_iw = Approved_Course.objects.filter(student_id=current_user.username, requirement="Independent")
-		for t in other_iw:
-			iw_on.append(t.course_id)
-		iw_on = title(iw_on)
-		iw_off = title(compare_lists(all_courses, iw_courses)["differences"])
+	iw_on = compare_lists(all_courses, iw_courses)["similarities"] #iw is for BSE only
+	other_iw = Approved_Course.objects.filter(student_id=current_user.username, requirement="Independent")
+	for t in other_iw:
+		iw_on.append(t.course_id)
+	iw_on = title(iw_on)
+	iw_off = title(compare_lists(all_courses, iw_courses)["differences"])
 
-		core_on = title(compare_lists(all_courses, core_courses)["similarities"])
-		core_off = title(compare_lists(all_courses, core_courses)["differences"])
+	core_on = title(compare_lists(all_courses, core_courses)["similarities"])
+	core_off = title(compare_lists(all_courses, core_courses)["differences"])
 
 		# Need to add logic for only hilighting 2 theory courses then overflowing others into "other" section
 		# Maybe don't display everything...display ones that only have "other"
 
 
 		# Distribution Requirements
-		student_sa=title(student_sa)
-		student_la=title(student_la)
-		student_ha=title(student_ha)
-		student_em=title(student_em)
-		student_ec=title(student_ec)
-		student_wri=title(student_wri)
-		student_foreign=title(student_foreign)
+	student_sa=title(student_sa)
+	student_la=title(student_la)
+	student_ha=title(student_ha)
+	student_em=title(student_em)
+	student_ec=title(student_ec)
+	student_wri=title(student_wri)
+	student_foreign=title(student_foreign)
 
 		# Outside Courses
 		# Note: should probably do Outside Courses/Approved Courses first, then add to LA/SA/Theory/etc. THEN consolidate lists 
-		student_outside=[]
-		outside_courses = Outside_Course.objects.filter(student_id=current_user.username) # list of the student's outside courses
-		for c in outside_courses.iterator():
-			student_outside.append(c.course_name)
+	student_outside=[]
+	outside_courses = Outside_Course.objects.filter(student_id=current_user.username) # list of the student's outside courses
+	for c in outside_courses.iterator():
+		student_outside.append(c.course_name)
 
 
 		# AP Requirements - would affect BSE on
@@ -190,14 +190,14 @@ def degree_progress(request):
 
 		# could literally just pass every certificate thing to this page....but that would be really dumb and bad
 		# still in the process of getting new ideas for certificates...it can def be done tho...still thinking
-		context = {'theory_on': theory_on, 'theory_off': theory_off, 'systems_on': systems_on, 'systems_off': systems_off,
-		'apps_on': apps_on, 'apps_off': apps_off, 'other_on': other_on, 'other_off': other_off,
-		'iw_on': iw_on, 'iw_off': iw_off, 'core_on': core_on, 'core_off': core_off, 'other_theory': other_theory,
-		'student_sa': student_sa, 'student_la': student_la, 'student_ha': student_ha, 'student_ec': student_ec,
-		'student_em': student_em, 'student_foreign': student_foreign, 'student_wri': student_wri, 'outside_courses': student_outside,
-		'math_1': math_1, 'math_2': math_2, 'math_3': math_3, 'math_4': math_4, 'physics_1': physics_1, 'physics_2': physics_2,
-		'chem_1': chem_1, 'cos_1': cos_1}
-		return render(request, 'degree_progress_cos_bse.html', context)
+	context = {'theory_on': theory_on, 'theory_off': theory_off, 'systems_on': systems_on, 'systems_off': systems_off,
+	'apps_on': apps_on, 'apps_off': apps_off, 'other_on': other_on, 'other_off': other_off,
+	'iw_on': iw_on, 'iw_off': iw_off, 'core_on': core_on, 'core_off': core_off, 'other_theory': other_theory,
+	'student_sa': student_sa, 'student_la': student_la, 'student_ha': student_ha, 'student_ec': student_ec,
+	'student_em': student_em, 'student_foreign': student_foreign, 'student_wri': student_wri, 'outside_courses': student_outside,
+	'math_1': math_1, 'math_2': math_2, 'math_3': math_3, 'math_4': math_4, 'physics_1': physics_1, 'physics_2': physics_2,
+	'chem_1': chem_1, 'cos_1': cos_1}
+	return render(request, 'degree_progress_cos_bse.html', context)
 	# COS AB Major	
 	#elif (student_major=="COS_AB"): 
 
