@@ -96,6 +96,7 @@ class Student(models.Model):
 	cert4=models.CharField(max_length = 30)
 	cert5=models.CharField(max_length = 30)
 	engineerBool = models.BooleanField
+	publicBool = models.BooleanField
 
 	def __str__(self):
 		return self.student_id
