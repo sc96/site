@@ -1,3 +1,8 @@
+.link{
+  color:#f00;
+  
+}
+
 .link:hover {
   font-size: 1.2em;
   cursor: pointer;
