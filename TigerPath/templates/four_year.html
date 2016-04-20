@@ -99,7 +99,7 @@ function remove_SRS() {
              {% for x in fresh_fall %}
                <span>
                <form class= "form-inline" id = "remove_FRF" action= "" method= "post">{% csrf_token %}
-                <a class="list-group-item" onclick="remove_FRF()">{{ x.course }} {{x.course.title}}
+                <a class="list-group-item" >{{ x.course }} {{x.course.title}}
                     <i class="glyphicon glyphicon-minus pull-right" style="color:#f00"></i></a>
                 <input type="hidden" name="term" value ="FRF">
                 <input type="hidden" name="remove" value={{x.course.listings}}>
@@ -261,7 +261,7 @@ function remove_SRS() {
               <div class="btn-group" style="width: 100%">
               <form class= "form-inline" action= "" method= "post">{% csrf_token %}
                   <li class="list-group-item">{{x.listings}} {{x.title}} {{x.area}}
-                    <select class="form-control" name="semester">
+                    <select class="form-control pull-right" name="semester">
                         <option>Freshman Fall</option>
                         <option>Freshman Spring</option>
                         <option>Sophomore Fall</option>
@@ -272,7 +272,7 @@ function remove_SRS() {
                         <option>Senior Spring</option>
                       </select>
                       <input type="hidden" name="listing" value={{x.listings}}>
-                      <input type="submit" class="btn btn-info" value="Add Class">
+                      <input type="submit" class="btn btn-info pull-right" value="Add Class">
                   </li>
               </form>
             </div>
