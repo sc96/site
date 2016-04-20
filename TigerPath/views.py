@@ -59,12 +59,21 @@ def profile(request):
 	engineerBool = student.engineerBool
 	publicBool = student.publicBool
 
-#   test
-#	publicBool = True
+
 
 	context = {'user': current_user.username, 'firstN': firstN, 'lastN': lastN,
 	 'engineerBool': engineerBool, 'publicBool': publicBool}
 	return render(request, 'profile.html', context)
+
+
+def update_info(student, firstN, lastN, enginerBool, publicBool):
+	student.first_name = firstN
+	student.last_name = lastN
+	student.engineerBool = engineerBool
+	student.publicBool = publicBool
+   
+	
+	
 
 @login_required # Cas authentication for this url.
 def degree_progress(request):
