@@ -88,12 +88,12 @@ console.log("{{user}}");
     <option selected>AB </option>
     {% endif %}
   </select>
-  <label for="sel1">Select Major:</label>
-  <select class="form-control" id="sel1", style="WIDTH: 500px">
+  <label for="sel2">Select Major:</label>
+  <select class="form-control" id="sel2", style="WIDTH: 500px">
     <option selected>Computer Science</option>
   </select>
-  <label for="sel1">Do you want your scheudule to be public?</label>
-  <select class="form-control" id="sel1", style="WIDTH: 500px">
+  <label for="sel3">Do you want your scheudule to be public?</label>
+  <select class="form-control" id="sel3", style="WIDTH: 500px">
     {% if publicBool %}
     <option selected>Public</option>
     <option> Private </option>
@@ -106,7 +106,13 @@ console.log("{{user}}");
 </div>
 
 <div class="container">
-<button type="submit" formaction="" formmethod = "post">{% csrf_token %} Save!</button>
+<button type="submit" formaction="" formmethod = "post">
+{% csrf_token %} Save!
+<input type="hidden" name="firstN" value = document.getElementById('firstname').value>
+<input type="hidden" name="lastN" value= document.getElementById('lastname').value>
+<input type="hidden" name="engineerBool" value = 'False'>
+<input type="hidden" name="publicBool" value='True'>
+</button>
 </div>
 <!--
 
