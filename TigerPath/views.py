@@ -52,11 +52,13 @@ def profile(request):
    		s.save()
 	student = Student.objects.get(student_id=current_user.username)
 
+
 	# getting strings for context variable
 	firstN = student.first_name
 	lastN = student.last_name
 	engineerBool = student.engineerBool
-	publicBool = student.publicBool
+#	publicBool = student.publicBool
+	publicBool = True
 
 	context = {'user': current_user.username, 'firstN': firstN, 'lastN': lastN,
 	 'engineerBool': engineerBool, 'publicBool': publicBool}
