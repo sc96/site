@@ -21,7 +21,8 @@
 <!--Colors used: dark orange: #FF8F00; light orange for hover: #FFB352-->
 <script>
 function remove_FRF(object) {
-  $('[data-toggle="confirmation"]').confirmation(title='Are you sure you want to remove this class?')
+  var x = document.getElementById(String(object));
+  $('x').confirmation(data-title="Are you sure you want to remove this class?")
  
 }
 function remove_FRS(object) {
