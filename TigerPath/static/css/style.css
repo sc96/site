@@ -1,6 +1,10 @@
+body {
+  padding-top: 70px; 
+  padding-bottom: 70px;
+}
+
 .link{
   color:#f00;
-  
 }
 
 .link:hover {
