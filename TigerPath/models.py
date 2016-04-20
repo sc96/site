@@ -105,7 +105,7 @@ class Student(models.Model):
 		# put student ID and course ID into student-course DB
 		s = student
 		c = course
-		if Entry.objects.filter(student=student, semester=sem, course=course).exists():
+		if Entry.objects.filter(student=student, course=course).exists():
 			return;
 		e = Entry(student=s, course=c, semester=sem)
 		e.save()
