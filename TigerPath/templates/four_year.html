@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <title>TigerPath | Current Courses</title>
   <link rel="stylesheet" href="/../../static/css/bootstrap.css">
-  <link rel="stylesheet" href="/../../static/css/syle.css">
+  <link rel="stylesheet" href="/../../static/css/style.css">
   <script  src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
   <script  src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.8.24/browser.min.js"></script>
   <script  src="/../../static/js/react.js"></script>
@@ -261,7 +261,7 @@ function remove_SRS() {
               <div class="btn-group" style="width: 100%">
               <form class= "form-inline" action= "" method= "post">{% csrf_token %}
                   <li class="list-group-item">{{x.listings}} {{x.title}} {{x.area}}
-                    <select class="form-control pull-right" name="semester">
+                    <select class="form-control" name="semester">
                         <option>Freshman Fall</option>
                         <option>Freshman Spring</option>
                         <option>Sophomore Fall</option>
@@ -272,7 +272,7 @@ function remove_SRS() {
                         <option>Senior Spring</option>
                       </select>
                       <input type="hidden" name="listing" value={{x.listings}}>
-                      <input type="submit" class="btn btn-info pull-right" value="Add Class">
+                      <input type="submit" class="btn btn-info" value="Add Class">
                   </li>
               </form>
             </div>
