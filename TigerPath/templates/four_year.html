@@ -19,9 +19,8 @@
 
 <!--Colors used: dark orange: #FF8F00; light orange for hover: #FFB352-->
 <script>
-function remove_FRF() {
-    var x = document.getElementById("remove_FRF");
-    x.submit();
+function remove_FRF(object) {
+    object.submit();
 }
 function remove_FRS() {
     var x = document.getElementById("remove_FRS");
@@ -132,7 +131,7 @@ function remove_SRS() {
              {% for x in soph_fall %}
                 <span>
                 <form class= "form-inline" id = "remove_SOF"  action= "" method= "post">{% csrf_token %}
-                <a class="list-group-item" onclick="remove_SOF()">{{ x.course }} {{x.course.title}}
+                <a class="list-group-item" onclick="remove_SOF(this)">{{ x.course }} {{x.course.title}}
                 <i class="glyphicon glyphicon-minus pull-right" style="color:#f00"></i></a>
                 <input type="hidden" name="term" value ="SOF">
                 <input type="hidden" name="remove" value={{x.course.listings}}>
