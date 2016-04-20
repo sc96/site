@@ -104,7 +104,7 @@ function remove_SRS(object) {
                <form class= "form-inline" id = "{{x.course.listings}}" action= "" method= "post">{% csrf_token %}
                 <a class="list-group-item" name ="{{x.course.listings}}" onclick="remove_FRF(this.name)">{{ x.course }} {{x.course.title}}
                     <!--<i class="glyphicon glyphicon-minus pull-right" style="color:#f00"></i>-->
-                    <button class="btn btn-info btn-lg">
+                    <button class="btn btn-info btn-sm pull-right">
                                 <i class="glyphicon glyphicon-minus"></i>
                             </button>
                     
