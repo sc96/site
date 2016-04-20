@@ -231,12 +231,9 @@ function remove_SRS(object) {
          </div>
     </div>
  </div>
-
+<br>
  <div class="row">
     <h5>Add a class to a semester</h5>
-       
-        
-        
             <span id="custom-search">
                 <form class = "form-inline" action = "" method = "get" >
                     <div class="input-group col-md-12">
@@ -249,32 +246,31 @@ function remove_SRS(object) {
                     </div>
                 </form>
             </span>
-       
-   
+
     {% if test_course %}
-    <div class="row">
-    <br><div class="alert alert-success col-md-12" role="alert">
-      <b>Well Done!</b> You have successfully added <b>{{test_course}} {{test_course.title}}</b> to <b>{{sem}}</b>
+    <div class="row"><br>
+      <div class="alert alert-success col-md-12" role="alert">
+        <b>Well Done!</b> You have successfully added <b>{{test_course}} {{test_course.title}}</b> to <b>{{sem}}</b>
       </div>
-      </div>
+    </div>
     {% endif %}
     {% if removed_class %}
-    <div class="row">
-    <br><div class="alert alert-success col-md-12" role="alert">
-      <b>Well Done!</b> You have successfully removed <b>{{removed_class}}</b>. 
+    <div class="row"><br>
+      <div class="alert alert-success col-md-12" role="alert">
+        <b>Well Done!</b> You have successfully removed <b>{{removed_class}}</b>. 
       </div>
-      </div>
+    </div>
     {% endif %}
     <!-- List the matche courses below -->
     {% if matched_courses %}
-        <div class="row">
-            <p><br>Matched Courses</p>
-        </div>
-            <div class="list-group">
-            {% for x in matched_courses %}
-            <div class="list-group col-md-12">
+    <div class="row">
+      <p><br>Matched Courses</p>
+    </div>
+      <div class="list-group">
+        {% for x in matched_courses %}
+          <div class="list-group col-md-12">
               <div class="btn-group" style="width: 100%">
-              <form class= "form-inline" action= "" method= "post">{% csrf_token %}
+                <form class= "form-inline" action= "" method= "post">{% csrf_token %}
                   <li class="list-group-item">{{x.listings}} {{x.title}} {{x.area}}
                     <select class="form-control" name="semester">
                         <option>Freshman Fall</option>
@@ -285,15 +281,15 @@ function remove_SRS(object) {
                         <option>Junior Spring</option>
                         <option>Senior Fall</option>
                         <option>Senior Spring</option>
-                      </select>
-                      <input type="hidden" name="listing" value={{x.listings}}>
-                      <input type="submit" class="btn btn-info" value="Add Class">
+                    </select>
+                    <input type="hidden" name="listing" value={{x.listings}}>
+                    <input type="submit" class="btn btn-info" value="Add Class">
                   </li>
-              </form>
-            </div>
+                </form>
+              </div>
             </div>
           {% endfor %}
-            </div>
+          </div>
     {% endif %}
 
 </div>
