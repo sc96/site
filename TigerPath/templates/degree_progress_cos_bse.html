@@ -175,7 +175,7 @@ var x = document.getElementById(String(object));
                <span>
                <form class= "form-inline" id = "{{x}}" action="" method="post">{% csrf_token %} 
                   <a class="list-group-item list-group-item-success" >{{ x }}<i class="glyphicon glyphicon-minus pull-right link" id="{{x}}" onclick="rmv(this.id)"></i> </a>
-                  <input type="hidden" name="remove" value={{x.course.listings}}>
+                  <input type="hidden" name="remove" value="{{x}}">
               </form>
             </span>
              {% endfor %}
