@@ -173,8 +173,8 @@ var x = document.getElementById(String(object));
                 <a class="list-group-item active" style="text-align:center">Theory</a>
              {% for x in theory_on %}
                <span>
-               <form class= "form-inline" id = "{{x.course.listings}}" action="" method="post">{% csrf_token %} 
-                  <a class="list-group-item list-group-item-success" >{{ x }}<i class="glyphicon glyphicon-minus pull-right link" id="{{x.course.listings}}" onclick="rmv(this.id)"></i> </a>
+               <form class= "form-inline" id = "{{x}}" action="" method="post">{% csrf_token %} 
+                  <a class="list-group-item list-group-item-success" >{{ x }}<i class="glyphicon glyphicon-minus pull-right link" id="{{x}}" onclick="rmv(this.id)"></i> </a>
                   <input type="hidden" name="remove" value={{x.course.listings}}>
               </form>
             </span>
@@ -182,7 +182,7 @@ var x = document.getElementById(String(object));
              {% for x in theory_off %}
               <span>
                <form class= "form-inline" id = "{{x.course.listings}}" action="" method="post">{% csrf_token %} 
-                  <a class="list-group-item list-group-item-danger" name ="{{x.course.listings}}" >{{ x }} {{x.title}} {{x.area}}<i class="glyphicon glyphicon-plus pull-right link" id="{{x.course.listings}}" onclick="add(this.id)"></i> </a>
+                  <a class="list-group-item list-group-item-danger" name ="{{x.course.listings}}" >{{ x }}<i class="glyphicon glyphicon-plus pull-right link" id="{{x.course.listings}}" onclick="add(this.id)"></i> </a>
                   <input type="hidden" name="term" value ="SRS">
                   <input type="hidden" name="listing" value={{x.course.listings}}>
               </form>
