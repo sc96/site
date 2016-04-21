@@ -23,6 +23,7 @@ BootstrapDialog.confirm({
                 if(result) {
                     var x = document.getElementById(String(object));
                     x.submit();
+                    return;
                 }else {
                     return;
                 }
