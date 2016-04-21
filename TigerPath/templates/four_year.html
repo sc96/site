@@ -22,8 +22,8 @@
 
 <!--Colors used: dark orange: #FF8F00; light orange for hover: #FFB352-->
 <script>
+//Remove an item from your course list
 function rmv(object) {
-
 BootstrapDialog.confirm({
             title: 'Remove course from plan',
             message: 'Are you sure you want to remove ' + object + ' from your course list?',
@@ -262,7 +262,7 @@ BootstrapDialog.confirm({
     </div>
       <div class="list-group">
         {% for x in matched_courses %}
-          <div class="list-group col-md-12">
+          <span class="list-group col-md-12">
               <div class="btn-group" style="width: 100%">
                 <form class= "form-inline" action= "" method= "post">{% csrf_token %}
                   <li class="list-group-item">{{x.listings}} {{x.title}} {{x.area}}
@@ -281,7 +281,7 @@ BootstrapDialog.confirm({
                   </li>
                 </form>
               </div>
-            </div>
+          </span>
           {% endfor %}
           </div>
     {% endif %}
