@@ -83,6 +83,23 @@ def update_info(student, firstN, lastN, enginerBool, publicBool):
 
 @login_required # Cas authentication for this url.
 def degree_progress(request):
+
+	removed_class = ""
+	#Check if student is adding or removing a class
+	if request.method == 'POST':
+		if 'remove' in request.POST:
+			removed_class = request.POST['remove']
+			#sem = time[semester]
+			student.remove_course(removed_class, student)
+			
+
+		else:
+			added_class = request.POST['listing']
+			added_class = Course.objects.get(listings=added_class)
+			semester = request.POST['semester']
+			sem = time[semester]
+			student.add_course(added_class, student, sem)
+
 	student_ec=[]
 	student_em=[]
 	student_la=[]
@@ -208,21 +225,7 @@ def degree_progress(request):
 	ap_classes = AP_Credit.objects.filter(student_id=current_user.username).values_list('course_id', flat=True).order_by('course_id')
 	student_ap = title(ap_classes)
 
-	removed_class = ""
-	#Check if student is adding or removing a class
-	if request.method == 'POST':
-		if 'remove' in request.POST:
-			removed_class = request.POST['remove']
-			#sem = time[semester]
-			student.remove_course(removed_class, student)
-			
-
-		else:
-			added_class = request.POST['listing']
-			added_class = Course.objects.get(listings=added_class)
-			semester = request.POST['semester']
-			sem = time[semester]
-			student.add_course(added_class, student, sem)
+	
 
 		# could literally just pass every certificate thing to this page....but that would be really dumb and bad
 		# still in the process of getting new ideas for certificates...it can def be done tho...still thinking
@@ -232,7 +235,7 @@ def degree_progress(request):
 	'student_sa': student_sa, 'student_la': student_la, 'student_ha': student_ha, 'student_ec': student_ec,
 	'student_em': student_em, 'student_foreign': student_foreign, 'student_wri': student_wri, 'outside_courses': student_outside,
 	'math_1': math_1, 'math_2': math_2, 'math_3': math_3, 'math_4': math_4, 'physics_1': physics_1, 'physics_2': physics_2,
-	'chem_1': chem_1, 'cos_1': cos_1, 'student_ap': student_ap, 'test_remove': removed_class}
+	'chem_1': chem_1, 'cos_1': cos_1, 'student_ap': student_ap, 'removed_class': removed_class}
 	return render(request, 'degree_progress_cos_bse.html', context)
 	# COS AB Major	
 	#elif (student_major=="COS_AB"): 

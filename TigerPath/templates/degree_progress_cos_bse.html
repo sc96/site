@@ -155,11 +155,18 @@ var x = document.getElementById(String(object));
 
 </script>
 
+ {% if removed_class %}
+    <div class="row"><br>
+      <div class="alert alert-success col-md-12" role="alert">
+        <b>Well Done!</b> You have successfully removed <b>{{removed_class}}</b>. 
+      </div>
+    </div>
+  {% endif %}
 
 <div class = "panel panel-default">
    <div class = "panel-heading">
       <h1 class = "panel-title" style="text-align:center"><b>
-         COS Departmental Requirements Removing: {{test_remove}}</b>
+         COS Departmental Requirements</b>
       </h1>
    </div>
    
