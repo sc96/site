@@ -18,7 +18,7 @@
 
     
 <div class="container">
-  <div class="page-header" style="color:#ff8f00">
+  <div class="page-header" style="color:#ff8f00;" style ='background-color: #2ba6cb;'>>
   <h1>Degree Progress</h1>
 </div>
 </div>
@@ -62,9 +62,9 @@
 
 <div class = "panel panel-default">
    <div class = "panel-heading">
-      <h3 class = "panel-title" style="text-align:center">
-         COS Departmental Requirements
-      </h3>
+      <h1 class = "panel-title" style="text-align:center"><b>
+         COS Departmental Requirements</b>
+      </h1>
    </div>
    
    <div class = "panel-body">
@@ -87,7 +87,7 @@
              {% for x in theory_off %}
                <span>
                <form class= "form-inline" id = "{{x.course.listings}}">
-                <a class="list-group-item list-group-item-danger" name ="{{x.course.listings}}" >{{ x.course }} {{x.course.title}}</a>
+                <a class="list-group-item list-group-item-danger" name ="{{x.course.listings}}" >{{ x}}</a>
     
               </form>
             </span>
