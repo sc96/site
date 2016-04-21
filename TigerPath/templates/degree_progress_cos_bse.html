@@ -59,15 +59,10 @@
 </nav>
 
     
-<div class="container">
-  <div class="page-header" style="color:#ff8f00">
-  <h1>Degree Progress</h1>
-</div>
-</div>
 
 <div class = "panel panel-default">
    <div class = "panel-heading">
-      <h3 class = "panel-title">
+      <h3 class = "panel-title" style="text-align:center">
          COS Departmental Requirements
       </h3>
    </div>
@@ -79,7 +74,7 @@
      <div class="row">
          <div class="col-md-4">
          <div class="list_group">
-                <a class="list-group-item active">Theory</a>
+                <a class="list-group-item active" style="text-align:center">Theory</a>
              {% for x in theory_on %}
                <span>
                <form class= "form-inline" id = "{{x.course.listings}}">
@@ -101,7 +96,7 @@
          </div>
 
         <div class="col-md-4">
-         <div class="list_group">
+         <div class="list_group" style="text-align:center">
                 <a class="list-group-item active">Systems</a>
              {% for x in systems_on %}
                <span>
@@ -125,7 +120,7 @@
 
          <div class="col-md-4">
          <div class="list_group">
-                <a class="list-group-item active">Applications</a>
+                <a class="list-group-item active" style="text-align:center">Applications</a>
              {% for x in apps_on %}
                <span>
                <form class= "form-inline" id = "{{x.course.listings}}">
