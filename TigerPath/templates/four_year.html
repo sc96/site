@@ -85,9 +85,9 @@ BootstrapDialog.confirm({
                 <a class="list-group-item active">Freshman Fall</a>
              {% for x in fresh_fall %}
                <span>
-               <form class= "form-inline" id = "{{x.course.listings}}" action= "" method= "post">{% csrf_token %}
+               <form class= "form-inline" id = "{{x.listings}}" action= "" method= "post">{% csrf_token %}
                 <a class="list-group-item">{{ x.course }} {{x.course.title}}
-                    <i class="glyphicon glyphicon-minus pull-right link" id ="{{x.course.listings}}" onclick="rmv(this.id)"></i></a>
+                    <i class="glyphicon glyphicon-minus pull-right link" id ="{{x.listings}}" onclick="rmv(this.id)"></i></a>
                 <input type="hidden" name="term" value ="FRF">
                 <input type="hidden" name="remove" value={{x.course.listings}}>
               </form>
