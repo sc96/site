@@ -22,27 +22,11 @@
 <script>
 function remove(object) {
   var x = document.getElementById(String(object));
-    BootstrapDialog.show({
-            message: 'Are you sure you want to remove ' + object + ' from your course list?',
-            data: {
-                'data1': data1,
-                'data2': data2,
-                'data3': data3
-            },
-            buttons: [{
-                label: 'Yes',
-                cssClass: 'btn-primary',
-                action: function(dialogRef){
-                   x.submit();
-                },
-                {
-                label: 'No',
-                cssClass: 'btn-primary',
-                action: function(dialogRef){
-                   dialogRef.close();
-                }
-            }]
+   BootstrapDialog.show({
+            title: 'Say-hello dialog',
+            message: 'Hi Apple!'
         });
+   
 }
 
 
