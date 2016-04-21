@@ -115,6 +115,12 @@ class Student(models.Model):
 		obj = Entry.objects.filter(student=s, semester=sem, course=c)
 		obj.delete()
 
+	def update_info(student, firstN, lastN, engineerBool, publicBool):
+		student.first_name = firstN
+		student.last_name = lastN
+		student.engineerBool = engineerBool
+		student.publicBool = publicBool
+
 
 # Relevant when they are "adding" a course to their four year plan
 class Entry(models.Model):

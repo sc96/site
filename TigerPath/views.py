@@ -50,21 +50,36 @@ def profile(request):
    		s = Student(engineerBool = True)
    		s = Student(publicBool = True)
    		s.save()
+
 	student = Student.objects.get(student_id=current_user.username)
 
+	if request.method == 'POST':
+		firstN = request.POST['firstN']
+		lastN = request.POST['lastN']
+		engineerBool = request.POST['engineerBool']
+		publicBool = request.POST['publicBool']
+		student.update_info(student, firstN, lastN, engineerBool, publicBool)
+			
 
 	# getting strings for context variable
 	firstN = student.first_name
 	lastN = student.last_name
 	engineerBool = student.engineerBool
 	publicBool = student.publicBool
-
-#   test
-#	publicBool = True
-
 	context = {'user': current_user.username, 'firstN': firstN, 'lastN': lastN,
 	 'engineerBool': engineerBool, 'publicBool': publicBool}
 	return render(request, 'profile.html', context)
+
+
+# probs don't need this?
+def update_info(student, firstN, lastN, enginerBool, publicBool):
+	student.first_name = firstN
+	student.last_name = lastN
+	student.engineerBool = engineerBool
+	student.publicBool = publicBool
+   
+	
+	
 
 @login_required # Cas authentication for this url.
 def degree_progress(request):
@@ -329,6 +344,12 @@ def four_year(request,search):
 def princeton_course_approval(request):
 	current_user = request.user
 	student = Student.objects.get(student_id=current_user.username)
+	if request.method == 'POST':
+		added_class = request.POST['listing']
+		added_class = Course.objects.get(listings=added_class)
+		semester = request.POST['semester']
+		sem = time[semester]
+		student.add_course(added_class, student, sem)
 	context = {}
 	return render(request, 'ptonapproval.html', context)
 

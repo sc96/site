@@ -63,80 +63,110 @@ console.log("{{user}}");
 
 
 <div class="container">
+  
+  <div class="page-header" style="color:#ff8f00">
+  <h1>Your Profile Settings</h1>
+</div>
+
+<!-- Form with all the questions -->
+
+<div class="container">
 <div class="form-group">
   <label for="usr">First Name:</label>
   <input type="text" class="form-control" id="firstname" maxlength = 30, 
   style="WIDTH: 500px", value = "{{ firstName }}">
-</div>
-<div class="form-group">
   <label for="text">Last Name:</label>
   <input type="text" class="form-control" id="lastname" maxlength = 30, 
   style="WIDTH: 500px", value = "{{ lastName }}">
-</div>
-</div>
-
-<!-- This is Janky af b/c it's repetitive but idk how else to do it. It checks the engineerBool variable and if its 'true' it creates a form with BSE selected, if it's
-not true then it creates a form (identical) but AB is selected -->
-
-{% if engineerBool %}
-
-<div class="container">
-<div class="form-group">
   <label for="sel1">Select Degree Type:</label>
   <select class="form-control" id="sel1", style="WIDTH: 500px">
+    {% if engineerBool %}
     <option selected>BSE</option>
     <option>AB </option>
+    {% else %}
+    <option>BSE</option>
+    <option selected>AB </option>
+    {% endif %}
+  </select>
+  <label for="sel2">Select Major:</label>
+  <select class="form-control" id="sel2", style="WIDTH: 500px">
+    <option selected>Computer Science</option>
+  </select>
+  <label for="sel3">Do you want your scheudule to be public?</label>
+  <select class="form-control" id="sel3", style="WIDTH: 500px">
+    {% if publicBool %}
+    <option selected>Public</option>
+    <option> Private </option>
+    {% else %}
+    <option>Public</option>
+    <option selected>Private </option>
+    {% endif %}
   </select>
 </div>
 </div>
 
-{% else %}
+<div class="container">
+<button type="submit" formaction="" formmethod = "post">
+{% csrf_token %} Save!
+<input type="hidden" name="firstN" value = document.getElementById('firstname').value>
+<input type="hidden" name="lastN" value= document.getElementById('lastname').value>
+<input type="hidden" name="engineerBool" value = 'False'>
+<input type="hidden" name="publicBool" value='True'>
+</button>
+</div>
+<!--
 
 <div class="container">
 <div class="form-group">
   <label for="sel1">Select Degree Type:</label>
   <select class="form-control" id="sel1", style="WIDTH: 500px">
+    {% if engineerBool %}
+    <option selected>BSE</option>
+    <option>AB </option>
+    {% else %}
     <option>BSE</option>
     <option selected>AB </option>
+    {% endif %}
   </select>
 </div>
 </div>
+-->
 
-{% endif %}
+<!--
 
-<!-- This is equally janky. Same approach but for public or not form -->
+<!-- 
+<div class="container">
+<div class="form-group">
+  <label for="sel1">Select Major:</label>
+  <select class="form-control" id="sel1", style="WIDTH: 500px">
+    <option selected>Computer Science</option>
+  </select>
+</div>
+</div>
+ -->
 
-{% if publicBool %}
-
+<!--
 <div class="container">
 <div class="form-group">
   <label for="sel1">Do you want your scheudule to be public?</label>
   <select class="form-control" id="sel1", style="WIDTH: 500px">
+    {% if publicBool %}
     <option selected>Public</option>
     <option> Private </option>
-  </select>
-</div>
-</div>
-
-{% else %}
-
-<div class="container">
-<div class="form-group">
-  <label for="sel1">Do you want your scheudule to be public?</label>
-  <select class="form-control" id="sel1", style="WIDTH: 500px">
+    {% else %}
     <option>Public</option>
     <option selected>Private </option>
+    {% endif %}
   </select>
 </div>
 </div>
-{% endif %}
-
+-->
 
 
 <nav class="navbar navbar-default navbar-fixed-bottom">
   <div class="container"> 
   <div style="text-align:center"><br>
-    TigerPath | COS 333 Project made by: Natalie Wertz, Sam Cheng, William Hinthorn, Viveque Ramji, Bennet Victor
+    TigerPath | COS 333 Project made by: Natalie Wertz, Sam Cheng, William Hinthorn, Viveque Ramji, Bennett Victor
     </div>
   </div>
 </nav>

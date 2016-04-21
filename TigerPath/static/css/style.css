@@ -1,17 +1,14 @@
-body { 
-padding-top: 70px;
-padding-bottom: 70px; 
+body {
+  padding-top: 70px; 
+  padding-bottom: 70px;
 }
 
-
-.footer {
-  text-align:center
+.link{
+  color:#f00;
 }
 
-.jumbotron {
-   align:center
+.link:hover {
+  font-size: 1.2em;
+  cursor: pointer;
 }
 
-.jumbotron.img {
-  background-image: "/../pics/bgtest.jpg"; 
-}
