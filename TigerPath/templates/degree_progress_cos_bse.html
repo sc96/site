@@ -86,6 +86,8 @@ function add(object) {
 var x = document.getElementById(String(object));
   BootstrapDialog.show({
             message: 'Please add ' + object + ' To a semester',
+            closable: true, // <-- Default value is false
+            draggable: true, // <-- Default value is false
             buttons: [{
                 label: 'Cancel',
                 cssClass: 'btn-danger',
@@ -125,7 +127,7 @@ var x = document.getElementById(String(object));
              {% for x in theory_on %}
                <span>
                <form class= "form-inline" id = "{{x.course.listings}}" action="" method="post">{% csrf_token %} 
-                  <a class="list-group-item list-group-item-success" name ="{{x.course.listings}}" >{{ x }}<i class="glyphicon glyphicon-plus pull-right link" id="{{x.course.listings}}" onclick="rmv(this.id)"></i> </a>
+                  <a class="list-group-item list-group-item-success" name ="{{x.course.listings}}" >{{ x }}<i class="glyphicon glyphicon-minus pull-right link" id="{{x.course.listings}}" onclick="rmv(this.id)"></i> </a>
                   <input type="hidden" id="{{x}}" name="term" value ="SRS">
                   <input type="hidden" name="remove" value={{x.course.listings}}>
               </form>
