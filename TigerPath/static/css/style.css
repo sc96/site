@@ -1,7 +1,7 @@
 body {
   padding-top: 70px; 
   padding-bottom: 70px;
-  background-image: url('/../pics/bgtest.jpg');
+  background: url('/../pics/bgtest.jpg');
 }
 
 .link{
