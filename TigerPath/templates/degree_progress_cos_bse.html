@@ -143,6 +143,91 @@
 
    </div>
  </div>
+ 
+ <div class = "panel panel-default">
+   <div class = "panel-heading">
+      <h1 class = "panel-title" style="text-align:center"><b>
+         BSE Requirements</b>
+      </h1>
+   </div>
+   
+   <div class = "panel-body">
+      
+    <div class="row">
+
+     <div class="row">
+         <div class="col-md-4">
+         <div class="list_group">
+                <a class="list-group-item active" style="text-align:center">Calculus I</a>
+             {% for x in calc_1 %}
+               <span>
+               <form class= "form-inline" id = "{{x.course.listings}}">
+                <a class="list-group-item list-group-item-success" name ="{{x.course.listings}}" >{{ x }} {{x.title}}
+                   </a>
+             
+              </form>
+            </span>
+             {% endfor %}
+             {% for x in theory_off %}
+               <span>
+               <form class= "form-inline" id = "{{x.course.listings}}">
+                <a class="list-group-item list-group-item-danger" name ="{{x.course.listings}}" >{{ x }} {{x.title}}</a>
+    
+              </form>
+            </span>
+             {% endfor %}
+            </div>
+         </div>
+
+        <div class="col-md-4">
+         <div class="list_group" style="text-align:center">
+                <a class="list-group-item active">Calc II</a>
+             {% for x in calc_2 %}
+               <span>
+               <form class= "form-inline" id = "{{x.course.listings}}">
+                <a class="list-group-item list-group-item-success" name ="{{x.course.listings}}" >{{ x }} {{x.title}}
+                  </a>
+             
+              </form>
+            </span>
+             {% endfor %}
+             {% for x in systems_off %}
+               <span>
+               <form class= "form-inline" id = "{{x.course.listings}}">
+                <a class="list-group-item list-group-item-danger" name ="{{x.course.listings}}" >{{ x }} {{x.title}}</a>
+              </form>
+            </span>
+             {% endfor %}
+            </div>
+         </div>
+
+
+         <div class="col-md-4">
+         <div class="list_group">
+                <a class="list-group-item active" style="text-align:center">Calc III</a>
+             {% for x in calc_3 %}
+               <span>
+               <form class= "form-inline" id = "{{x.course.listings}}">
+                <a class="list-group-item list-group-item-success" name ="{{x.course.listings}}" >{{ x }} {{x.title}}
+                    </a>
+               
+              </form>
+            </span>
+             {% endfor %}
+             {% for x in apps_off %}
+               <span>
+               <form class= "form-inline" id = "{{x.course.listings}}">
+                <a class="list-group-item list-group-item-danger" name ="{{x.course.listings}}" >{{ x }} {{x.title}}</a>
+                
+              </form>
+            </span>
+             {% endfor %}
+            </div>
+         </div>
+
+   </div>
+ </div>
+ 
 </div>
 </div>
 
