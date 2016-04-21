@@ -58,7 +58,54 @@
   </div>
 </nav>
 
-    
+<script>
+//Remove an item from your course list
+function rmv(object) {
+BootstrapDialog.confirm({
+            title: 'Remove a course:',
+            message: 'Are you sure you want to remove ' + object + ' from your course list?',
+            type: BootstrapDialog.TYPE_WARNING, // <-- Default value is BootstrapDialog.TYPE_PRIMARY
+            closable: true, // <-- Default value is false
+            draggable: true, // <-- Default value is false
+            btnCancelLabel: 'No', // <-- Default value is 'Cancel',
+            btnOKLabel: 'Drop it!', // <-- Default value is 'OK',
+            btnOKClass: 'btn-warning', // <-- If you didn't specify it, dialog type will be used,
+            callback: function(result) {
+                // result will be true if button was click, while it will be false if users close the dialog directly.
+                if(result) {
+                    var x = document.getElementById(String(object));
+                    x.submit();
+                }else {
+                    return;
+                }
+            }
+        });
+ 
+}
+function add(object) {
+var x = document.getElementById(String(object));
+  BootstrapDialog.show({
+            message: 'Please add ' + object + ' To a semester',
+            buttons: [{
+                label: 'Cancel',
+                cssClass: 'btn-danger',
+                action: function(dialogRef){
+                   dialogRef.close();
+                }
+              },
+              {
+                label: 'Yes',
+                cssClass: 'btn-primary',
+                action: function(dialogRef){
+                    x.submit();
+                }
+            }]
+        });
+  }
+
+
+</script>
+
 
 <div class = "panel panel-default">
    <div class = "panel-heading">
@@ -77,18 +124,19 @@
                 <a class="list-group-item active" style="text-align:center">Theory</a>
              {% for x in theory_on %}
                <span>
-               <form class= "form-inline" id = "{{x.course.listings}}">
-                <a class="list-group-item list-group-item-success" style="text-align:center" name ="{{x.course.listings}}" >{{ x }} 
-                   </a>
-             
+               <form class= "form-inline" id = "{{x.course.listings}}" action="" method="post">{% csrf_token %} 
+                  <a class="list-group-item list-group-item-success" name ="{{x.course.listings}}" >{{ x }}<i class="glyphicon glyphicon-plus pull-right link" id="{{x.course.listings}}" onclick="rmv(this.id)"></i> </a>
+                  <input type="hidden" id="{{x}}" name="term" value ="SRS">
+                  <input type="hidden" name="remove" value={{x.course.listings}}>
               </form>
             </span>
              {% endfor %}
              {% for x in theory_off %}
-               <span>
-               <form class= "form-inline" id = "{{x.course.listings}}">
-                <a class="list-group-item list-group-item-danger" style="text-align:center" name ="{{x.course.listings}}" >{{ x }} </a>
-    
+              <span>
+               <form class= "form-inline" id = "{{x.course.listings}}" action="" method="post">{% csrf_token %} 
+                  <a class="list-group-item list-group-item-danger" name ="{{x.course.listings}}" >{{ x }}<i class="glyphicon glyphicon-plus pull-right link" id="{{x.course.listings}}" onclick="add(this.id)"></i> </a>
+                  <input type="hidden" name="term" value ="SRS">
+                  <input type="hidden" name="add" value={{x.course.listings}}>
               </form>
             </span>
              {% endfor %}
