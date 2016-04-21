@@ -20,12 +20,13 @@
 
 <!--Colors used: dark orange: #FF8F00; light orange for hover: #FFB352-->
 <script>
-function remove(object) {
-  var x = document.getElementById(String(object));
-   BootstrapDialog.show({
-            title: 'Say-hello dialog',
-            message: 'Hi Apple!'
-        });
+function rmv(object) {
+  if (confirm('Are you sure you want to remove ' + object + ' from your course list?')) {
+      var x = document.getElementById(String(object));
+      x.submit();
+    } else {
+       return;
+    }   
    
 }
 
@@ -85,7 +86,7 @@ function remove(object) {
                <span>
                <form class= "form-inline" id = "{{x.course.listings}}" action= "" method= "post">{% csrf_token %}
                 <a class="list-group-item">{{ x.course }} {{x.course.title}}
-                    <i class="glyphicon glyphicon-minus pull-right link" id ="{{x.course.listings}}" onclick="remove(this.id)"></i></a>
+                    <i class="glyphicon glyphicon-minus pull-right link" id ="{{x.course.listings}}" onclick="rmv(this.id)"></i></a>
                 <input type="hidden" name="term" value ="FRF">
                 <input type="hidden" name="remove" value={{x.course.listings}}>
               </form>
@@ -100,7 +101,7 @@ function remove(object) {
                 <span>
                 <form class= "form-inline" id = "{{x.course.listings}}" action= "" method= "post">{% csrf_token %}
                 <a class="list-group-item" >{{ x.course }} {{x.course.title}}
-                    <i class="glyphicon glyphicon-minus pull-right link" id ="{{x.course.listings}}" onclick="remove(this.id)"></i></a>
+                    <i class="glyphicon glyphicon-minus pull-right link" id ="{{x.course.listings}}" onclick="rmv(this.id)"></i></a>
                 <input type="hidden" name="term" value ="FRS">
                 <input type="hidden" name="remove" value={{x.course.listings}}>
               </form>
@@ -118,7 +119,7 @@ function remove(object) {
                 <span>
                 <form class= "form-inline" id = "{{x.course.listings}}"  action= "" method= "post">{% csrf_token %}
                 <a class="list-group-item" >{{ x.course }} {{x.course.title}}
-                <i class="glyphicon glyphicon-minus pull-right link" id = "{{x.course.listings}}" onclick="remove(this.id)"></i></a>
+                <i class="glyphicon glyphicon-minus pull-right link" id = "{{x.course.listings}}" onclick="rmv(this.id)"></i></a>
                 <input type="hidden" name="term" value ="SOF">
                 <input type="hidden" name="remove" value={{x.course.listings}}>
               </form>
@@ -133,7 +134,7 @@ function remove(object) {
                 <span>
                  <form class= "form-inline" id = "{{x.course.listings}}"  action= "" method= "post">{% csrf_token %}
                 <a class="list-group-item" >{{ x.course }} {{x.course.title}}
-                <i class="glyphicon glyphicon-minus pull-right link" id="{{x.course.listings}}" onclick="remove(this.id)"></i></a>
+                <i class="glyphicon glyphicon-minus pull-right link" id="{{x.course.listings}}" onclick="rmv(this.id)"></i></a>
                 <input type="hidden" name="term" value ="SOS">
                 <input type="hidden" name="remove" value={{x.course.listings}}>
               </form>
@@ -151,7 +152,7 @@ function remove(object) {
              <span>
                 <form class= "form-inline" id = "{{x.course.listings}}" action= "" method= "post">{% csrf_token %}
                 <a class="list-group-item" >{{ x.course }} {{x.course.title}}
-                <i class="glyphicon glyphicon-minus pull-right link" id = "{{x.course.listings}}" onclick="remove(this.id)"></i></a>
+                <i class="glyphicon glyphicon-minus pull-right link" id = "{{x.course.listings}}" onclick="rmv(this.id)"></i></a>
                 <input type="hidden" name="term" value ="JRF">
                 <input type="hidden" name="remove" value={{x.course.listings}}>
               </form>
@@ -166,7 +167,7 @@ function remove(object) {
                  <span>
                     <form class= "form-inline" id = "{{x.course.listings}}" action= "" method= "post">{% csrf_token %}
                 <a class="list-group-item" n>{{ x.course }} {{x.course.title}}
-                <i class="glyphicon glyphicon-minus pull-right link" id="{{x.course.listings}}" onclick="remove(this.id)"></i></a>
+                <i class="glyphicon glyphicon-minus pull-right link" id="{{x.course.listings}}" onclick="rmv(this.id)"></i></a>
                 <input type="hidden" name="term" value ="JRS">
                 <input type="hidden" name="remove" value={{x.course.listings}}>
               </form>
@@ -184,7 +185,7 @@ function remove(object) {
                   <span>
                     <form class= "form-inline" id = "{{x.course.listings}}" action= "" method= "post">{% csrf_token %}
                 <a class="list-group-item">{{ x.course }} {{x.course.title}}
-                <i class="glyphicon glyphicon-minus pull-right link" id="{{x.course.listings}}" onclick="remove(this.id)"></i></a>
+                <i class="glyphicon glyphicon-minus pull-right link" id="{{x.course.listings}}" onclick="rmv(this.id)"></i></a>
                 <input type="hidden" name="term" value ="SRF">
                 <input type="hidden" name="remove" value={{x.course.listings}}>
               </form>
@@ -199,7 +200,7 @@ function remove(object) {
                 <span>
                 <form class= "form-inline"id = "{{x.course.listings}}" action= "" method= "post">{% csrf_token %}
                 <a class="list-group-item" >{{ x.course }} {{x.course.title}}
-                <i class="glyphicon glyphicon-minus pull-right link" id="{{x.course.listings}}" onclick="remove(this.id)"></i></a>
+                <i class="glyphicon glyphicon-minus pull-right link" id="{{x.course.listings}}" onclick="rmv(this.id)"></i></a>
                 <input type="hidden" name="term" value ="SRS">
                 <input type="hidden" name="remove" value={{x.course.listings}}>
               </form>
