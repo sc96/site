@@ -208,7 +208,7 @@ def degree_progress(request):
 	ap_classes = AP_Credit.objects.filter(student_id=current_user.username).values_list('course_id', flat=True).order_by('course_id')
 	student_ap = title(ap_classes)
 
-
+	removed_class = ""
 	#Check if student is adding or removing a class
 	if request.method == 'POST':
 		if 'remove' in request.POST:
@@ -232,7 +232,7 @@ def degree_progress(request):
 	'student_sa': student_sa, 'student_la': student_la, 'student_ha': student_ha, 'student_ec': student_ec,
 	'student_em': student_em, 'student_foreign': student_foreign, 'student_wri': student_wri, 'outside_courses': student_outside,
 	'math_1': math_1, 'math_2': math_2, 'math_3': math_3, 'math_4': math_4, 'physics_1': physics_1, 'physics_2': physics_2,
-	'chem_1': chem_1, 'cos_1': cos_1, 'student_ap': student_ap}
+	'chem_1': chem_1, 'cos_1': cos_1, 'student_ap': student_ap, 'test_remove': removed_class}
 	return render(request, 'degree_progress_cos_bse.html', context)
 	# COS AB Major	
 	#elif (student_major=="COS_AB"): 
