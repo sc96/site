@@ -204,7 +204,9 @@ def degree_progress(request):
 
 
 		# AP Requirements - would affect BSE on
-
+	student_ap=[]
+	ap_classes = AP_Credit.objects.filter(student_id=current_user.username).values_list('course_id', flat=True).order_by('course_id')
+	student_ap = title(ap_classes)
 
 		# could literally just pass every certificate thing to this page....but that would be really dumb and bad
 		# still in the process of getting new ideas for certificates...it can def be done tho...still thinking
@@ -214,7 +216,7 @@ def degree_progress(request):
 	'student_sa': student_sa, 'student_la': student_la, 'student_ha': student_ha, 'student_ec': student_ec,
 	'student_em': student_em, 'student_foreign': student_foreign, 'student_wri': student_wri, 'outside_courses': student_outside,
 	'math_1': math_1, 'math_2': math_2, 'math_3': math_3, 'math_4': math_4, 'physics_1': physics_1, 'physics_2': physics_2,
-	'chem_1': chem_1, 'cos_1': cos_1}
+	'chem_1': chem_1, 'cos_1': cos_1, 'student_ap': student_ap}
 	return render(request, 'degree_progress_cos_bse.html', context)
 	# COS AB Major	
 	#elif (student_major=="COS_AB"): 
