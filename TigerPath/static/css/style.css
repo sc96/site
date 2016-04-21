@@ -11,3 +11,16 @@ body {
   font-size: 1.2em;
   cursor: pointer;
 }
+
+.link2{
+  color:#0f0;
+}
+
+.link2:hover {
+  font-size: 1.2em;
+  cursor: pointer;
+}
+
+.btn-primary .btn-smaller {
+	width: 10px;
+}

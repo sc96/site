@@ -97,6 +97,13 @@ class Student(models.Model):
 	cert5=models.CharField(max_length = 30)
 	engineerBool = models.BooleanField
 	publicBool = models.BooleanField
+	calc_1 = models.BooleanField
+	calc_2 = models.BooleanField
+	calc_3 = models.BooleanField
+	lin_alg = models.BooleanField
+	gen_chem = models.BooleanField
+	physics = models.BooleanField
+	cos = models.BooleanField
 
 	def __str__(self):
 		return self.student_id
@@ -109,10 +116,10 @@ class Student(models.Model):
 			return;
 		e = Entry(student=s, course=c, semester=sem)
 		e.save()
-	def remove_course(self, course, student, sem):
+	def remove_course(self, course, student, sem="FRF"):
 		s = student
 		c = Course.objects.filter(listings=course);
-		obj = Entry.objects.filter(student=s, semester=sem, course=c)
+		obj = Entry.objects.filter(student=s, course=c)
 		obj.delete()
 
 	def update_info(student, firstN, lastN, engineerBool, publicBool):
@@ -141,6 +148,12 @@ class Approved_Course(models.Model):
 	major = models.CharField(max_length=30) #COS_BSE or COS_AB
 	certificate = models.CharField(max_length=30) #GSS or EAS or another certificate code
 	distribution = models.CharField(max_length=30) 
+	
+class AP_Credit(models.Model):
+	id = models.AutoField(primary_key=True)
+	student = models.ForeignKey(Student, on_delete=models.CASCADE)
+	#course = models.ForeignKey(Course, on_delete=models.CASCADE) # will be something from our courses list
+	course_id = models.CharField(max_length=30)
 
 
 # if you did Princeton in Beijing or something (summer course, global sem, study abroad)..courses from other univiersitites
