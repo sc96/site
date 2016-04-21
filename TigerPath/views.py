@@ -302,7 +302,8 @@ def four_year(request,search):
 		#add_class(student, added_class, semester)
 	#Return matched courses for search bar
 	
-	test = request.GET["q"]
+	if 'q' in request.GET:
+		test = request.GET["q"]
 	matched_courses = course_search(test);
 	
 	# getting list of courses for each semester
