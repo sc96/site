@@ -18,17 +18,21 @@
 </head>
 <body>
 
+<script> BootstrapDialog.show({
+            message: 'Hi Apple!'
+        });
+</script>
 <!--Colors used: dark orange: #FF8F00; light orange for hover: #FFB352-->
 <script>
 function rmv(object) {
 
-   BootstrapDialog.show({
-            title: 'Say-hello dialog',
-            message: 'Hi Apple!'
-        });
-        
-  
- 
+
+  if (confirm('Are you sure you want to remove ' + object + ' from your course list?')) {
+      var x = document.getElementById(String(object));
+      x.submit();
+    } else {
+       return;
+    }   
    
 }
 
