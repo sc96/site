@@ -139,8 +139,11 @@ function remove_SRS(object) {
              {% for x in fresh_fall %}
                <span>
                <form class= "form-inline" id = "{{x.course.listings}}" action= "" method= "post">{% csrf_token %}
-                <a class="list-group-item" name ="{{x.course.listings}}" onclick="remove_FRF(this.name)">{{ x.course }} {{x.course.title}}
-                    <i class="glyphicon glyphicon-minus pull-right link"></i></a>
+                <a class="list-group-item" name ="{{x.course.listings}}" >{{ x.course }} {{x.course.title}} 
+                </a>
+                <a onclick="remove_FRF(this.name)">
+                   <span class="glyphicon glyphicon-minus pull-right link"></span>
+                </a>
                 <input type="hidden" name="term" value ="FRF">
                 <input type="hidden" name="remove" value={{x.course.listings}}>
               </form>
@@ -264,6 +267,7 @@ function remove_SRS(object) {
          </div>
     </div>
  </div>
+
 <br>
  <div class="row">
     <h5>Add a class to a semester</h5>
