@@ -148,6 +148,12 @@ class Approved_Course(models.Model):
 	major = models.CharField(max_length=30) #COS_BSE or COS_AB
 	certificate = models.CharField(max_length=30) #GSS or EAS or another certificate code
 	distribution = models.CharField(max_length=30) 
+	
+class AP_Credit(models.Model):
+	id = models.AutoField(primary_key=True)
+	student = models.ForeignKey(Student, on_delete=models.CASCADE)
+	#course = models.ForeignKey(Course, on_delete=models.CASCADE) # will be something from our courses list
+	course_id = models.CharField(max_length=30)
 
 
 # if you did Princeton in Beijing or something (summer course, global sem, study abroad)..courses from other univiersitites
