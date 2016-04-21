@@ -129,7 +129,10 @@ def degree_progress(request):
 	cos_1 = Course.objects.filter(listings__regex=r'COS126')
 
 		# now I need to parse out which one they've taken it - math ON/math OFF
-
+	#stu = Student.objects.filter(calc_1=1, student_id = current_user.username)
+	#if stu:
+	#	a = AP_Credit(student_id = current_user.username, course_id = 538)
+	#	a.save()
 
 		# can probably shorten this a little bit later...
 	theory_courses = COS_BSE.objects.filter(theory=1).values_list('course_id', flat=True).order_by('course_id')
