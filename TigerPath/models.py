@@ -116,10 +116,10 @@ class Student(models.Model):
 			return;
 		e = Entry(student=s, course=c, semester=sem)
 		e.save()
-	def remove_course(self, course, student, sem):
+	def remove_course(self, course, student, sem="FRF"):
 		s = student
 		c = Course.objects.filter(listings=course);
-		obj = Entry.objects.filter(student=s, semester=sem, course=c)
+		obj = Entry.objects.filter(student=s, course=c)
 		obj.delete()
 
 	def update_info(student, firstN, lastN, engineerBool, publicBool):
