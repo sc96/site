@@ -209,21 +209,21 @@ def degree_progress(request):
 	student_ap = title(ap_classes)
 
 
-		#Check if student is adding or removing a class
-		if request.method == 'POST':
-			if 'remove' in request.POST:
-				removed_class = request.POST['remove']
-				sem = request.POST['term']
-				#sem = time[semester]
-				student.remove_course(removed_class, student, sem)
-				
+	#Check if student is adding or removing a class
+	if request.method == 'POST':
+		if 'remove' in request.POST:
+			removed_class = request.POST['remove']
+			sem = request.POST['term']
+			#sem = time[semester]
+			student.remove_course(removed_class, student, sem)
+			
 
-			else:
-				added_class = request.POST['listing']
-				added_class = Course.objects.get(listings=added_class)
-				semester = request.POST['semester']
-				sem = time[semester]
-				student.add_course(added_class, student, sem)
+		else:
+			added_class = request.POST['listing']
+			added_class = Course.objects.get(listings=added_class)
+			semester = request.POST['semester']
+			sem = time[semester]
+			student.add_course(added_class, student, sem)
 
 		# could literally just pass every certificate thing to this page....but that would be really dumb and bad
 		# still in the process of getting new ideas for certificates...it can def be done tho...still thinking
