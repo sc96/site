@@ -23,15 +23,28 @@
 <!--Colors used: dark orange: #FF8F00; light orange for hover: #FFB352-->
 <script>
 function rmv(object) {
- if (BootstrapDialog.confirm('Are you sure you want to remove ' + object + ' from your course list?')) {
-      var x = document.getElementById(String(object));
-      x.submit();
-    } else {
-       return;
-    }   
-   
-}
 
+BootstrapDialog.confirm({
+            title: 'Remove course from plan',
+            message: 'Are you sure you want to remove ' + object + ' from your course list?',
+            type: BootstrapDialog.TYPE_WARNING, // <-- Default value is BootstrapDialog.TYPE_PRIMARY
+            closable: true, // <-- Default value is false
+            draggable: true, // <-- Default value is false
+            btnCancelLabel: 'No', // <-- Default value is 'Cancel',
+            btnOKLabel: 'Drop it!', // <-- Default value is 'OK',
+            btnOKClass: 'btn-warning', // <-- If you didn't specify it, dialog type will be used,
+            callback: function(result) {
+                // result will be true if button was click, while it will be false if users close the dialog directly.
+                if(result) {
+                    var x = document.getElementById(String(object));
+                    x.submit();
+                }else {
+                    return;
+                }
+            }
+        });
+ 
+}
 
 
 </script>
