@@ -12,3 +12,6 @@ body {
   cursor: pointer;
 }
 
+.btn-primary .btn-smaller {
+	width: 10px;
+}
