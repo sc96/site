@@ -172,7 +172,6 @@ var x = document.getElementById(String(object));
    
    <div class = "panel-body">
       
-    <div class="row">
 
      <div class="row">
          <div class="col-md-4">
@@ -181,7 +180,7 @@ var x = document.getElementById(String(object));
              {% for x in theory_on %}
                <span>
                <form class= "form-inline" id = "{{x}}" action="" method="post">{% csrf_token %} 
-                  <a class="list-group-item list-group-item-success" >{{ x }}<i class="glyphicon glyphicon-minus pull-right link" id="{{x}}" onclick="rmv(this.id)"></i></a>
+                  <a class="list-group-item list-group-item-success" >{{ x }}<i class="glyphicon glyphicon-minus pull-right link" id="{{x}}" onclick="rmv(this.id)"></i> </a>
                   <input type="hidden" name="remove" value="{{x}}">
               </form>
             </span>
@@ -189,7 +188,7 @@ var x = document.getElementById(String(object));
              {% for x in theory_off %}
               <span>
                <form class= "form-inline" id = "{{x}}" action="" method="post">{% csrf_token %} 
-                  <a class="list-group-item list-group-item-danger">{{ x }}<i class="glyphicon glyphicon-plus pull-right link" id="{{x}}" onclick="add(this.id)"></i></a>
+                  <a class="list-group-item list-group-item-danger">{{ x }}<i class="glyphicon glyphicon-plus pull-right link" id="{{x}}" onclick="add(this.id)"></i> </a>
                   <input type="hidden" name="term" value ="SRS">
                   <input type="hidden" name="listing" value="{{x}}">
               </form>
@@ -247,11 +246,7 @@ var x = document.getElementById(String(object));
    </div>
  </div>
  </div>
- </div>
- 
- 
- 
- 
+
  <div class = "panel panel-default">
    <div class = "panel-heading">
       <h1 class = "panel-title" style="text-align:center"><b>
@@ -262,10 +257,9 @@ var x = document.getElementById(String(object));
    
    <div class = "panel-body">
       
-    <div class="row">
 
      <div class="row">
-         <div class="col-md-4">
+         <div class="col-md-3">
          <div class="list_group">
                 <a class="list-group-item active" style="text-align:center">Calculus I</a>
              {% for x in math_1 %}
@@ -279,7 +273,7 @@ var x = document.getElementById(String(object));
             </div>
          </div>
 
-        <div class="col-md-4">
+        <div class="col-md-3">
          <div class="list_group" style="text-align:center">
                 <a class="list-group-item active">Calc II</a>
             {% for x in math_2 %}
@@ -295,7 +289,7 @@ var x = document.getElementById(String(object));
          </div>
 
 
-         <div class="col-md-4">
+         <div class="col-md-3">
          <div class="list_group">
                 <a class="list-group-item active" style="text-align:center">Calc III</a>
              {% for x in math_3 %}
@@ -309,8 +303,8 @@ var x = document.getElementById(String(object));
              
             </div>
          </div>
-         
-         <div class="col-md-4">
+    
+         <div class="col-md-3">
          <div class="list_group">
                 <a class="list-group-item active" style="text-align:center">Linear Algebra</a>
              {% for x in math_4 %}
@@ -323,8 +317,9 @@ var x = document.getElementById(String(object));
              {% endfor %}
             </div>
          </div>
-         
-         <div class="col-md-4">
+    </div>
+     <div class="row">    
+         <div class="col-md-3">
          <div class="list_group">
                 <a class="list-group-item active" style="text-align:center">Physics I</a>
              {% for x in physics_1 %}
@@ -338,7 +333,7 @@ var x = document.getElementById(String(object));
             </div>
          </div>
          
-         <div class="col-md-4">
+         <div class="col-md-3">
          <div class="list_group">
                 <a class="list-group-item active" style="text-align:center">Physics II</a>
              {% for x in physics_2 %}
@@ -352,7 +347,7 @@ var x = document.getElementById(String(object));
             </div>
          </div>
          
-         <div class="col-md-4">
+         <div class="col-md-3">
          <div class="list_group">
                 <a class="list-group-item active" style="text-align:center">Chemistry</a>
              {% for x in chem_1 %}
@@ -366,7 +361,7 @@ var x = document.getElementById(String(object));
             </div>
          </div>
          
-         <div class="col-md-4">
+         <div class="col-md-3">
          <div class="list_group">
                 <a class="list-group-item active" style="text-align:center">Computer Science</a>
              {% for x in cos_1 %}
@@ -382,6 +377,7 @@ var x = document.getElementById(String(object));
 
    </div>
  </div>
+ </div>
  
  <div class = "panel panel-default">
    <div class = "panel-heading">
@@ -392,8 +388,6 @@ var x = document.getElementById(String(object));
    
    <div class = "panel-body">
       
-    <div class="row">
-
      <div class="row">
          <div class="col-md-4">
          <div class="list_group">
@@ -440,6 +434,9 @@ var x = document.getElementById(String(object));
              {% endfor %}
             </div>
          </div>
+         </div>
+         
+         <div class="row">
          
          <div class="col-md-4">
          <div class="list_group">
@@ -486,6 +483,10 @@ var x = document.getElementById(String(object));
             </div>
          </div>
          
+         </div>
+         
+         <div class="row">
+         
          <div class="col-md-4">
          <div class="list_group">
                 <a class="list-group-item active" style="text-align:center">Foreign Language</a>
@@ -500,13 +501,14 @@ var x = document.getElementById(String(object));
              {% endfor %}
             </div>
          </div>
+         
+         </div>
 
    </div>
  </div>
  
 </div>
-</div>
-</div> <!-- container-->
+
 
 </body>
 </html>
