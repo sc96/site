@@ -152,31 +152,16 @@ def degree_progress(request):
 	chem_1 = Course.objects.filter(listings__regex=r'(CHM201|CHM207)')
 	cos_1 = Course.objects.filter(listings__regex=r'COS126')
 	
+	a = AP_Credit(student_name = current_user.username, course_id = "538")
+	a.save()
 		# now I need to parse out which one they've taken it - math ON/math OFF
-	student = Student.objects.get(student_id=current_user.username)
-	if (student.calc_1==1):
-		a = AP_Credit(student_name = current_user.username, course_id = "538")
-		a.save()
-	if(student.calc_2==1):
-		a = AP_Credit(student_name = current_user.username, course_id = "1029")
-		a.save()
-	if(student.calc_3==1):
-		a = AP_Credit(student_name = current_user.username, course_id = "1176")
-		a.save()
-	if(student.lin_alg==1):
-		a = AP_Credit(student_name = current_user.username, course_id = "1160")
-		a.save()
-	if(student.gen_chem==1):
-		a = AP_Credit(student_name = current_user.username, course_id = "1354")
-		a.save()
-	if(student.physics==1):
-		a = AP_Credit(student_name = current_user.username, course_id = "2016")
-		a.save()
-		b = AP_Credit(student_name = current_user.username, course_id = "763")
-		b.save()
-	if(student.cos==1):
-		a = AP_Credit(student_name = current_user.username, course_id = "444")
-		a.save()
+	#student = Student.objects.get(student_id=current_user.username)
+	#if (student.calc_1==1):
+	#	a = AP_Credit(student_id = current_user.username, course_id = "538")
+	#	a.save()
+	#if(student.calc_2==1):
+	#	a = AP_Credit(student_id = current_user.username, course_id = "1160")
+	#	a.save()
 
 		# can probably shorten this a little bit later...
 	theory_courses = COS_BSE.objects.filter(theory=1).values_list('course_id', flat=True).order_by('course_id')
@@ -249,9 +234,9 @@ def degree_progress(request):
 
 		# AP Requirements - would affect BSE on
 	student_ap=[]
-	ap_classes = AP_Credit.objects.filter(student_name=current_user.username).values_list('course_id', flat=True).order_by('course_id')
+	ap_classes = AP_Credit.objects.filter(student_id=current_user.username).values_list('course_id', flat=True).order_by('course_id')
 	student_ap = title(ap_classes)
-	# now you can do on/off thing here !!!!
+	# now you can do on/off thing here
 
 	
 
@@ -350,7 +335,14 @@ def four_year(request,search):
 			added_class = Course.objects.get(listings=added_class)
 			semester = request.POST['semester']
 			sem = time[semester]
-			student.add_course(added_class, student, sem)
+			if request.POST['COSreq'] == 'N/A':
+				student.add_course(added_class, student, sem)
+			else:
+				c= Approved_Course(student=student)
+				c= Approved_Course(course_id = added_class.course_id)
+				c= Approved_Course(semester = sem)
+				c= Approved_Course(requirement = request.POST['COSreq'])
+				c.save()
 		#add_class(student, added_class, semester)
 	#Return matched courses for search bar
 	
