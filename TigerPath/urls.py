@@ -41,7 +41,7 @@ urlpatterns = [
     url(r'^outsidecourseapproval/$', views.outside_course_approval),
     url(r'^princetoncourseapproval/$', views.princeton_course_approval),
     url(r'^schedulesharing/$', views.schedule_sharing),
-    url(r'^share/(?P<share_user>\w{3})/$', views.share, {'user': 'share_user'}),
+    url(r'^share/(?P<share>\w{20})/$', views.share, {'user': 'user'}),
     #url(r'^home/degreeprogress/$', views.degree_progress),
     # CAS. No changes needed for the other urls.
     url(r'^login$', cas.views.login, name='login'),
