@@ -71,21 +71,7 @@ BootstrapDialog.confirm({
 <div class="container">
   <div class="page-header" style="color:#ff8f00">
   <h1>Your Four Year Plan</h1>
-  <h5>Add a class to a semester</h5>
-  <span id="custom-search">
-      <form class = "form-inline" action = "" method = "get" >
-          <div class="input-group col-md-12">
-              <input type="text" class="form-control input-lg" placeholder="Type course (e.g. COS 126)" value = "{{test}}" name="q" />
-              <span class="input-group-btn">
-                  <button  id="search-btn" class="btn btn-info btn-lg" type="submit" >
-                      <i class="glyphicon glyphicon-search"></i>
-                  </button>
-              </span>
-          </div>
-      </form>
-  </span>
 </div>
-
 
     <div class="row">
                 
@@ -268,16 +254,27 @@ BootstrapDialog.confirm({
               <div class="btn-group" style="width: 100%">
                 <form class= "form-inline" action= "" method= "post">{% csrf_token %}
                   <li class="list-group-item">{{x.listings}} {{x.title}} {{x.area}}
-                    <select class="form-control" name="semester">
-                        <option>Freshman Fall</option>
-                        <option>Freshman Spring</option>
-                        <option>Sophomore Fall</option>
-                        <option>Sophomore Spring</option>
-                        <option>Junior Fall</option>
-                        <option>Junior Spring</option>
-                        <option>Senior Fall</option>
-                        <option>Senior Spring</option>
-                    </select>
+                  
+                  <div class="dropdown">
+  <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Choose Semester
+  <span class="caret"></span></button>
+  <ul class="dropdown-menu form-control" name="semester">
+    <li>Freshman Fall</li>
+  </ul>
+</div>
+                  
+                  
+                  
+                    <!--<select class="form-control" name="semester">-->
+                    <!--    <option>Freshman Fall</option>-->
+                    <!--    <option>Freshman Spring</option>-->
+                    <!--    <option>Sophomore Fall</option>-->
+                    <!--    <option>Sophomore Spring</option>-->
+                    <!--    <option>Junior Fall</option>-->
+                    <!--    <option>Junior Spring</option>-->
+                    <!--    <option>Senior Fall</option>-->
+                    <!--    <option>Senior Spring</option>-->
+                    <!--</select>-->
                     <input type="hidden" name="listing" value={{x.listings}}>
                     <input type="submit" class="btn btn-info" value="Add Class">
                   </li>
