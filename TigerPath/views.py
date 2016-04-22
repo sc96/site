@@ -13,6 +13,13 @@ def compare_lists(stud, cour):
 		else:
 			differences.append(i)
 	return {"similarities": similarities, "differences": differences}
+	
+def num_compare(stud, cour):
+	count = 0
+	for i in cour:
+		if i in stud:
+			count+=1
+	return count
 
 
 def title(list):
