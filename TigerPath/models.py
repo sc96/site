@@ -130,6 +130,12 @@ class Student(models.Model):
 		p = publicBool
 		student.first_name = f
 		student.save()
+		student.last_name = l
+		student.save()
+		student.engineerBool = e
+		student.save()
+		student.publicBool = p
+		student.save()
 		#student.first_name = firstN
 		#student.last_name = lastN
 		#student.engineerBool = engineerBool
