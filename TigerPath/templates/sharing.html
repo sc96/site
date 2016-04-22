@@ -68,6 +68,21 @@
 {% endif %}
 
 <div class="container">
+  <div class="btn-group btn-group-justified" role="group" aria-label="...">
+  <div class="btn-group" role="group">
+    <a href="{% url 'views.share' top_5.0 %}"><button type="button" class="btn btn-default">{{top_5.0}}</button></a>
+  </div>
+  <div class="btn-group" role="group">
+    <button type="button" class="btn btn-default">Middle</button>
+  </div>
+  <div class="btn-group" role="group">
+    <button type="button" class="btn btn-default">Right</button>
+  </div>
+</div>
+  
+  
+  
+  
   	 <a href="{% url 'views.share' top_5.0 %}" class="btn btn-warning" role="button"> 
   		{{top_5.0}}
   	 </a>
