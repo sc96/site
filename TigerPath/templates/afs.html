@@ -280,7 +280,7 @@ var x = document.getElementById(String(object));
               </form>
             </span>
              {% endfor %}
-             {% for x inpolitics_off %}
+             {% for x in politics_off %}
                <span>
                <form class= "form-inline" id = "{{x.course.listings}}">
                 <a class="list-group-item list-group-item-danger" style="text-align:center" name ="{{x.course.listings}}" >{{ x }} </a>
