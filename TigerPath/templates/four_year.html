@@ -11,7 +11,7 @@
 function rmv(object) {
 BootstrapDialog.confirm({
             title: 'Remove a course:',
-            message: 'Are you sure you want to remove '.concat(String(object), ' from your course list?'),
+            message: 'Are you sure you want to remove ' object  ' from your course list?',
             type: BootstrapDialog.TYPE_WARNING, // <-- Default value is BootstrapDialog.TYPE_PRIMARY
             closable: true, // <-- Default value is false
             draggable: true, // <-- Default value is false
@@ -75,8 +75,15 @@ BootstrapDialog.confirm({
 </div>
 
     <div class="row">
-
-     <div class="row">
+                
+                
+            
+     <div class = "panel panel-default">
+            <div class = "panel-heading">
+            <h1 class = "panel-title" style="text-align:center"><b>Freshman</b>
+             </h1>
+            </div>
+            <div class = "panel-body">
          <div class="col-md-6">
          <div class="list_group">
                 <a class="list-group-item active">Freshman Fall</a>
@@ -108,8 +115,14 @@ BootstrapDialog.confirm({
          </div>
          </div>
      </div>
+     </div>
 
-     <div class="row">
+     <div class = "panel panel-default">
+            <div class = "panel-heading">
+            <h1 class = "panel-title" style="text-align:center"><b>Freshman</b>
+             </h1>
+            </div>
+            <div class = "panel-body">
          <div class="col-md-6">
          <div class="list_group">
                 <a class="list-group-item active">Sophomore Fall</a>
@@ -141,8 +154,14 @@ BootstrapDialog.confirm({
         </div> 
          </div>
       </div>
+      </div>
                 
-     <div class="row">
+     <div class = "panel panel-default">
+            <div class = "panel-heading">
+            <h1 class = "panel-title" style="text-align:center"><b>Freshman</b>
+             </h1>
+            </div>
+            <div class = "panel-body">
          <div class="col-md-6">
              <div class="list_group">
              <a class="list-group-item active">Junior Fall</a>
@@ -174,8 +193,14 @@ BootstrapDialog.confirm({
              </div>
          </div>
          </div>
+         </div>
                 
-    <div class="row">
+    <div class = "panel panel-default">
+            <div class = "panel-heading">
+            <h1 class = "panel-title" style="text-align:center"><b>Freshman</b>
+             </h1>
+            </div>
+            <div class = "panel-body">
          <div class="col-md-6">
          <div class="list_group">
                 <a class="list-group-item active">Senior Fall</a>
@@ -207,7 +232,10 @@ BootstrapDialog.confirm({
          </div>
          </div>
     </div>
+    </div>
+    
  </div>
+
 <br>
  <div class="row">
     <h5>Add a class to a semester</h5>
