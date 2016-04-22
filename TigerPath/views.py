@@ -146,14 +146,16 @@ def degree_progress(request):
 	# COS BSE Major
 	# if (student_major=="COS_BSE"):
 		# BSE requirements - all
-	math_1 = Course.objects.filter(listings__regex=r'MAT103').values_list('course_id', flat=True).order_by('course_id')
-	math_2 = Course.objects.filter(listings__regex=r'MAT104').values_list('course_id', flat=True).order_by('course_id')
-	math_3 = Course.objects.filter(listings__regex=r'(MAT201|MAT203|MAT218|EGR192)').values_list('course_id', flat=True).order_by('course_id')
-	math_4 = Course.objects.filter(listings__regex=r'(MAT202|MAT204|MAT217)').values_list('course_id', flat=True).order_by('course_id')
-	physics_1 = Course.objects.filter(listings__regex=r'(PHY103|PHY105|EGR191)').values_list('course_id', flat=True).order_by('course_id')
-	physics_2 = Course.objects.filter(listings__regex=r'(PHY104|PHY106)').values_list('course_id', flat=True).order_by('course_id')
-	chem_1 = Course.objects.filter(listings__regex=r'(CHM201|CHM207)').values_list('course_id', flat=True).order_by('course_id')
-	cos_1 = Course.objects.filter(listings__regex=r'COS126').values_list('course_id', flat=True).order_by('course_id')
+	
+	# 
+	math_1 = Course.objects.filter(listings__regex=r'MAT103').values_list('course_id', flat=True)
+	math_2 = Course.objects.filter(listings__regex=r'MAT104').values_list('course_id', flat=True)
+	math_3 = Course.objects.filter(listings__regex=r'(MAT201|MAT203|MAT218|EGR192)').values_list('course_id', flat=True)
+	math_4 = Course.objects.filter(listings__regex=r'(MAT202|MAT204|MAT217)').values_list('course_id', flat=True)
+	physics_1 = Course.objects.filter(listings__regex=r'(PHY103|PHY105|EGR191)').values_list('course_id', flat=True)
+	physics_2 = Course.objects.filter(listings__regex=r'(PHY104|PHY106)').values_list('course_id', flat=True)
+	chem_1 = Course.objects.filter(listings__regex=r'(CHM201|CHM207)').values_list('course_id', flat=True)
+	cos_1 = Course.objects.filter(listings__regex=r'COS126').values_list('course_id', flat=True)
 	
 		# now I need to parse out which one they've taken it - math ON/math OFF
 	if (student.calc_1):
@@ -256,8 +258,8 @@ def degree_progress(request):
 	# now you can do on/off thing here
 	
 	math_1_on = title(compare_lists(all_courses, math_1)["similarities"])
-	#math_1_off = title(compare_lists(all_courses, math_1)["differences"])
-	math_1_off=[]
+	math_1_off = title(compare_lists(all_courses, math_1)["differences"])
+	#math_1_off=[]
 	
 	math_2_on = title(compare_lists(all_courses, math_2)["similarities"])
 	math_2_off = title(compare_lists(all_courses, math_2)["differences"])
