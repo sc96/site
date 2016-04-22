@@ -148,10 +148,10 @@ def degree_progress(request):
 		# now I need to parse out which one they've taken it - math ON/math OFF
 	student = Student.objects.get(student_id=current_user.username)
 	if (student.calc_1==1):
-		a = AP_Credit(student_id = current_user.username, course_id = 538)
+		a = AP_Credit(student_id = current_user.username, course_id = "538")
 		a.save()
 	if(student.calc_2==1):
-		a = AP_Credit(student_id = current_user.username, course_id = 1160)
+		a = AP_Credit(student_id = current_user.username, course_id = "1160")
 		a.save()
 
 		# can probably shorten this a little bit later...
