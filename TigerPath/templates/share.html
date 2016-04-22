@@ -1,0 +1,293 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+
+{% block content %}
+
+<body>
+
+<!--Colors used: dark orange: #FF8F00; light orange for hover: #FFB352-->
+<script>
+//Remove an item from your course list
+function rmv(object) {
+BootstrapDialog.confirm({
+            title: 'Remove a course:',
+            message: 'Are you sure you want to remove '.concat(String(object), ' from your course list?'),
+            type: BootstrapDialog.TYPE_WARNING, // <-- Default value is BootstrapDialog.TYPE_PRIMARY
+            closable: true, // <-- Default value is false
+            draggable: true, // <-- Default value is false
+            btnCancelLabel: 'No', // <-- Default value is 'Cancel',
+            btnOKLabel: 'Drop it!', // <-- Default value is 'OK',
+            btnOKClass: 'btn-warning', // <-- If you didn't specify it, dialog type will be used,
+            callback: function(result) {
+                // result will be true if button was click, while it will be false if users close the dialog directly.
+                if(result) {
+                    var x = document.getElementById(String(object));
+                    x.submit();
+                    result.close();
+                }else {
+                    return;
+                }
+            }
+        });
+ 
+}
+
+</script>
+
+<nav class="navbar navbar-inverse navbar-fixed-top">
+  <div class="container-fluid">
+
+    <ul class="nav navbar-nav">
+      <li class="active"><a href="#">Four Year</a></li>
+      <li><a href="/degreeprogress">Degree Progress</a></li> 
+      <li><a href="/certificates">Certificates</a></li> 
+      <li><a href="/princetoncourseapproval">Princeton Course Approval</a></li> 
+      <li><a href="/outsidecourseapproval">Outside Course Approval</a></li> 
+      <li><a href="/schedulesharing">Schedule Sharing</a></li> 
+    </ul>
+    <ul class="nav navbar-nav navbar-right">
+        <li><a href="/about">About</a></li> 
+        <li class="dropdown">  
+    <a class="dropdown-toggle" data-hover="dropdown" data-delay="100" data-close-others="false">
+        {{ user }} <b class="caret"></b>
+    </a>
+    <ul class="dropdown-menu">
+      <li><a href="/profile"><span class="glyphicon glyphicon-cog"></span> Profile</a></li>
+        <li><a href="/logout"><span class="glyphicon glyphicon-log-in"></span> Log out</a></li>
+    </ul>
+</li>  
+
+    </ul>
+  </div>
+</nav>
+<nav class="navbar navbar-default navbar-fixed-bottom">
+  <div class="container"> 
+  <div style="text-align:center"><br>
+    TigerPath | COS 333 Project made by: Natalie Wertz, Sam Cheng, William Hinthorn, Viveque Ramji, Bennett Victor
+    </div>
+  </div>
+</nav>
+
+<div class="container">
+  <div class="page-header" style="color:#ff8f00">
+  <h1>Shared Schedule</h1>
+</div>
+
+    <div class="row">
+                
+                
+            
+     <div class="row">
+         <div class="col-md-6">
+         <div class="list_group">
+                <a class="list-group-item active">Freshman Fall</a>
+             {% for x in fresh_fall %}
+               <span>
+               <form class= "form-inline" id = "{{x.course.listings}}" action= "" method= "post">{% csrf_token %}
+                <a class="list-group-item">{{ x.course }} {{x.course.title}}
+                    <i class="glyphicon glyphicon-minus pull-right link" id ="{{x.course.listings}}" onclick="rmv(this.id)"></i></a>
+                <input type="hidden" name="term" value ="FRF">
+                <input type="hidden" name="remove" value={{x.course.listings}}>
+              </form>
+            </span>
+             {% endfor %}
+             </div>
+         </div>
+         <div class="col-md-6">
+         <div class="list_group">
+                <a class="list-group-item active">Freshman Spring</a>
+             {% for x in fresh_spring %}
+                <span>
+                <form class= "form-inline" id = "{{x.course.listings}}" action= "" method= "post">{% csrf_token %}
+                <a class="list-group-item" >{{ x.course }} {{x.course.title}}
+                    <i class="glyphicon glyphicon-minus pull-right link" id ="{{x.course.listings}}" onclick="rmv(this.id)"></i></a>
+                <input type="hidden" name="term" value ="FRS">
+                <input type="hidden" name="remove" value={{x.course.listings}}>
+              </form>
+            </span>
+             {% endfor %}
+         </div>
+         </div>
+     </div>
+     <br>
+
+     <div class="row">
+         <div class="col-md-6">
+         <div class="list_group">
+                <a class="list-group-item active">Sophomore Fall</a>
+             {% for x in soph_fall %}
+                <span>
+                <form class= "form-inline" id = "{{x.course.listings}}"  action= "" method= "post">{% csrf_token %}
+                <a class="list-group-item" >{{ x.course }} {{x.course.title}}
+                <i class="glyphicon glyphicon-minus pull-right link" id = "{{x.course.listings}}" onclick="rmv(this.id)"></i></a>
+                <input type="hidden" name="term" value ="SOF">
+                <input type="hidden" name="remove" value={{x.course.listings}}>
+              </form>
+            </span>
+             {% endfor %}
+         </div>
+        </div>
+         <div class="col-md-6">
+         <div class="list_group">
+                <a class="list-group-item active">Sophomore Spring</a>
+             {% for x in soph_spring %}
+                <span>
+                 <form class= "form-inline" id = "{{x.course.listings}}"  action= "" method= "post">{% csrf_token %}
+                <a class="list-group-item" >{{ x.course }} {{x.course.title}}
+                <i class="glyphicon glyphicon-minus pull-right link" id="{{x.course.listings}}" onclick="rmv(this.id)"></i></a>
+                <input type="hidden" name="term" value ="SOS">
+                <input type="hidden" name="remove" value={{x.course.listings}}>
+              </form>
+            </span>
+             {% endfor %}
+        </div> 
+         </div>
+      </div>
+      <br>
+                
+     <div class="row">
+         <div class="col-md-6">
+             <div class="list_group">
+             <a class="list-group-item active">Junior Fall</a>
+             {% for x in junior_fall %}
+             <span>
+                <form class= "form-inline" id = "{{x.course.listings}}" action= "" method= "post">{% csrf_token %}
+                <a class="list-group-item" >{{ x.course }} {{x.course.title}}
+                <i class="glyphicon glyphicon-minus pull-right link" id = "{{x.course.listings}}" onclick="rmv(this.id)"></i></a>
+                <input type="hidden" name="term" value ="JRF">
+                <input type="hidden" name="remove" value={{x.course.listings}}>
+              </form>
+            </span>
+             {% endfor %}
+             </div>
+         </div>
+         <div class="col-md-6">
+            <div class="list_group">
+                <a class="list-group-item active">Junior Spring</a>
+                 {% for x in junior_spring %}
+                 <span>
+                    <form class= "form-inline" id = "{{x.course.listings}}" action= "" method= "post">{% csrf_token %}
+                <a class="list-group-item" n>{{ x.course }} {{x.course.title}}
+                <i class="glyphicon glyphicon-minus pull-right link" id="{{x.course.listings}}" onclick="rmv(this.id)"></i></a>
+                <input type="hidden" name="term" value ="JRS">
+                <input type="hidden" name="remove" value={{x.course.listings}}>
+              </form>
+            </span>
+                 {% endfor %}
+             </div>
+         </div>
+         </div>
+         <br>
+                
+    <div class="row">
+         <div class="col-md-6">
+         <div class="list_group">
+                <a class="list-group-item active">Senior Fall</a>
+                 {% for x in senior_fall %}
+                  <span>
+                    <form class= "form-inline" id = "{{x.course.listings}}" action= "" method= "post">{% csrf_token %}
+                <a class="list-group-item">{{ x.course }} {{x.course.title}}
+                <i class="glyphicon glyphicon-minus pull-right link" id="{{x.course.listings}}" onclick="rmv(this.id)"></i></a>
+                <input type="hidden" name="term" value ="SRF">
+                <input type="hidden" name="remove" value={{x.course.listings}}>
+              </form>
+            </span>
+                 {% endfor %}
+         </div>
+         </div>
+         <div class="col-md-6">
+         <div class="list_group">
+                <a class="list-group-item active">Senior Spring</a>
+             {% for x in senior_spring %}
+                <span>
+                <form class= "form-inline"id = "{{x.course.listings}}" action= "" method= "post">{% csrf_token %}
+                <a class="list-group-item" >{{ x.course }} {{x.course.title}}
+                <i class="glyphicon glyphicon-minus pull-right link" id="{{x.course.listings}}" onclick="rmv(this.id)"></i></a>
+                <input type="hidden" name="term" value ="SRS">
+                <input type="hidden" name="remove" value={{x.course.listings}}>
+              </form>
+            </span>
+             {% endfor %}
+         </div>
+         </div>
+    </div>
+ </div>
+
+<br>
+ <div class="row">
+    <h5>Add a class to a semester</h5>
+            <span id="custom-search">
+                <form class = "form-inline" action = "" method = "get" >
+                    <div class="input-group col-md-12">
+                        <input type="text" class="form-control input-lg" placeholder="Type course (e.g. COS 126)" value = "{{test}}" name="q" />
+                        <span class="input-group-btn">
+                            <button  id="search-btn" class="btn btn-info btn-lg" type="submit" >
+                                <i class="glyphicon glyphicon-search"></i>
+                            </button>
+                        </span>
+                    </div>
+                </form>
+            </span>
+
+    {% if test_course %}
+    <div class="row"><br>
+      <div class="alert alert-success col-md-12" role="alert">
+        <b>Well Done!</b> You have successfully added <b>{{test_course}} {{test_course.title}}</b> to <b>{{sem}}</b>
+      </div>
+    </div>
+    {% endif %}
+    {% if removed_class %}
+    <div class="row"><br>
+      <div class="alert alert-success col-md-12" role="alert">
+        <b>Well Done!</b> You have successfully removed <b>{{removed_class}}</b>. 
+      </div>
+    </div>
+    {% endif %}
+    <!-- List the matche courses below -->
+    {% if matched_courses %}
+    <div class="row">
+      <p><br>Matched Courses</p>
+    </div>
+      <div class="list-group">
+        {% for x in matched_courses %}
+          <span class="list-group col-md-12">
+              <div class="btn-group" style="width: 100%">
+                <form class= "form-inline" action= "" method= "post">{% csrf_token %}
+                  <li class="list-group-item">{{x.listings}} {{x.title}} {{x.area}}
+                    <select class="form-control" name="semester" onChange="this.form.submit();">
+                        <option>Freshman Fall</option>
+                        <option>Freshman Spring</option>
+                        <option>Sophomore Fall</option>
+                        <option>Sophomore Spring</option>
+                        <option>Junior Fall</option>
+                        <option>Junior Spring</option>
+                        <option>Senior Fall</option>
+                        <option>Senior Spring</option>
+                    </select>
+                    <select class="form-control" name ="COSreq">
+                        <option>N/A</option>
+                        <option>Theory</option>
+                        <option>Systems</option>
+                        <option>Applications</option>
+                    </select>
+                    <input type="hidden" name="listing" value={{x.listings}}>
+                    <input type="submit" class="btn btn-info" value="Add Class">
+                  </li>
+                </form>
+              </div>
+          </span>
+          {% endfor %}
+          </div>
+    {% endif %}
+
+</div>
+
+</div>
+
+
+<!-- <script type="text/babel" src="/../../static/scripts/react_course_search.js"></script> -->
+<!-- <script  src="/../../static/scripts/search_requests.js"></script>  -->
+
+</body>
+</html>
+{% endblock %}
