@@ -147,7 +147,7 @@ console.log("{{user}}");
 <form>
 <button type="submit" formaction="" formmethod = "post">
 {% csrf_token %} Save!
-<input type="hidden" name="firstN" value = 'aaa' >
+<input type="hidden" name="firstN" value = document.getElementById("firstname").value;  >
 <input type="hidden" name="lastN" value= 'aaa'>
 <input type="hidden" name="engineerBool" value = False>
 <input type="hidden" name="publicBool" value= True>
