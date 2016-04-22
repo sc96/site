@@ -144,7 +144,9 @@ def degree_progress(request):
 	physics_2 = Course.objects.filter(listings__regex=r'(PHY104|PHY106)')
 	chem_1 = Course.objects.filter(listings__regex=r'(CHM201|CHM207)')
 	cos_1 = Course.objects.filter(listings__regex=r'COS126')
-
+	
+	a = AP_Credit(student_id = current_user.username, course_id = "538")
+	a.save()
 		# now I need to parse out which one they've taken it - math ON/math OFF
 	student = Student.objects.get(student_id=current_user.username)
 	if (student.calc_1==1):
