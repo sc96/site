@@ -503,7 +503,7 @@ def share(request, shared_user):
 	for c in outside_courses.iterator():
 		student_outside.append(c.course_name)
 
-	context = {'user': current_user.username,'fresh_fall': all_frf, 'fresh_spring': all_frs, 
+	context = {'user': current_user.username,'shared_user': shared_user.username, 'fresh_fall': all_frf, 'fresh_spring': all_frs, 
 	'soph_fall': all_sof, 'soph_spring': all_sos, 'junior_fall': all_jrf, 'junior_spring': all_jrs,
 	'senior_fall': all_srf, 'senior_spring': all_srs, 'student_outside': student_outside}
 	return render(request, 'share.html', context, )
