@@ -13,6 +13,13 @@ def compare_lists(stud, cour):
 		else:
 			differences.append(i)
 	return {"similarities": similarities, "differences": differences}
+	
+def num_compare(stud, cour):
+	count = 0
+	for i in cour:
+		if i in stud:
+			count+=1
+	return count
 
 
 def title(list):
@@ -145,16 +152,16 @@ def degree_progress(request):
 	chem_1 = Course.objects.filter(listings__regex=r'(CHM201|CHM207)')
 	cos_1 = Course.objects.filter(listings__regex=r'COS126')
 	
-	a = AP_Credit(student_id = current_user.username, course_id = "538")
+	a = AP_Credit(student_name = current_user.username, course_id = "538")
 	a.save()
 		# now I need to parse out which one they've taken it - math ON/math OFF
-	student = Student.objects.get(student_id=current_user.username)
-	if (student.calc_1==1):
-		a = AP_Credit(student_id = current_user.username, course_id = "538")
-		a.save()
-	if(student.calc_2==1):
-		a = AP_Credit(student_id = current_user.username, course_id = "1160")
-		a.save()
+	#student = Student.objects.get(student_id=current_user.username)
+	#if (student.calc_1==1):
+	#	a = AP_Credit(student_id = current_user.username, course_id = "538")
+	#	a.save()
+	#if(student.calc_2==1):
+	#	a = AP_Credit(student_id = current_user.username, course_id = "1160")
+	#	a.save()
 
 		# can probably shorten this a little bit later...
 	theory_courses = COS_BSE.objects.filter(theory=1).values_list('course_id', flat=True).order_by('course_id')
@@ -442,7 +449,21 @@ def schedule_sharing(request):
 def certificates(request):
 	current_user = request.user
 	student = Student.objects.get(student_id=current_user.username)
-	context = {}
+	all_courses = Entry.objects.filter(student_id=current_user.username).values_list('course_id', flat=True).order_by('course_id') # all of the student's courses - course ID
+	cert_dict={}
+	aas = AAS.objects.values_list('course_id', flat=True).order_by('course_id')
+	afs = AFS.objects.values_list('course_id', flat=True).order_by('course_id')
+	ams = AMS.objects.values_list('course_id', flat=True).order_by('course_id')
+	nsimilar = num_compare(all_courses, aas)
+	cert_dict["African American Studies"]=num_compare(all_courses, aas)
+	cert_dict["African Studies"]=num_compare(all_courses, afs)
+	cert_dict["American Studies"]=num_compare(all_courses, ams)
+	top_3=[]
+	for i in range(0, 3):
+		maximum = max(cert_dict, key=lambda i: cert_dict[i])
+		top_3.append(maximum)
+		cert_dict.pop(maximum, None)
+	context = {'top_3': top_3}
 	return render(request, 'certificates.html', context)
 
 def about(request):
