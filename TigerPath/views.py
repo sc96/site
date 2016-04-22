@@ -146,14 +146,14 @@ def degree_progress(request):
 	# COS BSE Major
 	# if (student_major=="COS_BSE"):
 		# BSE requirements - all
-	math_1 = Course.objects.filter(listings__regex=r'MAT103')
-	math_2 = Course.objects.filter(listings__regex=r'MAT104')
-	math_3 = Course.objects.filter(listings__regex=r'(MAT201|MAT203|MAT218|EGR192)')
-	math_4 = Course.objects.filter(listings__regex=r'(MAT202|MAT204|MAT217)')
-	physics_1 = Course.objects.filter(listings__regex=r'(PHY103|PHY105|EGR191)')
-	physics_2 = Course.objects.filter(listings__regex=r'(PHY104|PHY106)')
-	chem_1 = Course.objects.filter(listings__regex=r'(CHM201|CHM207)')
-	cos_1 = Course.objects.filter(listings__regex=r'COS126')
+	math_1 = Course.objects.filter(listings__regex=r'MAT103').values_list('course_id', flat=True).order_by('course_id')
+	math_2 = Course.objects.filter(listings__regex=r'MAT104').values_list('course_id', flat=True).order_by('course_id')
+	math_3 = Course.objects.filter(listings__regex=r'(MAT201|MAT203|MAT218|EGR192)').values_list('course_id', flat=True).order_by('course_id')
+	math_4 = Course.objects.filter(listings__regex=r'(MAT202|MAT204|MAT217)').values_list('course_id', flat=True).order_by('course_id')
+	physics_1 = Course.objects.filter(listings__regex=r'(PHY103|PHY105|EGR191)').values_list('course_id', flat=True).order_by('course_id')
+	physics_2 = Course.objects.filter(listings__regex=r'(PHY104|PHY106)').values_list('course_id', flat=True).order_by('course_id')
+	chem_1 = Course.objects.filter(listings__regex=r'(CHM201|CHM207)').values_list('course_id', flat=True).order_by('course_id')
+	cos_1 = Course.objects.filter(listings__regex=r'COS126').values_list('course_id', flat=True).order_by('course_id')
 	
 		# now I need to parse out which one they've taken it - math ON/math OFF
 	if (student.calc_1):
@@ -254,8 +254,30 @@ def degree_progress(request):
 	ap_classes = AP_Credit.objects.filter(student_name=current_user.username).values_list('course_id', flat=True).order_by('course_id')
 	student_ap = title(ap_classes)
 	# now you can do on/off thing here
-
 	
+	math_1_on = title(compare_lists(all_courses, math_1)["similarities"])
+	math_1_off = title(compare_lists(all_courses, math_1)["differences"])
+	
+	math_2_on = title(compare_lists(all_courses, math_2)["similarities"])
+	math_2_off = title(compare_lists(all_courses, math_2)["differences"])
+	
+	math_3_on = title(compare_lists(all_courses, math_3)["similarities"])
+	math_3_off = title(compare_lists(all_courses, math_3)["differences"])
+	
+	math_4_on = title(compare_lists(all_courses, math_4)["similarities"])
+	math_4_off = title(compare_lists(all_courses, math_4)["differences"])
+	
+	physics_1_on = title(compare_lists(all_courses, physics_1)["similarities"])
+	physics_1_off = title(compare_lists(all_courses, physics_1)["differences"])
+	
+	physics_2_on = title(compare_lists(all_courses, physics_2)["similarities"])
+	physics_2_off = title(compare_lists(all_courses, physics_2)["differences"])
+	
+	chem_1_on = title(compare_lists(all_courses, chem_1)["similarities"])
+	chem_1_off = title(compare_lists(all_courses, chem_1)["differences"])
+
+	cos_1_on = title(compare_lists(all_courses, cos_1)["similarities"])
+	cos_1_off = title(compare_lists(all_courses, cos_1)["differences"])
 
 		# could literally just pass every certificate thing to this page....but that would be really dumb and bad
 		# still in the process of getting new ideas for certificates...it can def be done tho...still thinking
@@ -264,8 +286,9 @@ def degree_progress(request):
 	'iw_on': iw_on, 'iw_off': iw_off, 'core_on': core_on, 'core_off': core_off, 'other_theory': other_theory,
 	'student_sa': student_sa, 'student_la': student_la, 'student_ha': student_ha, 'student_ec': student_ec,
 	'student_em': student_em, 'student_foreign': student_foreign, 'student_wri': student_wri, 'outside_courses': student_outside,
-	'math_1': math_1, 'math_2': math_2, 'math_3': math_3, 'math_4': math_4, 'physics_1': physics_1, 'physics_2': physics_2,
-	'chem_1': chem_1, 'cos_1': cos_1, 'student_ap': student_ap, 'removed_class': removed_class}
+	'math_1_on': math_1_on, 'math_1_off': math_1_off, 'math_2_on': math_2_on, 'math_2_off': math_2_off, 'math_3_on': math_3_on, 'math_3_off': math_3_off,
+	'math_4_on': math_4_on, 'math_4_off': math_4_off, 'chem_1_on': chem_1_on, 'chem_1_off': chem_1_off, 'cos_1_on': cos_1_on, 'cos_1_off': cos_1_off,
+	'physics_1_on': physics_1_on, 'physics_1_off': physics_1_off, 'physics_2_on': physics_2_on, 'physics_2_off': physics_2_off, 'student_ap': student_ap, 'removed_class': removed_class}
 	return render(request, 'degree_progress_cos_bse.html', context)
 	# COS AB Major	
 	#elif (student_major=="COS_AB"): 
