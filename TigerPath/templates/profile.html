@@ -28,28 +28,28 @@ publicBool
 
 <script>
 
-function update_firstN(object) {
+function update_firstN() {
 
   var x = document.getElementById("firstname").value;
   x.submit();
   
 }
 
-function update_lastN(object) {
+function update_lastN() {
 
   var x = document.getElementById("lastname").value;
   x.submit();
   
 }
 
-function update_engineer(object) {
+function update_engineer() {
 
   var x = document.getElementById("sel1").value;
   x.submit();
   
 }
 
-function update_engineer(object) {
+function update_engineer() {
 
   var x = document.getElementById("sel3").value;
   x.submit();
@@ -146,10 +146,10 @@ console.log("{{user}}");
 <div class="container">
 <button type="submit" formaction="" formmethod = "post">
 {% csrf_token %} Save!
-<input type="hidden" name="firstN" value = document.getElementById('firstname').value>
-<input type="hidden" name="lastN" value= document.getElementById('lastname').value>
-<input type="hidden" name="engineerBool" value = document.getElementById('sel1').value>
-<input type="hidden" name="publicBool" value=document.getElementById('sel2').value>
+<input type="hidden" name="firstN" value = 'aaa' >
+<input type="hidden" name="lastN" value= 'aaa'>
+<input type="hidden" name="engineerBool" value = False>
+<input type="hidden" name="publicBool" value= True>
 </button>
 </div>
 <!--
