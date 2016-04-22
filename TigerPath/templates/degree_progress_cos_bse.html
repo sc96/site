@@ -284,11 +284,19 @@ var x = document.getElementById(String(object));
          <div class="col-md-3">
          <div class="list_group">
                 <a class="list-group-item active" style="text-align:center">Calculus I</a>
-             {% for x in math_1 %}
+              {% for x in math_1_on %}
                <span>
                <form class= "form-inline" id = "{{x.course.listings}}">
-                <a class="list-group-item list-group-item-danger" name ="{{x.course.listings}}" >{{ x }} </a>
-                
+                <a class="list-group-item list-group-item-success" name ="{{x.course.listings}}" >{{ x }} 
+                  </a>
+             
+              </form>
+            </span>
+             {% endfor %}
+             {% for x in math_1_off %}
+               <span>
+               <form class= "form-inline" id = "{{x.course.listings}}">
+                <a class="list-group-item list-group-item-danger" name ="{{x.course.listings}}" >{{ x }}</a>
               </form>
             </span>
              {% endfor %}
@@ -298,15 +306,22 @@ var x = document.getElementById(String(object));
         <div class="col-md-3">
          <div class="list_group" style="text-align:center">
                 <a class="list-group-item active">Calc II</a>
-            {% for x in math_2 %}
+             {% for x in math_2_on %}
                <span>
                <form class= "form-inline" id = "{{x.course.listings}}">
-                <a class="list-group-item list-group-item-danger" name ="{{x.course.listings}}" >{{ x }} </a>
-                
+                <a class="list-group-item list-group-item-success" name ="{{x.course.listings}}" >{{ x }} 
+                  </a>
+             
               </form>
             </span>
              {% endfor %}
-            
+             {% for x in math_2_off %}
+               <span>
+               <form class= "form-inline" id = "{{x.course.listings}}">
+                <a class="list-group-item list-group-item-danger" name ="{{x.course.listings}}" >{{ x }}</a>
+              </form>
+            </span>
+             {% endfor %}
             </div>
          </div>
 
@@ -314,26 +329,41 @@ var x = document.getElementById(String(object));
          <div class="col-md-3">
          <div class="list_group">
                 <a class="list-group-item active" style="text-align:center">Calc III</a>
-             {% for x in math_3 %}
+              {% for x in math_3_on %}
                <span>
                <form class= "form-inline" id = "{{x.course.listings}}">
-                <a class="list-group-item list-group-item-danger" name ="{{x.course.listings}}" >{{ x }} </a>
-                
+                <a class="list-group-item list-group-item-success" name ="{{x.course.listings}}" >{{ x }} 
+                  </a>
+             
               </form>
             </span>
              {% endfor %}
-             
+             {% for x in math_3_off %}
+               <span>
+               <form class= "form-inline" id = "{{x.course.listings}}">
+                <a class="list-group-item list-group-item-danger" name ="{{x.course.listings}}" >{{ x }}</a>
+              </form>
+            </span>
+             {% endfor %}
             </div>
          </div>
     
          <div class="col-md-3">
          <div class="list_group">
                 <a class="list-group-item active" style="text-align:center">Linear Algebra</a>
-             {% for x in math_4 %}
+              {% for x in math_4_on %}
                <span>
                <form class= "form-inline" id = "{{x.course.listings}}">
-                <a class="list-group-item list-group-item-danger" name ="{{x.course.listings}}" >{{ x }} </a>
-                
+                <a class="list-group-item list-group-item-success" name ="{{x.course.listings}}" >{{ x }} 
+                  </a>
+             
+              </form>
+            </span>
+             {% endfor %}
+             {% for x in math_4_off %}
+               <span>
+               <form class= "form-inline" id = "{{x.course.listings}}">
+                <a class="list-group-item list-group-item-danger" name ="{{x.course.listings}}" >{{ x }}</a>
               </form>
             </span>
              {% endfor %}
@@ -344,11 +374,19 @@ var x = document.getElementById(String(object));
          <div class="col-md-3">
          <div class="list_group">
                 <a class="list-group-item active" style="text-align:center">Physics I</a>
-             {% for x in physics_1 %}
+              {% for x in physics_1_on %}
                <span>
                <form class= "form-inline" id = "{{x.course.listings}}">
-                <a class="list-group-item list-group-item-danger" name ="{{x.course.listings}}" >{{ x }} </a>
-                
+                <a class="list-group-item list-group-item-success" name ="{{x.course.listings}}" >{{ x }} 
+                  </a>
+             
+              </form>
+            </span>
+             {% endfor %}
+             {% for x in physics_1_off %}
+               <span>
+               <form class= "form-inline" id = "{{x.course.listings}}">
+                <a class="list-group-item list-group-item-danger" name ="{{x.course.listings}}" >{{ x }}</a>
               </form>
             </span>
              {% endfor %}
@@ -358,11 +396,19 @@ var x = document.getElementById(String(object));
          <div class="col-md-3">
          <div class="list_group">
                 <a class="list-group-item active" style="text-align:center">Physics II</a>
-             {% for x in physics_2 %}
+              {% for x in physics_2_on %}
+               <span>
+               <form class= "form-inline" id = "{{x.course.listings}}">
+                <a class="list-group-item list-group-item-success" name ="{{x.course.listings}}" >{{ x }} 
+                  </a>
+             
+              </form>
+            </span>
+             {% endfor %}
+             {% for x in physics_2_off %}
                <span>
                <form class= "form-inline" id = "{{x.course.listings}}">
                 <a class="list-group-item list-group-item-danger" name ="{{x.course.listings}}" >{{ x }}</a>
-                
               </form>
             </span>
              {% endfor %}
@@ -372,11 +418,19 @@ var x = document.getElementById(String(object));
          <div class="col-md-3">
          <div class="list_group">
                 <a class="list-group-item active" style="text-align:center">Chemistry</a>
-             {% for x in chem_1 %}
+             {% for x in chem_1_on %}
                <span>
                <form class= "form-inline" id = "{{x.course.listings}}">
-                <a class="list-group-item list-group-item-danger" name ="{{x.course.listings}}" >{{ x }} </a>
-                
+                <a class="list-group-item list-group-item-success" name ="{{x.course.listings}}" >{{ x }} 
+                  </a>
+             
+              </form>
+            </span>
+             {% endfor %}
+             {% for x in chem_1_off %}
+               <span>
+               <form class= "form-inline" id = "{{x.course.listings}}">
+                <a class="list-group-item list-group-item-danger" name ="{{x.course.listings}}" >{{ x }}</a>
               </form>
             </span>
              {% endfor %}
@@ -386,11 +440,19 @@ var x = document.getElementById(String(object));
          <div class="col-md-3">
          <div class="list_group">
                 <a class="list-group-item active" style="text-align:center">Computer Science</a>
-             {% for x in cos_1 %}
+             {% for x in cos_1_on %}
                <span>
                <form class= "form-inline" id = "{{x.course.listings}}">
-                <a class="list-group-item list-group-item-danger" name ="{{x.course.listings}}" >{{ x }} </a>
-                
+                <a class="list-group-item list-group-item-success" name ="{{x.course.listings}}" >{{ x }} 
+                  </a>
+             
+              </form>
+            </span>
+             {% endfor %}
+             {% for x in cos_1_off %}
+               <span>
+               <form class= "form-inline" id = "{{x.course.listings}}">
+                <a class="list-group-item list-group-item-danger" name ="{{x.course.listings}}" >{{ x }}</a>
               </form>
             </span>
              {% endfor %}
