@@ -481,7 +481,7 @@ def certificates(request):
 		top_3.append(maximum)
 		cert_dict.pop(maximum, None)
 	context = {'top_3': top_3}
-	return render(request, 'certificates.html', context)
+	return render(request, 'home/certificates.html', context)
 
 def about(request):
 	# current_user = request.user
