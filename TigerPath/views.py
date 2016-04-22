@@ -233,9 +233,9 @@ def degree_progress(request):
 
 
 		# AP Requirements - would affect BSE on
-	#student_ap=[]
-	#ap_classes = AP_Credit.objects.filter(student_id=current_user.username).values_list('course_id', flat=True).order_by('course_id')
-	#student_ap = title(ap_classes)
+	student_ap=[]
+	ap_classes = AP_Credit.objects.filter(student_name=current_user.username).values_list('course_id', flat=True).order_by('course_id')
+	student_ap = title(ap_classes)
 	# now you can do on/off thing here !!!!
 
 	
