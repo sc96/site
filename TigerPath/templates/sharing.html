@@ -56,6 +56,17 @@
   <div class="page-header" style="color:#ff8f00">
   <h1>Share Your Schedule </h1>
 </div>
+
+<!-- Suggested Certificates -->
+ {% if top_5 %}
+<div class="row">
+  <div class="panel-heading">
+    <h4>Here are the most similar students: <a>{{top_5.0}}</a>, <a>{{top_5.1}}</a>, <a>{{top_5.2}}</a>, <a>{{top_5.4}}</a>, <a>{{top_5.4}}</a> !</h4> 
+  </div> <!-- panel heading -->
+
+</div> <!-- row/-->
+{% endif %}
+
 </div>
 
 
