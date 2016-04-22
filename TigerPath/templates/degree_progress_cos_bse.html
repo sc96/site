@@ -55,8 +55,8 @@
 function rmv(object) {
 BootstrapDialog.confirm({
             title: 'Remove a course:',
-            message: 'Are you sure you want to remove ' + object + ' from your course list?',
-            type: BootstrapDialog.TYPE_WARNING, // <-- Default value is BootstrapDialog.TYPE_PRIMARY
+            message: 'Are you sure you want to remove '.concat(String(object), ' from your course list?'),
+             type: BootstrapDialog.TYPE_WARNING, // <-- Default value is BootstrapDialog.TYPE_PRIMARY
             closable: true, // <-- Default value is false
             draggable: true, // <-- Default value is false
             btnCancelLabel: 'No', // <-- Default value is 'Cancel',
@@ -78,7 +78,7 @@ function add(object) {
 var x = document.getElementById(String(object));
   BootstrapDialog.show({
             title: 'Add a course:'
-            message: 'Please add ' + object + ' to a semester',
+            message: 'Please add '.concat(String(object), ' to a semester.'),
             closable: true, // <-- Default value is false
             draggable: true, // <-- Default value is false
             buttons: [{
