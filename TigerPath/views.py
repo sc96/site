@@ -76,8 +76,9 @@ def profile(request):
 		publicBool = request.POST['publicBool']
 		student.update_info(student, firstN, lastN, engineerBool, publicBool)
 			
-    student.first_name = "trololol"
+    
 	# getting strings for context variable
+	student.first_name = "trololol"
 	firstN = student.first_name
 	lastN = student.last_name
 	engineerBool = student.engineerBool
