@@ -257,6 +257,9 @@ def course_search(query):
 			  'POL', 'POP', 'POR', 'PSY', 'QCB', 'REL', 'RES', 'RUS', 'SAN', 'SAS', 
 			  'SLA', 'SML', 'SOC', 'SPA', 'STC', 'SWA', 'THR', 'TPP', 'TRA', 'TUR', 
 			  'TWI', 'URB', 'URD', 'VIS', 'WRI', 'WWS']
+	commonTerms = [ "and", "in", "for", "with", "to", "an", "of", "on", "from", "their", "the", "that", "i",
+	"its", "it's", "is", "there", "a"]
+
 	if len(query) == 0:
 		matched_courses = Course.objects.none()
 		return matched_courses
@@ -265,6 +268,8 @@ def course_search(query):
 	matched_courses = Course.objects.all()	
 	for x in terms:
 		if len(x) <= 0:
+			continue;
+		if x in commonTerms:
 			continue;
 		if x in dist:
 			matched_courses = matched_courses.filter(area__icontains=x)
