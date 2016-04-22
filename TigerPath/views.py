@@ -373,13 +373,11 @@ def four_year(request,search):
 			added_class = Course.objects.get(listings=added_class)
 			semester = request.POST['semester']
 			sem = time[semester]
-			if request.POST['COSreq'] == 'N/A':
+			cosreq = request.POST['COSreq']
+			if cosreq == 'N/A':
 				student.add_course(added_class, student, sem)
 			else:
-				c= Approved_Course(student=student)
-				c= Approved_Course(course_id = added_class.course_id)
-				c= Approved_Course(semester = sem)
-				c= Approved_Course(requirement = request.POST['COSreq'])
+				c= Approved_Course(student=student, course_id = added_class.course_id, semester=sem, requirement = cosreq)
 				c.save()
 		#add_class(student, added_class, semester)
 	#Return matched courses for search bar
