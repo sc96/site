@@ -163,6 +163,20 @@ def degree_progress(request):
 	if(student.calc_3==1):
 		a = AP_Credit(student_id = current_user.username, course_id = "1176")
 		a.save()
+	if (student.ling_alg==1):
+		a = AP_Credit(student_name = current_user.username, course_id = "1160")
+		a.save()
+	if(student.gen_chem==1):
+		a = AP_Credit(student_id = current_user.username, course_id = "1354")
+		a.save()
+	if(student.physics==1):
+		a = AP_Credit(student_id = current_user.username, course_id = "2016")
+		a.save()
+		b = AP_Credit(student_id = current_user.username, course_id = "763")
+		b.save()
+	if(student.cos==1):
+		a = AP_Credit(student_id = current_user.username, course_id = "444")
+		a.save()
 
 		# can probably shorten this a little bit later...
 	theory_courses = COS_BSE.objects.filter(theory=1).values_list('course_id', flat=True).order_by('course_id')
