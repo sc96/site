@@ -4,6 +4,10 @@ from django.contrib.auth.decorators import login_required
 import re
 from itertools import chain
 
+time = {"Freshman Fall": "FRF", "Freshman Spring": "FRS",
+	"Sophomore Fall": "SOF","Sophomore Spring": "SOS",
+	"Junior Fall":  "JRF","Junior Spring": "JRS","Senior Fall": "SRF","Senior Spring": "SRS"}
+
 def compare_lists(stud, cour):
 	similarities=[]
 	differences=[]
@@ -315,9 +319,7 @@ def add_class(student, course, semester):
 
 @login_required # Cas authentication for this url.
 def four_year(request,search):
-	time = {"Freshman Fall": "FRF", "Freshman Spring": "FRS",
-	"Sophomore Fall": "SOF","Sophomore Spring": "SOS",
-	"Junior Fall":  "JRF","Junior Spring": "JRS","Senior Fall": "SRF","Senior Spring": "SRS"}
+	
 	current_user = request.user
 	try:
    		s = Student.objects.get(student_id=current_user)
