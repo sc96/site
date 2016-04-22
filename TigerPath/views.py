@@ -368,6 +368,7 @@ def four_year(request,search):
 # if you got a course at Princeton to count as a COS departmental
 def princeton_course_approval(request):
 	current_user = request.user
+	test=""
 	if request.method == 'POST':
 		added_class = request.POST['listing']
 		added_class = Course.objects.get(listings=added_class)
@@ -379,7 +380,7 @@ def princeton_course_approval(request):
 		
 	if 'q' in request.GET:
 		test = request.GET["q"]
-		matched_courses = course_search(test);
+	matched_courses = course_search(test);
 		
 	context = {'user': current_user.username, 'matched_courses': matched_courses}
 	return render(request, 'ptonapproval.html', context)
