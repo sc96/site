@@ -56,29 +56,48 @@ console.log("{{user}}");
 
   
 <h5>Leave Field Blank if Not Applicable</h5>
+<span id="custom-search">
+  <form class = "form-inline" action = "" method = "get" >
+     <div class="input-group col-md-12">
+        <input type="text" class="form-control input-lg" placeholder="Type course (e.g. COS 126)" value = "{{test}}" name="q" />
+        <span class="input-group-btn">
+          <button  id="search-btn" class="btn btn-info btn-lg" type="submit" >
+             <i class="glyphicon glyphicon-search"></i>
+          </button>
+        </span>
+      </div>
+    </form>
+</span>
 
-<form class= "form-inline" action= "" method= "post">{% csrf_token %}
-  <li class="list-group-item">
-    <select class="form-control" name="semester">
-      <option>Freshman Fall</option>
-      <option>Freshman Spring</option>
-      <option>Sophomore Fall</option>
-      <option>Sophomore Spring</option>
-      <option>Junior Fall</option>
-      <option>Junior Spring</option>
-      <option>Senior Fall</option>
-      <option>Senior Spring</option>
-    </select>
-    <div class="input-group col-md-12">
-      <input type="text" class="form-control input-lg" placeholder="Type listing (e.g. COS126)" value = "{{test}}" name="listing" />
-      <input type="text" class="form-control input-lg" placeholder="Type title (e.g. General Computer Science)" value = "{{test}}" name="title" />
-      <input type="text" class="form-control input-lg" placeholder="Type requirement (e.g. Theory)" value = "{{test}}" name="requirement" />
-      <input type="text" class="form-control input-lg" placeholder="Type certificate (e.g. GGS)" value = "{{test}}" name="certificate" />
-      <input type="text" class="form-control input-lg" placeholder="Type distribution (e.g. LA)" value = "{{test}}" name="distribution" />
-      <input type="submit" class="btn btn-info" value="Add Class">
-    </div>
-  </li>
-</form>
+{% if matched_courses %}
+  <div class="row">
+    <p><br>Matched Courses</p>
+  </div>
+    <div class="list-group">
+      {% for x in matched_courses %}
+        <span class="list-group col-md-12">
+            <div class="btn-group" style="width: 100%">
+              <form class= "form-inline" action= "" method= "post">{% csrf_token %}
+                <li class="list-group-item">{{x.listings}} {{x.title}} {{x.area}}
+                  <select class="form-control" name="semester">
+                      <option>Freshman Fall</option>
+                      <option>Freshman Spring</option>
+                      <option>Sophomore Fall</option>
+                      <option>Sophomore Spring</option>
+                      <option>Junior Fall</option>
+                      <option>Junior Spring</option>
+                      <option>Senior Fall</option>
+                      <option>Senior Spring</option>
+                    </select>
+                  <input type="hidden" name="listing" value={{x.listings}}>
+                  <input type="submit" class="btn btn-info" value="Add Class">
+                </li>
+              </form>
+            </div>
+        </span>
+      {% endfor %}
+  </div>
+{% endif %}
 
 <nav class="navbar navbar-default navbar-fixed-bottom">
   <div class="container"> 
