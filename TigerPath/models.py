@@ -93,8 +93,6 @@ class Student(models.Model):
 	cert1=models.CharField(max_length = 30)
 	cert2=models.CharField(max_length = 30)
 	cert3=models.CharField(max_length = 30)
-	cert4=models.CharField(max_length = 30)
-	cert5=models.CharField(max_length = 30)
 	engineerBool = models.BooleanField
 	publicBool = models.BooleanField
 	calc_1 = models.BooleanField
