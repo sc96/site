@@ -153,24 +153,24 @@ def degree_progress(request):
 		a = AP_Credit(student_name = current_user.username, course_id = "538")
 		a.save()
 	if(student.calc_2):
-		a = AP_Credit(student_id = current_user.username, course_id = "1029")
+		a = AP_Credit(student_name = current_user.username, course_id = "1029")
 		a.save()
 	if(student.calc_3):
-		a = AP_Credit(student_id = current_user.username, course_id = "1176")
+		a = AP_Credit(student_name = current_user.username, course_id = "1176")
 		a.save()
 	if (student.lin_alg):
 		a = AP_Credit(student_name = current_user.username, course_id = "1160")
 		a.save()
 	if(student.gen_chem):
-		a = AP_Credit(student_id = current_user.username, course_id = "1354")
+		a = AP_Credit(student_name = current_user.username, course_id = "1354")
 		a.save()
 	if(student.physics):
-		a = AP_Credit(student_id = current_user.username, course_id = "2016")
+		a = AP_Credit(student_name = current_user.username, course_id = "2016")
 		a.save()
-		b = AP_Credit(student_id = current_user.username, course_id = "763")
+		b = AP_Credit(student_name = current_user.username, course_id = "763")
 		b.save()
 	if(student.cos):
-		a = AP_Credit(student_id = current_user.username, course_id = "444")
+		a = AP_Credit(student_name = current_user.username, course_id = "444")
 		a.save()
 
 		# can probably shorten this a little bit later...
