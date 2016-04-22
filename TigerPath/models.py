@@ -93,15 +93,20 @@ class Student(models.Model):
 	cert1=models.CharField(max_length = 30)
 	cert2=models.CharField(max_length = 30)
 	cert3=models.CharField(max_length = 30)
-	engineerBool = models.BooleanField
-	publicBool = models.BooleanField
-	calc_1 = models.BooleanField
-	calc_2 = models.BooleanField
-	calc_3 = models.BooleanField
-	lin_alg = models.BooleanField
-	gen_chem = models.BooleanField
-	physics = models.BooleanField
-	cos = models.BooleanField
+	cert4=models.CharField(max_length = 30)
+	cert5=models.CharField(max_length = 30)
+
+	# not using BooleanField for the below vars anymore since there's 
+	# no easy way to convert Javascript Boolean into Python Boolean
+	engineerBool = models.CharField(max_length = 1)
+	publicBool = models.CharField(max_length = 1)
+	calc_1 = models.CharField(max_length = 1)
+	calc_2 = models.CharField(max_length = 1)
+	calc_3 = models.CharField(max_length = 1)
+	lin_alg = models.CharField(max_length = 1)
+	gen_chem = models.CharField(max_length = 1)
+	physics = models.CharField(max_length = 1)
+	cos = models.CharField(max_length = 1)
 
 	def __str__(self):
 		return self.student_id
@@ -121,26 +126,11 @@ class Student(models.Model):
 		obj.delete()
 
 	def update_info(self, student, firstN, lastN, engineerBool, publicBool):
-		s = student
-		f = firstN
-		l = lastN
-		e = engineerBool
-		p = publicBool
-		student.first_name = f
-		student.save()
-		student.last_name = l
-		student.save()
-		student.engineerBool = e
-		student.save()
-		student.publicBool = p
-		student.save()
-		#student.first_name = firstN
-		#student.last_name = lastN
-		#student.engineerBool = engineerBool
-		#student.publicBool = publicBool
-		#s.
-		
-		
+		student.first_name = firstN
+		student.last_name = lastN
+		student.engineerBool = engineerBool
+		student.publicBool = publicBool
+
 
 
 # Relevant when they are "adding" a course to their four year plan

@@ -41,17 +41,17 @@ function update_Info() {
     var engineerBool = document.getElementById("sel1")
     var input = document.getElementById("hidEngineer");
     if (engineerBool.value == "BSE")
-      input.value = true
+      input.value = "1"
     else
-      input.value = false
+      input.value = "0"
 
 
     var publicBool = document.getElementById("sel3")
     var input = document.getElementById("hidPublic");
     if (publicBool.value == "Public")
-      input.value = true
+      input.value = "1"
     else
-      input.value = false
+      input.value = "0"
 }
 
 </script>
@@ -115,7 +115,7 @@ console.log("{{user}}");
   style="WIDTH: 500px", value = "{{ lastN }}">
   <label for="sel1">Select Degree Type:</label>
   <select class="form-control" id="sel1", style="WIDTH: 500px">
-    {% if engineerBool %}
+    {% if engineerBool == "1" %}
     <option selected>BSE</option>
     <option>AB </option>
     {% else %}
@@ -129,7 +129,7 @@ console.log("{{user}}");
   </select>
   <label for="sel3">Do you want your schedule to be public?</label>
   <select class="form-control" id="sel3", style="WIDTH: 500px">
-    {% if publicBool %}
+    {% if publicBool == "1" %}
     <option selected>Public</option>
     <option> Private </option>
     {% else %}
