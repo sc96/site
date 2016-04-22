@@ -53,29 +53,25 @@
  {% if top_3 %}
 <div class="row">
   <div class="panel-heading">
-    <h4>Have you considered pursuing the <a>{{top_3.0}}</a>, <a>{{top_3.1}}</a>, or <a>{{top_3.2}}</a> certificates? </h4> 
+    <h4>Have you considered pursuing the following certificates? </h4> 
   </div> <!-- panel heading -->
 
 </div> <!-- row/-->
 {% endif %}
 
 <div class="container">
-  	 <a href="{% url 'views.aas' %}" class="btn btn-warning" role="button"> 
-  		AAS
-  	 </a>
-    </div>
-    
-    <div class="container">
-  	 <a href="{% url 'views.afs' %}" class="btn btn-warning" role="button"> 
-  		AFS
-  	 </a>
-    </div>
-    
-    <div class="container">
-  	 <a href="{% url 'views.ams' %}" class="btn btn-warning" role="button"> 
-  		AMS
-  	 </a>
-    </div>
+    <div class="btn-group btn-group-justified" role="group" aria-label="...">
+  <div class="btn-group" role="group">
+    <a href="{% url 'views.aas' %}"><button type="button" class="btn btn-default">African American Studies</button></a>
+  </div>
+  <div class="btn-group" role="group">
+    <a href="{% url 'views.afs' %}"><button type="button" class="btn btn-default">African Studies</button></a>
+  </div>
+  <div class="btn-group" role="group">
+    <a href="{% url 'views.ams' %}"><button type="button" class="btn btn-default">American Studies</button></a>
+  </div>
+</div>
+
     
     
 </div>
