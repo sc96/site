@@ -257,6 +257,7 @@ def degree_progress(request):
 	
 	math_1_on = title(compare_lists(all_courses, math_1)["similarities"])
 	#math_1_off = title(compare_lists(all_courses, math_1)["differences"])
+	math_1_off=[]
 	
 	math_2_on = title(compare_lists(all_courses, math_2)["similarities"])
 	math_2_off = title(compare_lists(all_courses, math_2)["differences"])
