@@ -26,38 +26,28 @@ publicBool
 -->
 
 
+
 <script>
+function update_info() {
 
-function update_firstN() {
 
-  var x = document.getElementById("firstname").value;
-  x.submit();
-  
+    var firstName = document.getElementById("firstname");
+    var input = document.getElementById("hidFirstName");
+    input.value = firstName.value;
+
+    var lastName = document.getElementById("lastname")
+    var input = document.getElementById("hidLastName");
+    input.value = lastName.value;
+
+    var engineerBool = document.getElementById("sel1")
+    var input = document.getElementById("hidEngineer");
+    input.value = sel1.value;
+
+    var engineerBool = document.getElementById("sel3")
+    var input = document.getElementById("hidPublic");
+    input.value = sel3.value;
+
 }
-
-function update_lastN() {
-
-  var x = document.getElementById("lastname").value;
-  x.submit();
-  
-}
-
-function update_engineer() {
-
-  var x = document.getElementById("sel1").value;
-  x.submit();
-  
-}
-
-function update_engineer() {
-
-  var x = document.getElementById("sel3").value;
-  x.submit();
-  
-}
-
-
-
 
 </script>
 
@@ -98,16 +88,6 @@ console.log("{{user}}");
     </ul>
   </div>
 </nav>
-
-
-
-<script>
-function myFunction() {
-    var lastName = document.getElementById("firstname");
-    var input = document.getElementById("hidFirstName");
-    input.value = lastName.value;
-}
-</script>
 
 
 
@@ -157,12 +137,12 @@ function myFunction() {
 <scr
 <div class="container">
 <form>
-<button onclick="myFunction()" type="submit" formaction="" formmethod = "post">
+<button onclick="updateInfo()" type="submit" formaction="" formmethod = "post">
 {% csrf_token %} Save!
 <input type="hidden" name="firstN" id = 'hidFirstName' >
-<input type="hidden" name="lastN" id='hidLastName' value ="aaa" >
-<input type="hidden" name="engineerBool" value = False>
-<input type="hidden" name="publicBool" value= True>
+<input type="hidden" name="lastN" id='hidLastName' >
+<input type="hidden" name="engineerBool" id = 'hidEngineer' >
+<input type="hidden" name="publicBool" id = 'hidPublic'>
 </button>
 </form>
 </div>
