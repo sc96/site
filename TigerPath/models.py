@@ -122,7 +122,7 @@ class Student(models.Model):
 		obj = Entry.objects.filter(student=s, course=c)
 		obj.delete()
 
-	def update_info(student, firstN, lastN, engineerBool, publicBool):
+	def update_info(self, student, firstN, lastN, engineerBool, publicBool):
 		student.first_name = firstN
 		student.last_name = lastN
 		student.engineerBool = engineerBool
