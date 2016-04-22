@@ -28,7 +28,7 @@ publicBool
 
 
 <script>
-function update_info() {
+function update_Info() {
 
 
     var firstName = document.getElementById("firstname");
@@ -137,7 +137,7 @@ console.log("{{user}}");
 <scr
 <div class="container">
 <form>
-<button onclick="updateInfo()" type="submit" formaction="" formmethod = "post">
+<button onclick="update_Info()" type="submit" formaction="" formmethod = "post">
 {% csrf_token %} Save!
 <input type="hidden" name="firstN" id = 'hidFirstName' >
 <input type="hidden" name="lastN" id='hidLastName' >
