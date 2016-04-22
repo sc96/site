@@ -152,8 +152,8 @@ console.log("{{user}}");
 {% csrf_token %} Save!
 <input type="hidden" name="firstN" value = document.getElementById('firstname').value>
 <input type="hidden" name="lastN" value= document.getElementById('lastname').value>
-<input type="hidden" name="engineerBool" value = 'False'>
-<input type="hidden" name="publicBool" value='True'>
+<input type="hidden" name="engineerBool" value = document.getElementById('sel1').value>
+<input type="hidden" name="publicBool" value=document.getElementById('sel2').value>
 </button>
 </div>
 <!--
