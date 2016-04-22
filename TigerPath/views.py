@@ -468,7 +468,7 @@ def schedule_sharing(request):
 	return render(request, 'sharing.html', context)
 
 @login_required # Cas authentication for this url.
-def share(request, shared_user):
+def share(request, user):
 	current_user = request.user
 	student = Student.objects.get(student_id=current_user.username)
 	#all_courses = Entry.objects.filter(student_id=current_user.username).values_list('course_id', flat=True).order_by('course_id') # all of the student's courses - course ID
