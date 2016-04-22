@@ -159,7 +159,7 @@ def degree_progress(request):
 	if(student.calc_3==1):
 		a = AP_Credit(student_id = current_user.username, course_id = "1176")
 		a.save()
-	if (student.ling_alg==1):
+	if (student.lin_alg==1):
 		a = AP_Credit(student_name = current_user.username, course_id = "1160")
 		a.save()
 	if(student.gen_chem==1):
