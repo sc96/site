@@ -93,15 +93,15 @@ class Student(models.Model):
 	cert1=models.CharField(max_length = 30)
 	cert2=models.CharField(max_length = 30)
 	cert3=models.CharField(max_length = 30)
-	engineerBool = models.BooleanField
-	publicBool = models.BooleanField
-	calc_1 = models.BooleanField
-	calc_2 = models.BooleanField
-	calc_3 = models.BooleanField
-	lin_alg = models.BooleanField
-	gen_chem = models.BooleanField
-	physics = models.BooleanField
-	cos = models.BooleanField
+	engineerBool = models.CharField(max_length = 1)
+	publicBool = models.CharField(max_length = 1)
+	calc_1 = models.CharField(max_length = 1)
+	calc_2 = models.CharField(max_length = 1)
+	calc_3 = models.CharField(max_length = 1)
+	lin_alg = models.CharField(max_length = 1)
+	gen_chem = models.CharField(max_length = 1)
+	physics = models.CharField(max_length = 1)
+	cos = models.CharField(max_length = 1)
 
 	def __str__(self):
 		return self.student_id
