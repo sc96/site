@@ -292,7 +292,7 @@ def degree_progress(request):
 	'math_1_on': math_1_on, 'math_1_off': math_1_off, 'math_2_on': math_2_on, 'math_2_off': math_2_off, 'math_3_on': math_3_on, 'math_3_off': math_3_off,
 	'math_4_on': math_4_on, 'math_4_off': math_4_off, 'chem_1_on': chem_1_on, 'chem_1_off': chem_1_off, 'cos_1_on': cos_1_on, 'cos_1_off': cos_1_off,
 	'physics_1_on': physics_1_on, 'physics_1_off': physics_1_off, 'physics_2_on': physics_2_on, 'physics_2_off': physics_2_off, 'student_ap': student_ap, 'removed_class': removed_class}
-	return render(request, 'degree_progress_cos_bse.html', context)
+	return render(request, 'degree_progress_cos_bse.html', context, 'cos_1': cos_1)
 	# COS AB Major	
 	#elif (student_major=="COS_AB"): 
 
