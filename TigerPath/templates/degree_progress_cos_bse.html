@@ -190,7 +190,18 @@ var x = document.getElementById(String(object));
              {% for x in theory_off %}
               <span>
                <form class= "form-inline" id = "{{x}}" action="" method="post">{% csrf_token %} 
-                  <a class="list-group-item list-group-item-danger">{{ x }}<i class="glyphicon glyphicon-plus pull-right link2" id="{{x}}" onclick="add(this.id)"></i> </a>
+                  <a class="list-group-item list-group-item-danger">{{ x }}
+                  <select class="form-control" name="semester">
+                        <option>Freshman Fall</option>
+                        <option>Freshman Spring</option>
+                        <option>Sophomore Fall</option>
+                        <option>Sophomore Spring</option>
+                        <option>Junior Fall</option>
+                        <option>Junior Spring</option>
+                        <option>Senior Fall</option>
+                        <option>Senior Spring</option>
+                    </select>
+                    <i class="glyphicon glyphicon-plus pull-right link2" id="{{x}}" onclick="add(this.id)"></i> </a>
                   <input type="hidden" name="term" value ="SRS">
                   <input type="hidden" name="listing" value="{{x}}">
               </form>
