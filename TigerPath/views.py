@@ -13,13 +13,6 @@ def compare_lists(stud, cour):
 		else:
 			differences.append(i)
 	return {"similarities": similarities, "differences": differences}
-	
-def num_compare(stud, cour):
-	count = 0
-	for i in cour:
-		if i in stud:
-			count+=1
-	return count
 
 
 def title(list):
@@ -373,6 +366,7 @@ def four_year(request,search):
 @login_required # Cas authentication for this url.
 # if you got a course at Princeton to count as a COS departmental
 def princeton_course_approval(request):
+	current_user = request.user
 	if request.method == 'POST':
 		added_class = request.POST['listing']
 		added_class = Course.objects.get(listings=added_class)
@@ -384,7 +378,7 @@ def princeton_course_approval(request):
 		
 	if 'q' in request.GET:
 		test = request.GET["q"]
-	matched_courses = course_search(test);
+		matched_courses = course_search(test);
 		
 	context = {'user': current_user.username, 'matched_courses': matched_courses}
 	return render(request, 'ptonapproval.html', context)
@@ -436,21 +430,7 @@ def schedule_sharing(request):
 def certificates(request):
 	current_user = request.user
 	student = Student.objects.get(student_id=current_user.username)
-	all_courses = Entry.objects.filter(student_id=current_user.username).values_list('course_id', flat=True).order_by('course_id') # all of the student's courses - course ID
-	cert_dict={}
-	aas = AAS.objects.values_list('course_id', flat=True).order_by('course_id')
-	afs = AFS.objects.values_list('course_id', flat=True).order_by('course_id')
-	ams = AMS.objects.values_list('course_id', flat=True).order_by('course_id')
-	nsimilar = num_compare(all_courses, aas)
-	cert_dict["African American Studies"]=num_compare(all_courses, aas)
-	cert_dict["African Studies"]=num_compare(all_courses, afs)
-	cert_dict["American Studies"]=num_compare(all_courses, ams)
-	top_3=[]
-	for i in range(0, 3):
-		maximum = max(cert_dict, key=lambda i: cert_dict[i])
-		top_3.append(maximum)
-		cert_dict.pop(maximum, None)
-	context = {'top_3': top_3}
+	context = {}
 	return render(request, 'certificates.html', context)
 
 def about(request):
