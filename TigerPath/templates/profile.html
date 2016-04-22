@@ -100,6 +100,18 @@ console.log("{{user}}");
 </nav>
 
 
+
+<script>
+function myFunction() {
+    var lastName = document.getElementById("firstname");
+    var input = document.getElementById("hidFirstName");
+    input.value = lastName.value;
+}
+</script>
+
+
+
+
 <div class="container">
   
   <div class="page-header" style="color:#ff8f00">
@@ -145,15 +157,10 @@ console.log("{{user}}");
 <scr
 <div class="container">
 <form>
-<button type="submit" formaction="" formmethod = "post">
+<button onclick="myFunction()" type="submit" formaction="" formmethod = "post">
 {% csrf_token %} Save!
-<input type="hidden" name="firstN" value = <script type="text/javascript">
-var x = document.getElementById("firstname").value;
-  x.submit();
-</script> >
-
-
-<input type="hidden" name="lastN" value= 'aaa'>
+<input type="hidden" name="firstN" id = 'hidFirstName' >
+<input type="hidden" name="lastN" id='hidLastName' value ="aaa" >
 <input type="hidden" name="engineerBool" value = False>
 <input type="hidden" name="publicBool" value= True>
 </button>
