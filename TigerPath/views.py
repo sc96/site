@@ -121,7 +121,7 @@ def degree_progress(request):
 			semester = request.POST['term']
 			sem = time[semester]
 			student.add_course(added_class, student, sem)
-			
+
 	for d in all_courses:
 		course = Course.objects.get(course_id=d)
 		# need to add QR/STL/STN for AB majors
@@ -295,9 +295,9 @@ def course_search(query):
 	for x in terms:
 		if len(x) <= 0:
 			continue;
-		if x in commonTerms:
+		elif x in commonTerms:
 			continue;
-		if x in dist:
+		elif x in dist:
 			matched_courses = matched_courses.filter(area__icontains=x)
 		elif len(x) == 3 and x.isalpha() and x.upper() in dep:
 			matched_courses = matched_courses.filter(listings__icontains=x)
