@@ -77,10 +77,14 @@ def profile(request):
 		student.update_info(student, firstN, lastN, engineerBool, publicBool)
 			
 <<<<<<< HEAD
+<<<<<<< HEAD
     
 =======
 
 >>>>>>> parent of 8c3ff80... test
+=======
+    student.first_name = "trololol"
+>>>>>>> parent of ae4b954... test
 	# getting strings for context variable
 	firstN = student.first_name
 	lastN = student.last_name
