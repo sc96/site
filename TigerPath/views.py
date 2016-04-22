@@ -91,6 +91,21 @@ def profile(request):
 @login_required # Cas authentication for this url.
 def degree_progress(request):
 
+	
+
+	student_ec=[]
+	student_em=[]
+	student_la=[]
+	student_ha=[]
+	student_sa=[]
+	student_wri=[]
+	student_foreign=[]
+	current_user = request.user
+	student = Student.objects.get(student_id=current_user.username)
+	student_major = student.student_major
+	all_courses = Entry.objects.filter(student_id=current_user.username).values_list('course_id', flat=True).order_by('course_id') # all of the student's courses
+	#dist_courses = Entry.objects.filter(student_id=current_user.username)
+
 	removed_class = ""
 	#Check if student is adding or removing a class
 	if request.method == 'POST':
@@ -106,19 +121,7 @@ def degree_progress(request):
 			semester = request.POST['term']
 			sem = time[semester]
 			student.add_course(added_class, student, sem)
-
-	student_ec=[]
-	student_em=[]
-	student_la=[]
-	student_ha=[]
-	student_sa=[]
-	student_wri=[]
-	student_foreign=[]
-	current_user = request.user
-	student = Student.objects.get(student_id=current_user.username)
-	student_major = student.student_major
-	all_courses = Entry.objects.filter(student_id=current_user.username).values_list('course_id', flat=True).order_by('course_id') # all of the student's courses
-	#dist_courses = Entry.objects.filter(student_id=current_user.username)
+			
 	for d in all_courses:
 		course = Course.objects.get(course_id=d)
 		# need to add QR/STL/STN for AB majors
