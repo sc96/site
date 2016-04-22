@@ -254,7 +254,7 @@ BootstrapDialog.confirm({
               <div class="btn-group" style="width: 100%">
                 <form class= "form-inline" action= "" method= "post">{% csrf_token %}
                   <li class="list-group-item">{{x.listings}} {{x.title}} {{x.area}}
-                    <select class="form-control" name="semester">
+                    <select class="form-control" name="semester" onChange="this.form.submit();">
                         <option>Freshman Fall</option>
                         <option>Freshman Spring</option>
                         <option>Sophomore Fall</option>
