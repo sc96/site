@@ -76,7 +76,11 @@ def profile(request):
 		publicBool = request.POST['publicBool']
 		student.update_info(student, firstN, lastN, engineerBool, publicBool)
 			
+<<<<<<< HEAD
     
+=======
+
+>>>>>>> parent of 8c3ff80... test
 	# getting strings for context variable
 	firstN = student.first_name
 	lastN = student.last_name

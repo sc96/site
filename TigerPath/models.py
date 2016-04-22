@@ -95,18 +95,15 @@ class Student(models.Model):
 	cert3=models.CharField(max_length = 30)
 	cert4=models.CharField(max_length = 30)
 	cert5=models.CharField(max_length = 30)
-
-	# not using BooleanField for the below vars anymore since there's 
-	# no easy way to convert Javascript Boolean into Python Boolean
-	engineerBool = models.CharField(max_length = 30)
-	publicBool = models.CharField(max_length = 30)
-	calc_1 = models.CharField(max_length = 30)
-	calc_2 = models.CharField(max_length = 30)
-	calc_3 = models.CharField(max_length = 30)
-	lin_alg = models.CharField(max_length = 30)
-	gen_chem = models.CharField(max_length = 30)
-	physics = models.CharField(max_length = 30)
-	cos = models.CharField(max_length = 30)
+	engineerBool = models.BooleanField
+	publicBool = models.BooleanField
+	calc_1 = models.BooleanField
+	calc_2 = models.BooleanField
+	calc_3 = models.BooleanField
+	lin_alg = models.BooleanField
+	gen_chem = models.BooleanField
+	physics = models.BooleanField
+	cos = models.BooleanField
 
 	def __str__(self):
 		return self.student_id
