@@ -58,16 +58,16 @@ def profile(request):
    		s = Student(student_id=current_user)
    		s = Student(first_name = "First")
    		s = Student(last_name = "Last")
-   		s = Student(engineerBool = "1")
-   		s = Student(publicBool = "1")
+   		s = Student(engineerBool = True)
+   		s = Student(publicBool = True)
    		s.save()
 
 	student = Student.objects.get(student_id=current_user.username)
 
 	firstN = ""
 	lastN = ""
-	engineerBool = ""
-	publicBool = ""
+	engineerBool = False
+	publicBool = False
 
 	if request.method == 'POST':
 		firstN = request.POST['firstN']
@@ -76,16 +76,9 @@ def profile(request):
 		publicBool = request.POST['publicBool']
 		student.update_info(student, firstN, lastN, engineerBool, publicBool)
 			
-<<<<<<< HEAD
-<<<<<<< HEAD
     
-=======
-
->>>>>>> parent of 8c3ff80... test
-=======
-    student.first_name = "trololol"
->>>>>>> parent of ae4b954... test
 	# getting strings for context variable
+	student.first_name = "trololol"
 	firstN = student.first_name
 	lastN = student.last_name
 	engineerBool = student.engineerBool
