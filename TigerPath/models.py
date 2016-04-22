@@ -123,10 +123,19 @@ class Student(models.Model):
 		obj.delete()
 
 	def update_info(self, student, firstN, lastN, engineerBool, publicBool):
-		student.first_name = firstN
-		student.last_name = lastN
-		student.engineerBool = engineerBool
-		student.publicBool = publicBool
+		s = student
+		f = firstN
+		l = lastN
+		e = engineerBool
+		p = publicBool
+		student.first_name = f
+		student.save()
+		#student.first_name = firstN
+		#student.last_name = lastN
+		#student.engineerBool = engineerBool
+		#student.publicBool = publicBool
+		#s.
+		
 		
 
 
