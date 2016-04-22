@@ -50,7 +50,7 @@ def profile(request):
 	try:
    		s = Student.objects.get(student_id=current_user)
 	except Student.DoesNotExist:
-		# creating new user. default values
+		# creating new student. default values
    		s = Student(student_id=current_user)
    		s = Student(first_name = "First")
    		s = Student(last_name = "Last")
@@ -59,6 +59,11 @@ def profile(request):
    		s.save()
 
 	student = Student.objects.get(student_id=current_user.username)
+
+	firstN = ""
+	lastN = ""
+	engineerBool = False
+	publicBool = False
 
 	if request.method == 'POST':
 		firstN = request.POST['firstN']
@@ -77,15 +82,6 @@ def profile(request):
 	 'engineerBool': engineerBool, 'publicBool': publicBool}
 	return render(request, 'profile.html', context)
 
-
-# probs don't need this?
-def update_info(student, firstN, lastN, enginerBool, publicBool):
-	student.first_name = firstN
-	student.last_name = lastN
-	student.engineerBool = engineerBool
-	student.publicBool = publicBool
-   
-	
 	
 
 @login_required # Cas authentication for this url.

@@ -127,6 +127,7 @@ class Student(models.Model):
 		student.last_name = lastN
 		student.engineerBool = engineerBool
 		student.publicBool = publicBool
+		s.save()
 
 
 # Relevant when they are "adding" a course to their four year plan
