@@ -146,10 +146,10 @@ def degree_progress(request):
 	cos_1 = Course.objects.filter(listings__regex=r'COS126')
 
 		# now I need to parse out which one they've taken it - math ON/math OFF
-	#stu = Student.objects.filter(calc_1=1, student_id = current_user.username)
-	#if stu:
-	#	a = AP_Credit(student_id = current_user.username, course_id = 538)
-	#	a.save()
+	stu = Student.objects.filter(calc_1=1, student_id = current_user.username)
+	if stu:
+		a = AP_Credit(student_id = current_user.username, course_id = 538)
+		a.save()
 
 		# can probably shorten this a little bit later...
 	theory_courses = COS_BSE.objects.filter(theory=1).values_list('course_id', flat=True).order_by('course_id')
@@ -181,7 +181,7 @@ def degree_progress(request):
 	apps_off = title(compare_lists(all_courses, apps_courses)["differences"])
 
 		# other should have all classes in "other" that the user hasn't already taken
-		# will fix this bug a little later... 4/9/2016
+		# will fix this bug a little later... 4/9/2016 ....!!!!
 	other_on = compare_lists(all_courses, other_courses)["similarities"]
 	other_other = Approved_Course.objects.filter(student_id=current_user.username, requirement="Other")
 	for t in other_other:
@@ -224,6 +224,7 @@ def degree_progress(request):
 	student_ap=[]
 	ap_classes = AP_Credit.objects.filter(student_id=current_user.username).values_list('course_id', flat=True).order_by('course_id')
 	student_ap = title(ap_classes)
+	# now you can do on/off thing here
 
 	
 
