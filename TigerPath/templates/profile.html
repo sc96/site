@@ -58,7 +58,6 @@ function update_Info() {
 <script>
 console.log("{{user}}");
 
-console.log("Ayyyyyyyyyyyyyyyyyyyy");
 </script>
     
     
@@ -105,10 +104,10 @@ console.log("Ayyyyyyyyyyyyyyyyyyyy");
 <div class="form-group">
   <label for="usr">First Name:</label>
   <input type="text" class="form-control" id="firstname" maxlength = 30, 
-  style="WIDTH: 500px", value = "{{ firstN }}">
+  style="WIDTH: 500px", value = "{{ engineerBool }}">
   <label for="text">Last Name:</label>
   <input type="text" class="form-control" id="lastname" maxlength = 30, 
-  style="WIDTH: 500px", value = "{{ lastN }}">
+  style="WIDTH: 500px", value = "{{ publicBool }}">
   <label for="sel1">Select Degree Type:</label>
   <select class="form-control" id="sel1", style="WIDTH: 500px">
     {% if engineerBool == "1" %}
