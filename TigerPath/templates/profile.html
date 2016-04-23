@@ -108,7 +108,7 @@ function update_Info() {
   <input type="text" class="form-control" id="lastname" maxlength = 30, 
    value = "{{ lastN }}">
   <label for="sel1">Select Degree Type:</label>
-  <select class="form-control" id="sel1", style="WIDTH: 500px">
+  <select class="form-control" id="sel1", >
     {% if engineerBool|stringformat:"s" == "1" %}
     <option selected>BSE</option>
     <option>AB </option>
@@ -133,8 +133,8 @@ function update_Info() {
   </select>
 </div>
 </div>
-<div class="col-sm-6" style="text-align:center"><br> 
-  Have you placed out of these courses?
+<div class="col-sm-6" style="text-align:center"> 
+  <p><b>Have you placed out of these courses?</b></p>
 </div>
 
 </div>
