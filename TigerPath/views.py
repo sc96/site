@@ -74,11 +74,11 @@ def profile(request):
 	engineerBool = ""
 	publicBool = ""
 
-	if request.method == 'POST':
-		firstN = request.POST['firstN']
-		lastN = request.POST['lastN']
-		engineerBool = request.POST['engineerBool']
-		publicBool = request.POST['publicBool']
+	if request.method == "POST":
+		firstN = request.POST["firstN"]
+		lastN = request.POST["lastN"]
+		engineerBool = request.POST["engineerBool"]
+		publicBool = request.POST["publicBool"]
 		student.update_info(student, firstN, lastN, engineerBool, publicBool)
 			
     
