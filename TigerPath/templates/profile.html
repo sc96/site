@@ -144,10 +144,10 @@ console.log("{{user}}");
 <form>
 <button onclick="update_Info()" type="submit" formaction="" formmethod = "post">
 {% csrf_token %} Save!
-<input type="hidden" name="firstN" id = "hidFirstName" >
-<input type="hidden" name="lastN" id= "hidLastName" >
-<input type="hidden" name="engineerBool" id = "hidEngineer" >
-<input type="hidden" name="publicBool" id = "hidPublic">
+<input type="hidden" name="firstN" id = "hidFirstName" value = "" >
+<input type="hidden" name="lastN" id= "hidLastName"  value = "" >
+<input type="hidden" name="engineerBool" id = "hidEngineer"  value = "">
+<input type="hidden" name="publicBool" id = "hidPublic" value = "">
 </button>
 </form>
 </div>
