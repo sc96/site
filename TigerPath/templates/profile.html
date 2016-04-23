@@ -110,7 +110,7 @@ console.log("{{user}}");
   style="WIDTH: 500px", value = "{{ publicBool }}">
   <label for="sel1">Select Degree Type:</label>
   <select class="form-control" id="sel1", style="WIDTH: 500px">
-    {% if engineerBool == "1" %}
+    {% if engineerBool == 1 %}
     <option selected>BSE</option>
     <option>AB </option>
     {% else %}
@@ -124,7 +124,7 @@ console.log("{{user}}");
   </select>
   <label for="sel3">Do you want your schedule to be public?</label>
   <select class="form-control" id="sel3", style="WIDTH: 500px">
-    {% if publicBool == "1" %}
+    {% if publicBool == 1 %}
     <option selected>Public</option>
     <option> Private </option>
     {% else %}
