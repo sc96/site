@@ -103,13 +103,15 @@ console.log("{{user}}");
 <!-- Form with all the questions -->
 
 <div class="container">
+<div class="row">
+<div class="col-sm-6" >
 <div class="form-group">
   <label for="usr">First Name:</label>
   <input type="text" class="form-control" id="firstname" maxlength = 30, 
-  style="WIDTH: 500px", value = "{{ firstN }}">
+   value = "{{ firstN }}">
   <label for="text">Last Name:</label>
   <input type="text" class="form-control" id="lastname" maxlength = 30, 
-  style="WIDTH: 500px", value = "{{ lastN }}">
+   value = "{{ lastN }}">
   <label for="sel1">Select Degree Type:</label>
   <select class="form-control" id="sel1", style="WIDTH: 500px">
     {% if engineerBool|stringformat:"s" == "1" %}
@@ -121,11 +123,11 @@ console.log("{{user}}");
     {% endif %}
   </select>
   <label for="sel2">Select Major:</label>
-  <select class="form-control" id="sel2", style="WIDTH: 500px">
+  <select class="form-control" id="sel2", >
     <option selected>Computer Science</option>
   </select>
   <label for="sel3">Do you want your schedule to be public?</label>
-  <select class="form-control" id="sel3", style="WIDTH: 500px">
+  <select class="form-control" id="sel3", >
     {% if publicBool|stringformat:"s" == "1" %}
     <option selected>Public</option>
     <option> Private </option>
@@ -136,7 +138,12 @@ console.log("{{user}}");
   </select>
 </div>
 </div>
-<scr
+</div>
+</div>
+
+
+
+
 <div class="container">
 <form>
 <button onclick="update_Info()" type="submit" formaction="" formmethod = "post">
@@ -151,13 +158,13 @@ console.log("{{user}}");
 
 <div class="container" >
 <label class="checkbox-inline">
-  <input type="checkbox" checked data-toggle="toggle" data-on="Calc_1" data-off="Calc_1"> 
+  <input type="checkbox" checked data-toggle="toggle" data-on="Calc1" data-off="Calc1"> 
 </label>
 <label class="checkbox-inline">
-  <input type="checkbox" data-toggle="toggle" data-on="Calc_2" data-off="Calc_2"> 
+  <input type="checkbox" data-toggle="toggle" data-on="Calc2" data-off="Calc2"> 
 </label>
 <label class="checkbox-inline">
-  <input type="checkbox" data-toggle="toggle" data-on="Calc_3" data-off="Calc_3"> 
+  <input type="checkbox" data-toggle="toggle" data-on="Calc3" data-off="Calc3"> 
 <label class="checkbox-inline">
   <input type="checkbox" data-toggle="toggle" data-on="linear" data-off="linear"> 
 </label>
