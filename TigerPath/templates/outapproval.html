@@ -1,17 +1,10 @@
-<!DOCTYPE html>
-<html>
+{% extends "base.html" %}
+{% load staticfiles %}
+
+{% block content %}
 <head>
-  <meta charset="utf-8">
+
   <title>TigerPath | Outside Course Approval</title>
-  <link rel="stylesheet" href="/../../static/css/bootstrap.css">
-  <script  src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-  <script  src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.8.24/browser.min.js"></script>
-  <script  src="/../../static/js/react.js"></script>
-  <script  src="/../../static/js/react-dom.js"></script>
-  <script  src="/../../static/js/react-bootstrap.min.js"></script>
-  <script  src="/../../static/js/JSXTransformer.js"></script>
-  <script  src="/../../static/js/bootstrap.js"></script>
-  <script  src="/../../static/js/bootstrap-hover-dropdown.js"></script>
    
 </head>
 <body style="padding-top: 70px; padding-bottom: 70px;">
@@ -57,16 +50,8 @@
 </div>
 </div>
 
-<nav class="navbar navbar-default navbar-fixed-bottom">
-  <div class="container"> 
-  <div style="text-align:center"><br>
-    TigerPath | COS 333 Project made by: Natalie Wertz, Sam Cheng, William Hinthorn, Viveque Ramji, Bennett Victor
-    </div>
-  </div>
-</nav>
-
-
 
 
 </body>
 </html>
+{% endblock %}
