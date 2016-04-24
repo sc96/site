@@ -63,8 +63,12 @@ def profile(request):
    		s = Student(engineerBool = "1")
    		s = Student(publicBool = "1")
    		s = Student(calc_1 = "0")
-   		s = Student(calc_1 = "0")
-   		s = Student(calc_1 = "0")
+   		s = Student(calc_2 = "0")
+   		s = Student(calc_3 = "0")
+   		s = Student(lin_alg= "0")
+   		s = Student(gen_chem = "0")
+   		s = Student(physics = "0")
+   		s = Student(cos = "0")
    		s.save()
 
 	student = Student.objects.get(student_id=current_user.username)
@@ -73,6 +77,9 @@ def profile(request):
 	lastN = ""
 	engineerBool = ""
 	publicBool = ""
+	calc_1 = ""
+	calc_2 = ""
+	calc_3 = ""
 
 	if request.method == "POST":
 		firstN = request.POST["firstN"]
@@ -87,8 +94,9 @@ def profile(request):
 	lastN = student.last_name
 	engineerBool = student.engineerBool
 	publicBool = student.publicBool
+	ap_dict = {"calc_1": student.calc_1, "calc_2": student.calc_2, "calc_3": student.calc_3}
 	context = {'user': current_user.username, 'firstN': firstN, 'lastN': lastN,
-	 'engineerBool': engineerBool, 'publicBool': publicBool}
+	 'engineerBool': engineerBool, 'publicBool': publicBool, 'ap_dict': ap_dict}
 	return render(request, 'profile.html', context)
 
 	
