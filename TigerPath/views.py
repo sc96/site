@@ -282,7 +282,7 @@ def degree_progress(request):
 		math_3_credit = AP_Credit.objects.filter(student_name=current_user.username, course_id="1176").values_list('course_id', flat=True)
 	math_3_on = title(compare_lists(chain(all_courses, math_3_credit), math_3)["similarities"])
 	math_3_off = title(compare_lists(chain(all_courses, math_3_credit), math_3)["differences"])
-	math_3_on = title(chain(all_courses, math_3_credit)) 
+	math_3_on = compare_lists(chain(all_courses, math_3_credit), math_3)["similarities"]
 	
 	if (AP_Credit.objects.filter(student_name=current_user.username, course_id="1160").exists()):
 		math_4_credit = AP_Credit.objects.filter(student_name=current_user.username, course_id="1160").values_list('course_id', flat=True)
