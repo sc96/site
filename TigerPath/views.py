@@ -160,7 +160,7 @@ def degree_progress(request):
 	cos_1 = Engineer.objects.filter(cos_1=1).values_list('course_id', flat=True)
 	
 		# now I need to parse out which one they've taken it - math ON/math OFF
-	if (student.calc_1 == 1):
+	if (student.calc_1 == 1 && !AP_Credit.objects.filter(student_name=current_user.username, course_id=538).exists()):
 		a = AP_Credit(student_name = current_user.username, course_id = "538")
 		a.save()
 	if(student.calc_2 == 1):
