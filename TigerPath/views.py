@@ -187,7 +187,7 @@ def degree_progress(request):
 		# can probably shorten this a little bit later...
 	theory_courses = COS_BSE.objects.filter(theory=1).values_list('course_id', flat=True).order_by('course_id')
 	systems_courses = COS_BSE.objects.filter(systems=1).values_list('course_id', flat=True).order_by('course_id')
-	apps_courses = COS_BSE.objects.filter(applications=1).values_list('course_id', flat=True).order_by('course_id')
+	#apps_courses = COS_BSE.objects.filter(applications=1).values_list('course_id', flat=True).order_by('course_id')
 	#core_courses = COS_BSE.objects.filter(core=1).values_list('course_id', flat=True).order_by('course_id')
 	#other_courses = COS_BSE.objects.filter(other=1).values_list('course_id', flat=True).order_by('course_id')
 	#iw_courses = COS_BSE.objects.filter(iw=1).values_list('course_id', flat=True).order_by('course_id')
@@ -206,12 +206,12 @@ def degree_progress(request):
 	systems_on = title(systems_on)
 	systems_off = title(compare_lists(all_courses, systems_courses)["differences"])
 
-	apps_on = compare_lists(all_courses, apps_courses)["similarities"]
-	other_apps = Approved_Course.objects.filter(student_id=current_user.username, requirement="Applications")
-	for t in other_apps:
-		apps_on.append(t.course_id)
-	apps_on = title(apps_on)
-	apps_off = title(compare_lists(all_courses, apps_courses)["differences"])
+	#apps_on = compare_lists(all_courses, apps_courses)["similarities"]
+	#other_apps = Approved_Course.objects.filter(student_id=current_user.username, requirement="Applications")
+	#for t in other_apps:
+	#	apps_on.append(t.course_id)
+	#apps_on = title(apps_on)
+	#apps_off = title(compare_lists(all_courses, apps_courses)["differences"])
 
 		# other should have all classes in "other" that the user hasn't already taken
 		# will fix this bug a little later... 4/9/2016 ....!!!!
@@ -287,7 +287,7 @@ def degree_progress(request):
 		# could literally just pass every certificate thing to this page....but that would be really dumb and bad
 		# still in the process of getting new ideas for certificates...it can def be done tho...still thinking
 	context = {'theory_on': theory_on, 'theory_off': theory_off, 'systems_on': systems_on, 'systems_off': systems_off,
-	'apps_on': apps_on, 'apps_off': apps_off,# 'other_on': other_on, 'other_off': other_off,
+	#'apps_on': apps_on, 'apps_off': apps_off,# 'other_on': other_on, 'other_off': other_off,
 	#'iw_on': iw_on, 'iw_off': iw_off, 'core_on': core_on, 'core_off': core_off, 'other_theory': other_theory,
 	#'student_sa': student_sa, 'student_la': student_la, 'student_ha': student_ha, 'student_ec': student_ec,
 	#'student_em': student_em, 'student_foreign': student_foreign, 'student_wri': student_wri, 'outside_courses': student_outside,
