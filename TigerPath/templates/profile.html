@@ -50,7 +50,23 @@ function update_Info() {
       input.value = "0"
 
 
-    var 
+    var cert1 = document.getElementById("cert1")
+    var input = document.getElementById("hidcert1");
+    input.value = cert1.value
+   
+
+
+    var cert2 = document.getElementById("cert2")
+    var input = document.getElementById("hidcert2");
+    input.value = cert2.value
+
+
+    var publicBool = document.getElementById("cert3")
+    var input = document.getElementById("hidcert3");
+    input.value = cert3.value
+
+
+
 }
 
 </script>
@@ -206,6 +222,9 @@ function update_Info() {
 <input type="hidden" name="lastN" id= "hidLastName"  >
 <input type="hidden" name="engineerBool" id = "hidEngineer"  >
 <input type="hidden" name="publicBool" id = "hidPublic" >
+<input type="hidden" name="cert1" id = "hidcert1">
+<input type="hidden" name="cert2" id = "hidcert2">
+<input type="hidden" name="cert3" id = "hidcert3">
 </button>
 </form>
 </div>
