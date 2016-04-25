@@ -366,13 +366,13 @@ def course_search(query):
 
 	return matched_courses
 
-def add_class(student, course, semester):
+def add_class(student, course, semester, req):
 	time = {"Freshman Fall": "FRF", "Freshman Spring": "FRS",
 	"Sophomore Fall": "SOF","Sophomore Spring": "SOS",
 	"Junior Fall":  "JRF","Junior Spring": "JRS","Senior Fall": "SRF","Senior Spring": "SRS"}
 	course = Course.objects.get(listings=course)
 	sem = time[semester]
-	student.add_course(course, student, sem)
+	student.add_course(course, student, sem, req)
 
 
 
@@ -407,11 +407,7 @@ def four_year(request,search):
 			semester = request.POST['semester']
 			sem = time[semester]
 			cosreq = request.POST['COSreq']
-			if cosreq == 'N/A':
-				student.add_course(added_class, student, sem)
-			else:
-				c= Approved_Course(student=student, course_id = added_class.course_id, semester=sem, requirement = cosreq)
-				c.save()
+			student.add_course(added_class, student, sem, req)
 		#add_class(student, added_class, semester)
 	#Return matched courses for search bar
 	
