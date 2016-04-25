@@ -163,9 +163,9 @@ def degree_progress(request):
 	if (student.calc_1 == 1 and AP_Credit.objects.filter(student_name=current_user.username, course_id="538").count() == 0):
 		a = AP_Credit(student_name = current_user.username, course_id = "538")
 		a.save()
-	#if(student.calc_2 == 1):
-	#	a = AP_Credit(student_name = current_user.username, course_id = "1029")
-	#	a.save()
+	if(student.calc_2 == 1 and AP_Credit.objects.filter(student_name=current_user.username, course_id="1029").count() == 0):
+		a = AP_Credit(student_name = current_user.username, course_id = "1029")
+		a.save()
 	if(student.calc_3 == 1):
 		a = AP_Credit(student_name = current_user.username, course_id = "1176")
 		a.save()
