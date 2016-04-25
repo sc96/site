@@ -69,13 +69,21 @@ def profile(request):
 	calc_1 = ""
 	calc_2 = ""
 	calc_3 = ""
+	lin_alg = ""
+	cert1 = ""
+	cert2 = ""
+	cert3 = ""
 
 	if request.method == "POST":
 		firstN = request.POST["firstN"]
 		lastN = request.POST["lastN"]
 		engineerBool = request.POST["engineerBool"]
 		publicBool = request.POST["publicBool"]
-		student.update_info(student, firstN, lastN, engineerBool, publicBool)
+		cert1 = request.POST["cert1"]
+		cert2 = request.POST["cert2"]
+		cert3 = request.POST["cert3"]
+		student.update_info(student, firstN, lastN, engineerBool, publicBool, 
+			cert1, cert2, cert3)
 			
     
 	# getting strings for context variable
@@ -83,9 +91,20 @@ def profile(request):
 	lastN = student.last_name
 	engineerBool = student.engineerBool
 	publicBool = student.publicBool
-	ap_dict = {"calc_1": student.calc_1, "calc_2": student.calc_2, "calc_3": student.calc_3}
+	cert1 = student.cert1
+	cert2 = student.cert2
+	cert3 = student.cert3
+
+
+	calc_1 = student.calc_1
+	calc_2 = student.calc_2
+	calc_3 = student.calc_3
+	lin_alg = student.lin_alg
+
+	ap_dict = {"calc_1": calc_1, "calc_2": calc_2, "calc_3": calc_3, "lin_alg" : lin_alg}
 	context = {'user': current_user.username, 'firstN': firstN, 'lastN': lastN,
-	 'engineerBool': engineerBool, 'publicBool': publicBool, 'ap_dict': ap_dict}
+	 'engineerBool': engineerBool, 'publicBool': publicBool, 'cert1': cert1,
+	 'cert2': cert2, 'cert3': cert3, 'ap_dict': ap_dict}
 	return render(request, 'profile.html', context)
 
 	
