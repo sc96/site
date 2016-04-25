@@ -151,7 +151,7 @@ class Entry(models.Model):
 	course = models.ForeignKey(Course, on_delete=models.CASCADE)
 	semester = models.CharField(max_length=30)#, primary_key = True)
 	#requirement_list = models.CharField(max_length=30) # we need to know which requirement list its in
-
+	req = models.CharField(max_length=30)
 #for classes that were approved for major or certificate
 class Approved_Course(models.Model):
 	student = models.ForeignKey(Student, on_delete=models.CASCADE)
