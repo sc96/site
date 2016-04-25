@@ -260,8 +260,8 @@ def degree_progress(request):
 	# now you can do on/off thing here
 	math_1_credit=[]
 	
-	if (AP_Credit.objects.get(student_name=current_user.username, math_1=1).exists()):
-		math_1_credit = AP_Credit.objects.filter(student_name=current_user.username, math_1=1).values_list('course_id', flat=True)
+	if (AP_Credit.objects.get(student_name=current_user.username, course_id="538").exists()):
+		math_1_credit = AP_Credit.objects.filter(student_name=current_user.username, course_id="538").values_list('course_id', flat=True)
 	math_1_on = title(chain(math_1_credit, compare_lists(all_courses, math_1)["similarities"]))
 	math_1_off = title(compare_lists(all_courses, math_1)["differences"])
 	#math_1_off=[]
