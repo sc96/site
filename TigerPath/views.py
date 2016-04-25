@@ -292,7 +292,8 @@ def degree_progress(request):
 		physics_1_credit = AP_Credit.objects.filter(student_name=current_user.username, course_id="2016").values_list('course_id', flat=True)
 	physics_1_on = title(compare_lists(chain(all_courses, physics_1_credit), physics_1)["similarities"])
 	physics_1_off = title(compare_lists(chain(all_courses, physics_1_credit), physics_1)["differences"])
-	physics_1_on = physics_1_credit
+	physics_1_on = chain(all_courses, physics_1_credit)
+	physics_1_off = physics_1
 	
 	if (AP_Credit.objects.filter(student_name=current_user.username, course_id="763").exists()):
 		physics_2_credit = AP_Credit.objects.filter(student_name=current_user.username, course_id="763").values_list('course_id', flat=True)
