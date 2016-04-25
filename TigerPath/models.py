@@ -63,6 +63,20 @@ class COS_BSE(models.Model):
 
 	def __str__(self):
 		return str(self.course_id)
+		
+class Engineer(models.Model):
+	course_id = models.CharField(max_length = 30, primary_key=True)
+	math_1 = models.IntegerField()
+	math_2 = models.IntegerField()
+	math_3 = models.IntegerField()
+	math_4 = models.IntegerField()
+	chem_1 = models.IntegerField()
+	cos_1 = models.IntegerField()
+	physics_1 = models.IntegerField()
+	physics_2 = models.IntegerField()
+
+	def __str__(self):
+		return str(self.course_id)
 
 
 class Course(models.Model):
