@@ -124,23 +124,23 @@ def degree_progress(request):
 			sem = time[semester]
 			student.add_course(added_class, student, sem)
 
-	#for d in all_courses:
-	#	course = Course.objects.get(course_id=d)
+	for d in all_courses:
+		course = Course.objects.get(course_id=d)
 		# need to add QR/STL/STN for AB majors
-	#	if (course.area=='SA'):
-	#		student_sa.append(d)
-	#	elif (course.area=='LA'):
-	#		student_la.append(d)
-	#	elif (course.area=='HA'):
-	#		student_ha.append(d)
-	#	elif (course.area=='EM'):
-	#		student_em.append(d)
-	#	elif (course.area=='EC'):
-	#		student_ec.append(d)
-	#	elif(re.match(r'WRI1', course.listings)):
-	#		student_wri.append(d)
-	#	elif(re.match(r'(ARA|BCS|CHI|CZE|FRE|GER|HEB|HIN|ITA|JPN|KOR|LAT|POL|POR|RUS|SPA|SWA|TUR|TWI|URD)', course.listings)):
-	#		student_foreign.append(d)
+		if (course.area=='SA'):
+			student_sa.append(d)
+		elif (course.area=='LA'):
+			student_la.append(d)
+		elif (course.area=='HA'):
+			student_ha.append(d)
+		elif (course.area=='EM'):
+			student_em.append(d)
+		elif (course.area=='EC'):
+			student_ec.append(d)
+		elif(re.match(r'WRI1', course.listings)):
+			student_wri.append(d)
+		elif(re.match(r'(ARA|BCS|CHI|CZE|FRE|GER|HEB|HIN|ITA|JPN|KOR|LAT|POL|POR|RUS|SPA|SWA|TUR|TWI|URD)', course.listings)):
+			student_foreign.append(d)
 
 	# something to think about: COS 340 can't pop up in "Other" and in "Theory"
 	# all of the requirement lists
@@ -150,39 +150,39 @@ def degree_progress(request):
 		# BSE requirements - all
 	
 	# this should probably be hard coded
-	#math_1 = Course.objects.filter(listings__regex=r'MAT103').values_list('course_id', flat=True)
-	#math_2 = Course.objects.filter(listings__regex=r'MAT104').values_list('course_id', flat=True)
-	#math_3 = Course.objects.filter(listings__regex=r'(MAT201|MAT203|MAT218|EGR192)').values_list('course_id', flat=True)
-	#math_4 = Course.objects.filter(listings__regex=r'(MAT202|MAT204|MAT217)').values_list('course_id', flat=True)
-	#physics_1 = Course.objects.filter(listings__regex=r'(PHY103|PHY105|EGR191)').values_list('course_id', flat=True)
-	#physics_2 = Course.objects.filter(listings__regex=r'(PHY104|PHY106)').values_list('course_id', flat=True)
-	#chem_1 = Course.objects.filter(listings__regex=r'(CHM201|CHM207)').values_list('course_id', flat=True)
-	#cos_1 = Course.objects.filter(listings__regex=r'COS126').values_list('course_id', flat=True)
+	math_1 = Course.objects.filter(listings__regex=r'MAT103').values_list('course_id', flat=True)
+	math_2 = Course.objects.filter(listings__regex=r'MAT104').values_list('course_id', flat=True)
+	math_3 = Course.objects.filter(listings__regex=r'(MAT201|MAT203|MAT218|EGR192)').values_list('course_id', flat=True)
+	math_4 = Course.objects.filter(listings__regex=r'(MAT202|MAT204|MAT217)').values_list('course_id', flat=True)
+	physics_1 = Course.objects.filter(listings__regex=r'(PHY103|PHY105|EGR191)').values_list('course_id', flat=True)
+	physics_2 = Course.objects.filter(listings__regex=r'(PHY104|PHY106)').values_list('course_id', flat=True)
+	chem_1 = Course.objects.filter(listings__regex=r'(CHM201|CHM207)').values_list('course_id', flat=True)
+	cos_1 = Course.objects.filter(listings__regex=r'COS126').values_list('course_id', flat=True)
 	
 		# now I need to parse out which one they've taken it - math ON/math OFF
-	#if (student.calc_1):
-	#	a = AP_Credit(student_name = current_user.username, course_id = "538")
-	#	a.save()
-	#if(student.calc_2):
-	#	a = AP_Credit(student_name = current_user.username, course_id = "1029")
-	#	a.save()
-	#if(student.calc_3):
-	#	a = AP_Credit(student_name = current_user.username, course_id = "1176")
-	#	a.save()
-	#if (student.lin_alg):
-	#	a = AP_Credit(student_name = current_user.username, course_id = "1160")
-	#	a.save()
-	#if(student.gen_chem):
-	#	a = AP_Credit(student_name = current_user.username, course_id = "1354")
-	#	a.save()
-	#if(student.physics):
-	#	a = AP_Credit(student_name = current_user.username, course_id = "2016")
-	#	a.save()
-	#	b = AP_Credit(student_name = current_user.username, course_id = "763")
-	#	b.save()
-	#if(student.cos):
-	#	a = AP_Credit(student_name = current_user.username, course_id = "444")
-	#	a.save()
+	if (student.calc_1):
+		a = AP_Credit(student_name = current_user.username, course_id = "538")
+		a.save()
+	if(student.calc_2):
+		a = AP_Credit(student_name = current_user.username, course_id = "1029")
+		a.save()
+	if(student.calc_3):
+		a = AP_Credit(student_name = current_user.username, course_id = "1176")
+		a.save()
+	if (student.lin_alg):
+		a = AP_Credit(student_name = current_user.username, course_id = "1160")
+		a.save()
+	if(student.gen_chem):
+		a = AP_Credit(student_name = current_user.username, course_id = "1354")
+		a.save()
+	if(student.physics):
+		a = AP_Credit(student_name = current_user.username, course_id = "2016")
+		a.save()
+		b = AP_Credit(student_name = current_user.username, course_id = "763")
+		b.save()
+	if(student.cos):
+		a = AP_Credit(student_name = current_user.username, course_id = "444")
+		a.save()
 
 		# can probably shorten this a little bit later...
 	theory_courses = COS_BSE.objects.filter(theory=1).values_list('course_id', flat=True).order_by('course_id')
@@ -237,20 +237,20 @@ def degree_progress(request):
 
 
 		# Distribution Requirements
-	#student_sa=title(student_sa)
-	#student_la=title(student_la)
-	#student_ha=title(student_ha)
-	#student_em=title(student_em)
-	#student_ec=title(student_ec)
-	#student_wri=title(student_wri)
-	#student_foreign=title(student_foreign)
+	student_sa=title(student_sa)
+	student_la=title(student_la)
+	student_ha=title(student_ha)
+	student_em=title(student_em)
+	student_ec=title(student_ec)
+	student_wri=title(student_wri)
+	student_foreign=title(student_foreign)
 
 		# Outside Courses
 		# Note: should probably do Outside Courses/Approved Courses first, then add to LA/SA/Theory/etc. THEN consolidate lists 
-	#student_outside=[]
-	#outside_courses = Outside_Course.objects.filter(student_id=current_user.username) # list of the student's outside courses
-	#for c in outside_courses.iterator():
-	#	student_outside.append(c.course_name)
+	student_outside=[]
+	outside_courses = Outside_Course.objects.filter(student_id=current_user.username) # list of the student's outside courses
+	for c in outside_courses.iterator():
+		student_outside.append(c.course_name)
 
 
 		# AP Requirements - would affect BSE on
@@ -259,41 +259,41 @@ def degree_progress(request):
 	#student_ap = title(ap_classes)
 	# now you can do on/off thing here
 	
-	#math_1_on = title(compare_lists(all_courses, math_1)["similarities"])
-	#math_1_off = title(compare_lists(all_courses, math_1)["differences"])
+	math_1_on = title(compare_lists(all_courses, math_1)["similarities"])
+	math_1_off = title(compare_lists(all_courses, math_1)["differences"])
 	#math_1_off=[]
 	
-	#math_2_on = title(compare_lists(all_courses, math_2)["similarities"])
-	#math_2_off = title(compare_lists(all_courses, math_2)["differences"])
+	math_2_on = title(compare_lists(all_courses, math_2)["similarities"])
+	math_2_off = title(compare_lists(all_courses, math_2)["differences"])
 	
-	#math_3_on = title(compare_lists(all_courses, math_3)["similarities"])
-	#math_3_off = title(compare_lists(all_courses, math_3)["differences"])
+	math_3_on = title(compare_lists(all_courses, math_3)["similarities"])
+	math_3_off = title(compare_lists(all_courses, math_3)["differences"])
 	
-	#math_4_on = title(compare_lists(all_courses, math_4)["similarities"])
-	#math_4_off = title(compare_lists(all_courses, math_4)["differences"])
+	math_4_on = title(compare_lists(all_courses, math_4)["similarities"])
+	math_4_off = title(compare_lists(all_courses, math_4)["differences"])
 	
-	#physics_1_on = title(compare_lists(all_courses, physics_1)["similarities"])
-	#physics_1_off = title(compare_lists(all_courses, physics_1)["differences"])
+	physics_1_on = title(compare_lists(all_courses, physics_1)["similarities"])
+	physics_1_off = title(compare_lists(all_courses, physics_1)["differences"])
 	
-	#physics_2_on = title(compare_lists(all_courses, physics_2)["similarities"])
-	#physics_2_off = title(compare_lists(all_courses, physics_2)["differences"])
+	physics_2_on = title(compare_lists(all_courses, physics_2)["similarities"])
+	physics_2_off = title(compare_lists(all_courses, physics_2)["differences"])
 	
-	#chem_1_on = title(compare_lists(all_courses, chem_1)["similarities"])
-	#chem_1_off = title(compare_lists(all_courses, chem_1)["differences"])
+	chem_1_on = title(compare_lists(all_courses, chem_1)["similarities"])
+	chem_1_off = title(compare_lists(all_courses, chem_1)["differences"])
 
-	#cos_1_on = title(compare_lists(all_courses, cos_1)["similarities"])
-	#cos_1_off = title(compare_lists(all_courses, cos_1)["differences"])
+	cos_1_on = title(compare_lists(all_courses, cos_1)["similarities"])
+	cos_1_off = title(compare_lists(all_courses, cos_1)["differences"])
 
 		# could literally just pass every certificate thing to this page....but that would be really dumb and bad
 		# still in the process of getting new ideas for certificates...it can def be done tho...still thinking
 	context = {'theory_on': theory_on, 'theory_off': theory_off, 'systems_on': systems_on, 'systems_off': systems_off,
 	'apps_on': apps_on, 'apps_off': apps_off,# 'other_on': other_on, 'other_off': other_off,
 	'iw_on': iw_on, 'iw_off': iw_off, 'core_on': core_on, 'core_off': core_off, 'other_theory': other_theory,
-	#'student_sa': student_sa, 'student_la': student_la, 'student_ha': student_ha, 'student_ec': student_ec,
-	#'student_em': student_em, 'student_foreign': student_foreign, 'student_wri': student_wri, 'outside_courses': student_outside,
-	#'math_1_on': math_1_on, 'math_1_off': math_1_off, 'math_2_on': math_2_on, 'math_2_off': math_2_off, 'math_3_on': math_3_on, 'math_3_off': math_3_off,
-	#'math_4_on': math_4_on, 'math_4_off': math_4_off, 'chem_1_on': chem_1_on, 'chem_1_off': chem_1_off, 'cos_1_on': cos_1_on, 'cos_1_off': cos_1_off,
-	#'physics_1_on': physics_1_on, 'physics_1_off': physics_1_off, 'physics_2_on': physics_2_on, 'physics_2_off': physics_2_off, 
+	'student_sa': student_sa, 'student_la': student_la, 'student_ha': student_ha, 'student_ec': student_ec,
+	'student_em': student_em, 'student_foreign': student_foreign, 'student_wri': student_wri, 'outside_courses': student_outside,
+	'math_1_on': math_1_on, 'math_1_off': math_1_off, 'math_2_on': math_2_on, 'math_2_off': math_2_off, 'math_3_on': math_3_on, 'math_3_off': math_3_off,
+	'math_4_on': math_4_on, 'math_4_off': math_4_off, 'chem_1_on': chem_1_on, 'chem_1_off': chem_1_off, 'cos_1_on': cos_1_on, 'cos_1_off': cos_1_off,
+	'physics_1_on': physics_1_on, 'physics_1_off': physics_1_off, 'physics_2_on': physics_2_on, 'physics_2_off': physics_2_off, 
 	'student_ap': student_ap, 'removed_class': removed_class}#, 'cos_1': cos_1}
 	return render(request, 'degree_progress_cos_bse.html', context)
 	# COS AB Major	
