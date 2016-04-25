@@ -216,8 +216,6 @@ def degree_progress(request):
 	theory_on = compare_lists(all_courses, theory_courses)["similarities"]
 	for t in all_entries.filter(req="Theory").values_list('course_id', flat=True).order_by('course_id'):
 		theory_on.append(t)
-		if t in other_courses:
-			other_courses.remove(t)
 	while len(theory_on) > 2:
 		save_other.append(theory_on.pop(0))
 	theory_on = title(theory_on)
@@ -226,8 +224,6 @@ def degree_progress(request):
 	systems_on = compare_lists(all_courses, systems_courses)["similarities"]
 	for t in all_entries.filter(req="Systems").values_list('course_id', flat=True).order_by('course_id'):
 		systems_on.append(t)
-		if t in other_courses:
-			other_courses.remove(t)
 	while len(systems_on) > 2:
 		save_other.append(systems_on.pop(0))
 	systems_on = title(systems_on)
@@ -236,8 +232,6 @@ def degree_progress(request):
 	apps_on = compare_lists(all_courses, apps_courses)["similarities"]
 	for t in all_entries.filter(req="Applications").values_list('course_id', flat=True).order_by('course_id'):
 		apps_on.append(t)
-		if t in other_courses:
-			other_courses.remove(t)
 	while len(apps_on) > 2:
 		save_other.append(apps_on.pop(0))
 	apps_on = title(apps_on)
