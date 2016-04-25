@@ -124,23 +124,23 @@ def degree_progress(request):
 			sem = time[semester]
 			student.add_course(added_class, student, sem)
 
-	for d in all_courses:
-		course = Course.objects.get(course_id=d)
+	#for d in all_courses:
+	#	course = Course.objects.get(course_id=d)
 		# need to add QR/STL/STN for AB majors
-		if (course.area=='SA'):
-			student_sa.append(d)
-		elif (course.area=='LA'):
-			student_la.append(d)
-		elif (course.area=='HA'):
-			student_ha.append(d)
-		elif (course.area=='EM'):
-			student_em.append(d)
-		elif (course.area=='EC'):
-			student_ec.append(d)
-		elif(re.match(r'WRI1', course.listings)):
-			student_wri.append(d)
-		elif(re.match(r'(ARA|BCS|CHI|CZE|FRE|GER|HEB|HIN|ITA|JPN|KOR|LAT|POL|POR|RUS|SPA|SWA|TUR|TWI|URD)', course.listings)):
-			student_foreign.append(d)
+	#	if (course.area=='SA'):
+	#		student_sa.append(d)
+	#	elif (course.area=='LA'):
+	#		student_la.append(d)
+	#	elif (course.area=='HA'):
+	#		student_ha.append(d)
+	#	elif (course.area=='EM'):
+	#		student_em.append(d)
+	#	elif (course.area=='EC'):
+	#		student_ec.append(d)
+	#	elif(re.match(r'WRI1', course.listings)):
+	#		student_wri.append(d)
+	#	elif(re.match(r'(ARA|BCS|CHI|CZE|FRE|GER|HEB|HIN|ITA|JPN|KOR|LAT|POL|POR|RUS|SPA|SWA|TUR|TWI|URD)', course.listings)):
+	#		student_foreign.append(d)
 
 	# something to think about: COS 340 can't pop up in "Other" and in "Theory"
 	# all of the requirement lists
@@ -289,8 +289,8 @@ def degree_progress(request):
 	context = {'theory_on': theory_on, 'theory_off': theory_off, 'systems_on': systems_on, 'systems_off': systems_off,
 	'apps_on': apps_on, 'apps_off': apps_off, 'other_on': other_on, 'other_off': other_off,
 	'iw_on': iw_on, 'iw_off': iw_off, 'core_on': core_on, 'core_off': core_off, 'other_theory': other_theory,
-	'student_sa': student_sa, 'student_la': student_la, 'student_ha': student_ha, 'student_ec': student_ec,
-	'student_em': student_em, 'student_foreign': student_foreign, 'student_wri': student_wri, 'outside_courses': student_outside,
+	#'student_sa': student_sa, 'student_la': student_la, 'student_ha': student_ha, 'student_ec': student_ec,
+	#'student_em': student_em, 'student_foreign': student_foreign, 'student_wri': student_wri, 'outside_courses': student_outside,
 	#'math_1_on': math_1_on, 'math_1_off': math_1_off, 'math_2_on': math_2_on, 'math_2_off': math_2_off, 'math_3_on': math_3_on, 'math_3_off': math_3_off,
 	#'math_4_on': math_4_on, 'math_4_off': math_4_off, 'chem_1_on': chem_1_on, 'chem_1_off': chem_1_off, 'cos_1_on': cos_1_on, 'cos_1_off': cos_1_off,
 	#'physics_1_on': physics_1_on, 'physics_1_off': physics_1_off, 'physics_2_on': physics_2_on, 'physics_2_off': physics_2_off, 
