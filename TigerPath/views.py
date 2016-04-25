@@ -122,7 +122,7 @@ def degree_progress(request):
 			added_class = Course.objects.get(listings=added_class)
 			semester = request.POST['term']
 			sem = time[semester]
-			student.add_course(added_class, student, sem)
+			student.add_course(added_class, student, sem, "N/A")
 
 	for d in all_courses:
 		course = Course.objects.get(course_id=d)
