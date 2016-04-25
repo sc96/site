@@ -120,13 +120,13 @@ class Student(models.Model):
 	def __str__(self):
 		return self.student_id
 
-	def add_course(self, course, student, sem):
+	def add_course(self, course, student, sem, req):
 		# put student ID and course ID into student-course DB
 		s = student
 		c = course
 		if Entry.objects.filter(student=student, course=course).exists():
 			return;
-		e = Entry(student=s, course=c, semester=sem)
+		e = Entry(student=s, course=c, semester=sem, req=req)
 		e.save()
 	def remove_course(self, course, student, sem="FRF"):
 		s = student
