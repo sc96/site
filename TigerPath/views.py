@@ -34,7 +34,7 @@ def top_semester(sem):
 	top_10=[]
 	for i in range(0, 4):
 		maximum = max(sem_dict, key=lambda i: sem_dict[i])
-		top_10.append(maximum + ": " + int(float(sem_dict.get(maximum))/float(total)*100) + "%")
+		top_10.append(maximum + ": " + str(int(float(sem_dict.get(maximum))/float(total)*100)) + "%")
 		sem_dict.pop(maximum, None)
 	return top_10
 
