@@ -126,6 +126,7 @@ def degree_progress(request):
 	student_major = student.student_major
 	all_courses = Entry.objects.filter(student_id=current_user.username).values_list('course_id', flat=True).order_by('course_id') # all of the student's courses
 	all_entries = Entry.objects.filter(student_id=current_user.username) #all of the student's entries
+	save_other = []
 	#dist_courses = Entry.objects.filter(student_id=current_user.username)
 
 	removed_class = ""
@@ -215,29 +216,38 @@ def degree_progress(request):
 	theory_on = compare_lists(all_courses, theory_courses)["similarities"]
 	for t in all_entries.filter(req="Theory").values_list('course_id', flat=True).order_by('course_id'):
 		theory_on.append(t)
+		if t in other_courses:
+			other_courses.remove(t)
 	while len(theory_on) > 2:
-		theory_on.pop(0)
+		save_other.append(theory_on.pop(0))
 	theory_on = title(theory_on)
 	theory_off = title(compare_lists(all_courses, theory_courses)["differences"])
 		
 	systems_on = compare_lists(all_courses, systems_courses)["similarities"]
-	#for t in other_sys:
-	#	systems_on.append(t.course_id)
+	for t in all_entries.filter(req="Systems").values_list('course_id', flat=True).order_by('course_id'):
+		systems_on.append(t)
+		if t in other_courses:
+			other_courses.remove(t)
+	while len(systems_on) > 2:
+		save_other.append(systems_on.pop(0))
 	systems_on = title(systems_on)
 	systems_off = title(compare_lists(all_courses, systems_courses)["differences"])
 
 	apps_on = compare_lists(all_courses, apps_courses)["similarities"]
-	other_apps = Approved_Course.objects.filter(student_id=current_user.username, requirement="Applications")
-	for t in other_apps:
-		apps_on.append(t.course_id)
+	for t in all_entries.filter(req="Applications").values_list('course_id', flat=True).order_by('course_id'):
+		apps_on.append(t)
+		if t in other_courses:
+			other_courses.remove(t)
+	while len(apps_on) > 2:
+		save_other.append(apps_on.pop(0))
 	apps_on = title(apps_on)
 	apps_off = title(compare_lists(all_courses, apps_courses)["differences"])
 
 		# other should have all classes in "other" that the user hasn't already taken
 		# will fix this bug a little later... 4/9/2016 ....!!!!
 	other_on = compare_lists(all_courses, other_courses)["similarities"]
-	other_other = Approved_Course.objects.filter(student_id=current_user.username, requirement="Other")
-	for t in other_other:
+	other_on = chain(other_on, save_other)
+	for t in all_entries.filter(req="Other").values_list('course_id', flat=True).order_by('course_id'):
 		other_on.append(t.course_id)
 	other_on = title(other_on)
 	other_off = title(compare_lists(all_courses, other_courses)["differences"])
