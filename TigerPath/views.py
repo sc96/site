@@ -55,10 +55,7 @@ def profile(request):
    		s = Student.objects.get(student_id=current_user)
 	except Student.DoesNotExist:
 		# creating new student. default values
-   		s = Student(student_id=current_user.username, first_name = "First", last_name = "Last",
-   		 engineerBool = "1", publicBool = "1", cert1 = "None", cert2 = "None", cert3 = "None", 
-   		 calc_1 = "0", calc_2 = "0", calc_3 = "0", lin_alg= "0", 
-   		 gen_chem = "0", physics = "0", cos = "0")
+   		s = Student(student_id=current_user.username, first_name = "First", last_name = "Last", engineerBool = "1", publicBool = "1", calc_1 = "0", calc_2 = "0", calc_3 = "0", lin_alg= "0", gen_chem = "0", physics = "0", cos = "0")
    		# 1 = True. 0 = False Using string instead of Bool since there's no
    		# easy way to pass Javascript booleans to python backend
    		s.save()
@@ -128,6 +125,7 @@ def degree_progress(request):
 	student = Student.objects.get(student_id=current_user.username)
 	student_major = student.student_major
 	all_courses = Entry.objects.filter(student_id=current_user.username).values_list('course_id', flat=True).order_by('course_id') # all of the student's courses
+	all_entries = Entry.objects.filter(student_id=current_user.username) #all of the student's entries
 	#dist_courses = Entry.objects.filter(student_id=current_user.username)
 
 	removed_class = ""
@@ -215,14 +213,14 @@ def degree_progress(request):
 	iw_courses = COS_BSE.objects.filter(iw=1).values_list('course_id', flat=True).order_by('course_id')
 		
 	theory_on = compare_lists(all_courses, theory_courses)["similarities"]
-	other_theory = Approved_Course.objects.filter(student_id=current_user.username, requirement="Theory")
-	for t in other_theory:
-		theory_on.append(t.course_id)
+	for t in all_entries.filter(req="Theory").values_list('course_id', flat=True).order_by('course_id'):
+		theory_on.append(t)
+	while len(theory_on) > 2:
+		theory_on.pop(0)
 	theory_on = title(theory_on)
 	theory_off = title(compare_lists(all_courses, theory_courses)["differences"])
 		
 	systems_on = compare_lists(all_courses, systems_courses)["similarities"]
-	other_sys = Approved_Course.objects.filter(student_id=current_user.username, requirement="Systems")
 	for t in other_sys:
 		systems_on.append(t.course_id)
 	systems_on = title(systems_on)
@@ -475,26 +473,26 @@ def four_year(request,search):
 	return render(request, 'four_year.html', context, )
 
 
-# @login_required # Cas authentication for this url.
-# # if you got a course at Princeton to count as a COS departmental
-# #def princeton_course_approval(request):
-# 	current_user = request.user
-# 	test=""
-# 	if request.method == 'POST':
-# 		added_class = request.POST['listing']
-# 		added_class = Course.objects.get(listings=added_class)
-# 		semester = request.POST['semester']
-# 		sem = time[semester]
-# 		student.add_course(added_class, student, sem)
-# 		#add_class(student, added_class, semester)
-# 	#Return matched courses for search bar
+#@login_required # Cas authentication for this url.
+# if you got a course at Princeton to count as a COS departmental
+#def princeton_course_approval(request):
+	#current_user = request.user
+	#test=""
+	#if request.method == 'POST':
+		#added_class = request.POST['listing']
+#added_class = Course.objects.get(listings=added_class)
+		#semester = request.POST['semester']
+		#sem = time[semester]
+		#student.add_course(added_class, student, sem)
+		#add_class(student, added_class, semester)
+	#Return matched courses for search bar
 		
-# 	if 'q' in request.GET:
-# 		test = request.GET["q"]
-# 	matched_courses = course_search(test);
+	#if 'q' in request.GET:
+		#test = request.GET["q"]
+	#matched_courses = course_search(test);
 		
-# 	context = {'user': current_user.username, 'matched_courses': matched_courses}
-# 	return render(request, 'ptonapproval.html', context)
+	#context = {'user': current_user.username, 'matched_courses': matched_courses}
+	#return render(request, 'ptonapproval.html', context)
 
 @login_required # Cas authentication for this url.
 # if you got a course at Princeton to count as a COS departmental
