@@ -297,18 +297,18 @@ def degree_progress(request):
 	
 	if (AP_Credit.objects.filter(student_name=current_user.username, course_id="763").exists()):
 		physics_2_credit = AP_Credit.objects.filter(student_name=current_user.username, course_id="763").values_list('course_id', flat=True)
-	physics_2_on = title(compare_lists(chain(all_courses, physics_2_credit), physics_2)["similarities"])
-	physics_2_off = title(compare_lists(chain(all_courses, physics_2_credit), physics_2)["differences"])
+	physics_2_on = title(compare_lists(map(int, chain(all_courses, physics_2_credit)), physics_2)["similarities"])
+	physics_2_off = title(compare_lists(map(int, chain(all_courses, physics_2_credit)), physics_2)["differences"])
 	
 	if (AP_Credit.objects.filter(student_name=current_user.username, course_id="1354").exists()):
 		chem_1_credit = AP_Credit.objects.filter(student_name=current_user.username, course_id="1354").values_list('course_id', flat=True)
-	chem_1_on = title(compare_lists(chain(all_courses, chem_1_credit), chem_1)["similarities"])
-	chem_1_off = title(compare_lists(chain(all_courses, chem_1_credit), chem_1)["differences"])
+	chem_1_on = title(compare_lists(map(int, chain(all_courses, chem_1_credit)), chem_1)["similarities"])
+	chem_1_off = title(compare_lists(map(int, chain(all_courses, chem_1_credit)), chem_1)["differences"])
 	
 	if (AP_Credit.objects.filter(student_name=current_user.username, course_id="444").exists()):
 		cos_1_credit = AP_Credit.objects.filter(student_name=current_user.username, course_id="444").values_list('course_id', flat=True)
-	cos_1_on = title(compare_lists(chain(all_courses, cos_1_credit), cos_1)["similarities"])
-	cos_1_off = title(compare_lists(chain(all_courses, cos_1_credit), cos_1)["differences"])
+	cos_1_on = title(compare_lists(map(int, chain(all_courses, cos_1_credit)), cos_1)["similarities"])
+	cos_1_off = title(compare_lists(map(int, chain(all_courses, cos_1_credit)), cos_1)["differences"])
 
 		# could literally just pass every certificate thing to this page....but that would be really dumb and bad
 		# still in the process of getting new ideas for certificates...it can def be done tho...still thinking
