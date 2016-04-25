@@ -264,14 +264,19 @@ BootstrapDialog.confirm({
 
                         {% if x.S15 or x.S16 %}
                         <option>Sophomore Spring</option>
+                        {% endif %}
+
                         <option>Junior Fall</option>
-                        
 
                         {% if x.S15 or x.S16 %}
                         <option>Junior Spring</option>
+                        {% endif %}
                         
                         <option>Senior Fall</option>
+
+                        {% if x.S15 or x.S16 %}
                         <option>Senior Spring</option>
+                        {% endif %}              
                     </select>
                     <select class="form-control" name ="COSreq">
                         <option>N/A</option>
