@@ -285,7 +285,7 @@ def degree_progress(request):
 	
 	if (AP_Credit.objects.filter(student_name=current_user.username, course_id="1160").exists()):
 		math_4_credit = AP_Credit.objects.filter(student_name=current_user.username, course_id="1160").values_list('course_id', flat=True)
-	math_4_on = title(chain(math_4_on, compare_lists(all_courses, math_4)["similarities"]))
+	math_4_on = title(chain(math_4_credit, compare_lists(all_courses, math_4)["similarities"]))
 	math_4_off = title(compare_lists(all_courses, math_4)["differences"])
 	
 	if (AP_Credit.objects.filter(student_name=current_user.username, course_id="2016").exists()):
@@ -295,12 +295,12 @@ def degree_progress(request):
 	
 	if (AP_Credit.objects.filter(student_name=current_user.username, course_id="763").exists()):
 		physics_2_credit = AP_Credit.objects.filter(student_name=current_user.username, course_id="763").values_list('course_id', flat=True)
-	physics_2_on = title(chain(physics_2_on, compare_lists(all_courses, physics_2)["similarities"]))
+	physics_2_on = title(chain(physics_2_credit, compare_lists(all_courses, physics_2)["similarities"]))
 	physics_2_off = title(compare_lists(all_courses, physics_2)["differences"])
 	
 	if (AP_Credit.objects.filter(student_name=current_user.username, course_id="1354").exists()):
 		chem_1_credit = AP_Credit.objects.filter(student_name=current_user.username, course_id="1354").values_list('course_id', flat=True)
-	chem_1_on = title(chain(chem_1_on, compare_lists(all_courses, chem_1)["similarities"]))
+	chem_1_on = title(chain(chem_1_credit, compare_lists(all_courses, chem_1)["similarities"]))
 	chem_1_off = title(compare_lists(all_courses, chem_1)["differences"])
 	
 	if (AP_Credit.objects.filter(student_name=current_user.username, course_id="444").exists()):
