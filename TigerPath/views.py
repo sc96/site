@@ -166,21 +166,21 @@ def degree_progress(request):
 	if(student.calc_2 == 1 and AP_Credit.objects.filter(student_name=current_user.username, course_id="1029").count() == 0):
 		a = AP_Credit(student_name = current_user.username, course_id = "1029")
 		a.save()
-	if(student.calc_3 == 1):
+	if(student.calc_3 == 1 and AP_Credit.objects.filter(student_name=current_user.username, course_id="1176").count() == 0):
 		a = AP_Credit(student_name = current_user.username, course_id = "1176")
 		a.save()
-	if (student.lin_alg == 1):
+	if (student.lin_alg == 1 and AP_Credit.objects.filter(student_name=current_user.username, course_id="1160").count() == 0):
 		a = AP_Credit(student_name = current_user.username, course_id = "1160")
 		a.save()
-	if(student.gen_chem == 1):
+	if(student.gen_chem == 1 and AP_Credit.objects.filter(student_name=current_user.username, course_id="1354").count() == 0):
 		a = AP_Credit(student_name = current_user.username, course_id = "1354")
 		a.save()
-	if(student.physics == 1):
+	if(student.physics == 1 and AP_Credit.objects.filter(student_name=current_user.username, course_id="763").count() == 0 and AP_Credit.objects.filter(student_name=current_user.username, course_id="2016").count() == 0):
 		a = AP_Credit(student_name = current_user.username, course_id = "2016")
 		a.save()
 		b = AP_Credit(student_name = current_user.username, course_id = "763")
 		b.save()
-	if(student.cos == 1):
+	if(student.cos == 1 and AP_Credit.objects.filter(student_name=current_user.username, course_id="444").count() == 0):
 		a = AP_Credit(student_name = current_user.username, course_id = "444")
 		a.save()
 
