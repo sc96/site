@@ -221,8 +221,8 @@ def degree_progress(request):
 	theory_off = title(compare_lists(all_courses, theory_courses)["differences"])
 		
 	systems_on = compare_lists(all_courses, systems_courses)["similarities"]
-	for t in other_sys:
-		systems_on.append(t.course_id)
+	#for t in other_sys:
+	#	systems_on.append(t.course_id)
 	systems_on = title(systems_on)
 	systems_off = title(compare_lists(all_courses, systems_courses)["differences"])
 
