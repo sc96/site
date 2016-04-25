@@ -258,14 +258,14 @@ def degree_progress(request):
 	#ap_classes = AP_Credit.objects.filter(student_name=current_user.username).values_list('course_id', flat=True).order_by('course_id')
 	#student_ap = title(ap_classes)
 	# now you can do on/off thing here
-	math_1_credit=[]
-	math_2_credit=[]
-	math_3_credit=[]
-	math_4_credit=[]
-	physics_1_credit=[]
-	physics_2_credit=[]
-	chem_1_credit=[]
-	cos_1_credit=[]
+	math_1_credit=[0000]
+	math_2_credit=[0000]
+	math_3_credit=[0000]
+	math_4_credit=[0000]
+	physics_1_credit=[0000]
+	physics_2_credit=[0000]
+	chem_1_credit=[0000]
+	cos_1_credit=[0000]
 	
 	if (AP_Credit.objects.filter(student_name=current_user.username, course_id="538").exists()):
 		math_1_credit = AP_Credit.objects.filter(student_name=current_user.username, course_id="538").values_list('course_id', flat=True)
