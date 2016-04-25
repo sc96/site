@@ -39,6 +39,7 @@ urlpatterns = [
     url(r'^afs/$', views.afs),
     url(r'^ams/$', views.ams),
     url(r'^outsidecourseapproval/$', views.outside_course_approval),
+    url(r'^cosdata/$', views.cos_data),
    # url(r'^princetoncourseapproval/$', views.princeton_course_approval),
     url(r'^schedulesharing/$', views.schedule_sharing),
     url(r'^share/(?P<shared_user>[-\w]+)/$', views.share),
