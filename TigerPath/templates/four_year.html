@@ -69,6 +69,21 @@ BootstrapDialog.confirm({
   <div class="page-header" style="color:#ff8f00">
   <h1>Your Four Year Plan</h1>
 </div>
+<div class="row">
+    <h5>Add a class to a semester</h5>
+            <span id="custom-search">
+                <form class = "form-inline" action = "" method = "get" >
+                    <div class="input-group col-md-12">
+                        <input type="text" class="form-control input-lg" placeholder="Type course (e.g. COS 126)" value = "{{test}}" name="q" />
+                        <span class="input-group-btn">
+                            <button  id="search-btn" class="btn btn-info btn-lg" type="submit" >
+                                <i class="glyphicon glyphicon-search"></i>
+                            </button>
+                        </span>
+                    </div>
+                </form>
+            </span>
+</div>
 
     <div class="row">
                 
@@ -217,6 +232,7 @@ BootstrapDialog.confirm({
         </div>
     </div>
 
+<br>
 <br>
  <div class="row">
     <h5>Add a class to a semester</h5>
