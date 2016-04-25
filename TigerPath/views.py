@@ -160,27 +160,27 @@ def degree_progress(request):
 	cos_1 = Engineer.objects.filter(cos_1=1).values_list('course_id', flat=True)
 	
 		# now I need to parse out which one they've taken it - math ON/math OFF
-	if (student.calc_1):
+	if (student.calc_1 == 1):
 		a = AP_Credit(student_name = current_user.username, course_id = "538")
 		a.save()
-	if(student.calc_2):
+	if(student.calc_2 == 1):
 		a = AP_Credit(student_name = current_user.username, course_id = "1029")
 		a.save()
-	if(student.calc_3):
+	if(student.calc_3 == 1):
 		a = AP_Credit(student_name = current_user.username, course_id = "1176")
 		a.save()
-	if (student.lin_alg):
+	if (student.lin_alg == 1):
 		a = AP_Credit(student_name = current_user.username, course_id = "1160")
 		a.save()
-	if(student.gen_chem):
+	if(student.gen_chem == 1):
 		a = AP_Credit(student_name = current_user.username, course_id = "1354")
 		a.save()
-	if(student.physics):
+	if(student.physics == 1):
 		a = AP_Credit(student_name = current_user.username, course_id = "2016")
 		a.save()
 		b = AP_Credit(student_name = current_user.username, course_id = "763")
 		b.save()
-	if(student.cos):
+	if(student.cos = 1):
 		a = AP_Credit(student_name = current_user.username, course_id = "444")
 		a.save()
 
