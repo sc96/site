@@ -8,8 +8,20 @@ time = {"Freshman Fall": "FRF", "Freshman Spring": "FRS",
 	"Sophomore Fall": "SOF","Sophomore Spring": "SOS",
 	"Junior Fall":  "JRF","Junior Spring": "JRS","Senior Fall": "SRF","Senior Spring": "SRS"}
 
+def title(list):
+	new_list=[]
+	for i in list:
+		new_list.append(Course.objects.get(course_id=i).listings)
+	return new_list
+
 def top_semester(sem):
-	sem_courses = Entry.objects.filter(semester=sem, listings__regex=r'^COS').values_list('course_id', flat=True)
+	sem_cour = Entry.objects.filter(semester=sem).values_list('course_id', flat=True)
+	sem_cour = title(sem_cour)
+	sem_courses=[]
+	for x in sem_cour:
+		if re.match(r'^COS'):
+			sem_courses.append(x)
+			
 	sem_dict = {}
 	total = len(sem_courses)
 	for s in sem_courses:
@@ -44,11 +56,6 @@ def num_compare(stud, cour):
 	return count
 
 
-def title(list):
-	new_list=[]
-	for i in list:
-		new_list.append(Course.objects.get(course_id=i).listings)
-	return new_list
 
 
 # i mean we could make a view for every certificate...but that wouldn't cover people doing two certificates...would want to show on
