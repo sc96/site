@@ -32,7 +32,7 @@ def top_semester(sem):
 		else:
 			sem_dict[s]+=1
 	top_10=[]
-	for i in range(0, 5):
+	for i in range(0, 10):
 		if(sem_dict.keys()):
 			maximum = max(sem_dict, key=lambda i: sem_dict[i])
 			top_10.append(maximum + ": " + str(int(float(sem_dict.get(maximum))/float(total)*100)) + "%")
