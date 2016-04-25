@@ -12,7 +12,7 @@ def compare_lists(stud, cour):
 	similarities=[]
 	differences=[]
 	for i in cour:
-		if i in stud:
+		if int(i) in stud:
 			similarities.append(i)
 		else:
 			differences.append(i)
