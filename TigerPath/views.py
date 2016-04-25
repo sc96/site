@@ -180,7 +180,7 @@ def degree_progress(request):
 		a.save()
 		b = AP_Credit(student_name = current_user.username, course_id = "763")
 		b.save()
-	if(student.cos = 1):
+	if(student.cos == 1):
 		a = AP_Credit(student_name = current_user.username, course_id = "444")
 		a.save()
 
