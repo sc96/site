@@ -8,6 +8,24 @@ time = {"Freshman Fall": "FRF", "Freshman Spring": "FRS",
 	"Sophomore Fall": "SOF","Sophomore Spring": "SOS",
 	"Junior Fall":  "JRF","Junior Spring": "JRS","Senior Fall": "SRF","Senior Spring": "SRS"}
 
+def top_semester(sem):
+	sem_courses = Entry.objects.filter(semester=sem, listings__regex=r'^COS').values_list('course_id', flat=True)
+	sem_dict = {}
+	total = len(sem_courses)
+	for s in sem_courses:
+		# need to put it in dict if not already in there
+		if s not in sem_dict:
+			sem_dict[s]=1
+		# else, value ++
+		else:
+			sem_dict[s]+=1
+	top_10=[]
+	for i in range(0, 10):
+		maximum = max(sem_dict, key=lambda i: sem_dict[i])
+		top_10.append(int(sem_dict.get(maximum))/total)
+		sem_dict.pop(maximum, None)
+	return top_10
+
 def compare_lists(stud, cour):
 	similarities=[]
 	differences=[]
@@ -505,6 +523,15 @@ def outside_course_approval(request):
 	student = Student.objects.get(student_id=current_user.username)
 	context = {}
 	return render(request, 'outapproval.html', context)
+	
+@login_required # Cas authentication for this url.
+# if you got a course at Princeton to count as a COS departmental
+def cos_data(request):
+	current_user = request.user
+	student = Student.objects.get(student_id=current_user.username)
+	frf_data = top_semester("FRF")
+	context = {'frf_data': frf_data}
+	return render(request, 'cosdata.html', context)
 
 @login_required # Cas authentication for this url.
 def schedule_sharing(request):
