@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from .models import Student, Course, COS_BSE, Entry, Approved_Course, Outside_Course, AAS, AFS, AMS, AP_Credit
+from .models import Student, Course, COS_BSE, Entry, Approved_Course, Engineer, Outside_Course, AAS, AFS, AMS, AP_Credit
 from django.contrib.auth.decorators import login_required
 import re
 from itertools import chain
@@ -150,8 +150,8 @@ def degree_progress(request):
 		# BSE requirements - all
 	
 	# this should probably be hard coded
-	math_1 = Course.objects.filter(listings__regex=r'MAT103').values_list('course_id', flat=True)
-	math_2 = Course.objects.filter(listings__regex=r'MAT104').values_list('course_id', flat=True)
+	math_1 = Engineer.objects.filter(math_1=1).values_list('course_id', flat=True)
+	math_2 = Engineer.objects.filter(math_2=1).values_list('course_id', flat=True)
 	math_3 = Course.objects.filter(listings__regex=r'(MAT201|MAT203|MAT218|EGR192)').values_list('course_id', flat=True)
 	math_4 = Course.objects.filter(listings__regex=r'(MAT202|MAT204|MAT217)').values_list('course_id', flat=True)
 	physics_1 = Course.objects.filter(listings__regex=r'(PHY103|PHY105|EGR191)').values_list('course_id', flat=True)
@@ -266,7 +266,7 @@ def degree_progress(request):
 	math_2_on = title(compare_lists(all_courses, math_2)["similarities"])
 	math_2_off = title(compare_lists(all_courses, math_2)["differences"])
 	
-	math_3_on = title(compare_lists(all_courses, theory_courses)["similarities"])
+	math_3_on = title(compare_lists(all_courses, math_3)["similarities"])
 	math_3_off = title(compare_lists(all_courses, math_3)["differences"])
 	
 	math_4_on = title(compare_lists(all_courses, math_4)["similarities"])
