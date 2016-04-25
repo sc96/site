@@ -45,7 +45,6 @@ BootstrapDialog.confirm({
       <li class="active"><a href="#">Four Year</a></li>
       <li><a href="/degreeprogress">Degree Progress</a></li> 
       <li><a href="/certificates">Certificates</a></li> 
-      <li><a href="/princetoncourseapproval">Princeton Course Approval</a></li> 
       <li><a href="/outsidecourseapproval">Outside Course Approval</a></li> 
       <li><a href="/schedulesharing">Schedule Sharing</a></li> 
     </ul>
@@ -209,6 +208,12 @@ BootstrapDialog.confirm({
          </div>
          </div>
     </div>
+    <div class="row">
+        <div class="col-md-12">
+         <div class="list_group">
+                <a class="list-group-item active color:white">Summer and Other Term Courses</a>
+                <!-- NEED INFORMATION PASSED IN -->
+
  </div>
 
 <br>
@@ -283,6 +288,7 @@ BootstrapDialog.confirm({
                         <option>Theory</option>
                         <option>Systems</option>
                         <option>Applications</option>
+                        <option>Other</option>
                     </select>
                     <input type="hidden" name="listing" value={{x.listings}}>
                     <input type="submit" class="btn btn-info" value="Add Class">

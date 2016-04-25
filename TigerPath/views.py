@@ -475,26 +475,26 @@ def four_year(request,search):
 	return render(request, 'four_year.html', context, )
 
 
-@login_required # Cas authentication for this url.
-# if you got a course at Princeton to count as a COS departmental
-def princeton_course_approval(request):
-	current_user = request.user
-	test=""
-	if request.method == 'POST':
-		added_class = request.POST['listing']
-		added_class = Course.objects.get(listings=added_class)
-		semester = request.POST['semester']
-		sem = time[semester]
-		student.add_course(added_class, student, sem)
-		#add_class(student, added_class, semester)
-	#Return matched courses for search bar
+# @login_required # Cas authentication for this url.
+# # if you got a course at Princeton to count as a COS departmental
+# #def princeton_course_approval(request):
+# 	current_user = request.user
+# 	test=""
+# 	if request.method == 'POST':
+# 		added_class = request.POST['listing']
+# 		added_class = Course.objects.get(listings=added_class)
+# 		semester = request.POST['semester']
+# 		sem = time[semester]
+# 		student.add_course(added_class, student, sem)
+# 		#add_class(student, added_class, semester)
+# 	#Return matched courses for search bar
 		
-	if 'q' in request.GET:
-		test = request.GET["q"]
-	matched_courses = course_search(test);
+# 	if 'q' in request.GET:
+# 		test = request.GET["q"]
+# 	matched_courses = course_search(test);
 		
-	context = {'user': current_user.username, 'matched_courses': matched_courses}
-	return render(request, 'ptonapproval.html', context)
+# 	context = {'user': current_user.username, 'matched_courses': matched_courses}
+# 	return render(request, 'ptonapproval.html', context)
 
 @login_required # Cas authentication for this url.
 # if you got a course at Princeton to count as a COS departmental
