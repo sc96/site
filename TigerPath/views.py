@@ -149,15 +149,15 @@ def degree_progress(request):
 	# if (student_major=="COS_BSE"):
 		# BSE requirements - all
 	
-	# 
-	math_1 = Course.objects.filter(listings__regex=r'MAT103').values_list('course_id', flat=True)
-	math_2 = Course.objects.filter(listings__regex=r'MAT104').values_list('course_id', flat=True)
-	math_3 = Course.objects.filter(listings__regex=r'(MAT201|MAT203|MAT218|EGR192)').values_list('course_id', flat=True)
-	math_4 = Course.objects.filter(listings__regex=r'(MAT202|MAT204|MAT217)').values_list('course_id', flat=True)
-	physics_1 = Course.objects.filter(listings__regex=r'(PHY103|PHY105|EGR191)').values_list('course_id', flat=True)
-	physics_2 = Course.objects.filter(listings__regex=r'(PHY104|PHY106)').values_list('course_id', flat=True)
-	chem_1 = Course.objects.filter(listings__regex=r'(CHM201|CHM207)').values_list('course_id', flat=True)
-	cos_1 = Course.objects.filter(listings__regex=r'COS126').values_list('course_id', flat=True)
+	# this should probably be hard coded
+	#math_1 = Course.objects.filter(listings__regex=r'MAT103').values_list('course_id', flat=True)
+	#math_2 = Course.objects.filter(listings__regex=r'MAT104').values_list('course_id', flat=True)
+	#math_3 = Course.objects.filter(listings__regex=r'(MAT201|MAT203|MAT218|EGR192)').values_list('course_id', flat=True)
+	#math_4 = Course.objects.filter(listings__regex=r'(MAT202|MAT204|MAT217)').values_list('course_id', flat=True)
+	#physics_1 = Course.objects.filter(listings__regex=r'(PHY103|PHY105|EGR191)').values_list('course_id', flat=True)
+	#physics_2 = Course.objects.filter(listings__regex=r'(PHY104|PHY106)').values_list('course_id', flat=True)
+	#chem_1 = Course.objects.filter(listings__regex=r'(CHM201|CHM207)').values_list('course_id', flat=True)
+	#cos_1 = Course.objects.filter(listings__regex=r'COS126').values_list('course_id', flat=True)
 	
 		# now I need to parse out which one they've taken it - math ON/math OFF
 	#if (student.calc_1):
@@ -237,26 +237,26 @@ def degree_progress(request):
 
 
 		# Distribution Requirements
-	student_sa=title(student_sa)
-	student_la=title(student_la)
-	student_ha=title(student_ha)
-	student_em=title(student_em)
-	student_ec=title(student_ec)
-	student_wri=title(student_wri)
-	student_foreign=title(student_foreign)
+	#student_sa=title(student_sa)
+	#student_la=title(student_la)
+	#student_ha=title(student_ha)
+	#student_em=title(student_em)
+	#student_ec=title(student_ec)
+	#student_wri=title(student_wri)
+	#student_foreign=title(student_foreign)
 
 		# Outside Courses
 		# Note: should probably do Outside Courses/Approved Courses first, then add to LA/SA/Theory/etc. THEN consolidate lists 
-	student_outside=[]
-	outside_courses = Outside_Course.objects.filter(student_id=current_user.username) # list of the student's outside courses
-	for c in outside_courses.iterator():
-		student_outside.append(c.course_name)
+	#student_outside=[]
+	#outside_courses = Outside_Course.objects.filter(student_id=current_user.username) # list of the student's outside courses
+	#for c in outside_courses.iterator():
+	#	student_outside.append(c.course_name)
 
 
 		# AP Requirements - would affect BSE on
 	student_ap=[]
-	ap_classes = AP_Credit.objects.filter(student_name=current_user.username).values_list('course_id', flat=True).order_by('course_id')
-	student_ap = title(ap_classes)
+	#ap_classes = AP_Credit.objects.filter(student_name=current_user.username).values_list('course_id', flat=True).order_by('course_id')
+	#student_ap = title(ap_classes)
 	# now you can do on/off thing here
 	
 	#math_1_on = title(compare_lists(all_courses, math_1)["similarities"])
