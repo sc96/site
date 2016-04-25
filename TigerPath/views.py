@@ -152,12 +152,12 @@ def degree_progress(request):
 	# this should probably be hard coded
 	math_1 = Engineer.objects.filter(math_1=1).values_list('course_id', flat=True)
 	math_2 = Engineer.objects.filter(math_2=1).values_list('course_id', flat=True)
-	math_3 = Course.objects.filter(listings__regex=r'(MAT201|MAT203|MAT218|EGR192)').values_list('course_id', flat=True)
-	math_4 = Course.objects.filter(listings__regex=r'(MAT202|MAT204|MAT217)').values_list('course_id', flat=True)
-	physics_1 = Course.objects.filter(listings__regex=r'(PHY103|PHY105|EGR191)').values_list('course_id', flat=True)
-	physics_2 = Course.objects.filter(listings__regex=r'(PHY104|PHY106)').values_list('course_id', flat=True)
-	chem_1 = Course.objects.filter(listings__regex=r'(CHM201|CHM207)').values_list('course_id', flat=True)
-	cos_1 = Course.objects.filter(listings__regex=r'COS126').values_list('course_id', flat=True)
+	math_3 = Engineer.objects.filter(math_3=1).values_list('course_id', flat=True)
+	math_4 = Engineer.objects.filter(math_4=1).values_list('course_id', flat=True)
+	physics_1 = Engineer.objects.filter(physics_1=1).values_list('course_id', flat=True)
+	physics_2 = Engineer.objects.filter(physics_2=1).values_list('course_id', flat=True)
+	chem_1 = Engineer.objects.filter(chem_1=1).values_list('course_id', flat=True)
+	cos_1 = Engineer.objects.filter(cos_1=1).values_list('course_id', flat=True)
 	
 		# now I need to parse out which one they've taken it - math ON/math OFF
 	if (student.calc_1):
