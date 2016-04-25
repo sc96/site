@@ -576,9 +576,10 @@ def schedule_sharing(request):
 	length = len(points_dict)
 	top_5=[]
 	for i in range(0, 5):
-		maximum = max(points_dict, key=lambda i: points_dict[i])
-		top_5.append(maximum)
-		points_dict.pop(maximum, None)
+		if(points_dict.keys()):
+			maximum = max(points_dict, key=lambda i: points_dict[i])
+			top_5.append(maximum)
+			points_dict.pop(maximum, None)
 	# then can do a generic thing for clicking on one of top 5 students and it shows you their four year
 
 	context = {'user': current_user.username,'nStudents': nStudents, 'len': length, 'top_5': top_5}
