@@ -269,43 +269,43 @@ def degree_progress(request):
 	
 	if (AP_Credit.objects.filter(student_name=current_user.username, course_id="538").exists()):
 		math_1_credit = AP_Credit.objects.filter(student_name=current_user.username, course_id="538").values_list('course_id', flat=True)
-	math_1_on = title((compare_lists(chain(all_courses, math_1_credit), math_1)["similarities"]))
+	math_1_on = title(compare_lists(chain(all_courses, math_1_credit), math_1)["similarities"])
 	math_1_off = title(compare_lists(chain(all_courses, math_1_credit), math_1)["differences"])
 	#math_1_off=[]
 	
 	if (AP_Credit.objects.filter(student_name=current_user.username, course_id="1029").exists()):
 		math_2_credit = AP_Credit.objects.filter(student_name=current_user.username, course_id="1029").values_list('course_id', flat=True)
-	math_2_on = title(chain(math_2_credit, compare_lists(chain(all_courses, math_2_credit), math_2)["similarities"]))
+	math_2_on = title(compare_lists(chain(all_courses, math_2_credit), math_2)["similarities"])
 	math_2_off = title(compare_lists(chain(all_courses, math_2_credit), math_2)["differences"])
 	
 	if (AP_Credit.objects.filter(student_name=current_user.username, course_id="1176").exists()):
 		math_3_credit = AP_Credit.objects.filter(student_name=current_user.username, course_id="1176").values_list('course_id', flat=True)
-	math_3_on = title(chain(math_3_credit, compare_lists(chain(all_courses, math_3_credit), math_3)["similarities"]))
+	math_3_on = title(compare_lists(chain(all_courses, math_3_credit), math_3)["similarities"])
 	math_3_off = title(compare_lists(chain(all_courses, math_3_credit), math_3)["differences"])
 	
 	if (AP_Credit.objects.filter(student_name=current_user.username, course_id="1160").exists()):
 		math_4_credit = AP_Credit.objects.filter(student_name=current_user.username, course_id="1160").values_list('course_id', flat=True)
-	math_4_on = title(chain(math_4_credit, compare_lists(chain(all_courses, math_4_credit), math_4)["similarities"]))
+	math_4_on = title(compare_lists(chain(all_courses, math_4_credit), math_4)["similarities"])
 	math_4_off = title(compare_lists(chain(all_courses, math_4_credit), math_4)["differences"])
 	
 	if (AP_Credit.objects.filter(student_name=current_user.username, course_id="2016").exists()):
 		physics_1_credit = AP_Credit.objects.filter(student_name=current_user.username, course_id="2016").values_list('course_id', flat=True)
-	physics_1_on = title(chain(physics_1_credit, compare_lists(chain(all_courses, physics_1_credit), physics_1)["similarities"]))
+	physics_1_on = title(compare_lists(chain(all_courses, physics_1_credit), physics_1)["similarities"])
 	physics_1_off = title(compare_lists(chain(all_courses, physics_1_credit), physics_1)["differences"])
 	
 	if (AP_Credit.objects.filter(student_name=current_user.username, course_id="763").exists()):
 		physics_2_credit = AP_Credit.objects.filter(student_name=current_user.username, course_id="763").values_list('course_id', flat=True)
-	physics_2_on = title(chain(physics_2_credit, compare_lists(chain(all_courses, physics_2_credit), physics_2)["similarities"]))
+	physics_2_on = title(compare_lists(chain(all_courses, physics_2_credit), physics_2)["similarities"])
 	physics_2_off = title(compare_lists(chain(all_courses, physics_2_credit), physics_2)["differences"])
 	
 	if (AP_Credit.objects.filter(student_name=current_user.username, course_id="1354").exists()):
 		chem_1_credit = AP_Credit.objects.filter(student_name=current_user.username, course_id="1354").values_list('course_id', flat=True)
-	chem_1_on = title(chain(chem_1_credit, compare_lists(chain(all_courses, chem_1_credit), chem_1)["similarities"]))
+	chem_1_on = title(compare_lists(chain(all_courses, chem_1_credit), chem_1)["similarities"])
 	chem_1_off = title(compare_lists(chain(all_courses, chem_1_credit), chem_1)["differences"])
 	
 	if (AP_Credit.objects.filter(student_name=current_user.username, course_id="444").exists()):
 		cos_1_credit = AP_Credit.objects.filter(student_name=current_user.username, course_id="444").values_list('course_id', flat=True)
-	cos_1_on = title(chain(cos_1_credit, compare_lists(chain(all_courses, cos_1_credit), cos_1)["similarities"]))
+	cos_1_on = title(compare_lists(chain(all_courses, cos_1_credit), cos_1)["similarities"])
 	cos_1_off = title(compare_lists(chain(all_courses, cos_1_credit), cos_1)["differences"])
 
 		# could literally just pass every certificate thing to this page....but that would be really dumb and bad
