@@ -19,7 +19,7 @@ def top_semester(sem):
 	sem_cour = title(sem_cour)
 	sem_courses=[]
 	for x in sem_cour:
-		if re.match(r'^COS'):
+		if re.match(r'^COS', x):
 			sem_courses.append(x)
 			
 	sem_dict = {}
