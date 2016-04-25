@@ -119,6 +119,26 @@ function update_Info() {
   <select class="form-control" id="sel2", >
     <option selected>Computer Science</option>
   </select>
+  <label for"cert1"> Are you interested in a certificate? </label>
+  <select class = "form-inline" id = "cert1", >
+   <option selected > None </option>
+   <option> Placeholder </option>
+   </select>
+
+   <label for"cert2"> Are you interested in a certificate? </label>
+  <select class = "form-inline" id = "cert2", >
+   <option selected > None </option>
+   <option> Placeholder </option>
+   </select>
+
+   <label for"cert3"> Are you interested in a certificate? </label>
+  <select class = "form-inline" id = "cert3", >
+   <option selected > None </option>
+   <option> Placeholder </option>
+   </select>
+
+
+
   <label for="sel3">Do you want your schedule to be public?</label>
   <select class="form-control" id="sel3", >
     {% if publicBool|stringformat:"s" == "1" %}
