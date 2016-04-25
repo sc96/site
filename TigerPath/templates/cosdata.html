@@ -162,7 +162,7 @@ var x = document.getElementById(String(object));
 <div class = "panel panel-default">
    <div class = "panel-heading">
       <h1 class = "panel-title" style="text-align:center"><b>
-         AFS Requirements</b>
+         By Semester</b>
       </h1>
    </div>
    
@@ -173,20 +173,13 @@ var x = document.getElementById(String(object));
 
         <div class="col-md-4">
          <div class="list_group" style="text-align:center">
-                <a class="list-group-item active">Foundations</a>
-             {% for x in foundation_on %}
+                <a class="list-group-item active">Freshman Fall</a>
+             {% for x in frf_data %}
                <span>
                <form class= "form-inline" id = "{{x.course.listings}}">
                 <a class="list-group-item list-group-item-success" name ="{{x.course.listings}}" >{{ x }} 
                   </a>
              
-              </form>
-            </span>
-             {% endfor %}
-             {% for x in foundation_off %}
-               <span>
-               <form class= "form-inline" id = "{{x.course.listings}}">
-                <a class="list-group-item list-group-item-danger" name ="{{x.course.listings}}" >{{ x }}</a>
               </form>
             </span>
              {% endfor %}
