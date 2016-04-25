@@ -275,23 +275,23 @@ def degree_progress(request):
 	
 	if (AP_Credit.objects.filter(student_name=current_user.username, course_id="1029").exists()):
 		math_2_credit = AP_Credit.objects.filter(student_name=current_user.username, course_id="1029").values_list('course_id', flat=True)
-	math_2_on = title(compare_lists(chain(all_courses, math_2_credit), math_2)["similarities"])
-	math_2_off = title(compare_lists(chain(all_courses, math_2_credit), math_2)["differences"])
+	math_2_on = title(compare_lists(map(int, chain(all_courses, math_2_credit)), math_2)["similarities"])
+	math_2_off = title(compare_lists(map(int, chain(all_courses, math_2_credit)), math_2)["differences"])
 	
 	if (AP_Credit.objects.filter(student_name=current_user.username, course_id="1176").exists()):
 		math_3_credit = AP_Credit.objects.filter(student_name=current_user.username, course_id="1176").values_list('course_id', flat=True)
-	math_3_on = title(compare_lists(chain(all_courses, math_3_credit), math_3)["similarities"])
-	math_3_off = title(compare_lists(chain(all_courses, math_3_credit), math_3)["differences"])
+	math_3_on = title(compare_lists(map(int, chain(all_courses, math_3_credit)), math_3)["similarities"])
+	math_3_off = title(compare_lists(map(int, chain(all_courses, math_3_credit)), math_3)["differences"])
 	
 	if (AP_Credit.objects.filter(student_name=current_user.username, course_id="1160").exists()):
 		math_4_credit = AP_Credit.objects.filter(student_name=current_user.username, course_id="1160").values_list('course_id', flat=True)
-	math_4_on = title(compare_lists(chain(all_courses, math_4_credit), math_4)["similarities"])
-	math_4_off = title(compare_lists(chain(all_courses, math_4_credit), math_4)["differences"])
+	math_4_on = title(compare_lists(map(int, chain(all_courses, math_4_credit)), math_4)["similarities"])
+	math_4_off = title(compare_lists(map(int, chain(all_courses, math_4_credit)), math_4)["differences"])
 	
 	if (AP_Credit.objects.filter(student_name=current_user.username, course_id="2016").exists()):
 		physics_1_credit = AP_Credit.objects.filter(student_name=current_user.username, course_id="2016").values_list('course_id', flat=True)
 	physics_1_on = title(compare_lists(map(int, chain(all_courses, physics_1_credit)), physics_1)["similarities"])
-	physics_1_off = title(compare_lists(chain(all_courses, physics_1_credit), physics_1)["differences"])
+	physics_1_off = title(compare_lists(map(int, chain(all_courses, physics_1_credit)), physics_1)["differences"])
 	#physics_1_on = chain(all_courses, physics_1_credit)
 	#physics_1_off = physics_1
 	
