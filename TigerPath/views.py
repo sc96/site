@@ -785,7 +785,7 @@ def share(request, shared_user):
 def certificates(request):
 	current_user = request.user
 	student = Student.objects.get(student_id=current_user.username)
-	all_courses = Entry.objects.filter(student_id=current_user.username).values_list('course_id', flat=True).order_by('course_id') # all of the student's courses - course ID
+	all_courses = Entry.objects.filter(student_id=str(current_user.username)).values_list('course_id', flat=True).order_by('course_id') # all of the student's courses - course ID
 	cert_dict={}
 	aas = AAS.objects.values_list('course_id', flat=True).order_by('course_id')
 	afs = AFS.objects.values_list('course_id', flat=True).order_by('course_id')
