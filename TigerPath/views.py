@@ -703,7 +703,7 @@ def schedule_sharing(request):
 			maximum = max(points_dict, key=lambda i: points_dict[i])
 			top_5.append(maximum)
 			points_dict.pop(maximum, None)
-	for i in range(0, 5- len(top_5)):
+	for i in range(0, int(5 - len(top_5))):
 		top_5.append("nwertz")
 	# then can do a generic thing for clicking on one of top 5 students and it shows you their four year
 
