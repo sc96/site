@@ -73,7 +73,7 @@ def top_req(num):
 	top_10=[]
 	for i in range(0, 10):
 		if(req_dict.keys()):
-			maximum = max(req_dict, key=lambda i: sem_dict[i])
+			maximum = max(req_dict, key=lambda i: req_dict[i])
 			top_10.append(maximum + ": " + str(int(float(req_dict.get(maximum))/float(total)*100)) + "%")
 			req_dict.pop(maximum, None)
 	return top_10
