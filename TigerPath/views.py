@@ -719,12 +719,12 @@ def share(request, shared_user):
 		num = int(str(shared_user[8:]))
 		fresh_fall = Entry.objects.filter(id=num, semester="FRF")
 		#app_frf = Approved_Course.objects.filter(id=num, semester="FRF")
-		app_frf=[]
-		all_frf = chain(fresh_fall, app_frf)
+		#app_frf=[]
+		all_frf = fresh_fall#chain(fresh_fall, app_frf)
 		fresh_spring = Entry.objects.filter(id=num, semester="FRS")
 		#app_frs = Approved_Course.objects.filter(id=num, semester="FRS")
-		app_frs=[]
-		all_frs = chain(fresh_spring, app_frs)
+		#app_frs=[]
+		all_frs = fresh_spring# chain(fresh_spring, app_frs)
 		soph_fall = Entry.objects.filter(id=num, semester="SOF")
 		#app_sof = Approved_Course.objects.filter(id=num, semester="SOF")
 		app_sof=[]
