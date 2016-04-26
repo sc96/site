@@ -39,9 +39,21 @@ def top_semester(sem):
 			sem_dict.pop(maximum, None)
 	return top_10
 	
-def top_req(req):
+def top_req(num):
+	if (num == 1):
+		required = COS_BSE.objects.filter(theory=1).values_list('course_id', flat=True)	
+	elif (num == 2):
+		required = COS_BSE.objects.filter(systems=1).values_list('course_id', flat=True)
+	elif (num == 3):
+		required = COS_BSE.objects.filter(applications=1).values_list('course_id', flat=True)
+	elif (num == 4):
+		required = COS_BSE.objects.filter(other=1).values_list('course_id', flat=True)
+	elif (num == 5):
+		required = COS_BSE.objects.filter(core=1).values_list('course_id', flat=True)
+	else:
+		required = COS_BSE.objects.filter(iw=1).values_list('course_id', flat=True)
 	req_cour = Entry.objects.values_list('course_id', flat=True)
-	required = COS_BSE.objects.filter(req=1).values_list('course_id', flat=True)
+	#required = COS_BSE.objects.filter(req=1).values_list('course_id', flat=True)
 	req_cour = title(sem_cour)
 	required = title(required)
 	req_courses=[]
