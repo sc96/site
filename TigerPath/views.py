@@ -246,8 +246,8 @@ def degree_progress(request):
 	current_user = request.user
 	student = Student.objects.get(student_id=str(current_user.username))
 	student_major = student.student_major
-	all_courses = Entry.objects.filter(student_id=str(current_user.username)).values_list('course_id', flat=True).order_by('course_id') # all of the student's courses
-	all_entries = Entry.objects.filter(student_id=str(current_user.username)) #all of the student's entries
+	all_courses = Entry.objects.filter(student_id=current_user.username).values_list('course_id', flat=True).order_by('course_id') # all of the student's courses
+	all_entries = Entry.objects.filter(student_id=current_user.username) #all of the student's entries
 	save_other = []
 	#dist_courses = Entry.objects.filter(student_id=current_user.username)
 
