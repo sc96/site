@@ -50,8 +50,10 @@ def top_req(num):
 		required = COS_BSE.objects.filter(other=1).values_list('course_id', flat=True)
 	elif (num == 5):
 		required = COS_BSE.objects.filter(core=1).values_list('course_id', flat=True)
-	else:
+	elif (num == 6):
 		required = COS_BSE.objects.filter(iw=1).values_list('course_id', flat=True)
+	else:
+		required = COS_BSE.objects.filter(other = 0).values_list('course_id', flat=True)
 	req_cour = Entry.objects.values_list('course_id', flat=True)
 	#required = COS_BSE.objects.filter(req=1).values_list('course_id', flat=True)
 	req_cour = title(map(int, req_cour))
