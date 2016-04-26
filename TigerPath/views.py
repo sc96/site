@@ -701,7 +701,10 @@ def schedule_sharing(request):
 	for i in range(0, 5):
 		if(points_dict.keys()):
 			maximum = max(points_dict, key=lambda i: points_dict[i])
-			top_5.append(maximum)
+			if (publicBool):
+				top_5.append(maximum)
+			else:
+				top_5.append("Student " + Student.objects.get(student_id=maximum).id)
 			points_dict.pop(maximum, None)
 	# then can do a generic thing for clicking on one of top 5 students and it shows you their four year
 
