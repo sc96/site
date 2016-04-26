@@ -95,7 +95,7 @@ def top_course(num):
 		required = COS_BSE.objects.filter(course_id=000).values_list('course_id', flat=True)
 	req_cour = Entry.objects.values_list('course_id', flat=True)
 	#required = COS_BSE.objects.filter(req=1).values_list('course_id', flat=True)
-	sem_cour = Entry.objects..values_list('semester', flat=True)
+	sem_cour = Entry.objects.values_list('semester', flat=True)
 	req_cour = title(map(int, req_cour))
 	required = title(map(int, required))
 	req_courses=[]
