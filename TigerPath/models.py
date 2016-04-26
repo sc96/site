@@ -101,7 +101,7 @@ class Student(models.Model):
 	id = models.AutoField(primary_key=True)
 	first_name = models.CharField(max_length = 30)
 	last_name = models.CharField(max_length = 30)
-	student_id = models.CharField(max_length = 20, primary_key = True) #NOT SECURE < will probably need to get from CASS login!
+	student_id = models.CharField(max_length = 20) #NOT SECURE < will probably need to get from CASS login!
 	student_major = models.CharField(max_length = 30) # the student's major
 	#student_sub_conc = models.CharField(max_length = 30) # the student's concentration within a major (relevant for ELE and MAE and others)
 	courses = models.ManyToManyField(Course, through='Entry')
