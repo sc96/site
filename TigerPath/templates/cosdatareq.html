@@ -175,8 +175,8 @@ var x = document.getElementById(String(object));
 
         <div class="col-md-6">
          <div class="list_group" style="text-align:center">
-                <a class="list-group-item active">Freshman Fall</a>
-             {% for x in frf_data %}
+                <a class="list-group-item active">Theory Courses</a>
+             {% for x in theory_data %}
                <span>
                <form class= "form-inline" id = "{{x.course.listings}}">
                 <a class="list-group-item list-group-item-info" name ="{{x.course.listings}}" >{{ x }} 
