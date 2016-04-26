@@ -174,15 +174,15 @@ def profile(request):
 	current_user = request.user;
 
 	try:
-   		s = Student.objects.get(student_id=current_user)
+   		s = Student.objects.get(student_id=str(current_user.username)) # changed this
 	except Student.DoesNotExist:
 		# creating new student. default values
-   		s = Student(student_id=current_user.username, first_name = "First", last_name = "Last", engineerBool = "1", publicBool = "1", calc_1 = "0", calc_2 = "0", calc_3 = "0", lin_alg= "0", gen_chem = "0", physics = "0", cos = "0")
+   		s = Student(student_id=str(current_user.username), first_name = "First", last_name = "Last", engineerBool = "1", publicBool = "1", calc_1 = "0", calc_2 = "0", calc_3 = "0", lin_alg= "0", gen_chem = "0", physics = "0", cos = "0")
    		# 1 = True. 0 = False Using string instead of Bool since there's no
    		# easy way to pass Javascript booleans to python backend
    		s.save()
 
-	student = Student.objects.get(student_id=current_user.username)
+	student = Student.objects.get(student_id=str(current_user.username))
 
 	firstN = ""
 	lastN = ""
@@ -244,7 +244,7 @@ def degree_progress(request):
 	student_wri=[]
 	student_foreign=[]
 	current_user = request.user
-	student = Student.objects.get(student_id=current_user.username)
+	student = Student.objects.get(student_id=str(current_user.username))
 	student_major = student.student_major
 	all_courses = Entry.objects.filter(student_id=str(current_user.username)).values_list('course_id', flat=True).order_by('course_id') # all of the student's courses
 	all_entries = Entry.objects.filter(student_id=str(current_user.username)) #all of the student's entries
@@ -369,7 +369,7 @@ def degree_progress(request):
 	other_off = title(compare_lists(all_courses, other_courses)["differences"])
 
 	iw_on = compare_lists(all_courses, iw_courses)["similarities"] #iw is for BSE only
-	other_iw = Approved_Course.objects.filter(student_id=current_user.username, requirement="Independent")
+	other_iw = Approved_Course.objects.filter(student_id=str(current_user.username), requirement="Independent")
 	for t in other_iw:
 		iw_on.append(t.course_id)
 	iw_on = title(iw_on)
@@ -394,7 +394,7 @@ def degree_progress(request):
 		# Outside Courses
 		# Note: should probably do Outside Courses/Approved Courses first, then add to LA/SA/Theory/etc. THEN consolidate lists 
 	student_outside=[]
-	outside_courses = Outside_Course.objects.filter(student_id=current_user.username) # list of the student's outside courses
+	outside_courses = Outside_Course.objects.filter(student_id=str(current_user.username)) # list of the student's outside courses
 	for c in outside_courses.iterator():
 		student_outside.append(c.course_name)
 
@@ -527,11 +527,11 @@ def four_year(request,search):
 	
 	current_user = request.user
 	try:
-   		s = Student.objects.get(student_id=current_user)
+   		s = Student.objects.get(student_id=str(current_user.username))
 	except Student.DoesNotExist:
-   		s = Student(student_id=current_user)
+   		s = Student(student_id=str(current_user.username))
    		s.save()
-	student = Student.objects.get(student_id=current_user.username)
+	student = Student.objects.get(student_id=str(current_user.username))
 
 	added_class = ""
 	semester = ""
@@ -562,10 +562,10 @@ def four_year(request,search):
 	matched_courses = course_search(test);
 	
 	# getting list of courses for each semester
-	fresh_fall = Entry.objects.filter(student_id=current_user.username, semester="FRF")
-	app_frf = Approved_Course.objects.filter(student_id=current_user.username, semester="FRF")
+	fresh_fall = Entry.objects.filter(student_id=str(current_user.username), semester="FRF")
+	app_frf = Approved_Course.objects.filter(student_id=str(current_user.username), semester="FRF")
 	all_frf = chain(fresh_fall, app_frf)
-	fresh_spring = Entry.objects.filter(student_id=current_user.username, semester="FRS")
+	fresh_spring = Entry.objects.filter(student_id=str(current_user.username), semester="FRS")
 	app_frs = Approved_Course.objects.filter(student_id=current_user.username, semester="FRS")
 	all_frs = chain(fresh_spring, app_frs)
 	soph_fall = Entry.objects.filter(student_id=current_user.username, semester="SOF")
@@ -679,8 +679,8 @@ def schedule_sharing(request):
 	nStudents = Student.objects.count
 	points_dict={}
 	# the user's courses
-	all_courses = Entry.objects.filter(student_id=current_user.username).values_list('course_id', flat=True)
-	all_sems = Entry.objects.filter(student_id=current_user.username).values_list('semester', flat=True)
+	all_courses = Entry.objects.filter(student_id=str(current_user.username)).values_list('course_id', flat=True)
+	all_sems = Entry.objects.filter(student_id=str(current_user.username)).values_list('semester', flat=True)
 	for s in Student.objects.iterator():
 		# if its same semester and class = +2
 		# same class = +1
