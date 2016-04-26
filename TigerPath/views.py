@@ -549,7 +549,7 @@ def cos_data_semester(request):
 	'jrs_data': jrs_data, 'srf_data': srf_data, 'srs_data': srs_data}
 	return render(request, 'cosdatasemester.html', context)
 	
-	@login_required # Cas authentication for this url.
+@login_required # Cas authentication for this url.
 # if you got a course at Princeton to count as a COS departmental
 def cos_data_course(request):
 	current_user = request.user
