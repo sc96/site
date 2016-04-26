@@ -718,28 +718,36 @@ def share(request, shared_user):
 	if (re.match(r'Student', shared_user)):
 		num = int(str(shared_user[8:]))
 		fresh_fall = Entry.objects.filter(id=num, semester="FRF")
-		app_frf = Approved_Course.objects.filter(id=num, semester="FRF")
+		#app_frf = Approved_Course.objects.filter(id=num, semester="FRF")
+		app_frf=[]
 		all_frf = chain(fresh_fall, app_frf)
 		fresh_spring = Entry.objects.filter(id=num, semester="FRS")
-		app_frs = Approved_Course.objects.filter(id=num, semester="FRS")
+		#app_frs = Approved_Course.objects.filter(id=num, semester="FRS")
+		app_frs=[]
 		all_frs = chain(fresh_spring, app_frs)
 		soph_fall = Entry.objects.filter(id=num, semester="SOF")
-		app_sof = Approved_Course.objects.filter(id=num, semester="SOF")
+		#app_sof = Approved_Course.objects.filter(id=num, semester="SOF")
+		app_sof=[]
 		all_sof = chain(soph_fall, app_sof)
 		soph_spring = Entry.objects.filter(id=num, semester="SOS")
-		app_sos = Approved_Course.objects.filter(id=num, semester="SOS")
+		#app_sos = Approved_Course.objects.filter(id=num, semester="SOS")
+		app_sos=[]
 		all_sos = chain(soph_spring, app_sos)
 		junior_fall = Entry.objects.filter(id=num, semester="JRF")
-		app_jrf = Approved_Course.objects.filter(id=num, semester="JRF")
+		#app_jrf = Approved_Course.objects.filter(id=num, semester="JRF")
+		app_jrf=[]
 		all_jrf = chain(junior_fall, app_jrf)
 		junior_spring = Entry.objects.filter(id=num, semester="JRS")
-		app_jrs = Approved_Course.objects.filter(id=num, semester="JRS")
+		#app_jrs = Approved_Course.objects.filter(id=num, semester="JRS")
+		app_jrs=[]
 		all_jrs = chain(junior_spring, app_jrs)
 		senior_fall = Entry.objects.filter(id=num, semester="SRF")
-		app_srf = Approved_Course.objects.filter(id=num, semester="SRF")
+		#app_srf = Approved_Course.objects.filter(id=num, semester="SRF")
+		app_srf=[]
 		all_srf = chain(senior_fall, app_srf)
 		senior_spring = Entry.objects.filter(id=num, semester="SRS")
-		app_srs = Approved_Course.objects.filter(id=num, semester="SRS")
+		#app_srs = Approved_Course.objects.filter(id=num, semester="SRS")
+		app_srs=[]
 		all_srs = chain(senior_spring, app_srs)
 	else:
 	#all_courses = Entry.objects.filter(student_id=current_user.username).values_list('course_id', flat=True).order_by('course_id') # all of the student's courses - course ID
