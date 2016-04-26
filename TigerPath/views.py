@@ -727,28 +727,28 @@ def share(request, shared_user):
 		all_frs = fresh_spring# chain(fresh_spring, app_frs)
 		soph_fall = Entry.objects.filter(id=num, semester="SOF")
 		#app_sof = Approved_Course.objects.filter(id=num, semester="SOF")
-		app_sof=[]
-		all_sof = chain(soph_fall, app_sof)
+		#app_sof=[]
+		all_sof = soph_fall#chain(soph_fall, app_sof)
 		soph_spring = Entry.objects.filter(id=num, semester="SOS")
 		#app_sos = Approved_Course.objects.filter(id=num, semester="SOS")
-		app_sos=[]
-		all_sos = chain(soph_spring, app_sos)
+		#app_sos=[]
+		all_sos = soph_spring#chain(soph_spring, app_sos)
 		junior_fall = Entry.objects.filter(id=num, semester="JRF")
 		#app_jrf = Approved_Course.objects.filter(id=num, semester="JRF")
-		app_jrf=[]
-		all_jrf = chain(junior_fall, app_jrf)
+		#app_jrf=[]
+		all_jrf = junior_fall#chain(junior_fall, app_jrf)
 		junior_spring = Entry.objects.filter(id=num, semester="JRS")
 		#app_jrs = Approved_Course.objects.filter(id=num, semester="JRS")
-		app_jrs=[]
-		all_jrs = chain(junior_spring, app_jrs)
+		#app_jrs=[]
+		all_jrs = junior_spring#chain(junior_spring, app_jrs)
 		senior_fall = Entry.objects.filter(id=num, semester="SRF")
 		#app_srf = Approved_Course.objects.filter(id=num, semester="SRF")
-		app_srf=[]
-		all_srf = chain(senior_fall, app_srf)
+		#app_srf=[]
+		all_srf = senior_fall#chain(senior_fall, app_srf)
 		senior_spring = Entry.objects.filter(id=num, semester="SRS")
 		#app_srs = Approved_Course.objects.filter(id=num, semester="SRS")
-		app_srs=[]
-		all_srs = chain(senior_spring, app_srs)
+		#app_srs=[]
+		all_srs = senior_spring#chain(senior_spring, app_srs)
 	else:
 	#all_courses = Entry.objects.filter(student_id=current_user.username).values_list('course_id', flat=True).order_by('course_id') # all of the student's courses - course ID
 	# getting list of courses for each semester
