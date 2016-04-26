@@ -534,7 +534,7 @@ def outside_course_approval(request):
 	
 @login_required # Cas authentication for this url.
 # if you got a course at Princeton to count as a COS departmental
-def cos_data(request):
+def cos_data_semester(request):
 	current_user = request.user
 	student = Student.objects.get(student_id=current_user.username)
 	frf_data = top_semester("FRF")
@@ -547,7 +547,7 @@ def cos_data(request):
 	srs_data = top_semester("SRS")
 	context = {'frf_data': frf_data, 'frs_data': frs_data, 'sof_data': sof_data, 'sos_data': sos_data, 'jrf_data': jrf_data,
 	'jrs_data': jrs_data, 'srf_data': srf_data, 'srs_data': srs_data}
-	return render(request, 'cosdata.html', context)
+	return render(request, 'cosdatasemester.html', context)
 
 @login_required # Cas authentication for this url.
 def schedule_sharing(request):
@@ -653,6 +653,12 @@ def about(request):
 	# student = Student.objects.get(student_id=current_user.username)
 	# context = {}
 	return render(request, 'about.html')
+	
+def cos_data(request):
+	# current_user = request.user
+	# student = Student.objects.get(student_id=current_user.username)
+	# context = {}
+	return render(request, 'cosdata.html')
 
 @login_required # Cas authentication for this url.
 # African American Studies
