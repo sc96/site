@@ -118,7 +118,7 @@ def top_course(num):
 			req_courses.append(x)
 			
 	req_dict = {}
-	total = len(req_cour)
+	total = len(req_courses)
 	for s in sem_cour:
 		# need to put it in dict if not already in there
 		#can do dictionary thing here
