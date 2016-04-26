@@ -564,7 +564,7 @@ def cos_data_course(request):
 	srs_data = top_semester("SRS")
 	context = {'frf_data': frf_data, 'frs_data': frs_data, 'sof_data': sof_data, 'sos_data': sos_data, 'jrf_data': jrf_data,
 	'jrs_data': jrs_data, 'srf_data': srf_data, 'srs_data': srs_data}
-	return render(request, 'cosdatasemester.html', context)
+	return render(request, 'cosdatacourse.html', context)
 	
 @login_required # Cas authentication for this url.
 # if you got a course at Princeton to count as a COS departmental
@@ -581,7 +581,7 @@ def cos_data_req(request):
 	srs_data = top_semester("SRS")
 	context = {'frf_data': frf_data, 'frs_data': frs_data, 'sof_data': sof_data, 'sos_data': sos_data, 'jrf_data': jrf_data,
 	'jrs_data': jrs_data, 'srf_data': srf_data, 'srs_data': srs_data}
-	return render(request, 'cosdatasemester.html', context)
+	return render(request, 'cosdatareq.html', context)
 
 @login_required # Cas authentication for this url.
 def schedule_sharing(request):
