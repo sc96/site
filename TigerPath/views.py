@@ -636,10 +636,10 @@ def cos_data_semester(request):
 def cos_data_course(request):
 	current_user = request.user
 	student = Student.objects.get(student_id=current_user.username)
-	126_data = top_semester(1)
-	226_data = top_semester(2)
-	217_data = top_semester(3)
-	340_data = top_semester(4)
+	126_data = top_course(1)
+	226_data = top_course(2)
+	217_data = top_course(3)
+	340_data = top_course(4)
 	context = {'126_data': 126_data, '226_data': 226_data, '217_data': 217_data, '340_data': 340_data}
 	return render(request, 'cosdatacourse.html', context)
 	
