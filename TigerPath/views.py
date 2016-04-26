@@ -86,20 +86,25 @@ def top_course(num):
 	if (num == 1):
 		required = COS_BSE.objects.filter(course_id=444).values_list('course_id', flat=True)	
 		req_cour = Entry.objects.filter(course_id=444).values_list('course_id', flat=True)
+		sem_cour = Entry.objects.filter(course_id=444).values_list('semester', flat=True)
 	elif (num == 2):
 		required = COS_BSE.objects.filter(course_id=1012).values_list('course_id', flat=True)
 		req_cour = Entry.objects.filter(course_id=1012).values_list('course_id', flat=True)
+		sem_cour = Entry.objects.filter(course_id=1012).values_list('semester', flat=True)
 	elif (num == 3):
 		required = COS_BSE.objects.filter(course_id=541).values_list('course_id', flat=True)
 		req_cour = Entry.objects.filter(course_id=541).values_list('course_id', flat=True)
+		sem_cour = Entry.objects.filter(course_id=541).values_list('semester', flat=True)
 	elif (num == 4):
 		required = COS_BSE.objects.filter(course_id=1047).values_list('course_id', flat=True)
 		req_cour = Entry.objects.filter(course_id=1047).values_list('course_id', flat=True)
+		sem_cour = Entry.objects.filter(course_id=1047).values_list('semester', flat=True)
 	else:
 		required = COS_BSE.objects.filter(course_id=000).values_list('course_id', flat=True)
 		req_cour = Entry.objects.filter(course_id=000).values_list('course_id', flat=True)
+		sem_cour = Entry.objects.filter(course_id=000).values_list('semester', flat=True)
 	#required = COS_BSE.objects.filter(req=1).values_list('course_id', flat=True)
-	sem_cour = Entry.objects.values_list('semester', flat=True)
+	#sem_cour = Entry.objects.values_list('semester', flat=True)
 	req_cour = title(map(int, req_cour))
 	required = title(map(int, required))
 	req_courses=[]
@@ -109,9 +114,10 @@ def top_course(num):
 			req_courses.append(x)
 			
 	req_dict = {}
-	total = len(req_courses)
+	total = len(req_cour)
 	for s in sem_cour:
 		# need to put it in dict if not already in there
+		#can do dictionary thing here
 		if s not in req_dict:
 			req_dict[s]=1
 		# else, value ++
