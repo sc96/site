@@ -8,6 +8,10 @@ time = {"Freshman Fall": "FRF", "Freshman Spring": "FRS",
 	"Sophomore Fall": "SOF","Sophomore Spring": "SOS",
 	"Junior Fall":  "JRF","Junior Spring": "JRS","Senior Fall": "SRF","Senior Spring": "SRS"}
 
+sems = {"FRF": "Freshman Fall", "FRS": "Freshman Spring",
+	"SOF": "Sophomore Fall", "SOS": "Sophomore Spring",
+	"JRF": "Junior Fall","JRS": "Junior Spring","SRF": "Senior Fall","SRS": "Senior Spring"}
+
 def title(list):
 	new_list=[]
 	for i in list:
@@ -119,10 +123,10 @@ def top_course(num):
 		# need to put it in dict if not already in there
 		#can do dictionary thing here
 		if s not in req_dict:
-			req_dict[s]=1
+			req_dict[sems[s]]=1
 		# else, value ++
 		else:
-			req_dict[s]+=1
+			req_dict[sems[s]]+=1
 	top_10=[]
 	for i in range(0, 8):
 		if(req_dict.keys()):
