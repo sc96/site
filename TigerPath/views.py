@@ -126,7 +126,7 @@ def top_course(num):
 			req_dict[sems[s]]=1
 		# else, value ++
 		else:
-			req_dict[sems[s]]+=1
+			req_dict[sems[s]]=req_dict[sems[s]]+1
 	top_10=[]
 	for i in range(0, 8):
 		if(req_dict.keys()):
