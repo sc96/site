@@ -563,9 +563,9 @@ def four_year(request,search):
 	
 	# getting list of courses for each semester
 	fresh_fall = Entry.objects.filter(student_id=current_user.username, semester="FRF")
-	app_frf = Approved_Course.objects.filter(student_id=current_user.username), semester="FRF")
+	app_frf = Approved_Course.objects.filter(student_id=current_user.username, semester="FRF")
 	all_frf = chain(fresh_fall, app_frf)
-	fresh_spring = Entry.objects.filter(student_id=current_user.username), semester="FRS")
+	fresh_spring = Entry.objects.filter(student_id=current_user.username, semester="FRS")
 	app_frs = Approved_Course.objects.filter(student_id=current_user.username, semester="FRS")
 	all_frs = chain(fresh_spring, app_frs)
 	soph_fall = Entry.objects.filter(student_id=current_user.username, semester="SOF")
