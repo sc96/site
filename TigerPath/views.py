@@ -369,7 +369,7 @@ def degree_progress(request):
 	other_off = title(compare_lists(all_courses, other_courses)["differences"])
 
 	iw_on = compare_lists(all_courses, iw_courses)["similarities"] #iw is for BSE only
-	other_iw = Approved_Course.objects.filter(student_id=current_user.username), requirement="Independent")
+	other_iw = Approved_Course.objects.filter(student_id=current_user.username, requirement="Independent")
 	for t in other_iw:
 		iw_on.append(t.course_id)
 	iw_on = title(iw_on)
