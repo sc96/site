@@ -598,7 +598,7 @@ def cos_data_course(request):
 def cos_data_req(request):
 	current_user = request.user
 	student = Student.objects.get(student_id=current_user.username)
-	theory_data = top_req(theory)
+	theory_data = top_req("theory")
 	context = {'theory_data': theory_data}#, 'frs_data': frs_data, 'sof_data': sof_data, 'sos_data': sos_data, 'jrf_data': jrf_data,
 	#'jrs_data': jrs_data, 'srf_data': srf_data, 'srs_data': srs_data}
 	return render(request, 'cosdatareq.html', context)
