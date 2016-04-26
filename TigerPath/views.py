@@ -122,11 +122,11 @@ def top_course(num):
 	for s in sem_cour:
 		# need to put it in dict if not already in there
 		#can do dictionary thing here
-		if s not in req_dict:
+		if sems[s] not in req_dict:
 			req_dict[sems[s]]=1
 		# else, value ++
 		else:
-			req_dict[sems[s]]=int(req_dict[sems[s]])+1
+			req_dict[sems[s]]+=1
 	top_10=[]
 	for i in range(0, 8):
 		if(req_dict.keys()):
