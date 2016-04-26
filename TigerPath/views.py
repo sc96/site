@@ -8,6 +8,133 @@ time = {"Freshman Fall": "FRF", "Freshman Spring": "FRS",
 	"Sophomore Fall": "SOF","Sophomore Spring": "SOS",
 	"Junior Fall":  "JRF","Junior Spring": "JRS","Senior Fall": "SRF","Senior Spring": "SRS"}
 
+sems = {"FRF": "Freshman Fall", "FRS": "Freshman Spring",
+	"SOF": "Sophomore Fall", "SOS": "Sophomore Spring",
+	"JRF": "Junior Fall","JRS": "Junior Spring","SRF": "Senior Fall","SRS": "Senior Spring"}
+
+def title(list):
+	new_list=[]
+	for i in list:
+		new_list.append(Course.objects.get(course_id=i).listings)
+	return new_list
+
+def top_semester(sem):
+	sem_cour = Entry.objects.filter(semester=sem).values_list('course_id', flat=True)
+	sem_cour = title(map(int, sem_cour))
+	sem_courses=[]
+	for x in sem_cour:
+		if re.match(r'COS', x):
+			sem_courses.append(x)
+			
+	sem_dict = {}
+	total = len(sem_courses)
+	for s in sem_courses:
+		# need to put it in dict if not already in there
+		if s not in sem_dict:
+			sem_dict[s]=1
+		# else, value ++
+		else:
+			sem_dict[s]+=1
+	top_10=[]
+	for i in range(0, 10):
+		if(sem_dict.keys()):
+			maximum = max(sem_dict, key=lambda i: sem_dict[i])
+			top_10.append(maximum + ": " + str(int(float(sem_dict.get(maximum))/float(total)*100)) + "%")
+			sem_dict.pop(maximum, None)
+	return top_10
+	
+def top_req(num):
+	if (num == 1):
+		required = COS_BSE.objects.filter(theory=1).values_list('course_id', flat=True)	
+	elif (num == 2):
+		required = COS_BSE.objects.filter(systems=1).values_list('course_id', flat=True)
+	elif (num == 3):
+		required = COS_BSE.objects.filter(applications=1).values_list('course_id', flat=True)
+	elif (num == 4):
+		required = COS_BSE.objects.filter(other=1).values_list('course_id', flat=True)
+	elif (num == 5):
+		required = COS_BSE.objects.filter(core=1).values_list('course_id', flat=True)
+	elif (num == 6):
+		required = COS_BSE.objects.filter(iw=1).values_list('course_id', flat=True)
+	else:
+		required = COS_BSE.objects.filter(other = 0).values_list('course_id', flat=True)
+	req_cour = Entry.objects.values_list('course_id', flat=True)
+	#required = COS_BSE.objects.filter(req=1).values_list('course_id', flat=True)
+	req_cour = title(map(int, req_cour))
+	required = title(map(int, required))
+	req_courses=[]
+	
+	for x in req_cour:
+		if x in required:
+	#	if (re.match(r'COS', x) and x in required):
+			req_courses.append(x)
+			
+	req_dict = {}
+	total = len(req_courses)
+	for s in req_courses:
+		# need to put it in dict if not already in there
+		if s not in req_dict:
+			req_dict[s]=1
+		# else, value ++
+		else:
+			req_dict[s]+=1
+	top_10=[]
+	for i in range(0, 10):
+		if(req_dict.keys()):
+			maximum = max(req_dict, key=lambda i: req_dict[i])
+			top_10.append(maximum + ": " + str(int(float(req_dict.get(maximum))/float(total)*100)) + "%")
+			req_dict.pop(maximum, None)
+	return top_10
+	
+def top_course(num):
+	if (num == 1):
+		required = COS_BSE.objects.filter(course_id=444).values_list('course_id', flat=True)	
+		req_cour = Entry.objects.filter(course_id=444).values_list('course_id', flat=True)
+		sem_cour = Entry.objects.filter(course_id=444).values_list('semester', flat=True)
+	elif (num == 2):
+		required = COS_BSE.objects.filter(course_id=1012).values_list('course_id', flat=True)
+		req_cour = Entry.objects.filter(course_id=1012).values_list('course_id', flat=True)
+		sem_cour = Entry.objects.filter(course_id=1012).values_list('semester', flat=True)
+	elif (num == 3):
+		required = COS_BSE.objects.filter(course_id=541).values_list('course_id', flat=True)
+		req_cour = Entry.objects.filter(course_id=541).values_list('course_id', flat=True)
+		sem_cour = Entry.objects.filter(course_id=541).values_list('semester', flat=True)
+	elif (num == 4):
+		required = COS_BSE.objects.filter(course_id=1047).values_list('course_id', flat=True)
+		req_cour = Entry.objects.filter(course_id=1047).values_list('course_id', flat=True)
+		sem_cour = Entry.objects.filter(course_id=1047).values_list('semester', flat=True)
+	else:
+		required = COS_BSE.objects.filter(course_id=000).values_list('course_id', flat=True)
+		req_cour = Entry.objects.filter(course_id=000).values_list('course_id', flat=True)
+		sem_cour = Entry.objects.filter(course_id=000).values_list('semester', flat=True)
+	#required = COS_BSE.objects.filter(req=1).values_list('course_id', flat=True)
+	#sem_cour = Entry.objects.values_list('semester', flat=True)
+	req_cour = title(map(int, req_cour))
+	required = title(map(int, required))
+	req_courses=[]
+	
+	for x in req_cour:
+		if x in required:
+			req_courses.append(x)
+			
+	req_dict = {}
+	total = len(req_courses)
+	for s in sem_cour:
+		# need to put it in dict if not already in there
+		#can do dictionary thing here
+		if sems[s] not in req_dict:
+			req_dict[sems[s]]=1
+		# else, value ++
+		else:
+			req_dict[sems[s]]+=1
+	top_10=[]
+	for i in range(0, 8):
+		if(req_dict.keys()):
+			maximum = max(req_dict, key=lambda i: req_dict[i])
+			top_10.append(maximum + ": " + str(int(float(req_dict.get(maximum))/float(total)*100)) + "%")
+			req_dict.pop(maximum, None)
+	return top_10
+
 def compare_lists(stud, cour):
 	similarities=[]
 	differences=[]
@@ -26,11 +153,6 @@ def num_compare(stud, cour):
 	return count
 
 
-def title(list):
-	new_list=[]
-	for i in list:
-		new_list.append(Course.objects.get(course_id=i).listings)
-	return new_list
 
 
 # i mean we could make a view for every certificate...but that wouldn't cover people doing two certificates...would want to show on
@@ -52,18 +174,15 @@ def profile(request):
 	current_user = request.user;
 
 	try:
-   		s = Student.objects.get(student_id=current_user)
+   		s = Student.objects.get(student_id=str(current_user.username)) # changed this
 	except Student.DoesNotExist:
 		# creating new student. default values
-   		s = Student(student_id=current_user.username, first_name = "First", last_name = "Last",
-   		 engineerBool = "1", publicBool = "1", cert1 = "None", cert2 = "None", cert3 = "None", 
-   		 calc_1 = "0", calc_2 = "0", calc_3 = "0", lin_alg= "0", 
-   		 gen_chem = "0", physics = "0", cos = "0")
+   		s = Student(student_id=str(current_user.username), first_name = "First", last_name = "Last", engineerBool = "1", publicBool = "1", calc_1 = "0", calc_2 = "0", calc_3 = "0", lin_alg= "0", gen_chem = "0", physics = "0", cos = "0")
    		# 1 = True. 0 = False Using string instead of Bool since there's no
    		# easy way to pass Javascript booleans to python backend
    		s.save()
 
-	student = Student.objects.get(student_id=current_user.username)
+	student = Student.objects.get(student_id=str(current_user.username))
 
 	firstN = ""
 	lastN = ""
@@ -125,9 +244,11 @@ def degree_progress(request):
 	student_wri=[]
 	student_foreign=[]
 	current_user = request.user
-	student = Student.objects.get(student_id=current_user.username)
+	student = Student.objects.get(student_id=str(current_user.username))
 	student_major = student.student_major
 	all_courses = Entry.objects.filter(student_id=current_user.username).values_list('course_id', flat=True).order_by('course_id') # all of the student's courses
+	all_entries = Entry.objects.filter(student_id=current_user.username) #all of the student's entries
+	save_other = []
 	#dist_courses = Entry.objects.filter(student_id=current_user.username)
 
 	removed_class = ""
@@ -215,31 +336,34 @@ def degree_progress(request):
 	iw_courses = COS_BSE.objects.filter(iw=1).values_list('course_id', flat=True).order_by('course_id')
 		
 	theory_on = compare_lists(all_courses, theory_courses)["similarities"]
-	other_theory = Approved_Course.objects.filter(student_id=current_user.username, requirement="Theory")
-	for t in other_theory:
-		theory_on.append(t.course_id)
+	for t in all_entries.filter(req="Theory").values_list('course_id', flat=True).order_by('course_id'):
+		theory_on.append(t)
+	while len(theory_on) > 2:
+		save_other.append(theory_on.pop(0))
 	theory_on = title(theory_on)
 	theory_off = title(compare_lists(all_courses, theory_courses)["differences"])
 		
 	systems_on = compare_lists(all_courses, systems_courses)["similarities"]
-	other_sys = Approved_Course.objects.filter(student_id=current_user.username, requirement="Systems")
-	for t in other_sys:
-		systems_on.append(t.course_id)
+	for t in all_entries.filter(req="Systems").values_list('course_id', flat=True).order_by('course_id'):
+		systems_on.append(t)
+	while len(systems_on) > 2:
+		save_other.append(systems_on.pop(0))
 	systems_on = title(systems_on)
 	systems_off = title(compare_lists(all_courses, systems_courses)["differences"])
 
 	apps_on = compare_lists(all_courses, apps_courses)["similarities"]
-	other_apps = Approved_Course.objects.filter(student_id=current_user.username, requirement="Applications")
-	for t in other_apps:
-		apps_on.append(t.course_id)
+	for t in all_entries.filter(req="Applications").values_list('course_id', flat=True).order_by('course_id'):
+		apps_on.append(t)
+	while len(apps_on) > 2:
+		save_other.append(apps_on.pop(0))
 	apps_on = title(apps_on)
 	apps_off = title(compare_lists(all_courses, apps_courses)["differences"])
 
 		# other should have all classes in "other" that the user hasn't already taken
 		# will fix this bug a little later... 4/9/2016 ....!!!!
 	other_on = compare_lists(all_courses, other_courses)["similarities"]
-	other_other = Approved_Course.objects.filter(student_id=current_user.username, requirement="Other")
-	for t in other_other:
+	other_on = chain(other_on, save_other)
+	for t in all_entries.filter(req="Other").values_list('course_id', flat=True).order_by('course_id'):
 		other_on.append(t.course_id)
 	other_on = title(other_on)
 	other_off = title(compare_lists(all_courses, other_courses)["differences"])
@@ -337,7 +461,7 @@ def degree_progress(request):
 		# still in the process of getting new ideas for certificates...it can def be done tho...still thinking
 	context = {'theory_on': theory_on, 'theory_off': theory_off, 'systems_on': systems_on, 'systems_off': systems_off,
 	'apps_on': apps_on, 'apps_off': apps_off, 'other_on': other_on, 'other_off': other_off,
-	'iw_on': iw_on, 'iw_off': iw_off, 'core_on': core_on, 'core_off': core_off, 'other_theory': other_theory,
+	'iw_on': iw_on, 'iw_off': iw_off, 'core_on': core_on, 'core_off': core_off,
 	'student_sa': student_sa, 'student_la': student_la, 'student_ha': student_ha, 'student_ec': student_ec,
 	'student_em': student_em, 'student_foreign': student_foreign, 'student_wri': student_wri, 'outside_courses': student_outside,
 	'math_1_on': math_1_on, 'math_1_off': math_1_off, 'math_2_on': math_2_on, 'math_2_off': math_2_off, 'math_3_on': math_3_on, 'math_3_off': math_3_off,
@@ -403,9 +527,9 @@ def four_year(request,search):
 	
 	current_user = request.user
 	try:
-   		s = Student.objects.get(student_id=current_user)
+   		s = Student.objects.get(student_id=current_user.username)
 	except Student.DoesNotExist:
-   		s = Student(student_id=current_user)
+   		s = Student(student_id=current_user.username)
    		s.save()
 	student = Student.objects.get(student_id=current_user.username)
 
@@ -475,26 +599,26 @@ def four_year(request,search):
 	return render(request, 'four_year.html', context, )
 
 
-# @login_required # Cas authentication for this url.
-# # if you got a course at Princeton to count as a COS departmental
-# #def princeton_course_approval(request):
-# 	current_user = request.user
-# 	test=""
-# 	if request.method == 'POST':
-# 		added_class = request.POST['listing']
-# 		added_class = Course.objects.get(listings=added_class)
-# 		semester = request.POST['semester']
-# 		sem = time[semester]
-# 		student.add_course(added_class, student, sem)
-# 		#add_class(student, added_class, semester)
-# 	#Return matched courses for search bar
+#@login_required # Cas authentication for this url.
+# if you got a course at Princeton to count as a COS departmental
+#def princeton_course_approval(request):
+	#current_user = request.user
+	#test=""
+	#if request.method == 'POST':
+		#added_class = request.POST['listing']
+#added_class = Course.objects.get(listings=added_class)
+		#semester = request.POST['semester']
+		#sem = time[semester]
+		#student.add_course(added_class, student, sem)
+		#add_class(student, added_class, semester)
+	#Return matched courses for search bar
 		
-# 	if 'q' in request.GET:
-# 		test = request.GET["q"]
-# 	matched_courses = course_search(test);
+	#if 'q' in request.GET:
+		#test = request.GET["q"]
+	#matched_courses = course_search(test);
 		
-# 	context = {'user': current_user.username, 'matched_courses': matched_courses}
-# 	return render(request, 'ptonapproval.html', context)
+	#context = {'user': current_user.username, 'matched_courses': matched_courses}
+	#return render(request, 'ptonapproval.html', context)
 
 @login_required # Cas authentication for this url.
 # if you got a course at Princeton to count as a COS departmental
@@ -503,6 +627,50 @@ def outside_course_approval(request):
 	student = Student.objects.get(student_id=current_user.username)
 	context = {}
 	return render(request, 'outapproval.html', context)
+	
+@login_required # Cas authentication for this url.
+# if you got a course at Princeton to count as a COS departmental
+def cos_data_semester(request):
+	current_user = request.user
+	student = Student.objects.get(student_id=current_user.username)
+	frf_data = top_semester("FRF")
+	frs_data = top_semester("FRS")
+	sof_data = top_semester("SOF")
+	sos_data = top_semester("SOS")
+	jrf_data = top_semester("JRF")
+	jrs_data = top_semester("JRS")
+	srf_data = top_semester("SRF")
+	srs_data = top_semester("SRS")
+	context = {'frf_data': frf_data, 'frs_data': frs_data, 'sof_data': sof_data, 'sos_data': sos_data, 'jrf_data': jrf_data,
+	'jrs_data': jrs_data, 'srf_data': srf_data, 'srs_data': srs_data}
+	return render(request, 'cosdatasemester.html', context)
+	
+@login_required # Cas authentication for this url.
+# if you got a course at Princeton to count as a COS departmental
+def cos_data_course(request):
+	current_user = request.user
+	student = Student.objects.get(student_id=current_user.username)
+	one_data = top_course(1)
+	two_data = top_course(2)
+	three_data = top_course(3)
+	four_data = top_course(4)
+	context = {'one_data': one_data, 'two_data': two_data, 'three_data': three_data, 'four_data': four_data}
+	return render(request, 'cosdatacourse.html', context)
+	
+@login_required # Cas authentication for this url.
+# if you got a course at Princeton to count as a COS departmental
+def cos_data_req(request):
+	current_user = request.user
+	student = Student.objects.get(student_id=current_user.username)
+	theory_data = top_req(1)
+	systems_data = top_req(2)
+	apps_data = top_req(3)
+	iw_data = top_req(6)
+	core_data = top_req(5)
+	other_data = top_req(4)
+	context = {'theory_data': theory_data, 'systems_data': systems_data, 'apps_data': apps_data, 'iw_data': iw_data, 'core_data': core_data,
+	'other_data': other_data}
+	return render(request, 'cosdatareq.html', context)
 
 @login_required # Cas authentication for this url.
 def schedule_sharing(request):
@@ -530,12 +698,16 @@ def schedule_sharing(request):
 		points_dict[s.student_id]=nSimilarClasses
 	length = len(points_dict)
 	top_5=[]
-	for i in range(0, 5):
-		maximum = max(points_dict, key=lambda i: points_dict[i])
-		top_5.append(maximum)
-		points_dict.pop(maximum, None)
+	for i in range(0, 6):
+		if(points_dict.keys()):
+			maximum = max(points_dict, key=lambda i: points_dict[i])
+			if (Student.objects.get(student_id=maximum).publicBool):
+				top_5.append(maximum)
+			else:
+				top_5.append("Student" + str(Student.objects.get(student_id=maximum).id))
+			points_dict.pop(maximum, None)
 	# then can do a generic thing for clicking on one of top 5 students and it shows you their four year
-
+	top_5.pop(0)
 	context = {'user': current_user.username,'nStudents': nStudents, 'len': length, 'top_5': top_5}
 	return render(request, 'sharing.html', context)
 
@@ -543,41 +715,78 @@ def schedule_sharing(request):
 def share(request, shared_user):
 	current_user = request.user
 	student = Student.objects.get(student_id=current_user.username)
+	if (re.match(r'Student', shared_user)):
+		num = int(str(shared_user[7:]))
+		stu = Student.objects.get(id=num).student_id
+		fresh_fall = Entry.objects.filter(student_id=stu, semester="FRF")
+		#app_frf = Approved_Course.objects.filter(id=num, semester="FRF")
+		#app_frf=[]
+		all_frf = fresh_fall#chain(fresh_fall, app_frf)
+		fresh_spring = Entry.objects.filter(student_id=stu, semester="FRS")
+		#app_frs = Approved_Course.objects.filter(id=num, semester="FRS")
+		#app_frs=[]
+		all_frs = fresh_spring# chain(fresh_spring, app_frs)
+		soph_fall = Entry.objects.filter(student_id=stu, semester="SOF")
+		#app_sof = Approved_Course.objects.filter(id=num, semester="SOF")
+		#app_sof=[]
+		all_sof = soph_fall#chain(soph_fall, app_sof)
+		soph_spring = Entry.objects.filter(student_id=stu, semester="SOS")
+		#app_sos = Approved_Course.objects.filter(id=num, semester="SOS")
+		#app_sos=[]
+		all_sos = soph_spring#chain(soph_spring, app_sos)
+		junior_fall = Entry.objects.filter(student_id=stu, semester="JRF")
+		#app_jrf = Approved_Course.objects.filter(id=num, semester="JRF")
+		#app_jrf=[]
+		all_jrf = junior_fall#chain(junior_fall, app_jrf)
+		junior_spring = Entry.objects.filter(student_id=stu, semester="JRS")
+		#app_jrs = Approved_Course.objects.filter(id=num, semester="JRS")
+		#app_jrs=[]
+		all_jrs = junior_spring#chain(junior_spring, app_jrs)
+		senior_fall = Entry.objects.filter(student_id=stu, semester="SRF")
+		#app_srf = Approved_Course.objects.filter(id=num, semester="SRF")
+		#app_srf=[]
+		all_srf = senior_fall#chain(senior_fall, app_srf)
+		senior_spring = Entry.objects.filter(student_id=stu, semester="SRS")
+		#app_srs = Approved_Course.objects.filter(id=num, semester="SRS")
+		#app_srs=[]
+		all_srs = senior_spring#chain(senior_spring, app_srs)
+	else:
 	#all_courses = Entry.objects.filter(student_id=current_user.username).values_list('course_id', flat=True).order_by('course_id') # all of the student's courses - course ID
 	# getting list of courses for each semester
-	fresh_fall = Entry.objects.filter(student_id=shared_user, semester="FRF")
-	app_frf = Approved_Course.objects.filter(student_id=shared_user, semester="FRF")
-	all_frf = chain(fresh_fall, app_frf)
-	fresh_spring = Entry.objects.filter(student_id=shared_user, semester="FRS")
-	app_frs = Approved_Course.objects.filter(student_id=shared_user, semester="FRS")
-	all_frs = chain(fresh_spring, app_frs)
-	soph_fall = Entry.objects.filter(student_id=shared_user, semester="SOF")
-	app_sof = Approved_Course.objects.filter(student_id=shared_user, semester="SOF")
-	all_sof = chain(soph_fall, app_sof)
-	soph_spring = Entry.objects.filter(student_id=shared_user, semester="SOS")
-	app_sos = Approved_Course.objects.filter(student_id=shared_user, semester="SOS")
-	all_sos = chain(soph_spring, app_sos)
-	junior_fall = Entry.objects.filter(student_id=shared_user, semester="JRF")
-	app_jrf = Approved_Course.objects.filter(student_id=shared_user, semester="JRF")
-	all_jrf = chain(junior_fall, app_jrf)
-	junior_spring = Entry.objects.filter(student_id=shared_user, semester="JRS")
-	app_jrs = Approved_Course.objects.filter(student_id=shared_user, semester="JRS")
-	all_jrs = chain(junior_spring, app_jrs)
-	senior_fall = Entry.objects.filter(student_id=shared_user, semester="SRF")
-	app_srf = Approved_Course.objects.filter(student_id=shared_user, semester="SRF")
-	all_srf = chain(senior_fall, app_srf)
-	senior_spring = Entry.objects.filter(student_id=shared_user, semester="SRS")
-	app_srs = Approved_Course.objects.filter(student_id=shared_user, semester="SRS")
-	all_srs = chain(senior_spring, app_srs)
+		fresh_fall = Entry.objects.filter(student_id=shared_user, semester="FRF")
+		app_frf = Approved_Course.objects.filter(student_id=shared_user, semester="FRF")
+		all_frf = chain(fresh_fall, app_frf)
+		fresh_spring = Entry.objects.filter(student_id=shared_user, semester="FRS")
+		app_frs = Approved_Course.objects.filter(student_id=shared_user, semester="FRS")
+		all_frs = chain(fresh_spring, app_frs)
+		soph_fall = Entry.objects.filter(student_id=shared_user, semester="SOF")
+		app_sof = Approved_Course.objects.filter(student_id=shared_user, semester="SOF")
+		all_sof = chain(soph_fall, app_sof)
+		soph_spring = Entry.objects.filter(student_id=shared_user, semester="SOS")
+		app_sos = Approved_Course.objects.filter(student_id=shared_user, semester="SOS")
+		all_sos = chain(soph_spring, app_sos)
+		junior_fall = Entry.objects.filter(student_id=shared_user, semester="JRF")
+		app_jrf = Approved_Course.objects.filter(student_id=shared_user, semester="JRF")
+		all_jrf = chain(junior_fall, app_jrf)
+		junior_spring = Entry.objects.filter(student_id=shared_user, semester="JRS")
+		app_jrs = Approved_Course.objects.filter(student_id=shared_user, semester="JRS")
+		all_jrs = chain(junior_spring, app_jrs)
+		senior_fall = Entry.objects.filter(student_id=shared_user, semester="SRF")
+		app_srf = Approved_Course.objects.filter(student_id=shared_user, semester="SRF")
+		all_srf = chain(senior_fall, app_srf)
+		senior_spring = Entry.objects.filter(student_id=shared_user, semester="SRS")
+		app_srs = Approved_Course.objects.filter(student_id=shared_user, semester="SRS")
+		all_srs = chain(senior_spring, app_srs)
 
-	student_outside=[]
-	outside_courses = Outside_Course.objects.filter(student_id=shared_user) # list of the student's outside courses
-	for c in outside_courses.iterator():
-		student_outside.append(c.course_name)
+	# still need to do this
+	#student_outside=[]
+	#outside_courses = Outside_Course.objects.filter(student_id=shared_user) # list of the student's outside courses
+	#for c in outside_courses.iterator():
+	#	student_outside.append(c.course_name)
 
 	context = {'user': current_user.username,'shared_user': shared_user, 'fresh_fall': all_frf, 'fresh_spring': all_frs, 
 	'soph_fall': all_sof, 'soph_spring': all_sos, 'junior_fall': all_jrf, 'junior_spring': all_jrs,
-	'senior_fall': all_srf, 'senior_spring': all_srs, 'student_outside': student_outside}
+	'senior_fall': all_srf, 'senior_spring': all_srs}#, 'student_outside': student_outside}
 	return render(request, 'share.html', context, )
 
 
@@ -607,6 +816,12 @@ def about(request):
 	# student = Student.objects.get(student_id=current_user.username)
 	# context = {}
 	return render(request, 'about.html')
+	
+def cos_data(request):
+	# current_user = request.user
+	# student = Student.objects.get(student_id=current_user.username)
+	# context = {}
+	return render(request, 'cosdata.html')
 
 @login_required # Cas authentication for this url.
 # African American Studies

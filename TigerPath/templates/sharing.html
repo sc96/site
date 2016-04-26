@@ -27,6 +27,7 @@
       <li><a href="/certificates">Certificates</a></li> 
       <li><a href="/outsidecourseapproval">Outside Course Approval</a></li> 
       <li class="active"><a href="#">Schedule Sharing</a></li> 
+      <li><a href="/cosdata">COS Data</a></li>  
     </ul>
     <ul class="nav navbar-nav navbar-right">
         <li><a href="/about">About</a></li> 
@@ -106,20 +107,20 @@
   </button>
   <ul class="dropdown-menu">
     <li><a href="{% url 'views.share' top_5.3 %}">See Schedule</a></li>
-    <!--li><a href="mailto:{{top_5.3}}@princeton.edu">Email</a></li>
+    <!--li><a href="mailto:{{top_5.3}}@princeton.edu">Email</a></li-->
     <!--<li role="separator" class="divider"></li>-->
-  </ul>
+  </ul-->
 
   </div>
   <div class="btn-group" role="group">
     <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-     Need User<span class="caret"></span>
+     {{top_5.4}}<span class="caret"></span>
   </button>
-  <!--<ul class="dropdown-menu">-->
-  <!--  <li><a href="#">See Schedule</a></li>-->
-  <!--  <li><a href="#">Email</a></li>-->
+  <ul class="dropdown-menu">
+    <li><a href="{% url 'views.share' top_5.4 %}">See Schedule</a></li>
+    <!--li><a href="mailto:{{top_5.3}}@princeton.edu">Email</a></li-->
     <!--<li role="separator" class="divider"></li>-->
-  <!--</ul>-->
+  </ul>
 
   </div>
   
