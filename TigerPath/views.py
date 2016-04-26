@@ -54,7 +54,7 @@ def top_req(num):
 		required = COS_BSE.objects.filter(iw=1).values_list('course_id', flat=True)
 	req_cour = Entry.objects.values_list('course_id', flat=True)
 	#required = COS_BSE.objects.filter(req=1).values_list('course_id', flat=True)
-	req_cour = title(sem_cour)
+	req_cour = title(req_cour)
 	required = title(required)
 	req_courses=[]
 	for x in req_cour:
