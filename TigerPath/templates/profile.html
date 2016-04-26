@@ -9,7 +9,7 @@
   
    
 </head>
-<body style="padding-top: 70px; padding-bottom: 70px;" onload "setAPToggle()">
+<body style="padding-top: 70px; padding-bottom: 70px;" onload="setAPToggle()">
 
 <!-- These are the rendered string varibles given by context for this page. 
 It'll be useful if we have these comments for each .html files??
@@ -29,18 +29,12 @@ ap_dict
 function setAPToggle() {
 
   
-  {%    %}
-  document.getElementById("hidCalc1").checked = true;
+  
+  document.getElementById("hidCalc1").checked = false;
 
-  document.getElementById("hidCalc2").checked = true;
+  document.getElementById("hidCalc2").checked = false;
 
-  document.getElementById("hidCalc3").checked = true;
-
-
-
-
-
-
+  document.getElementById("hidCalc3").checked = false;
 
 }
 
