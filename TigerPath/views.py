@@ -369,7 +369,7 @@ def degree_progress(request):
 	other_off = title(compare_lists(all_courses, other_courses)["differences"])
 
 	iw_on = compare_lists(all_courses, iw_courses)["similarities"] #iw is for BSE only
-	other_iw = Approved_Course.objects.filter(student_id=str(current_user.username), requirement="Independent")
+	other_iw = Approved_Course.objects.filter(student_id=current_user.username), requirement="Independent")
 	for t in other_iw:
 		iw_on.append(t.course_id)
 	iw_on = title(iw_on)
@@ -394,7 +394,7 @@ def degree_progress(request):
 		# Outside Courses
 		# Note: should probably do Outside Courses/Approved Courses first, then add to LA/SA/Theory/etc. THEN consolidate lists 
 	student_outside=[]
-	outside_courses = Outside_Course.objects.filter(student_id=str(current_user.username)) # list of the student's outside courses
+	outside_courses = Outside_Course.objects.filter(student_id=current_user.username) # list of the student's outside courses
 	for c in outside_courses.iterator():
 		student_outside.append(c.course_name)
 
@@ -563,9 +563,9 @@ def four_year(request,search):
 	
 	# getting list of courses for each semester
 	fresh_fall = Entry.objects.filter(student_id=current_user.username, semester="FRF")
-	app_frf = Approved_Course.objects.filter(student_id=str(current_user.username), semester="FRF")
+	app_frf = Approved_Course.objects.filter(student_id=current_user.username), semester="FRF")
 	all_frf = chain(fresh_fall, app_frf)
-	fresh_spring = Entry.objects.filter(student_id=str(current_user.username), semester="FRS")
+	fresh_spring = Entry.objects.filter(student_id=current_user.username), semester="FRS")
 	app_frs = Approved_Course.objects.filter(student_id=current_user.username, semester="FRS")
 	all_frs = chain(fresh_spring, app_frs)
 	soph_fall = Entry.objects.filter(student_id=current_user.username, semester="SOF")
@@ -679,8 +679,8 @@ def schedule_sharing(request):
 	nStudents = Student.objects.count
 	points_dict={}
 	# the user's courses
-	all_courses = Entry.objects.filter(student_id=str(current_user.username)).values_list('course_id', flat=True)
-	all_sems = Entry.objects.filter(student_id=str(current_user.username)).values_list('semester', flat=True)
+	all_courses = Entry.objects.filter(student_id=current_user.username).values_list('course_id', flat=True)
+	all_sems = Entry.objects.filter(student_id=current_user.username).values_list('semester', flat=True)
 	for s in Student.objects.iterator():
 		# if its same semester and class = +2
 		# same class = +1
