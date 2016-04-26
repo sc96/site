@@ -704,7 +704,7 @@ def schedule_sharing(request):
 			if (Student.objects.get(student_id=maximum).publicBool):
 				top_5.append(maximum)
 			else:
-				top_5.append("Student " + Student.objects.get(student_id=maximum).id)
+				top_5.append("Student " + str(Student.objects.get(student_id=maximum).id))
 			points_dict.pop(maximum, None)
 	# then can do a generic thing for clicking on one of top 5 students and it shows you their four year
 
