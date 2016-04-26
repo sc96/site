@@ -98,10 +98,10 @@ class Course(models.Model):
 # need to check if authenticated user is already in student database at some point (amybe when they're on that page where they select the major)
 class Student(models.Model):
 	'''Object which is unique to each student user.'''
-	id = models.AutoField(primary_key=True)
+	id = models.AutoField()
 	first_name = models.CharField(max_length = 30)
 	last_name = models.CharField(max_length = 30)
-	student_id = models.CharField(max_length = 20) #NOT SECURE < will probably need to get from CASS login!
+	student_id = models.CharField(max_length = 20, primary_key=True) #NOT SECURE < will probably need to get from CASS login!
 	student_major = models.CharField(max_length = 30) # the student's major
 	#student_sub_conc = models.CharField(max_length = 30) # the student's concentration within a major (relevant for ELE and MAE and others)
 	courses = models.ManyToManyField(Course, through='Entry')
