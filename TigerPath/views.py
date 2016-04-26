@@ -39,7 +39,7 @@ def top_semester(sem):
 			sem_dict.pop(maximum, None)
 	return top_10
 	
-def top_reqs(req):
+def top_req(req):
 	req_cour = Entry.objects.values_list('course_id', flat=True)
 	required = COS_BSE.objects.filter(req=1).values_list('course_id', flat=True)
 	req_cour = title(sem_cour)
