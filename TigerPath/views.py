@@ -613,8 +613,11 @@ def cos_data_req(request):
 	theory_data = top_req(1)
 	systems_data = top_req(2)
 	apps_data = top_req(3)
-	context = {'theory_data': theory_data}#, 'frs_data': frs_data, 'sof_data': sof_data, 'sos_data': sos_data, 'jrf_data': jrf_data,
-	#'jrs_data': jrs_data, 'srf_data': srf_data, 'srs_data': srs_data}
+	iw_data = top_req(6)
+	core_data = top_req(5)
+	other_data = top_req(4)
+	context = {'theory_data': theory_data, 'systems_data': systems_data, 'apps_data': apps_data, 'iw_data': iw_data, 'core_data': core_data,
+	'other_data': other_data}
 	return render(request, 'cosdatareq.html', context)
 
 @login_required # Cas authentication for this url.
