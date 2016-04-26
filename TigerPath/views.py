@@ -57,8 +57,10 @@ def top_req(num):
 	req_cour = title(map(int, req_cour))
 	required = title(map(int, required))
 	req_courses=[]
+	
 	for x in req_cour:
-		if (re.match(r'COS', x) and x in required):
+		if x in required:
+	#	if (re.match(r'COS', x) and x in required):
 			req_courses.append(x)
 			
 	req_dict = {}
