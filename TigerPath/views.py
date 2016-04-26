@@ -529,7 +529,7 @@ def four_year(request,search):
 	try:
    		s = Student.objects.get(student_id=current_user.username)
 	except Student.DoesNotExist:
-   		s = Student(student_id=str(current_user.username))
+   		s = Student(student_id=current_user.username)
    		s.save()
 	student = Student.objects.get(student_id=current_user.username)
 
