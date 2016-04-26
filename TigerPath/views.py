@@ -636,11 +636,11 @@ def cos_data_semester(request):
 def cos_data_course(request):
 	current_user = request.user
 	student = Student.objects.get(student_id=current_user.username)
-	126_data = top_course(1)
-	226_data = top_course(2)
-	217_data = top_course(3)
-	340_data = top_course(4)
-	context = {'126_data': 126_data, '226_data': 226_data, '217_data': 217_data, '340_data': 340_data}
+	one_data = top_course(1)
+	two_data = top_course(2)
+	three_data = top_course(3)
+	four_data = top_course(4)
+	context = {'one_data': one_data, 'two_data': two_data, 'three_data': three_data, 'four_data': four_data}
 	return render(request, 'cosdatacourse.html', context)
 	
 @login_required # Cas authentication for this url.
