@@ -9,7 +9,7 @@
   
    
 </head>
-<body style="padding-top: 70px; padding-bottom: 70px;">
+<body style="padding-top: 70px; padding-bottom: 70px;" onload "setAPToggle()">
 
 <!-- These are the rendered string varibles given by context for this page. 
 It'll be useful if we have these comments for each .html files??
@@ -23,6 +23,26 @@ cert2
 cert3 
 ap_dict
 -->
+
+
+<script>
+function setAPToggle() {
+
+  
+  {%    %}
+  document.getElementById("hidCalc1").checked = true;
+
+  document.getElementById("hidCalc2").checked = true;
+
+  document.getElementById("hidCalc3").checked = true;
+
+
+
+
+
+
+
+}
 
 
 
@@ -67,11 +87,7 @@ function update_Info() {
     var cert3 = document.getElementById("cert3")
     var input = document.getElementById("hidcert3");
     input.value = cert3.value
-
-
-
 }
-
 </script>
 
 
@@ -199,7 +215,7 @@ function update_Info() {
   <input type="checkbox" name="calc_1"  id ="hidCalc1" checked data-toggle="toggle" data-on="Calc1" data-off="Calc1"> 
 </label>
 <label class="checkbox-inline">
-  <input type="checkbox" checked data-toggle="toggle" data-on="Calc2" data-off="Calc2"> 
+  <input type="checkbox" name="calc_2"  id ="hidCalc2" checked data-toggle="toggle" data-on="Calc2" data-off="Calc2"> 
 </label>
 <label class="checkbox-inline">
   <input type="checkbox" checked data-toggle="toggle" data-on="Calc3" data-off="Calc3"> 
