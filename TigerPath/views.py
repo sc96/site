@@ -19,7 +19,7 @@ def top_semester(sem):
 	sem_cour = title(map(int, sem_cour))
 	sem_courses=[]
 	for x in sem_cour:
-		if re.match(r'^COS', x):
+		if re.match(r'COS', x):
 			sem_courses.append(x)
 			
 	sem_dict = {}
@@ -58,7 +58,7 @@ def top_req(num):
 	required = title(map(int, required))
 	req_courses=[]
 	for x in req_cour:
-		if (re.match(r'^COS', x) and x in required):
+		if (re.match(r'COS', x) and x in required):
 			req_courses.append(x)
 			
 	req_dict = {}
