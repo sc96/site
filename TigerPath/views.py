@@ -548,6 +548,40 @@ def cos_data_semester(request):
 	context = {'frf_data': frf_data, 'frs_data': frs_data, 'sof_data': sof_data, 'sos_data': sos_data, 'jrf_data': jrf_data,
 	'jrs_data': jrs_data, 'srf_data': srf_data, 'srs_data': srs_data}
 	return render(request, 'cosdatasemester.html', context)
+	
+	@login_required # Cas authentication for this url.
+# if you got a course at Princeton to count as a COS departmental
+def cos_data_course(request):
+	current_user = request.user
+	student = Student.objects.get(student_id=current_user.username)
+	frf_data = top_semester("FRF")
+	frs_data = top_semester("FRS")
+	sof_data = top_semester("SOF")
+	sos_data = top_semester("SOS")
+	jrf_data = top_semester("JRF")
+	jrs_data = top_semester("JRS")
+	srf_data = top_semester("SRF")
+	srs_data = top_semester("SRS")
+	context = {'frf_data': frf_data, 'frs_data': frs_data, 'sof_data': sof_data, 'sos_data': sos_data, 'jrf_data': jrf_data,
+	'jrs_data': jrs_data, 'srf_data': srf_data, 'srs_data': srs_data}
+	return render(request, 'cosdatasemester.html', context)
+	
+@login_required # Cas authentication for this url.
+# if you got a course at Princeton to count as a COS departmental
+def cos_data_req(request):
+	current_user = request.user
+	student = Student.objects.get(student_id=current_user.username)
+	frf_data = top_semester("FRF")
+	frs_data = top_semester("FRS")
+	sof_data = top_semester("SOF")
+	sos_data = top_semester("SOS")
+	jrf_data = top_semester("JRF")
+	jrs_data = top_semester("JRS")
+	srf_data = top_semester("SRF")
+	srs_data = top_semester("SRS")
+	context = {'frf_data': frf_data, 'frs_data': frs_data, 'sof_data': sof_data, 'sos_data': sos_data, 'jrf_data': jrf_data,
+	'jrs_data': jrs_data, 'srf_data': srf_data, 'srs_data': srs_data}
+	return render(request, 'cosdatasemester.html', context)
 
 @login_required # Cas authentication for this url.
 def schedule_sharing(request):
