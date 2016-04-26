@@ -701,7 +701,7 @@ def schedule_sharing(request):
 	for i in range(0, 5):
 		if(points_dict.keys()):
 			maximum = max(points_dict, key=lambda i: points_dict[i])
-			if (publicBool):
+			if (Student.objects.get(student_id=maximum).publicBool):
 				top_5.append(maximum)
 			else:
 				top_5.append("Student " + Student.objects.get(student_id=maximum).id)
