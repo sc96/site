@@ -81,6 +81,45 @@ def top_req(num):
 			top_10.append(maximum + ": " + str(int(float(req_dict.get(maximum))/float(total)*100)) + "%")
 			req_dict.pop(maximum, None)
 	return top_10
+	
+def top_course(num):
+	if (num == 1):
+		required = COS_BSE.objects.filter(course_id=444).values_list('course_id', flat=True)	
+	elif (num == 2):
+		required = COS_BSE.objects.filter(course_id=1012).values_list('course_id', flat=True)
+	elif (num == 3):
+		required = COS_BSE.objects.filter(course_id=541).values_list('course_id', flat=True)
+	elif (num == 4):
+		required = COS_BSE.objects.filter(course_id=1047).values_list('course_id', flat=True)
+	else:
+		required = COS_BSE.objects.filter(course_id=000).values_list('course_id', flat=True)
+	req_cour = Entry.objects.values_list('course_id', flat=True)
+	#required = COS_BSE.objects.filter(req=1).values_list('course_id', flat=True)
+	sem_cour = Entry.objects..values_list('semester', flat=True)
+	req_cour = title(map(int, req_cour))
+	required = title(map(int, required))
+	req_courses=[]
+	
+	for x in req_cour:
+		if x in required:
+			req_courses.append(x)
+			
+	req_dict = {}
+	total = len(req_courses)
+	for s in sem_courses:
+		# need to put it in dict if not already in there
+		if s not in req_dict:
+			req_dict[s]=1
+		# else, value ++
+		else:
+			req_dict[s]+=1
+	top_10=[]
+	for i in range(0, 8):
+		if(req_dict.keys()):
+			maximum = max(req_dict, key=lambda i: req_dict[i])
+			top_10.append(maximum + ": " + str(int(float(req_dict.get(maximum))/float(total)*100)) + "%")
+			req_dict.pop(maximum, None)
+	return top_10
 
 def compare_lists(stud, cour):
 	similarities=[]
@@ -597,16 +636,11 @@ def cos_data_semester(request):
 def cos_data_course(request):
 	current_user = request.user
 	student = Student.objects.get(student_id=current_user.username)
-	frf_data = top_semester("FRF")
-	frs_data = top_semester("FRS")
-	sof_data = top_semester("SOF")
-	sos_data = top_semester("SOS")
-	jrf_data = top_semester("JRF")
-	jrs_data = top_semester("JRS")
-	srf_data = top_semester("SRF")
-	srs_data = top_semester("SRS")
-	context = {'frf_data': frf_data, 'frs_data': frs_data, 'sof_data': sof_data, 'sos_data': sos_data, 'jrf_data': jrf_data,
-	'jrs_data': jrs_data, 'srf_data': srf_data, 'srs_data': srs_data}
+	126_data = top_semester(1)
+	226_data = top_semester(2)
+	217_data = top_semester(3)
+	340_data = top_semester(4)
+	context = {'126_data': 126_data, '226_data': 226_data, '217_data': 217_data, '340_data': 340_data}
 	return render(request, 'cosdatacourse.html', context)
 	
 @login_required # Cas authentication for this url.
