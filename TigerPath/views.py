@@ -716,7 +716,7 @@ def share(request, shared_user):
 	current_user = request.user
 	student = Student.objects.get(student_id=current_user.username)
 	if (re.match(r'Student', shared_user)):
-		num = int(str(shared_user[8:]))
+		num = int(str(shared_user[7:]))
 		fresh_fall = Entry.objects.filter(id=num, semester="FRF")
 		#app_frf = Approved_Course.objects.filter(id=num, semester="FRF")
 		#app_frf=[]
