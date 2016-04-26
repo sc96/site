@@ -106,7 +106,7 @@ def top_course(num):
 			
 	req_dict = {}
 	total = len(req_courses)
-	for s in sem_courses:
+	for s in sem_cour:
 		# need to put it in dict if not already in there
 		if s not in req_dict:
 			req_dict[s]=1
