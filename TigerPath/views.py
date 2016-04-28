@@ -709,6 +709,7 @@ def schedule_sharing(request):
 	# then can do a generic thing for clicking on one of top 5 students and it shows you their four year
 	top_5.pop(0)
 	length = len(top_5)
+	length = top_5[9]
 	context = {'user': current_user.username,'nStudents': nStudents, 'len': length, 'top_5': top_5}
 	return render(request, 'sharing.html', context)
 
