@@ -12,9 +12,51 @@
   <script  src="/../../static/js/react-bootstrap.min.js"></script>
   <script  src="/../../static/js/JSXTransformer.js"></script>
   
+    <style type="text/css">
+    .jumbotron {
+        position: relative;
+        background: center center;
+        overflow: hidden;
+        background-image: url("/static/pics/friend.jpg");
+        background-size: cover;
+        height: 100%;
+        color: #FFA500;
+        padding-bottom: 20px
+    }
+    .jumbotron .btn-primary {
+        background: #ff8c00;
+        border-color: #ff8c00
+    }
+    .jumbotron .btn-primary:hover {
+        background: #ffa500
+    }
+    .jumbotron p {
+        color: #ffffff;
+        max-width: 75%;
+        margin: 1em auto 2em
+    }
+    .navbar+.jumbotron {
+        margin-top: -20px
+    }
+    .jumbotron .lang-logo {
+        display: block;
+        background: #ff8c00;
+        border-radius: 50%;
+        overflow: hidden;
+        width: 100px;
+        height: 100px;
+        margin: auto;
+        border: 2px solid white
+    }
+    .jumbotron .lang-logo img {
+        max-width: 100%
+    }
+  </style>
+  
+  
 </head>
 <body style="padding-top: 70px; padding-bottom: 70px;">
-  
+ 
 {% load staticfiles %}
 
 <nav class="navbar navbar-inverse navbar-fixed-top">
