@@ -3,17 +3,58 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <title>TigerPath | Schedule Sharing</title>
+  <title>TigerPath | COS Data</title>
   <link rel="stylesheet" href="/../../static/css/bootstrap.css">
   <script  src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-  <script  src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.8.24/browser.min.js"></script>
   <script  src="/../../static/js/react.js"></script>
   <script  src="/../../static/js/react-dom.js"></script>
+  <script  src="/../../static/js/bootstrap.js"></script>
+  <script  src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.8.24/browser.min.js"></script>
   <script  src="/../../static/js/react-bootstrap.min.js"></script>
   <script  src="/../../static/js/JSXTransformer.js"></script>
-  <script  src="/../../static/js/bootstrap.js"></script>
-  <script  src="/../../static/js/bootstrap-hover-dropdown.js"></script>
-   
+  
+    <style type="text/css">
+    .jumbotron {
+        position: relative;
+        background: center center;
+        overflow: hidden;
+        background-image: url("/static/pics/sharing.png");
+        background-size: cover;
+        height: 100%;
+        color: #FFA500;
+        padding-bottom: 20px
+    }
+    .jumbotron .btn-primary {
+        background: #ff8c00;
+        border-color: #ff8c00
+    }
+    .jumbotron .btn-primary:hover {
+        background: #ffa500
+    }
+    .jumbotron p {
+        color: #ffffff;
+        max-width: 75%;
+        margin: 1em auto 2em
+    }
+    .navbar+.jumbotron {
+        margin-top: -20px
+    }
+    .jumbotron .lang-logo {
+        display: block;
+        background: #ff8c00;
+        border-radius: 50%;
+        overflow: hidden;
+        width: 100px;
+        height: 100px;
+        margin: auto;
+        border: 2px solid white
+    }
+    .jumbotron .lang-logo img {
+        max-width: 100%
+    }
+  </style>
+  
+  
 </head>
 <body style="padding-top: 70px; padding-bottom: 70px;">
 
@@ -44,6 +85,14 @@
     </ul>
   </div>
 </nav>
+
+<div class="jumbotron text-center">
+  <div class='container' id='box'>
+  <h1 style="color:#ff8f00">View Other Students' Four Year Plans</h1>
+  </div>
+</div>
+
+
 <nav class="navbar navbar-default navbar-fixed-bottom">
   <div class="container"> 
   <div style="text-align:center"><br>
@@ -52,10 +101,6 @@
   </div>
 </nav>
 
-<div class="container">
-  <div class="page-header" style="color:#ff8f00">
-  <h1>Shared Schedules </h1>
-</div>
 
 <!-- Suggested Certificates -->
  {% if top_5 %}
