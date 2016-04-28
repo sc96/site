@@ -696,9 +696,9 @@ def schedule_sharing(request):
 				elif (comp_courses[i]==all_courses[j]):
 					nSimilarClasses+=1
 		points_dict[s.student_id]=nSimilarClasses
-	length = len(points_dict)
+	#length = len(points_dict)
 	top_5=[]
-	for i in range(0, 10):
+	for i in range(0, 11):
 		if(points_dict.keys()):
 			maximum = max(points_dict, key=lambda i: points_dict[i])
 			if (Student.objects.get(student_id=maximum).publicBool):
@@ -708,6 +708,7 @@ def schedule_sharing(request):
 			points_dict.pop(maximum, None)
 	# then can do a generic thing for clicking on one of top 5 students and it shows you their four year
 	top_5.pop(0)
+	length = len(top_5)
 	context = {'user': current_user.username,'nStudents': nStudents, 'len': length, 'top_5': top_5}
 	return render(request, 'sharing.html', context)
 
