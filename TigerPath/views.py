@@ -359,6 +359,13 @@ def degree_progress(request):
 	apps_on = title(apps_on)
 	apps_off = title(compare_lists(all_courses, apps_courses)["differences"])
 
+	iw_on = compare_lists(all_courses, iw_courses)["similarities"] #iw is for BSE only
+	while len(iw_on) > 1:
+		save_other.append(iw_on.pop(0))
+	iw_on = title(iw_on)
+	iw_off = title(compare_lists(all_courses, iw_courses)["differences"])
+
+
 		# other should have all classes in "other" that the user hasn't already taken
 		# will fix this bug a little later... 4/9/2016 ....!!!!
 	other_on = compare_lists(all_courses, other_courses)["similarities"]
@@ -368,12 +375,6 @@ def degree_progress(request):
 	other_on = title(other_on)
 	other_off = title(compare_lists(all_courses, other_courses)["differences"])
 
-	iw_on = compare_lists(all_courses, iw_courses)["similarities"] #iw is for BSE only
-	other_iw = Approved_Course.objects.filter(student_id=current_user.username, requirement="Independent")
-	for t in other_iw:
-		iw_on.append(t.course_id)
-	iw_on = title(iw_on)
-	iw_off = title(compare_lists(all_courses, iw_courses)["differences"])
 
 	core_on = title(compare_lists(all_courses, core_courses)["similarities"])
 	core_off = title(compare_lists(all_courses, core_courses)["differences"])
