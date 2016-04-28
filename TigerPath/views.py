@@ -698,7 +698,7 @@ def schedule_sharing(request):
 		points_dict[s.student_id]=nSimilarClasses
 	length = len(points_dict)
 	top_5=[]
-	for i in range(0, 6):
+	for i in range(0, 10):
 		if(points_dict.keys()):
 			maximum = max(points_dict, key=lambda i: points_dict[i])
 			if (Student.objects.get(student_id=maximum).publicBool):
