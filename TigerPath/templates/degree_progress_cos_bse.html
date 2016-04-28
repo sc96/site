@@ -567,10 +567,13 @@ var x = document.getElementById(String(object));
                 <a class="list-group-item active" style="text-align:center">LA</a>
              {% for x in student_la %}
                <span>
-               <form class= "form-inline" id = "{{x}}" action="" method="post">{% csrf_token %} 
+                 <form class= "form-inline" id = "{{x.course.listings}}">
+                <a class="list-group-item list-group-item-success" name ="{{x.course.listings}}" >{{ x }} 
+                  </a>
+               <!--form class= "form-inline" id = "{{x}}" action="" method="post">{% csrf_token %} 
                   <a class="list-group-item list-group-item-success" >{{ x }}<i class="glyphicon glyphicon-minus pull-right link" id="{{x}}" onclick="rmv(this.id)"></i> </a>
                   <input type="hidden" name="remove" value="{{x}}">
-              </form>
+              <!--/form-->
             </span>
              {% endfor %}
             </div>
