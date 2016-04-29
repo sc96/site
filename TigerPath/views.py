@@ -212,6 +212,8 @@ def profile(request):
 		lin_alg = request.POST["lin_alg"]
 		student.update_info(student, firstN, lastN, engineerBool, publicBool, 
 			cert1, cert2, cert3, calc_1, calc_2, calc_3, lin_alg)
+
+
 			
     
 	# getting strings for context variable
@@ -219,14 +221,14 @@ def profile(request):
 	lastN = student.last_name
 	engineerBool = student.engineerBool
 	publicBool = student.publicBool
-	cert1 = student.cert1
-	cert2 = student.cert2
-	cert3 = student.cert3
+	cert1 = "NONE"
+	cert2 = "NONE"
+	cert3 = "NONE"
 
 	calc_1 = "0"
-	calc_2 = student.calc_2
-	calc_3 = student.calc_3
-	lin_alg = student.lin_alg
+	calc_2 = "0"
+	calc_3 =  "1"
+	lin_alg = "1"
 
 	ap_dict = {"calc_1": calc_1, "calc_2": calc_2, "calc_3": calc_3, "lin_alg" : lin_alg}
 '''	context = {'user': current_user.username, 'firstN': firstN, 'lastN': lastN,
