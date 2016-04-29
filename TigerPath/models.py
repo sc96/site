@@ -73,13 +73,24 @@ class CWR(models.Model):
 		return str(self.course_id)
 		
 class FIN(models.Model):
-	cert_name="Neuroscience"
+	cert_name="Finance"
 	course_id = models.IntegerField(primary_key=True)
 	mat = models.IntegerField()
 	stat = models.IntegerField()
 	eco = models.IntegerField()
 	core = models.IntegerField()
 	elective = models.IntegerField()
+
+	def __str__(self):
+		return str(self.course_id)
+		
+class URB(models.Model):
+	cert_name="Urban Studies"
+	course_id = models.IntegerField(primary_key=True)
+	intro = models.IntegerField()
+	social = models.IntegerField()
+	human = models.IntegerField()
+	engineer = models.IntegerField()
 
 	def __str__(self):
 		return str(self.course_id)
