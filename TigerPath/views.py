@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from .models import Student, Course, COS_BSE, Entry, Approved_Course, Engineer, Outside_Course, AAS, AFS, AMS, NEU, MUS, AP_Credit
+from .models import Student, Course, COS_BSE, Entry, Approved_Course, Engineer, Outside_Course, AAS, AFS, AMS, NEU, MUS, GHP, AP_Credit
 from django.contrib.auth.decorators import login_required
 import re
 from itertools import chain
@@ -914,6 +914,35 @@ def ams(request):
 	'elective_on': elective_on, 'elective_off': elective_off}
 	return render(request, 'ams.html', context)
 
+@login_required # Cas authentication for this url.
+# African Studies
+def ghp(request):
+	current_user = request.user
+	student = Student.objects.get(student_id=current_user.username)
+	all_courses = Entry.objects.filter(student_id=current_user.username).values_list('course_id', flat=True).order_by('course_id') # all of the student's courses
+	science = GHP.objects.filter(science=1).values_list('course_id', flat=True).order_by('course_id')
+	stats = GHP.objects.filter(stats=1).values_list('course_id', flat=True).order_by('course_id')
+	core = GHP.objects.filter(core=1).values_list('course_id', flat=True).order_by('course_id')
+	elective = GHP.objects.filter(elective=1).values_list('course_id', flat=True).order_by('course_id')
+
+	science_on = title(compare_lists(all_courses, science)["similarities"])
+	science_off = title(compare_lists(all_courses, science)["differences"])
+
+	stats_on = title(compare_lists(all_courses, stats)["similarities"])
+	stats_off = title(compare_lists(all_courses, stats)["differences"])
+
+	core_on = title(compare_lists(all_courses, core)["similarities"])
+	core_off = title(compare_lists(all_courses, core)["differences"])
+
+	elective_on = title(compare_lists(all_courses, elective)["similarities"])
+	elective_off = title(compare_lists(all_courses, elective)["differences"])
+
+	context = {'science_on': science_on, 'science_off': science_off, 'stats_on': stats_on, 'stats_off': stats_off,
+	'core_on': core_on, 'core_off': core_off, 'elective_on': elective_on, 'elective_off': elective_off}
+	return render(request, 'ghp.html', context)
+
+
+@login_required
 def mus(request):
 	current_user = request.user
 	student = Student.objects.get(student_id=current_user.username)
@@ -935,6 +964,7 @@ def mus(request):
 	'elective_on': elective_on, 'elective_off': elective_off}
 	return render(request, 'mus.html', context)
 
+@login_required
 def neu(request):
 	current_user = request.user
 	student = Student.objects.get(student_id=current_user.username)

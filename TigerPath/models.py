@@ -51,6 +51,17 @@ class AMS(models.Model):
 
 	def __str__(self):
 		return str(self.course_id)
+
+class GHP(models.Model):
+	cert_name="Neuroscience"
+	course_id = models.IntegerField(primary_key=True)
+	science = models.IntegerField()
+	stats = models.IntegerField()
+	core = models.IntegerField()
+	elective = models.IntegerField()
+
+	def __str__(self):
+		return str(self.course_id)
 		
 class NEU(models.Model):
 	cert_name="Neuroscience"
