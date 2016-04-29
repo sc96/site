@@ -38,6 +38,8 @@ urlpatterns = [
     url(r'^aas/$', views.aas),
     url(r'^afs/$', views.afs),
     url(r'^ams/$', views.ams),
+    url(r'^neu/$', views.neu),
+    url(r'^mus/$', views.mus),
     url(r'^outsidecourseapproval/$', views.outside_course_approval),
     url(r'^cosdata/$', views.cos_data),
     url(r'^cosdatasemester/$', views.cos_data_semester),
