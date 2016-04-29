@@ -63,6 +63,18 @@ class GHP(models.Model):
 	def __str__(self):
 		return str(self.course_id)
 		
+class FIN(models.Model):
+	cert_name="Neuroscience"
+	course_id = models.IntegerField(primary_key=True)
+	mat = models.IntegerField()
+	stat = models.IntegerField()
+	eco = models.IntegerField()
+	core = models.IntegerField()
+	elective = models.IntegerField()
+
+	def __str__(self):
+		return str(self.course_id)
+		
 class NEU(models.Model):
 	cert_name="Neuroscience"
 	course_id = models.IntegerField(primary_key=True)

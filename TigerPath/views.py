@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from .models import Student, Course, COS_BSE, Entry, Approved_Course, Engineer, Outside_Course, AAS, AFS, AMS, NEU, MUS, GHP, AP_Credit
+from .models import Student, Course, COS_BSE, Entry, Approved_Course, Engineer, Outside_Course, AAS, AFS, AMS, NEU, MUS, GHP, FIN, AP_Credit
 from django.contrib.auth.decorators import login_required
 import re
 from itertools import chain
@@ -802,9 +802,11 @@ def certificates(request):
 	aas = AAS.objects.values_list('course_id', flat=True).order_by('course_id')
 	afs = AFS.objects.values_list('course_id', flat=True).order_by('course_id')
 	ams = AMS.objects.values_list('course_id', flat=True).order_by('course_id')
+	fin = FIN.objects.values_list('course_id', flat=True).order_by('course_id')
 	ghp = GHP.objects.values_list('course_id', flat=True).order_by('course_id')
 	mus = MUS.objects.values_list('course_id', flat=True).order_by('course_id')
 	neu = NEU.objects.values_list('course_id', flat=True).order_by('course_id')
+	
 	nsimilar = num_compare(all_courses, aas)
 	cert_dict["African American Studies"]=num_compare(all_courses, aas)
 	cert_dict["African Studies"]=num_compare(all_courses, afs)
@@ -915,6 +917,39 @@ def ams(request):
 	context = {'core_on': core_on, 'core_off': core_off, 'ams_on': ams_on, 'ams_off': ams_off,
 	'elective_on': elective_on, 'elective_off': elective_off}
 	return render(request, 'ams.html', context)
+
+@login_required # Cas authentication for this url.
+# African Studies
+def fin(request):
+	current_user = request.user
+	student = Student.objects.get(student_id=current_user.username)
+	all_courses = Entry.objects.filter(student_id=current_user.username).values_list('course_id', flat=True).order_by('course_id') # all of the student's courses
+	mat = FIN.objects.filter(foundation=1).values_list('course_id', flat=True).order_by('course_id')
+	eco = FIN.objects.filter(culture=1).values_list('course_id', flat=True).order_by('course_id')
+	stat = FIN.objects.filter(history=1).values_list('course_id', flat=True).order_by('course_id')
+	core = FIN.objects.filter(science=1).values_list('course_id', flat=True).order_by('course_id')
+	elective = FIN.objects.filter(politics=1).values_list('course_id', flat=True).order_by('course_id')
+
+	mat_on = title(compare_lists(all_courses, foundation)["similarities"])
+	mat_off = title(compare_lists(all_courses, foundation)["differences"])
+
+	eco_on = title(compare_lists(all_courses, culture)["similarities"])
+	eco_off = title(compare_lists(all_courses, culture)["differences"])
+
+	stat_on = title(compare_lists(all_courses, history)["similarities"])
+	stat_off = title(compare_lists(all_courses, history)["differences"])
+
+	core_on = title(compare_lists(all_courses, science)["similarities"])
+	core_off = title(compare_lists(all_courses, science)["differences"])
+
+	elective_on = title(compare_lists(all_courses, elective)["similarities"])
+	elective_off = title(compare_lists(all_courses, elective)["differences"])
+
+	context = {'mat_on': mat_on, 'mat_off': mat_off, 'eco_on': eco_on, 'eco_off': eco_off,
+	'stat_on': stat_on, 'stat_off': stat_off, 'core_on': core_on, 'core_off': core_off,
+	'elective_on': elective_on, 'elective_off': elective_off}
+	return render(request, 'fin.html', context)
+
 
 @login_required # Cas authentication for this url.
 # African Studies
