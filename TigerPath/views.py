@@ -209,7 +209,7 @@ def profile(request):
 		calc_3 = request.POST["calc_2"]
 		calc_1 = request.POST["lin_alg"]
 		student.update_info(student, firstN, lastN, engineerBool, publicBool, 
-			cert1, cert2, cert3, calc_1, calc_2, calc_3)
+			cert1, cert2, cert3, calc_1, calc_2, calc_3, lin_alg)
 			
     
 	# getting strings for context variable
