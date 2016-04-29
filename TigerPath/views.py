@@ -1140,7 +1140,7 @@ def cwr(request):
 	three_off = title(compare_lists(all_courses, three)["differences"])
 
 	context = {'two_on': two_on, 'two_off': two_off, 'three_on': three_on, 'three_off': three_off}
-	return render(request, 'ghp.html', context)
+	return render(request, 'cwr.html', context)
 
 @login_required
 def mus(request):
