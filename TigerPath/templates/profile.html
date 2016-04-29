@@ -172,10 +172,10 @@ function update_Info() {
 <div class="form-group">
   <label for="usr">First Name:</label>
   <input type="text" class="form-control" id="firstname" maxlength = 30, 
-   value = "{{ calc_2 }}">
+   value = "{{ firstN }}">
   <label for="text">Last Name:</label>
   <input type="text" class="form-control" id="lastname" maxlength = 30, 
-   value = "{{ lin_alg }}">
+   value = "{{ lastN }}">
   <label for="sel1">Select Degree Type:</label>
   <select class="form-control" id="sel1", >
     {% if engineerBool|stringformat:"s" == "1" %}
@@ -219,6 +219,8 @@ function update_Info() {
   </select>
 </div>
 </div>
+
+
 <div class="col-sm-6 col-centered"> 
 <div style = "text-align:center">
   <p><b>Have you placed out of these courses?</b></p>
@@ -252,6 +254,7 @@ function update_Info() {
   {% endif %} 
 </label>
 </div>
+</div>
 
 <div class="col-sm-6 col-centered" >
 <div style = "text-align:center">
@@ -279,13 +282,9 @@ function update_Info() {
   <input type="checkbox"  id ="cos" data-toggle="toggle" data-on="Cos" data-off="Cos" > 
   {% endif %}
 </label>
-
+</div>
 </div>
 
-
-
-
-</div>
 
 
 
