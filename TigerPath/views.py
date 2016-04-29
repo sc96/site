@@ -177,9 +177,7 @@ def profile(request):
    		s = Student.objects.get(student_id=str(current_user.username)) # changed this
 	except Student.DoesNotExist:
 		# creating new student. default values
-   		s = Student(student_id=str(current_user.username), first_name = "First", last_name = "Last",
-   		 engineerBool = "1", publicBool = "1", calc_1 = "0", calc_2 = "0", calc_3 = "0", 
-   		 lin_alg= "0", gen_chem = "0", physics = "0", cos = "0", cert1 = "AAS", cert2 = "AAS", cert3 = "AAS" )
+   		s = Student(student_id=str(current_user.username), first_name = "First", last_name = "Last", engineerBool = "1", publicBool = "1", calc_1 = "0", calc_2 = "0", calc_3 = "0", lin_alg= "0", gen_chem = "0", physics = "0", cos = "0")
    		# 1 = True. 0 = False Using string instead of Bool since there's no
    		# easy way to pass Javascript booleans to python backend
    		s.save()
@@ -224,20 +222,11 @@ def profile(request):
 	calc_2 = student.calc_2
 	calc_3 = student.calc_3
 	lin_alg = student.lin_alg
-	
-	
-
-    
-	cert_list = {"AAS", "AFS", "AMS", "ACP" "APC", "ARE", "BPH", "CGS", "EUP", "CWP", "DAN", 
-	"EAP", "EAP", "EGB", "EPP", "ENV", "ETH", "ECS", "FIN", "UAFRS", "GSS", "GEP", "GHP", "HLS",
-	"HPD", "HUS", "JAZ", "JDP", "LAC", "LAS", "LAO", "LIN", "MSE", "MED", "MPP", "NEP", "NUP", "PLP",
-	"PLP", "QCB", "RIS", "RES", "SAS", "SML", "PSE", "TPP", "ITS", "THR", "TIC", "URS", "VPL", "VIS",  
-	
 
 	ap_dict = {"calc_1": calc_1, "calc_2": calc_2, "calc_3": calc_3, "lin_alg" : lin_alg}
 	context = {'user': current_user.username, 'firstN': firstN, 'lastN': lastN,
 	 'engineerBool': engineerBool, 'publicBool': publicBool, 'cert1': cert1,
-	 'cert2': cert2, 'cert3': cert3, 'ap_dict': ap_dict, "cert_list" : cert_list}
+	 'cert2': cert2, 'cert3': cert3, 'ap_dict': ap_dict}
 	return render(request, 'profile.html', context)
 
 	
@@ -813,10 +802,14 @@ def certificates(request):
 	aas = AAS.objects.values_list('course_id', flat=True).order_by('course_id')
 	afs = AFS.objects.values_list('course_id', flat=True).order_by('course_id')
 	ams = AMS.objects.values_list('course_id', flat=True).order_by('course_id')
+	mus = MUS.objects.values_list('course_id', flat=True).order_by('course_id')
+	neu = NEU.objects.values_list('course_id', flat=True).order_by('course_id')
 	nsimilar = num_compare(all_courses, aas)
 	cert_dict["African American Studies"]=num_compare(all_courses, aas)
 	cert_dict["African Studies"]=num_compare(all_courses, afs)
 	cert_dict["American Studies"]=num_compare(all_courses, ams)
+	cert_dict["Neuroscience"]=num_compare(all_courses, neu)
+	cert_dict["Musical Performance"]=num_compare(all_courses, mus)
 	top_3=[]
 	for i in range(0, 3):
 		maximum = max(cert_dict, key=lambda i: cert_dict[i])
