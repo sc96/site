@@ -270,6 +270,18 @@ BootstrapDialog.confirm({
              <div class="list_group" >
                     <a class="list-group-item active" style="background-color:#83b7eb; border-color=#83b7eb" >Summer and Other Term Courses</a>
                     <!-- NEED INFORMATION PASSED IN -->
+                     {% for x in student_outside %}
+                      <span>
+                        <form class= "form-inline" id = "{{x.course_name}}" action= "" method= "post">{% csrf_token %}
+                    <a class="list-group-item">{{ x.course_name }}
+                    <i class="glyphicon glyphicon-minus pull-right link" id="{{x.course_name}}" onclick="rmv(this.id)"></i></a>
+                    <input type="hidden" name="term" value ="SRF">
+                    <input type="hidden" name="remove" value="{{x.course_name}}">
+                  </form>
+                </span>
+                     {% endfor %}
+             </div>
+             </div>
 
             </div>
         </div>
