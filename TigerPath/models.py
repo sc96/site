@@ -63,6 +63,16 @@ class NEU(models.Model):
 	def __str__(self):
 		return str(self.course_id)
 		
+class MUS(models.Model):
+	cert_name="Musical Performance"
+	course_id = models.IntegerField(primary_key=True)
+	intro = models.IntegerField()
+	perform = models.IntegerField()
+	elective = models.IntegerField()
+
+	def __str__(self):
+		return str(self.course_id)
+		
 class COS_BSE(models.Model):
 	major_name="Computer Science B.S.E."
 	course_id = models.CharField(max_length = 30, primary_key=True)
