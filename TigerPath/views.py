@@ -591,7 +591,7 @@ def degree_progress(request):
 		'apps_on': apps_on, 'apps_off': apps_off, 'other_on': other_on, 'other_off': other_off,
 		'iw_on': iw_on, 'iw_off': iw_off, 'core_on': core_on, 'core_off': core_off,
 		'student_sa': student_sa, 'student_la': student_la, 'student_ha': student_ha, 'student_ec': student_ec,
-		'student_em': student_em, 'student_foreign': student_foreign, 'student_wri': student_wri, 'outside_courses': student_outside,
+		'student_em': student_em, 'student_foreign': student_foreign, 'student_wri': student_wri,
 		'student_ap': student_ap, 'removed_class': removed_class, 'math_1_on': math_1_on, 'math_1_off': math_1_off, 'math_2_on': math_2_on, 'math_2_off': math_2_off, 'math_3_on': math_3_on, 'math_3_off': math_3_off,
 		'math_4_on': math_4_on, 'math_4_off': math_4_off}#, 'cos_1': cos_1}
 		return render(request, 'degree_progress_cos_ab.html', context)
