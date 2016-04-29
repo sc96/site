@@ -77,23 +77,39 @@ function update_Info() {
 
     var cert3 = document.getElementById("cert3")
     var input = document.getElementById("hidcert3");
+
     input.value = cert3.value
 
     var calc_1 = document.getElementById("calc_1")
     var input = document.getElementById("hidcalc_1");
-    input.value = calc_1.value
+    if (calc_1.checked)
+      input.value = "1"
+    else
+      input.value = "0"
 
     var calc_2 = document.getElementById("calc_2")
     var input = document.getElementById("hidcalc_2");
     input.value = calc_2.value
+    if (calc_2.checked)
+      input.value = "1"
+    else
+      input.value = "0"
 
     var calc_3 = document.getElementById("calc_3")
     var input = document.getElementById("hidcalc_3");
     input.value = calc_3.value
+    if (calc_3.checked)
+      input.value = "1"
+    else
+      input.value = "0"
 
     var lin_alg = document.getElementById("lin_alg")
     var input = document.getElementById("hidlin");
     input.value = lin_alg.value
+    if (lin_alg.checked)
+      input.value = "1"
+    else
+      input.value = "0"
 
 
 }
