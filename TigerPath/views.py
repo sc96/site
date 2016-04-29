@@ -221,9 +221,17 @@ def profile(request):
 	lastN = student.last_name
 	engineerBool = student.engineerBool
 	publicBool = student.publicBool
-	cert1 = "NONE"
-	cert2 = "NONE"
-	cert3 = "NONE"
+	cert1 = student.cert1
+	cert2 = student.cert2
+	cert3 = student.cert3
+
+    student.cert1 = "NONE"
+    student.cert2 = "NONE"
+    student.cert3 = "NONE"
+	student.calc1 = "0"
+	student.calc2 = "0"
+	student.calc3 = "1"
+	student.lin_alg = "1"
 
 	calc_1 = student.calc_1
 	calc_2 = student.calc_2
