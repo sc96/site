@@ -177,7 +177,9 @@ def profile(request):
    		s = Student.objects.get(student_id=str(current_user.username)) # changed this
 	except Student.DoesNotExist:
 		# creating new student. default values
-   		s = Student(student_id=str(current_user.username), first_name = "First", last_name = "Last", engineerBool = "1", publicBool = "1", calc_1 = "0", calc_2 = "0", calc_3 = "0", lin_alg= "0", gen_chem = "0", physics = "0", cos = "0")
+   		s = Student(student_id=str(current_user.username), first_name = "First", last_name = "Last", engineerBool = "1",
+   		 publicBool = "1", cert1 = "NONE", cert2 = "NONE", cert3 = "NONE", calc_1 = "0", calc_2 = "0", calc_3 = "0", 
+   		 lin_alg= "0", gen_chem = "0", physics = "0", cos = "0")
    		# 1 = True. 0 = False Using string instead of Bool since there's no
    		# easy way to pass Javascript booleans to python backend
    		s.save()
@@ -227,9 +229,9 @@ def profile(request):
 	lin_alg = student.lin_alg
 
 	ap_dict = {"calc_1": calc_1, "calc_2": calc_2, "calc_3": calc_3, "lin_alg" : lin_alg}
-	''' context = {'user': current_user.username, 'firstN': firstN, 'lastN': lastN,
+	 context = {'user': current_user.username, 'firstN': firstN, 'lastN': lastN,
 	 'engineerBool': engineerBool, 'publicBool': publicBool, 'cert1': cert1,
-	 'cert2': cert2, 'cert3': cert3, 'ap_dict': ap_dict} '''
+	 'cert2': cert2, 'cert3': cert3, 'ap_dict': ap_dict} 
 
 
 	context = {'user': current_user.username, 'firstN': firstN, 'lastN': lastN,
