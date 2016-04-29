@@ -215,10 +215,10 @@ function update_Info() {
 </div>
 <div style = "text-align:center">
 <label class="checkbox-inline" style = "text-align:center">
-{% if ap_dict.calc_1|stringformat:"s" == "1" %}
-  <input type="checkbox"   id ="calc_1" checked data-toggle="toggle" data-on="Calc1" data-off="Calc1" value = "1">
+{% if ap_dict.calc_1|stringformat:"s" == "0" %}
+  <input type="checkbox"   id ="calc_1"data-toggle="toggle" data-on="Calc1" data-off="Calc1" value = "0">
   {% else %}
-  <input type="checkbox"  id ="calc_1" data-toggle="toggle" data-on="Calc1" data-off="Calc1" value = "0"> 
+  <input type="checkbox"  id ="calc_1"  checked data-toggle="toggle" data-on="Calc1" data-off="Calc1" value = "1"> 
   {% endif %}
 </label>
 <label class="checkbox-inline">
