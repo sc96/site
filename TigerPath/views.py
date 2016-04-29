@@ -1130,8 +1130,8 @@ def cwr(request):
 	current_user = request.user
 	student = Student.objects.get(student_id=current_user.username)
 	all_courses = Entry.objects.filter(student_id=current_user.username).values_list('course_id', flat=True).order_by('course_id') # all of the student's courses
-	two = GHP.objects.filter(two=1).values_list('course_id', flat=True).order_by('course_id')
-	three = GHP.objects.filter(three=1).values_list('course_id', flat=True).order_by('course_id')
+	two = CWR.objects.filter(two=1).values_list('course_id', flat=True).order_by('course_id')
+	three = CWR.objects.filter(three=1).values_list('course_id', flat=True).order_by('course_id')
 	
 	two_on = title(compare_lists(all_courses, two)["similarities"])
 	two_off = title(compare_lists(all_courses, two)["differences"])
