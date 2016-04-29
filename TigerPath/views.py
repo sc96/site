@@ -914,10 +914,10 @@ def neu(request):
 	current_user = request.user
 	student = Student.objects.get(student_id=current_user.username)
 	all_courses = Entry.objects.filter(student_id=current_user.username).values_list('course_id', flat=True).order_by('course_id') # all of the student's courses
-	req = AMS.objects.filter(req=1).values_list('course_id', flat=True).order_by('course_id')
-	disease = AMS.objects.filter(disease=1).values_list('course_id', flat=True).order_by('course_id')
-	circuits = AMS.objects.filter(circuits=1).values_list('course_id', flat=True).order_by('course_id')
-	social = AMS.objects.filter(social=1).values_list('course_id', flat=True).order_by('course_id')
+	req = NEU.objects.filter(req=1).values_list('course_id', flat=True).order_by('course_id')
+	disease = NEU.objects.filter(disease=1).values_list('course_id', flat=True).order_by('course_id')
+	circuits = NEU.objects.filter(circuits=1).values_list('course_id', flat=True).order_by('course_id')
+	social = NEU.objects.filter(social=1).values_list('course_id', flat=True).order_by('course_id')
 
 	req_on = title(compare_lists(all_courses, req)["similarities"])
 	req_off = title(compare_lists(all_courses, req)["differences"])
