@@ -235,7 +235,7 @@ def profile(request):
 	calc_2 = student.calc_2
 	calc_3 =  student.calc_3
 	lin_alg = student.lin_alg
-	gen_chem = sudent.gen_chem
+	gen_chem = student.gen_chem
 	physics = student.physics
 	cos = sudent.cos
 
