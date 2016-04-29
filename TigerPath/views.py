@@ -293,7 +293,7 @@ def degree_progress(request):
 	# all of the requirement lists
 	# can probably combine a lot of things here into one function - maybe i want the approved courses in their own list? idk
 	# COS BSE Major
-	if (student.engineerBool == 1):
+	if (student.engineerBool):
 		# BSE requirements - all
 	
 	# this should probably be hard coded
@@ -319,9 +319,9 @@ def degree_progress(request):
 		if (student.lin_alg == 1 and AP_Credit.objects.filter(student_name=current_user.username, course_id="1160").count() == 0):
 			a = AP_Credit(student_name = current_user.username, course_id = "1160")
 			a.save()
-	if(student.gen_chem == 1 and AP_Credit.objects.filter(student_name=current_user.username, course_id="1354").count() == 0):
-		a = AP_Credit(student_name = current_user.username, course_id = "1354")
-		a.save()
+		if(student.gen_chem == 1 and AP_Credit.objects.filter(student_name=current_user.username, course_id="1354").count() == 0):
+			a = AP_Credit(student_name = current_user.username, course_id = "1354")
+			a.save()
 		if(student.physics == 1 and AP_Credit.objects.filter(student_name=current_user.username, course_id="763").count() == 0 and AP_Credit.objects.filter(student_name=current_user.username, course_id="2016").count() == 0):
 			a = AP_Credit(student_name = current_user.username, course_id = "2016")
 			a.save()
@@ -596,7 +596,7 @@ def degree_progress(request):
 		'iw_on': iw_on, 'iw_off': iw_off, 'core_on': core_on, 'core_off': core_off,
 		'student_sa': student_sa, 'student_la': student_la, 'student_ha': student_ha, 'student_ec': student_ec,
 		'student_em': student_em, 'student_foreign': student_foreign, 'student_wri': student_wri,
-		'student_ap': student_ap, 'removed_class': removed_class, 'math_1_on': math_1_on, 'math_1_off': math_1_off, 'math_2_on': math_2_on, 'math_2_off': math_2_off, 'math_3_on': math_3_on, 'math_3_off': math_3_off,
+		'math_1_on': math_1_on, 'math_1_off': math_1_off, 'math_2_on': math_2_on, 'math_2_off': math_2_off, 'math_3_on': math_3_on, 'math_3_off': math_3_off,
 		'math_4_on': math_4_on, 'math_4_off': math_4_off}#, 'cos_1': cos_1}
 		return render(request, 'degree_progress_cos_ab.html', context)
 
