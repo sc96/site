@@ -53,12 +53,21 @@ class AMS(models.Model):
 		return str(self.course_id)
 
 class GHP(models.Model):
-	cert_name="Neuroscience"
+	cert_name="Global Health and Health Policy"
 	course_id = models.IntegerField(primary_key=True)
 	science = models.IntegerField()
 	stats = models.IntegerField()
 	core = models.IntegerField()
 	elective = models.IntegerField()
+
+	def __str__(self):
+		return str(self.course_id)
+		
+class CWR(models.Model):
+	cert_name="Creative Writing"
+	course_id = models.IntegerField(primary_key=True)
+	two = models.IntegerField()
+	three = models.IntegerField()
 
 	def __str__(self):
 		return str(self.course_id)
