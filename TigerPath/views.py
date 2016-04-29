@@ -802,6 +802,7 @@ def certificates(request):
 	aas = AAS.objects.values_list('course_id', flat=True).order_by('course_id')
 	afs = AFS.objects.values_list('course_id', flat=True).order_by('course_id')
 	ams = AMS.objects.values_list('course_id', flat=True).order_by('course_id')
+	ghp = GHP.objects.values_list('course_id', flat=True).order_by('course_id')
 	mus = MUS.objects.values_list('course_id', flat=True).order_by('course_id')
 	neu = NEU.objects.values_list('course_id', flat=True).order_by('course_id')
 	nsimilar = num_compare(all_courses, aas)
@@ -810,6 +811,7 @@ def certificates(request):
 	cert_dict["American Studies"]=num_compare(all_courses, ams)
 	cert_dict["Neuroscience"]=num_compare(all_courses, neu)
 	cert_dict["Musical Performance"]=num_compare(all_courses, mus)
+	cert_dict["Global Health and Health Policy"]=num_compare(all_courses, ghp)
 	top_3=[]
 	for i in range(0, 3):
 		maximum = max(cert_dict, key=lambda i: cert_dict[i])
