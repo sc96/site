@@ -97,21 +97,21 @@ function update_Info() {
 
 
 
-    var gen_chem = document.getElementById("lin_alg")
+    var gen_chem = document.getElementById("gen_chem")
     var input = document.getElementById("hidchem");
     if (gen_chem.checked)
       input.value = "1"
     else
       input.value = "0"
 
-    var physics = document.getElementById("lin_alg")
+    var physics = document.getElementById("physics")
     var input = document.getElementById("hidphy");
     if (physics.checked)
       input.value = "1"
     else
       input.value = "0"
 
-    var cos = document.getElementById("lin_alg")
+    var cos = document.getElementById("cos")
     var input = document.getElementById("hidcos");
     if (cos.checked)
       input.value = "1"
@@ -272,13 +272,12 @@ function update_Info() {
   <input type="checkbox"  id ="lin_alg" data-toggle="toggle" data-on="Linear" data-off="Linear" > 
   {% endif %} 
 </label>
+</div>
+</div>
 
+<div class="row row-centered">
+<div class="col-sm-6 col-centered" >
 
-</div>
-</div>
-</div>
-<div class="col-sm-6 col-centered"> 
-<div style = "text-align:center">
 
 <label class="checkbox-inline" style = "text-align:center">
 {% if ap_dict.gen_chem|stringformat:"s" == "1" %}
@@ -304,10 +303,16 @@ function update_Info() {
   {% endif %}
 </label>
 
+
 </div>
 </div>
 
+
+
 </div>
+
+
+
 
 
 
