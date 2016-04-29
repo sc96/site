@@ -225,11 +225,12 @@ function update_Info() {
   {% endif %}
 </label>
 <label class="checkbox-inline">
-  {% if calc_2|stringformat:"s" == "1" %}
-  <input type="checkbox"   id ="calc_2" checked data-toggle="toggle" data-on="Calc2" data-off="Calc2" value = "1">
-  {% else %}
-  <input type="checkbox"   id ="calc_2" data-toggle="toggle" data-on="Calc2" data-off="Calc2" value = "0"> 
-  {% endif %}
+  
+  <input type="checkbox"  id ="calc_2" data-on="Calc2" data-off="Calc2"
+   {% if calc_2|stringformat:"s" == "1" %} checked data-toggle="toggle"
+   {% else %}
+   data-toggle="toggle"
+   {% endif %} >
 </label>
 <label class="checkbox-inline">
   {% if calc_3|stringformat:"s" == "1" %}
