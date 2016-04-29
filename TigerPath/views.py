@@ -810,6 +810,7 @@ def certificates(request):
 	ghp = GHP.objects.values_list('course_id', flat=True).order_by('course_id')
 	mus = MUS.objects.values_list('course_id', flat=True).order_by('course_id')
 	neu = NEU.objects.values_list('course_id', flat=True).order_by('course_id')
+	fin = FIN.objects.values_list('course_id', flat=True).order_by('course_id')
 	
 	nsimilar = num_compare(all_courses, aas)
 	cert_dict["African American Studies"]=num_compare(all_courses, aas)
@@ -818,6 +819,7 @@ def certificates(request):
 	cert_dict["Neuroscience"]=num_compare(all_courses, neu)
 	cert_dict["Musical Performance"]=num_compare(all_courses, mus)
 	cert_dict["Global Health and Health Policy"]=num_compare(all_courses, ghp)
+	cert_dict["Finance"]=num_compare(all_courses, fin)
 	top_3=[]
 	for i in range(0, 3):
 		maximum = max(cert_dict, key=lambda i: cert_dict[i])
@@ -928,23 +930,23 @@ def fin(request):
 	current_user = request.user
 	student = Student.objects.get(student_id=current_user.username)
 	all_courses = Entry.objects.filter(student_id=current_user.username).values_list('course_id', flat=True).order_by('course_id') # all of the student's courses
-	mat = FIN.objects.filter(foundation=1).values_list('course_id', flat=True).order_by('course_id')
-	eco = FIN.objects.filter(culture=1).values_list('course_id', flat=True).order_by('course_id')
-	stat = FIN.objects.filter(history=1).values_list('course_id', flat=True).order_by('course_id')
-	core = FIN.objects.filter(science=1).values_list('course_id', flat=True).order_by('course_id')
-	elective = FIN.objects.filter(politics=1).values_list('course_id', flat=True).order_by('course_id')
+	mat = FIN.objects.filter(mat=1).values_list('course_id', flat=True).order_by('course_id')
+	eco = FIN.objects.filter(eco=1).values_list('course_id', flat=True).order_by('course_id')
+	stat = FIN.objects.filter(stat=1).values_list('course_id', flat=True).order_by('course_id')
+	core = FIN.objects.filter(core=1).values_list('course_id', flat=True).order_by('course_id')
+	elective = FIN.objects.filter(elective=1).values_list('course_id', flat=True).order_by('course_id')
 
-	mat_on = title(compare_lists(all_courses, foundation)["similarities"])
-	mat_off = title(compare_lists(all_courses, foundation)["differences"])
+	mat_on = title(compare_lists(all_courses, mat)["similarities"])
+	mat_off = title(compare_lists(all_courses, mat)["differences"])
 
-	eco_on = title(compare_lists(all_courses, culture)["similarities"])
-	eco_off = title(compare_lists(all_courses, culture)["differences"])
+	eco_on = title(compare_lists(all_courses, eco)["similarities"])
+	eco_off = title(compare_lists(all_courses, eco)["differences"])
 
-	stat_on = title(compare_lists(all_courses, history)["similarities"])
-	stat_off = title(compare_lists(all_courses, history)["differences"])
+	stat_on = title(compare_lists(all_courses, stat)["similarities"])
+	stat_off = title(compare_lists(all_courses, stat)["differences"])
 
-	core_on = title(compare_lists(all_courses, science)["similarities"])
-	core_off = title(compare_lists(all_courses, science)["differences"])
+	core_on = title(compare_lists(all_courses, core)["similarities"])
+	core_off = title(compare_lists(all_courses, core)["differences"])
 
 	elective_on = title(compare_lists(all_courses, elective)["similarities"])
 	elective_off = title(compare_lists(all_courses, elective)["differences"])
