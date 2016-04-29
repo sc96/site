@@ -77,54 +77,39 @@ function update_Info() {
 
     var cert3 = document.getElementById("cert3")
     var input = document.getElementById("hidcert3");
-
     input.value = cert3.value
+
 
     var calc_1 = document.getElementById("calc_1")
     var input = document.getElementById("hidcalc_1");
-    if (calc_1.checked == true)
-    {
-      console.log("wtf dude")
-      input.value = "1"
-    }
+    if (calc_1.checked == true) 
+      input.value = "9"
     else
-      input.value = "0"
+      input.value = "9"
 
     var calc_2 = document.getElementById("calc_2")
     var input = document.getElementById("hidcalc_2");
     if (calc_2.checked == true)
-    {
-      console.log("wtf dude2")
-      input.value = "1"
-    }
+      input.value = "8"
     else
-      input.value = "0"
+      input.value = "8"
 
-    input.value = "1"
+    
 
     var calc_3 = document.getElementById("calc_3")
     var input = document.getElementById("hidcalc_3");
     if (calc_3.checked == true)
-    {
-      console.log("wtf dude3")
-      input.value = "1"
-    }
+      input.value = "7"
     else
-      input.value = "0"
+      input.value = "7"
 
-    input.value = "1"
 
     var lin_alg = document.getElementById("lin_alg")
     var input = document.getElementById("hidlin");
     if (lin_alg.checked == true)
-    {
-      console.log("Wtf dude 3")
-      input.value = "1"
-    }
+      input.value = "6"
     else
-      input.value = "0"
-
-    input.value = "1"
+      input.value = "6"
 
 
 }
@@ -183,7 +168,7 @@ function update_Info() {
    value = "{{ calc_1 }}">
   <label for="text">Last Name:</label>
   <input type="text" class="form-control" id="lastname" maxlength = 30, 
-   value = "{{ lastN }}">
+   value = "{{ calc_2 }}">
   <label for="sel1">Select Degree Type:</label>
   <select class="form-control" id="sel1", >
     {% if engineerBool|stringformat:"s" == "1" %}
@@ -233,7 +218,7 @@ function update_Info() {
 </div>
 <div style = "text-align:center">
 <label class="checkbox-inline" style = "text-align:center">
-{% if calc_1|stringformat:"s" == "please" %}
+{% if calc_1|stringformat:"s" == "1" %}
   <input type="checkbox"   id ="calc_1" checked data-toggle="toggle" data-on="Calc1" data-off="Calc1" value = "1">
   {% else %}
   <input type="checkbox"  id ="calc_1" data-toggle="toggle" data-on="Calc1" data-off="Calc1" value = "0"> 

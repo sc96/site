@@ -221,7 +221,7 @@ def profile(request):
 	cert2 = student.cert2
 	cert3 = student.cert3
 
-	calc_1 = "please"
+	calc_1 = "0"
 	calc_2 = student.calc_2
 	calc_3 = student.calc_3
 	lin_alg = student.lin_alg
@@ -234,7 +234,7 @@ def profile(request):
 
 	context = {'user': current_user.username, 'firstN': firstN, 'lastN': lastN,
 	 'engineerBool': engineerBool, 'publicBool': publicBool, 'cert1': cert1,
-	 'cert2': cert2, 'cert3': cert3, 'calc_1': calc_1,"calc_2": calc_2, "calc_3": calc_3, "lin_alg" : lin_alg } 
+	 'cert2': cert2, 'cert3': cert3, 'calc_1': calc_1,'calc_2': calc_2, 'calc_3': calc_3, 'lin_alg' : lin_alg } 
 
 	return render(request, 'profile.html', context)
 
