@@ -225,10 +225,10 @@ def profile(request):
 	cert2 = "NONE"
 	cert3 = "NONE"
 
-	calc_1 = "0"
-	calc_2 = "0"
-	calc_3 =  "1"
-	lin_alg = "1"
+	calc_1 = student.calc_1
+	calc_2 = student.calc_2
+	calc_3 =  student.calc_3
+	lin_alg = student.lin_alg
 
 	ap_dict = {"calc_1": calc_1, "calc_2": calc_2, "calc_3": calc_3, "lin_alg" : lin_alg}
 	''' context = {'user': current_user.username, 'firstN': firstN, 'lastN': lastN,
