@@ -930,17 +930,17 @@ def fin(request):
 	core = FIN.objects.filter(core=1).values_list('course_id', flat=True).order_by('course_id')
 	elective = FIN.objects.filter(elective=1).values_list('course_id', flat=True).order_by('course_id')
 
-	mat_on = title(compare_lists(all_courses, foundation)["similarities"])
-	mat_off = title(compare_lists(all_courses, foundation)["differences"])
+	mat_on = title(compare_lists(all_courses, mat)["similarities"])
+	mat_off = title(compare_lists(all_courses, mat)["differences"])
 
-	eco_on = title(compare_lists(all_courses, culture)["similarities"])
-	eco_off = title(compare_lists(all_courses, culture)["differences"])
+	eco_on = title(compare_lists(all_courses, eco)["similarities"])
+	eco_off = title(compare_lists(all_courses, eco)["differences"])
 
-	stat_on = title(compare_lists(all_courses, history)["similarities"])
-	stat_off = title(compare_lists(all_courses, history)["differences"])
+	stat_on = title(compare_lists(all_courses, stat)["similarities"])
+	stat_off = title(compare_lists(all_courses, stat)["differences"])
 
-	core_on = title(compare_lists(all_courses, science)["similarities"])
-	core_off = title(compare_lists(all_courses, science)["differences"])
+	core_on = title(compare_lists(all_courses, core)["similarities"])
+	core_off = title(compare_lists(all_courses, core)["differences"])
 
 	elective_on = title(compare_lists(all_courses, elective)["similarities"])
 	elective_off = title(compare_lists(all_courses, elective)["differences"])
