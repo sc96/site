@@ -929,14 +929,14 @@ def mus(request):
 	perform = MUS.objects.filter(perform=1).values_list('course_id', flat=True).order_by('course_id')
 	elective = MUS.objects.filter(elective=1).values_list('course_id', flat=True).order_by('course_id')
 
-	intro_on = title(compare_lists(all_courses, req)["similarities"])
-	intro_off = title(compare_lists(all_courses, req)["differences"])
+	intro_on = title(compare_lists(all_courses, intro)["similarities"])
+	intro_off = title(compare_lists(all_courses, intro)["differences"])
 
-	perform_on = title(compare_lists(all_courses, disease)["similarities"])
-	perform_off = title(compare_lists(all_courses, disease)["differences"])
+	perform_on = title(compare_lists(all_courses, perform)["similarities"])
+	perform_off = title(compare_lists(all_courses, perform)["differences"])
 
-	elective_on = title(compare_lists(all_courses, circuits)["similarities"])
-	elective_off = title(compare_lists(all_courses, circuits)["differences"])
+	elective_on = title(compare_lists(all_courses, elective)["similarities"])
+	elective_off = title(compare_lists(all_courses, elective)["differences"])
 
 	context = {'intro_on': intro_on, 'intro_off': intro_off, 'perform_on': perform_on, 'perform_off': perform_off,
 	'elective_on': elective_on, 'elective_off': elective_off}
