@@ -192,7 +192,6 @@ class Student(models.Model):
 		student.calc_2 = calc_2
 		student.calc_3 = calc_3
 		student.lin_alg = lin_alg
-
 		student.save()
 
     # if you ever figure out how to request without refreshing, send them individually!

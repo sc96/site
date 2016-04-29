@@ -9,7 +9,7 @@
   
    
 </head>
-<body style="padding-top: 70px; padding-bottom: 70px;" onload="setAPToggle()">
+<body style="padding-top: 70px; padding-bottom: 70px;">
 
 <!-- These are the rendered string varibles given by context for this page. 
 It'll be useful if we have these comments for each .html files??
@@ -89,7 +89,6 @@ function update_Info() {
 
     var calc_2 = document.getElementById("calc_2")
     var input = document.getElementById("hidcalc_2");
-    input.value = calc_2.value
     if (calc_2.checked)
       input.value = "1"
     else
@@ -97,7 +96,6 @@ function update_Info() {
 
     var calc_3 = document.getElementById("calc_3")
     var input = document.getElementById("hidcalc_3");
-    input.value = calc_3.value
     if (calc_3.checked)
       input.value = "1"
     else
@@ -105,7 +103,6 @@ function update_Info() {
 
     var lin_alg = document.getElementById("lin_alg")
     var input = document.getElementById("hidlin");
-    input.value = lin_alg.value
     if (lin_alg.checked)
       input.value = "1"
     else
