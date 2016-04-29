@@ -196,6 +196,10 @@ def profile(request):
 	cert2 = ""
 	cert3 = ""
 
+    # to do: research how to send POST Request without refreshing(?)
+    # then we can send toggle button request individually without
+    # pressing save button and refreshing once  (what we're doing now) 
+    # or annoyingly refresh every time you toggle (Which is prob even worse)
 	if request.method == "POST":
 		firstN = request.POST["firstN"]
 		lastN = request.POST["lastN"]
@@ -205,7 +209,7 @@ def profile(request):
 		cert2 = request.POST["cert2"]
 		cert3 = request.POST["cert3"]
 		student.update_info(student, firstN, lastN, engineerBool, publicBool, 
-			cert1, cert2, cert3)
+		cert1, cert2, cert3)
 			
     
 	# getting strings for context variable

@@ -24,16 +24,13 @@ cert3
 ap_dict
 -->
 
-<!-- Individual scripts for each individual ap button -->
+
 
 <script>
 function setCalc1() {
 
   var initial = document.getElementById("hidCalc1");
-  
-
-  
-
+  // not using this atm 
 
 }
 </script>
@@ -81,6 +78,20 @@ function update_Info() {
     var cert3 = document.getElementById("cert3")
     var input = document.getElementById("hidcert3");
     input.value = cert3.value
+
+    var calc_1 = document.getElementById("calc_1")
+    var input = document.getElementById("hidcalc_1");
+    input.value = cert3.value
+
+    var calc_2 = document.getElementById("calc_2")
+    var input = document.getElementById("hidcalc_2");
+    input.value = cert3.value
+
+    var calc_3 = document.getElementById("calc_3")
+    var input = document.getElementById("hidcalc_3");
+    input.value = cert3.value
+
+
 }
 </script>
 
@@ -187,20 +198,31 @@ function update_Info() {
 </div>
 <div style = "text-align:center">
 <label class="checkbox-inline" style = "text-align:center">
-
 {% if ap_dict.calc_1|stringformat:"s" == "1" %}
-  <input type="checkbox" name="calc_1"  id ="hidCalc1" checked data-toggle="toggle" data-on="Calc1" data-off="Calc1" value = "1">
+  <input type="checkbox"   id ="calc_1" checked data-toggle="toggle" data-on="Calc1" data-off="Calc1" value = "1">
   {% else %}
-  <input type="checkbox" name="calc_1"  id ="hidCalc1" data-toggle="toggle" data-on="Calc1" data-off="Calc1" value = "0"> 
+  <input type="checkbox"  id ="calc_1" data-toggle="toggle" data-on="Calc1" data-off="Calc1" value = "0"> 
   {% endif %}
 </label>
 <label class="checkbox-inline">
-  <input type="checkbox" name="calc_2"  id ="hidCalc2" checked data-toggle="toggle" data-on="Calc2" data-off="Calc2"> 
+  {% if ap_dict.calc_2|stringformat:"s" == "1" %}
+  <input type="checkbox"   id ="calc_2" checked data-toggle="toggle" data-on="Calc2" data-off="Calc2" value = "1">
+  {% else %}
+  <input type="checkbox"   id ="calc_2" data-toggle="toggle" data-on="Calc2" data-off="Calc2" value = "0"> 
+  {% endif %}
 </label>
 <label class="checkbox-inline">
-  <input type="checkbox" checked data-toggle="toggle" data-on="Calc3" data-off="Calc3"> 
+  {% if ap_dict.calc_3|stringformat:"s" == "1" %}
+  <input type="checkbox"   id ="calc_3" checked data-toggle="toggle" data-on="Calc3" data-off="Calc1" value = "1">
+  {% else %}
+  <input type="checkbox"  id ="calc_3" data-toggle="toggle" data-on="Calc1" data-off="Calc3" value = "0"> 
+  {% endif %} 
 <label class="checkbox-inline">
-  <input type="checkbox" checked data-toggle="toggle" data-on="linear" data-off="linear"> 
+  {% if ap_dict.linear|stringformat:"s" == "1" %}
+  <input type="checkbox"  id ="lin_alg" checked data-toggle="toggle" data-on="Linear" data-off="Linear" value = "1">
+  {% else %}
+  <input type="checkbox"  id ="lin_alg" data-toggle="toggle" data-on="Linear" data-off="Linear" value = "0"> 
+  {% endif %} 
 </label>
 </div>
 </div>
@@ -224,6 +246,11 @@ function update_Info() {
 <input type="hidden" name="cert1" id = "hidcert1">
 <input type="hidden" name="cert2" id = "hidcert2">
 <input type="hidden" name="cert3" id = "hidcert3">
+<input type="hidden" name="calc_1" id = "hidcalc_1">
+<input type="hidden" name="calc_1" id = "hidcalc_2">
+<input type="hidden" name="calc_1" id = "hidcalc_3">
+<input type="hidden" name="calc_1" id = "hidcalc_3">
+
 </button>
 </form>
 </div>

@@ -190,8 +190,17 @@ class Student(models.Model):
 		student.cert3 = cert3
 		student.save()
 
+    # if you ever figure out how to request without refreshing, send them individually!
 	def update_calc1(self, student, calc_1):
 		student.calc_1 = calc_1
+		student.save()
+
+	def update_calc2(self, student, calc_2):
+		student.calc_2 = calc_2
+		student.save()
+
+	def update_calc3(self, student, calc_3):
+		student.calc_3 = calc_3
 		student.save()
 
 
