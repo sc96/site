@@ -196,10 +196,6 @@ def profile(request):
 	cert2 = ""
 	cert3 = ""
 
-    # to do: research how to send POST Request without refreshing(?)
-    # then we can send toggle button request individually without
-    # pressing save button and refreshing once  (what we're doing now) 
-    # or annoyingly refresh every time you toggle (Which is prob even worse)
 	if request.method == "POST":
 		firstN = request.POST["firstN"]
 		lastN = request.POST["lastN"]
@@ -208,12 +204,8 @@ def profile(request):
 		cert1 = request.POST["cert1"]
 		cert2 = request.POST["cert2"]
 		cert3 = request.POST["cert3"]
-		calc_1 = request.POST["calc_1"]
-		calc_2 = request.POST["calc_2"]
-		calc_3 = request.POST["calc_3"]
-		lin_alg = request.POST["lin_alg"]
 		student.update_info(student, firstN, lastN, engineerBool, publicBool, 
-		cert1, cert2, cert3, calc_1, calc_2, calc_3, lin_alg)
+			cert1, cert2, cert3)
 			
     
 	# getting strings for context variable
@@ -297,189 +289,312 @@ def degree_progress(request):
 	# all of the requirement lists
 	# can probably combine a lot of things here into one function - maybe i want the approved courses in their own list? idk
 	# COS BSE Major
-	# if (student_major=="COS_BSE"):
+	if (engineerBool):
 		# BSE requirements - all
 	
 	# this should probably be hard coded
-	math_1 = Engineer.objects.filter(math_1=1).values_list('course_id', flat=True)
-	math_2 = Engineer.objects.filter(math_2=1).values_list('course_id', flat=True)
-	math_3 = Engineer.objects.filter(math_3=1).values_list('course_id', flat=True)
-	math_4 = Engineer.objects.filter(math_4=1).values_list('course_id', flat=True)
-	physics_1 = Engineer.objects.filter(physics_1=1).values_list('course_id', flat=True)
-	physics_2 = Engineer.objects.filter(physics_2=1).values_list('course_id', flat=True)
-	chem_1 = Engineer.objects.filter(chem_1=1).values_list('course_id', flat=True)
-	cos_1 = Engineer.objects.filter(cos_1=1).values_list('course_id', flat=True)
+		math_1 = Engineer.objects.filter(math_1=1).values_list('course_id', flat=True)
+		math_2 = Engineer.objects.filter(math_2=1).values_list('course_id', flat=True)
+		math_3 = Engineer.objects.filter(math_3=1).values_list('course_id', flat=True)
+		math_4 = Engineer.objects.filter(math_4=1).values_list('course_id', flat=True)
+		physics_1 = Engineer.objects.filter(physics_1=1).values_list('course_id', flat=True)
+		physics_2 = Engineer.objects.filter(physics_2=1).values_list('course_id', flat=True)
+		chem_1 = Engineer.objects.filter(chem_1=1).values_list('course_id', flat=True)
+		cos_1 = Engineer.objects.filter(cos_1=1).values_list('course_id', flat=True)
 	
 		# now I need to parse out which one they've taken it - math ON/math OFF
-	if (student.calc_1 == 1 and AP_Credit.objects.filter(student_name=current_user.username, course_id="538").count() == 0):
-		a = AP_Credit(student_name = current_user.username, course_id = "538")
-		a.save()
-	if(student.calc_2 == 1 and AP_Credit.objects.filter(student_name=current_user.username, course_id="1029").count() == 0):
-		a = AP_Credit(student_name = current_user.username, course_id = "1029")
-		a.save()
-	if(student.calc_3 == 1 and AP_Credit.objects.filter(student_name=current_user.username, course_id="1176").count() == 0):
-		a = AP_Credit(student_name = current_user.username, course_id = "1176")
-		a.save()
-	if (student.lin_alg == 1 and AP_Credit.objects.filter(student_name=current_user.username, course_id="1160").count() == 0):
-		a = AP_Credit(student_name = current_user.username, course_id = "1160")
-		a.save()
+		if (student.calc_1 == 1 and AP_Credit.objects.filter(student_name=current_user.username, course_id="538").count() == 0):
+			a = AP_Credit(student_name = current_user.username, course_id = "538")
+			a.save()
+		if(student.calc_2 == 1 and AP_Credit.objects.filter(student_name=current_user.username, course_id="1029").count() == 0):
+			a = AP_Credit(student_name = current_user.username, course_id = "1029")
+			a.save()
+		if(student.calc_3 == 1 and AP_Credit.objects.filter(student_name=current_user.username, course_id="1176").count() == 0):
+			a = AP_Credit(student_name = current_user.username, course_id = "1176")
+			a.save()
+		if (student.lin_alg == 1 and AP_Credit.objects.filter(student_name=current_user.username, course_id="1160").count() == 0):
+			a = AP_Credit(student_name = current_user.username, course_id = "1160")
+			a.save()
 	if(student.gen_chem == 1 and AP_Credit.objects.filter(student_name=current_user.username, course_id="1354").count() == 0):
 		a = AP_Credit(student_name = current_user.username, course_id = "1354")
 		a.save()
-	if(student.physics == 1 and AP_Credit.objects.filter(student_name=current_user.username, course_id="763").count() == 0 and AP_Credit.objects.filter(student_name=current_user.username, course_id="2016").count() == 0):
-		a = AP_Credit(student_name = current_user.username, course_id = "2016")
-		a.save()
-		b = AP_Credit(student_name = current_user.username, course_id = "763")
-		b.save()
-	if(student.cos == 1 and AP_Credit.objects.filter(student_name=current_user.username, course_id="444").count() == 0):
-		a = AP_Credit(student_name = current_user.username, course_id = "444")
-		a.save()
+		if(student.physics == 1 and AP_Credit.objects.filter(student_name=current_user.username, course_id="763").count() == 0 and AP_Credit.objects.filter(student_name=current_user.username, course_id="2016").count() == 0):
+			a = AP_Credit(student_name = current_user.username, course_id = "2016")
+			a.save()
+			b = AP_Credit(student_name = current_user.username, course_id = "763")
+			b.save()
+		if(student.cos == 1 and AP_Credit.objects.filter(student_name=current_user.username, course_id="444").count() == 0):
+			a = AP_Credit(student_name = current_user.username, course_id = "444")
+			a.save()
 
 		# can probably shorten this a little bit later...
-	theory_courses = COS_BSE.objects.filter(theory=1).values_list('course_id', flat=True).order_by('course_id')
-	systems_courses = COS_BSE.objects.filter(systems=1).values_list('course_id', flat=True).order_by('course_id')
-	apps_courses = COS_BSE.objects.filter(applications=1).values_list('course_id', flat=True).order_by('course_id')
-	core_courses = COS_BSE.objects.filter(core=1).values_list('course_id', flat=True).order_by('course_id')
-	other_courses = COS_BSE.objects.filter(other=1).values_list('course_id', flat=True).order_by('course_id')
-	iw_courses = COS_BSE.objects.filter(iw=1).values_list('course_id', flat=True).order_by('course_id')
+		theory_courses = COS_BSE.objects.filter(theory=1).values_list('course_id', flat=True).order_by('course_id')
+		systems_courses = COS_BSE.objects.filter(systems=1).values_list('course_id', flat=True).order_by('course_id')
+		apps_courses = COS_BSE.objects.filter(applications=1).values_list('course_id', flat=True).order_by('course_id')
+		core_courses = COS_BSE.objects.filter(core=1).values_list('course_id', flat=True).order_by('course_id')
+		other_courses = COS_BSE.objects.filter(other=1).values_list('course_id', flat=True).order_by('course_id')
+		iw_courses = COS_BSE.objects.filter(iw=1).values_list('course_id', flat=True).order_by('course_id')
 		
-	theory_on = compare_lists(all_courses, theory_courses)["similarities"]
-	for t in all_entries.filter(req="Theory").values_list('course_id', flat=True).order_by('course_id'):
-		theory_on.append(t)
-	while len(theory_on) > 2:
-		save_other.append(theory_on.pop(0))
-	theory_on = title(theory_on)
-	theory_off = title(compare_lists(all_courses, theory_courses)["differences"])
+		theory_on = compare_lists(all_courses, theory_courses)["similarities"]
+		for t in all_entries.filter(req="Theory").values_list('course_id', flat=True).order_by('course_id'):
+			theory_on.append(t)
+		while len(theory_on) > 2:
+			save_other.append(theory_on.pop(0))
+		theory_on = title(theory_on)
+		theory_off = title(compare_lists(all_courses, theory_courses)["differences"])
 		
-	systems_on = compare_lists(all_courses, systems_courses)["similarities"]
-	for t in all_entries.filter(req="Systems").values_list('course_id', flat=True).order_by('course_id'):
-		systems_on.append(t)
-	while len(systems_on) > 2:
-		save_other.append(systems_on.pop(0))
-	systems_on = title(systems_on)
-	systems_off = title(compare_lists(all_courses, systems_courses)["differences"])
-
-	apps_on = compare_lists(all_courses, apps_courses)["similarities"]
-	for t in all_entries.filter(req="Applications").values_list('course_id', flat=True).order_by('course_id'):
-		apps_on.append(t)
-	while len(apps_on) > 2:
-		save_other.append(apps_on.pop(0))
-	apps_on = title(apps_on)
-	apps_off = title(compare_lists(all_courses, apps_courses)["differences"])
-
-	iw_on = compare_lists(all_courses, iw_courses)["similarities"] #iw is for BSE only
-	while len(iw_on) > 1:
-		save_other.append(iw_on.pop(0))
-	iw_on = title(iw_on)
-	iw_off = title(compare_lists(all_courses, iw_courses)["differences"])
-
-
-		# other should have all classes in "other" that the user hasn't already taken
-		# will fix this bug a little later... 4/9/2016 ....!!!!
-	other_on = compare_lists(all_courses, other_courses)["similarities"]
-	other_on = chain(other_on, save_other)
-	for t in all_entries.filter(req="Other").values_list('course_id', flat=True).order_by('course_id'):
-		other_on.append(t.course_id)
-	other_on = title(other_on)
-	other_off = title(compare_lists(all_courses, other_courses)["differences"])
-
-
-	core_on = title(compare_lists(all_courses, core_courses)["similarities"])
-	core_off = title(compare_lists(all_courses, core_courses)["differences"])
-
-		# Need to add logic for only hilighting 2 theory courses then overflowing others into "other" section
-		# Maybe don't display everything...display ones that only have "other"
-
-
-		# Distribution Requirements
-	student_sa=title(student_sa)
-	student_la=title(student_la)
-	student_ha=title(student_ha)
-	student_em=title(student_em)
-	student_ec=title(student_ec)
-	student_wri=title(student_wri)
-	student_foreign=title(student_foreign)
-
-		# Outside Courses
-		# Note: should probably do Outside Courses/Approved Courses first, then add to LA/SA/Theory/etc. THEN consolidate lists 
-	student_outside=[]
-	outside_courses = Outside_Course.objects.filter(student_id=current_user.username) # list of the student's outside courses
-	for c in outside_courses.iterator():
-		student_outside.append(c.course_name)
-
-
-		# AP Requirements - would affect BSE on
-	student_ap=[]
-	#ap_classes = AP_Credit.objects.filter(student_name=current_user.username).values_list('course_id', flat=True).order_by('course_id')
-	#student_ap = title(ap_classes)
-	# now you can do on/off thing here
-	math_1_credit=[0000]
-	math_2_credit=[0000]
-	math_3_credit=[0000]
-	math_4_credit=[0000]
-	physics_1_credit=[0000]
-	physics_2_credit=[0000]
-	chem_1_credit=[0000]
-	cos_1_credit=[0000]
+		systems_on = compare_lists(all_courses, systems_courses)["similarities"]
+		for t in all_entries.filter(req="Systems").values_list('course_id', flat=True).order_by('course_id'):
+			systems_on.append(t)
+		while len(systems_on) > 2:
+			save_other.append(systems_on.pop(0))
+		systems_on = title(systems_on)
+		systems_off = title(compare_lists(all_courses, systems_courses)["differences"])
 	
-	# ap credit working now
-	if (AP_Credit.objects.filter(student_name=current_user.username, course_id="538").exists()):
-		math_1_credit = AP_Credit.objects.filter(student_name=current_user.username, course_id="538").values_list('course_id', flat=True)
-	math_1_on = title(compare_lists(chain(all_courses, math_1_credit), math_1)["similarities"])
-	math_1_off = title(compare_lists(chain(all_courses, math_1_credit), math_1)["differences"])
-	#math_1_off=[]
+		apps_on = compare_lists(all_courses, apps_courses)["similarities"]
+		for t in all_entries.filter(req="Applications").values_list('course_id', flat=True).order_by('course_id'):
+			apps_on.append(t)
+		while len(apps_on) > 2:
+			save_other.append(apps_on.pop(0))
+		apps_on = title(apps_on)
+		apps_off = title(compare_lists(all_courses, apps_courses)["differences"])
 	
-	if (AP_Credit.objects.filter(student_name=current_user.username, course_id="1029").exists()):
-		math_2_credit = AP_Credit.objects.filter(student_name=current_user.username, course_id="1029").values_list('course_id', flat=True)
-	math_2_on = title(compare_lists(map(int, chain(all_courses, math_2_credit)), math_2)["similarities"])
-	math_2_off = title(compare_lists(map(int, chain(all_courses, math_2_credit)), math_2)["differences"])
+		iw_on = compare_lists(all_courses, iw_courses)["similarities"] #iw is for BSE only
+		while len(iw_on) > 1:
+			save_other.append(iw_on.pop(0))
+		iw_on = title(iw_on)
+		iw_off = title(compare_lists(all_courses, iw_courses)["differences"])
 	
-	if (AP_Credit.objects.filter(student_name=current_user.username, course_id="1176").exists()):
-		math_3_credit = AP_Credit.objects.filter(student_name=current_user.username, course_id="1176").values_list('course_id', flat=True)
-	math_3_on = title(compare_lists(map(int, chain(all_courses, math_3_credit)), math_3)["similarities"])
-	math_3_off = title(compare_lists(map(int, chain(all_courses, math_3_credit)), math_3)["differences"])
 	
-	if (AP_Credit.objects.filter(student_name=current_user.username, course_id="1160").exists()):
-		math_4_credit = AP_Credit.objects.filter(student_name=current_user.username, course_id="1160").values_list('course_id', flat=True)
-	math_4_on = title(compare_lists(map(int, chain(all_courses, math_4_credit)), math_4)["similarities"])
-	math_4_off = title(compare_lists(map(int, chain(all_courses, math_4_credit)), math_4)["differences"])
+			# other should have all classes in "other" that the user hasn't already taken
+			# will fix this bug a little later... 4/9/2016 ....!!!!
+		other_on = compare_lists(all_courses, other_courses)["similarities"]
+		other_on = chain(other_on, save_other)
+		for t in all_entries.filter(req="Other").values_list('course_id', flat=True).order_by('course_id'):
+			other_on.append(t.course_id)
+		other_on = title(other_on)
+		other_off = title(compare_lists(all_courses, other_courses)["differences"])
 	
-	if (AP_Credit.objects.filter(student_name=current_user.username, course_id="2016").exists()):
-		physics_1_credit = AP_Credit.objects.filter(student_name=current_user.username, course_id="2016").values_list('course_id', flat=True)
-	physics_1_on = title(compare_lists(map(int, chain(all_courses, physics_1_credit)), physics_1)["similarities"])
-	physics_1_off = title(compare_lists(map(int, chain(all_courses, physics_1_credit)), physics_1)["differences"])
-	#physics_1_on = chain(all_courses, physics_1_credit)
-	#physics_1_off = physics_1
 	
-	if (AP_Credit.objects.filter(student_name=current_user.username, course_id="763").exists()):
-		physics_2_credit = AP_Credit.objects.filter(student_name=current_user.username, course_id="763").values_list('course_id', flat=True)
-	physics_2_on = title(compare_lists(map(int, chain(all_courses, physics_2_credit)), physics_2)["similarities"])
-	physics_2_off = title(compare_lists(map(int, chain(all_courses, physics_2_credit)), physics_2)["differences"])
+		core_on = title(compare_lists(all_courses, core_courses)["similarities"])
+		core_off = title(compare_lists(all_courses, core_courses)["differences"])
 	
-	if (AP_Credit.objects.filter(student_name=current_user.username, course_id="1354").exists()):
-		chem_1_credit = AP_Credit.objects.filter(student_name=current_user.username, course_id="1354").values_list('course_id', flat=True)
-	chem_1_on = title(compare_lists(map(int, chain(all_courses, chem_1_credit)), chem_1)["similarities"])
-	chem_1_off = title(compare_lists(map(int, chain(all_courses, chem_1_credit)), chem_1)["differences"])
+			# Need to add logic for only hilighting 2 theory courses then overflowing others into "other" section
+			# Maybe don't display everything...display ones that only have "other"
 	
-	if (AP_Credit.objects.filter(student_name=current_user.username, course_id="444").exists()):
-		cos_1_credit = AP_Credit.objects.filter(student_name=current_user.username, course_id="444").values_list('course_id', flat=True)
-	cos_1_on = title(compare_lists(map(int, chain(all_courses, cos_1_credit)), cos_1)["similarities"])
-	cos_1_off = title(compare_lists(map(int, chain(all_courses, cos_1_credit)), cos_1)["differences"])
-
-		# could literally just pass every certificate thing to this page....but that would be really dumb and bad
-		# still in the process of getting new ideas for certificates...it can def be done tho...still thinking
-	context = {'theory_on': theory_on, 'theory_off': theory_off, 'systems_on': systems_on, 'systems_off': systems_off,
-	'apps_on': apps_on, 'apps_off': apps_off, 'other_on': other_on, 'other_off': other_off,
-	'iw_on': iw_on, 'iw_off': iw_off, 'core_on': core_on, 'core_off': core_off,
-	'student_sa': student_sa, 'student_la': student_la, 'student_ha': student_ha, 'student_ec': student_ec,
-	'student_em': student_em, 'student_foreign': student_foreign, 'student_wri': student_wri, 'outside_courses': student_outside,
-	'math_1_on': math_1_on, 'math_1_off': math_1_off, 'math_2_on': math_2_on, 'math_2_off': math_2_off, 'math_3_on': math_3_on, 'math_3_off': math_3_off,
-	'math_4_on': math_4_on, 'math_4_off': math_4_off, 'chem_1_on': chem_1_on, 'chem_1_off': chem_1_off, 'cos_1_on': cos_1_on, 'cos_1_off': cos_1_off,
-	'physics_1_on': physics_1_on, 'physics_1_off': physics_1_off, 'physics_2_on': physics_2_on, 'physics_2_off': physics_2_off, 
-	'student_ap': student_ap, 'removed_class': removed_class, 'math_3': math_3}#, 'cos_1': cos_1}
-	return render(request, 'degree_progress_cos_bse.html', context)
+	
+			# Distribution Requirements
+		student_sa=title(student_sa)
+		student_la=title(student_la)
+		student_ha=title(student_ha)
+		student_em=title(student_em)
+		student_ec=title(student_ec)
+		student_wri=title(student_wri)
+		student_foreign=title(student_foreign)
+	
+			# Outside Courses
+			# Note: should probably do Outside Courses/Approved Courses first, then add to LA/SA/Theory/etc. THEN consolidate lists 
+		student_outside=[]
+		outside_courses = Outside_Course.objects.filter(student_id=current_user.username) # list of the student's outside courses
+		for c in outside_courses.iterator():
+			student_outside.append(c.course_name)
+	
+	
+			# AP Requirements - would affect BSE on
+		student_ap=[]
+		#ap_classes = AP_Credit.objects.filter(student_name=current_user.username).values_list('course_id', flat=True).order_by('course_id')
+		#student_ap = title(ap_classes)
+		# now you can do on/off thing here
+		math_1_credit=[0000]
+		math_2_credit=[0000]
+		math_3_credit=[0000]
+		math_4_credit=[0000]
+		physics_1_credit=[0000]
+		physics_2_credit=[0000]
+		chem_1_credit=[0000]
+		cos_1_credit=[0000]
+		
+		# ap credit working now
+		if (AP_Credit.objects.filter(student_name=current_user.username, course_id="538").exists()):
+			math_1_credit = AP_Credit.objects.filter(student_name=current_user.username, course_id="538").values_list('course_id', flat=True)
+		math_1_on = title(compare_lists(chain(all_courses, math_1_credit), math_1)["similarities"])
+		math_1_off = title(compare_lists(chain(all_courses, math_1_credit), math_1)["differences"])
+		#math_1_off=[]
+		
+		if (AP_Credit.objects.filter(student_name=current_user.username, course_id="1029").exists()):
+			math_2_credit = AP_Credit.objects.filter(student_name=current_user.username, course_id="1029").values_list('course_id', flat=True)
+		math_2_on = title(compare_lists(map(int, chain(all_courses, math_2_credit)), math_2)["similarities"])
+		math_2_off = title(compare_lists(map(int, chain(all_courses, math_2_credit)), math_2)["differences"])
+		
+		if (AP_Credit.objects.filter(student_name=current_user.username, course_id="1176").exists()):
+			math_3_credit = AP_Credit.objects.filter(student_name=current_user.username, course_id="1176").values_list('course_id', flat=True)
+		math_3_on = title(compare_lists(map(int, chain(all_courses, math_3_credit)), math_3)["similarities"])
+		math_3_off = title(compare_lists(map(int, chain(all_courses, math_3_credit)), math_3)["differences"])
+		
+		if (AP_Credit.objects.filter(student_name=current_user.username, course_id="1160").exists()):
+			math_4_credit = AP_Credit.objects.filter(student_name=current_user.username, course_id="1160").values_list('course_id', flat=True)
+		math_4_on = title(compare_lists(map(int, chain(all_courses, math_4_credit)), math_4)["similarities"])
+		math_4_off = title(compare_lists(map(int, chain(all_courses, math_4_credit)), math_4)["differences"])
+		
+		if (AP_Credit.objects.filter(student_name=current_user.username, course_id="2016").exists()):
+			physics_1_credit = AP_Credit.objects.filter(student_name=current_user.username, course_id="2016").values_list('course_id', flat=True)
+		physics_1_on = title(compare_lists(map(int, chain(all_courses, physics_1_credit)), physics_1)["similarities"])
+		physics_1_off = title(compare_lists(map(int, chain(all_courses, physics_1_credit)), physics_1)["differences"])
+		#physics_1_on = chain(all_courses, physics_1_credit)
+		#physics_1_off = physics_1
+		
+		if (AP_Credit.objects.filter(student_name=current_user.username, course_id="763").exists()):
+			physics_2_credit = AP_Credit.objects.filter(student_name=current_user.username, course_id="763").values_list('course_id', flat=True)
+		physics_2_on = title(compare_lists(map(int, chain(all_courses, physics_2_credit)), physics_2)["similarities"])
+		physics_2_off = title(compare_lists(map(int, chain(all_courses, physics_2_credit)), physics_2)["differences"])
+		
+		if (AP_Credit.objects.filter(student_name=current_user.username, course_id="1354").exists()):
+			chem_1_credit = AP_Credit.objects.filter(student_name=current_user.username, course_id="1354").values_list('course_id', flat=True)
+		chem_1_on = title(compare_lists(map(int, chain(all_courses, chem_1_credit)), chem_1)["similarities"])
+		chem_1_off = title(compare_lists(map(int, chain(all_courses, chem_1_credit)), chem_1)["differences"])
+		
+		if (AP_Credit.objects.filter(student_name=current_user.username, course_id="444").exists()):
+			cos_1_credit = AP_Credit.objects.filter(student_name=current_user.username, course_id="444").values_list('course_id', flat=True)
+		cos_1_on = title(compare_lists(map(int, chain(all_courses, cos_1_credit)), cos_1)["similarities"])
+		cos_1_off = title(compare_lists(map(int, chain(all_courses, cos_1_credit)), cos_1)["differences"])
+	
+			# could literally just pass every certificate thing to this page....but that would be really dumb and bad
+			# still in the process of getting new ideas for certificates...it can def be done tho...still thinking
+		context = {'theory_on': theory_on, 'theory_off': theory_off, 'systems_on': systems_on, 'systems_off': systems_off,
+		'apps_on': apps_on, 'apps_off': apps_off, 'other_on': other_on, 'other_off': other_off,
+		'iw_on': iw_on, 'iw_off': iw_off, 'core_on': core_on, 'core_off': core_off,
+		'student_sa': student_sa, 'student_la': student_la, 'student_ha': student_ha, 'student_ec': student_ec,
+		'student_em': student_em, 'student_foreign': student_foreign, 'student_wri': student_wri, 'outside_courses': student_outside,
+		'math_1_on': math_1_on, 'math_1_off': math_1_off, 'math_2_on': math_2_on, 'math_2_off': math_2_off, 'math_3_on': math_3_on, 'math_3_off': math_3_off,
+		'math_4_on': math_4_on, 'math_4_off': math_4_off, 'chem_1_on': chem_1_on, 'chem_1_off': chem_1_off, 'cos_1_on': cos_1_on, 'cos_1_off': cos_1_off,
+		'physics_1_on': physics_1_on, 'physics_1_off': physics_1_off, 'physics_2_on': physics_2_on, 'physics_2_off': physics_2_off, 
+		'student_ap': student_ap, 'removed_class': removed_class, 'math_3': math_3}#, 'cos_1': cos_1}
+		return render(request, 'degree_progress_cos_bse.html', context)
 	# COS AB Major	
-	#elif (student_major=="COS_AB"): 
+	#elif (student_major=="COS_AB"):
+	else:
+		math_1 = Engineer.objects.filter(math_1=1).values_list('course_id', flat=True)
+		math_2 = Engineer.objects.filter(math_2=1).values_list('course_id', flat=True)
+		math_3 = Engineer.objects.filter(math_3=1).values_list('course_id', flat=True)
+		math_4 = Engineer.objects.filter(math_4=1).values_list('course_id', flat=True)
+		
+		if (student.calc_1 == 1 and AP_Credit.objects.filter(student_name=current_user.username, course_id="538").count() == 0):
+			a = AP_Credit(student_name = current_user.username, course_id = "538")
+			a.save()
+		if(student.calc_2 == 1 and AP_Credit.objects.filter(student_name=current_user.username, course_id="1029").count() == 0):
+			a = AP_Credit(student_name = current_user.username, course_id = "1029")
+			a.save()
+		if(student.calc_3 == 1 and AP_Credit.objects.filter(student_name=current_user.username, course_id="1176").count() == 0):
+			a = AP_Credit(student_name = current_user.username, course_id = "1176")
+			a.save()
+		if (student.lin_alg == 1 and AP_Credit.objects.filter(student_name=current_user.username, course_id="1160").count() == 0):
+			a = AP_Credit(student_name = current_user.username, course_id = "1160")
+			a.save()
+				# can probably shorten this a little bit later...
+		theory_courses = COS_BSE.objects.filter(theory=1).values_list('course_id', flat=True).order_by('course_id')
+		systems_courses = COS_BSE.objects.filter(systems=1).values_list('course_id', flat=True).order_by('course_id')
+		apps_courses = COS_BSE.objects.filter(applications=1).values_list('course_id', flat=True).order_by('course_id')
+		core_courses = COS_BSE.objects.filter(core=1).values_list('course_id', flat=True).order_by('course_id')
+		other_courses = COS_BSE.objects.filter(other=1).values_list('course_id', flat=True).order_by('course_id')
+		iw_courses = COS_BSE.objects.filter(iw=1).values_list('course_id', flat=True).order_by('course_id')
+		
+		theory_on = compare_lists(all_courses, theory_courses)["similarities"]
+		for t in all_entries.filter(req="Theory").values_list('course_id', flat=True).order_by('course_id'):
+			theory_on.append(t)
+		while len(theory_on) > 2:
+			save_other.append(theory_on.pop(0))
+		theory_on = title(theory_on)
+		theory_off = title(compare_lists(all_courses, theory_courses)["differences"])
+		
+		systems_on = compare_lists(all_courses, systems_courses)["similarities"]
+		for t in all_entries.filter(req="Systems").values_list('course_id', flat=True).order_by('course_id'):
+			systems_on.append(t)
+		while len(systems_on) > 2:
+			save_other.append(systems_on.pop(0))
+		systems_on = title(systems_on)
+		systems_off = title(compare_lists(all_courses, systems_courses)["differences"])
+	
+		apps_on = compare_lists(all_courses, apps_courses)["similarities"]
+		for t in all_entries.filter(req="Applications").values_list('course_id', flat=True).order_by('course_id'):
+			apps_on.append(t)
+		while len(apps_on) > 2:
+			save_other.append(apps_on.pop(0))
+		apps_on = title(apps_on)
+		apps_off = title(compare_lists(all_courses, apps_courses)["differences"])
+	
+		iw_on = compare_lists(all_courses, iw_courses)["similarities"] #iw is for BSE only
+		while len(iw_on) > 4:
+			save_other.append(iw_on.pop(0))
+		iw_on = title(iw_on)
+		iw_off = title(compare_lists(all_courses, iw_courses)["differences"])
+	
+	
+			# other should have all classes in "other" that the user hasn't already taken
+			# will fix this bug a little later... 4/9/2016 ....!!!!
+		other_on = compare_lists(all_courses, other_courses)["similarities"]
+		other_on = chain(other_on, save_other)
+		for t in all_entries.filter(req="Other").values_list('course_id', flat=True).order_by('course_id'):
+			other_on.append(t.course_id)
+		other_on = title(other_on)
+		other_off = title(compare_lists(all_courses, other_courses)["differences"])
+	
+	
+		core_on = title(compare_lists(all_courses, core_courses)["similarities"])
+		core_off = title(compare_lists(all_courses, core_courses)["differences"])
+		
+		math_1_credit=[0000]
+		math_2_credit=[0000]
+		math_3_credit=[0000]
+		math_4_credit=[0000]
+		physics_1_credit=[0000]
+		physics_2_credit=[0000]
+		chem_1_credit=[0000]
+		cos_1_credit=[0000]
+		
+		# ap credit working now
+		if (AP_Credit.objects.filter(student_name=current_user.username, course_id="538").exists()):
+			math_1_credit = AP_Credit.objects.filter(student_name=current_user.username, course_id="538").values_list('course_id', flat=True)
+		math_1_on = title(compare_lists(chain(all_courses, math_1_credit), math_1)["similarities"])
+		math_1_off = title(compare_lists(chain(all_courses, math_1_credit), math_1)["differences"])
+		#math_1_off=[]
+		
+		if (AP_Credit.objects.filter(student_name=current_user.username, course_id="1029").exists()):
+			math_2_credit = AP_Credit.objects.filter(student_name=current_user.username, course_id="1029").values_list('course_id', flat=True)
+		math_2_on = title(compare_lists(map(int, chain(all_courses, math_2_credit)), math_2)["similarities"])
+		math_2_off = title(compare_lists(map(int, chain(all_courses, math_2_credit)), math_2)["differences"])
+		
+		if (AP_Credit.objects.filter(student_name=current_user.username, course_id="1176").exists()):
+			math_3_credit = AP_Credit.objects.filter(student_name=current_user.username, course_id="1176").values_list('course_id', flat=True)
+		math_3_on = title(compare_lists(map(int, chain(all_courses, math_3_credit)), math_3)["similarities"])
+		math_3_off = title(compare_lists(map(int, chain(all_courses, math_3_credit)), math_3)["differences"])
+		
+		if (AP_Credit.objects.filter(student_name=current_user.username, course_id="1160").exists()):
+			math_4_credit = AP_Credit.objects.filter(student_name=current_user.username, course_id="1160").values_list('course_id', flat=True)
+		math_4_on = title(compare_lists(map(int, chain(all_courses, math_4_credit)), math_4)["similarities"])
+		math_4_off = title(compare_lists(map(int, chain(all_courses, math_4_credit)), math_4)["differences"])
+		
+	
+			# Need to add logic for only hilighting 2 theory courses then overflowing others into "other" section
+			# Maybe don't display everything...display ones that only have "other"
+	
+	
+			# Distribution Requirements
+		student_sa=title(student_sa)
+		student_la=title(student_la)
+		student_ha=title(student_ha)
+		student_em=title(student_em)
+		student_ec=title(student_ec)
+		student_wri=title(student_wri)
+		student_foreign=title(student_foreign)
+		
+		context = {'theory_on': theory_on, 'theory_off': theory_off, 'systems_on': systems_on, 'systems_off': systems_off,
+		'apps_on': apps_on, 'apps_off': apps_off, 'other_on': other_on, 'other_off': other_off,
+		'iw_on': iw_on, 'iw_off': iw_off, 'core_on': core_on, 'core_off': core_off,
+		'student_sa': student_sa, 'student_la': student_la, 'student_ha': student_ha, 'student_ec': student_ec,
+		'student_em': student_em, 'student_foreign': student_foreign, 'student_wri': student_wri, 'outside_courses': student_outside,
+		'student_ap': student_ap, 'removed_class': removed_class, 'math_1_on': math_1_on, 'math_1_off': math_1_off, 'math_2_on': math_2_on, 'math_2_off': math_2_off, 'math_3_on': math_3_on, 'math_3_off': math_3_off,
+		'math_4_on': math_4_on, 'math_4_off': math_4_off}#, 'cos_1': cos_1}
+		return render(request, 'degree_progress_cos_ab.html', context)
 
 def course_search(query):
 	dist = ["la", "sa", "ha", "em", "ec", "qr", "stl", "stn"]

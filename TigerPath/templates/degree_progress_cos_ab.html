@@ -1,0 +1,634 @@
+<!DOCTYPE html>
+
+
+{% block content %}
+
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>TigerPath | Degree Progress</title>
+  <link rel="stylesheet" href="/../../static/css/bootstrap.css">
+  <script  src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+  <script  src="/../../static/js/react.js"></script>
+  <script  src="/../../static/js/react-dom.js"></script>
+  <script  src="/../../static/js/bootstrap.js"></script>
+  <script  src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.8.24/browser.min.js"></script>
+  <script  src="/../../static/js/react-bootstrap.min.js"></script>
+  <script  src="/../../static/js/JSXTransformer.js"></script>
+  
+    <style type="text/css">
+    .jumbotron {
+        position: relative;
+        background: center center;
+        overflow: hidden;
+        background-image: url("/static/pics/graduation.png");
+        background-size: cover;
+        height: 100%;
+        color: #FFA500;
+        padding-bottom: 20px
+    }
+    .jumbotron .btn-primary {
+        background: #ff8c00;
+        border-color: #ff8c00
+    }
+    .jumbotron .btn-primary:hover {
+        background: #ffa500
+    }
+    .jumbotron p {
+        color: #ffffff;
+        max-width: 75%;
+        margin: 1em auto 2em
+    }
+    .navbar+.jumbotron {
+        margin-top: -20px
+    }
+    .jumbotron .lang-logo {
+        display: block;
+        background: #ff8c00;
+        border-radius: 50%;
+        overflow: hidden;
+        width: 100px;
+        height: 100px;
+        margin: auto;
+        border: 2px solid white
+    }
+    .jumbotron .lang-logo img {
+        max-width: 100%
+    }
+  </style>
+  
+  
+</head>
+<body style="padding-top: 70px; padding-bottom: 70px;">
+{% load staticfiles %}
+    
+
+
+
+<nav class="navbar navbar-inverse navbar-fixed-top">
+  <div class="container-fluid">
+
+    <ul class="nav navbar-nav">
+      <li><a href="/fouryear">Four Year</a></li>
+      <li class="active"><a href="#">Degree Progress</a></li> 
+      <li><a href="/certificates">Certificates</a></li> 
+      <li><a href="/outsidecourseapproval">Outside Course Approval</a></li> 
+      <li><a href="/schedulesharing">Schedule Sharing</a></li> 
+      <li><a href="/cosdata">COS Data</a></li>  
+    </ul>
+    <ul class="nav navbar-nav navbar-right">
+        <li><a href="/about">About</a></li> 
+        <li class="dropdown">  
+    <a class="dropdown-toggle" data-hover="dropdown" data-delay="100" data-close-others="false">
+        {{ user }} <b class="caret"></b>
+    </a>
+    <ul class="dropdown-menu">
+      <li><a href="/profile"><span class="glyphicon glyphicon-cog"></span> Profile</a></li>
+        <li><a href="/logout"><span class="glyphicon glyphicon-log-in"></span> Log out</a></li>
+    </ul>
+</li>  
+
+    </ul>
+  </div>
+</nav>
+<div class="container">
+<div class="jumbotron text-center">
+  <div class='container' id='box'>
+  <h1 style="color:#ff8f00">Degree Progress</h1>
+  </div>
+</div>
+
+<script>
+//Remove an item from your course list
+/*function rmv(object) {
+BootstrapDialog.confirm({
+            title: 'Remove a course:',
+            message: 'Are you sure you want to remove '.concat(String(object), ' from your course list?'),
+             type: BootstrapDialog.TYPE_WARNING, // <-- Default value is BootstrapDialog.TYPE_PRIMARY
+            closable: true, // <-- Default value is false
+            draggable: true, // <-- Default value is false
+            btnCancelLabel: 'No', // <-- Default value is 'Cancel',
+            btnOKLabel: 'Drop it!', // <-- Default value is 'OK',
+            btnOKClass: 'btn-warning', // <-- If you didn't specify it, dialog type will be used,
+            callback: function(result) {
+                // result will be true if button was click, while it will be false if users close the dialog directly.
+                if(result) {
+                    var x = document.getElementById(String(object));
+                    x.submit();
+                }else {
+                    return;
+                }
+            }
+        });
+ 
+}
+function add(object) {
+var x = document.getElementById(String(object));
+  BootstrapDialog.show({
+            title: 'Add a course:',
+            message: 'Please add '.concat(String(object), ' to a semester.'),
+            closable: true, // <-- Default value is false
+            draggable: true, // <-- Default value is false
+            buttons: [{
+                label: 'Cancel',
+                cssClass: 'btn-danger',
+                action: function(dialogRef){
+                   dialogRef.close();
+                }
+              },
+              {
+                label: 'Freshman Fall',
+                cssClass: 'btn-primary',
+                action: function(dialogRef){
+                    x.term = "FRF";
+                    x.submit();
+                }
+              },
+              {
+                label: 'Freshman Spring',
+                cssClass: 'btn-primary btn-smaller',
+                action: function(dialogRef){
+                    x.term = "FRS";
+                    x.submit();
+                }
+              },
+              {
+                label: 'Sophomore Fall',
+                cssClass: 'btn-primary',
+                action: function(dialogRef){
+                    x.term = "SOF";
+                    x.submit();
+                }
+              },
+              {
+                label: 'Sophomore Spring',
+                cssClass: 'btn-primary',
+                action: function(dialogRef){
+                    x.term = "SOS";
+                    x.submit();
+                }
+              },
+              {
+                label: 'Junior Fall',
+                cssClass: 'btn-primary',
+                action: function(dialogRef){
+                    x.term = "JRF";
+                    x.submit();
+                }
+              },
+              {
+                label: 'Junior Spring',
+                cssClass: 'btn-primary',
+                action: function(dialogRef){
+                    x.term = "JRS";
+                    x.submit();
+                }
+              },
+              {
+                label: 'Senior Fall',
+                cssClass: 'btn-primary',
+                action: function(dialogRef){
+                    x.term = "SRF";
+                    x.submit();
+                }
+              },
+              {
+                label: 'Senior Spring',
+                cssClass: 'btn-primary',
+                action: function(dialogRef){
+                    x.term = "SRS";
+                    x.submit();
+                }
+              }]
+        });
+  }*/
+</script>
+
+
+ {% if removed_class %}
+    <div class="row"><br>
+      <div class="alert alert-success col-md-12" role="alert">
+        <b>Well Done!</b> You have successfully removed <b>{{removed_class}}</b>. 
+      </div>
+    </div>
+  {% endif %}
+
+<div class = "panel panel-default">
+   <div class = "panel-heading">
+      <h1 class = "panel-title" style="text-align:center"><b>
+         COS Departmental Requirements</b>
+      </h1>
+   </div>
+   
+   <div class = "panel-body">
+      
+
+     <div class="row">
+       
+       
+        <div class="col-md-4">
+         <div class="list_group" style="text-align:center">
+                <a class="list-group-item active">Theory</a>
+             {% for x in theory_on %}
+               <span>
+               <form class= "form-inline" id = "{{x.course.listings}}">
+                <a class="list-group-item list-group-item-success" name ="{{x.course.listings}}" >{{ x }} 
+                  </a>
+             
+              </form>
+            </span>
+             {% endfor %}
+             {% for x in theory_off %}
+               <span>
+               <form class= "form-inline" id = "{{x.course.listings}}">
+                <a class="list-group-item list-group-item-danger" name ="{{x.course.listings}}" >{{ x }}</a>
+              </form>
+            </span>
+             {% endfor %}
+            </div>
+         </div>
+         <!--div class="col-md-4">
+         <div class="list_group">
+                <a class="list-group-item active" style="text-align:center">Theory</a>
+             {% for x in theory_on %}
+               <span>
+               <form class= "form-inline" id = "{{x}}" action="" method="post">{% csrf_token %} -->
+                  <!--a class="list-group-item list-group-item-success" >{{ x }}<i class="glyphicon glyphicon-minus pull-right link" id="{{x}}" onclick="rmv(this.id)"></i> </a>
+                  <input type="hidden" name="remove" value="{{x}}">
+              </form>
+            </span>
+             {% endfor %}
+             {% for x in theory_off %}
+              <span>
+               <form class= "form-inline" id = "{{x}}" action="" method="post">{% csrf_token %} 
+                  <a class="list-group-item list-group-item-danger">{{ x }} -->
+                  
+                  <!--<div class="dropdown">-->
+                  <!--<button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Choose Semester-->
+                  <!--<span class="caret"></span></button>-->
+                  <!--<ul class="dropdown-menu form-control" name="semester">-->
+                  <!--      <li><a href="#">Freshman Fall</a></li>-->
+                  <!--      <li><a href="#">Freshman Spring</a></li>-->
+                  <!--</ul>-->
+                  <!--</div>-->
+                  
+                  <!--select class="form-control" name="term" onChange="this.form.submit();">
+                        <option>Freshman Fall</option>
+                        <option>Freshman Spring</option>
+                        <option>Sophomore Fall</option>
+                        <option>Sophomore Spring</option>
+                        <option>Junior Fall</option>
+                        <option>Junior Spring</option>
+                        <option>Senior Fall</option>
+                        <option>Senior Spring</option>
+                    </select>
+                    <i class="glyphicon glyphicon-plus pull-right link2" id="{{x}}" onclick="add(this.id)"></i> </a>
+                  <input type="hidden" name="listing" value="{{x}}">
+              </form>
+            </span>
+             {% endfor %}
+            </div>
+         </div-->
+
+        <div class="col-md-4">
+         <div class="list_group" style="text-align:center">
+                <a class="list-group-item active">Systems</a>
+             {% for x in systems_on %}
+               <span>
+               <form class= "form-inline" id = "{{x.course.listings}}">
+                <a class="list-group-item list-group-item-success" name ="{{x.course.listings}}" >{{ x }} 
+                  </a>
+             
+              </form>
+            </span>
+             {% endfor %}
+             {% for x in systems_off %}
+               <span>
+               <form class= "form-inline" id = "{{x.course.listings}}">
+                <a class="list-group-item list-group-item-danger" name ="{{x.course.listings}}" >{{ x }}</a>
+              </form>
+            </span>
+             {% endfor %}
+            </div>
+         </div>
+
+
+         <div class="col-md-4">
+         <div class="list_group">
+                <a class="list-group-item active" style="text-align:center">Applications</a>
+             {% for x in apps_on %}
+               <span>
+               <form class= "form-inline" id = "{{x.course.listings}}">
+                <a class="list-group-item list-group-item-success" style="text-align:center" name ="{{x.course.listings}}" >{{ x }}
+                    </a>
+               
+              </form>
+            </span>
+             {% endfor %}
+             {% for x in apps_off %}
+               <span>
+               <form class= "form-inline" id = "{{x.course.listings}}">
+                <a class="list-group-item list-group-item-danger" style="text-align:center" name ="{{x.course.listings}}" >{{ x }} </a>
+                
+              </form>
+            </span>
+             {% endfor %}
+            </div>
+         </div>
+         
+    </div><br>
+     <div class="row"> 
+      <div class="col-md-4">
+         <div class="list_group">
+                <a class="list-group-item active" style="text-align:center">Independent Work</a>
+             {% for x in iw_on %}
+               <span>
+               <form class= "form-inline" id = "{{x.course.listings}}">
+                <a class="list-group-item list-group-item-success" style="text-align:center" name ="{{x.course.listings}}" >{{ x }}
+                    </a>
+               
+              </form>
+            </span>
+             {% endfor %}
+             {% for x in iw_off %}
+               <span>
+               <form class= "form-inline" id = "{{x.course.listings}}">
+                <a class="list-group-item list-group-item-danger" style="text-align:center" name ="{{x.course.listings}}" >{{ x }} </a>
+                
+              </form>
+            </span>
+             {% endfor %}
+            </div>
+         </div>
+         
+         <div class="col-md-4">
+         <div class="list_group">
+                <a class="list-group-item active" style="text-align:center">Core Classes</a>
+             {% for x in core_on %}
+               <span>
+               <form class= "form-inline" id = "{{x.course.listings}}">
+                <a class="list-group-item list-group-item-success" style="text-align:center" name ="{{x.course.listings}}" >{{ x }}
+                    </a>
+               
+              </form>
+            </span>
+             {% endfor %}
+             {% for x in core_off %}
+               <span>
+               <form class= "form-inline" id = "{{x.course.listings}}">
+                <a class="list-group-item list-group-item-danger" style="text-align:center" name ="{{x.course.listings}}" >{{ x }} </a>
+                
+              </form>
+            </span>
+             {% endfor %}
+            </div>
+         </div>
+         
+         <div class="col-md-4">
+         <div class="list_group">
+                <a class="list-group-item active" style="text-align:center">Other</a>
+             {% for x in other_on %}
+               <span>
+               <form class= "form-inline" id = "{{x.course.listings}}">
+                <a class="list-group-item list-group-item-success" style="text-align:center" name ="{{x.course.listings}}" >{{ x }}
+                    </a>
+               
+              </form>
+            </span>
+             {% endfor %}
+             {% for x in other_off %}
+               <span>
+               <form class= "form-inline" id = "{{x.course.listings}}">
+                <a class="list-group-item list-group-item-danger" style="text-align:center" name ="{{x.course.listings}}" >{{ x }} </a>
+                
+              </form>
+            </span>
+             {% endfor %}
+            </div>
+         </div>
+     
+
+   </div>
+ </div>
+ </div>
+
+ <div class = "panel panel-default">
+   <div class = "panel-heading">
+      <h1 class = "panel-title" style="text-align:center"><b>
+         AB Requirements</b>
+      </h1>
+   </div>
+   
+   
+   <div class = "panel-body">
+      
+
+     <div class="row">
+         <div class="col-md-4">
+         <div class="list_group">
+                <a class="list-group-item active" style="text-align:center">Calculus I</a>
+              {% for x in math_1_on %}
+               <span>
+               <form class= "form-inline" id = "{{x.course.listings}}">
+                <a class="list-group-item list-group-item-success" name ="{{x.course.listings}}" >{{ x }} 
+                  </a>
+             
+              </form>
+            </span>
+             {% endfor %}
+             {% for x in math_1_off %}
+               <span>
+               <form class= "form-inline" id = "{{x.course.listings}}">
+                <a class="list-group-item list-group-item-danger" name ="{{x.course.listings}}" >{{ x }}</a>
+              </form>
+            </span>
+             {% endfor %}
+            </div>
+         </div>
+
+        <div class="col-md-4">
+         <div class="list_group" style="text-align:center">
+                <a class="list-group-item active">Calc II</a>
+             {% for x in math_2_on %}
+               <span>
+               <form class= "form-inline" id = "{{x.course.listings}}">
+                <a class="list-group-item list-group-item-success" name ="{{x.course.listings}}" >{{ x }} 
+                  </a>
+             
+              </form>
+            </span>
+             {% endfor %}
+             {% for x in math_2_off %}
+               <span>
+               <form class= "form-inline" id = "{{x.course.listings}}">
+                <a class="list-group-item list-group-item-danger" name ="{{x.course.listings}}" >{{ x }}</a>
+              </form>
+            </span>
+             {% endfor %}
+            </div>
+         </div>
+
+
+         <div class="col-md-4">
+         <div class="list_group">
+                <a class="list-group-item active" style="text-align:center">Linear Algebra</a>
+              {% for x in math_4_on %}
+               <span>
+               <form class= "form-inline" id = "{{x.course.listings}}">
+                <a class="list-group-item list-group-item-success" name ="{{x.course.listings}}" >{{ x }} 
+                  </a>
+             
+              </form>
+            </span>
+             {% endfor %}
+             {% for x in math_4_off %}
+               <span>
+               <form class= "form-inline" id = "{{x.course.listings}}">
+                <a class="list-group-item list-group-item-danger" name ="{{x.course.listings}}" >{{ x }}</a>
+              </form>
+            </span>
+             {% endfor %}
+            </div>
+         </div>
+   </div>
+ </div>
+ </div>
+ 
+ <div class = "panel panel-default">
+   <div class = "panel-heading">
+      <h1 class = "panel-title" style="text-align:center"><b>
+         Distribution Requirements</b>
+      </h1>
+   </div>
+   
+   <div class = "panel-body">
+      
+     <div class="row">
+         <div class="col-md-4">
+         <div class="list_group" style="text-align:center">
+                <a class="list-group-item active">LA</a>
+             {% for x in student_la %}
+               <span>
+                 <form class= "form-inline" id = "{{x.course.listings}}">
+                <a class="list-group-item list-group-item-success" name ="{{x.course.listings}}" >{{ x }} 
+                  </a>
+               <!--form class= "form-inline" id = "{{x}}" action="" method="post">{% csrf_token %} 
+                  <a class="list-group-item list-group-item-success" >{{ x }}<i class="glyphicon glyphicon-minus pull-right link" id="{{x}}" onclick="rmv(this.id)"></i> </a>
+                  <input type="hidden" name="remove" value="{{x}}"> -->
+              <!-- /form-->
+            </span>
+             {% endfor %}
+            </div>
+         </div>
+
+        <div class="col-md-4">
+         <div class="list_group" style="text-align:center">
+                <a class="list-group-item active">EC</a>
+             {% for x in student_ec %}
+               <span>
+               <form class= "form-inline" id = "{{x.course.listings}}">
+                <a class="list-group-item list-group-item-success" name ="{{x.course.listings}}" >{{ x }} 
+                  </a>
+             
+              </form>
+            </span>
+             {% endfor %}
+             
+            </div>
+         </div>
+
+
+         <div class="col-md-4">
+         <div class="list_group">
+                <a class="list-group-item active" style="text-align:center">EM</a>
+             {% for x in student_em %}
+               <span>
+               <form class= "form-inline" id = "{{x.course.listings}}">
+                <a class="list-group-item list-group-item-success" style="text-align:center" name ="{{x.course.listings}}" >{{ x }}
+                    </a>
+               
+              </form>
+            </span>
+             {% endfor %}
+            </div>
+         </div>
+         </div><br>
+         
+         <div class="row">
+         
+         <div class="col-md-4">
+         <div class="list_group">
+                <a class="list-group-item active" style="text-align:center">SA</a>
+             {% for x in student_sa %}
+               <span>
+               <form class= "form-inline" id = "{{x.course.listings}}">
+                <a class="list-group-item list-group-item-success" style="text-align:center" name ="{{x.course.listings}}" >{{ x }}
+                    </a>
+               
+              </form>
+            </span>
+             {% endfor %}
+            </div>
+         </div>
+         
+         <div class="col-md-4">
+         <div class="list_group">
+                <a class="list-group-item active" style="text-align:center">HA</a>
+             {% for x in student_ha %}
+               <span>
+               <form class= "form-inline" id = "{{x.course.listings}}">
+                <a class="list-group-item list-group-item-success" style="text-align:center" name ="{{x.course.listings}}" >{{ x }}
+                    </a>
+               
+              </form>
+            </span>
+             {% endfor %}
+            </div>
+         </div>
+         
+         <div class="col-md-4">
+         <div class="list_group">
+                <a class="list-group-item active" style="text-align:center">Writing Seminar</a>
+             {% for x in student_wri %}
+               <span>
+               <form class= "form-inline" id = "{{x.course.listings}}">
+                <a class="list-group-item list-group-item-success" style="text-align:center" name ="{{x.course.listings}}" >{{ x }}
+                    </a>
+               
+              </form>
+            </span>
+             {% endfor %}
+            </div>
+         </div>
+         
+         </div><br>
+         
+         <div class="row">
+         
+         <div class="col-md-4">
+         <div class="list_group">
+                <a class="list-group-item active" style="text-align:center">Foreign Language</a>
+             {% for x in student_foreign %}
+               <span>
+               <form class= "form-inline" id = "{{x.course.listings}}">
+                <a class="list-group-item list-group-item-success" style="text-align:center" name ="{{x.course.listings}}" >{{ x }}
+                    </a>
+               
+              </form>
+            </span>
+             {% endfor %}
+            </div>
+         </div>
+         
+         </div>
+
+   </div>
+ </div>
+ 
+</div> <!-- class=Container-->
+
+
+</body>
+</html>
+
+{% endblock %}
