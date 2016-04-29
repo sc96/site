@@ -221,27 +221,27 @@ function update_Info() {
 </div>
 <div style = "text-align:center">
 <label class="checkbox-inline" style = "text-align:center">
-{% if ap_dict.calc_1|stringformat:"s" == "0" %}
+{% if ap_dict."calc_1"|stringformat:"s" == "0" %}
   <input type="checkbox"   id ="calc_1"data-toggle="toggle" data-on="Calc1" data-off="Calc1" value = "0">
   {% else %}
   <input type="checkbox"  id ="calc_1"  checked data-toggle="toggle" data-on="Calc1" data-off="Calc1" value = "1"> 
   {% endif %}
 </label>
 <label class="checkbox-inline">
-  {% if ap_dict.calc_2|stringformat:"s" == "1" %}
+  {% if ap_dict."calc_2"|stringformat:"s" == "1" %}
   <input type="checkbox"   id ="calc_2" checked data-toggle="toggle" data-on="Calc2" data-off="Calc2" value = "1">
   {% else %}
   <input type="checkbox"   id ="calc_2" data-toggle="toggle" data-on="Calc2" data-off="Calc2" value = "0"> 
   {% endif %}
 </label>
 <label class="checkbox-inline">
-  {% if ap_dict.calc_3|stringformat:"s" == "1" %}
+  {% if ap_dict.'calc_3'|stringformat:"s" == "1" %}
   <input type="checkbox"   id ="calc_3" checked data-toggle="toggle" data-on="Calc3" data-off="Calc1" value = "1">
   {% else %}
   <input type="checkbox"  id ="calc_3" data-toggle="toggle" data-on="Calc1" data-off="Calc3" value = "0"> 
   {% endif %} 
 <label class="checkbox-inline">
-  {% if ap_dict.linear|stringformat:"s" == "1" %}
+  {% if ap_dict.'linear'|stringformat:"s" == "1" %}
   <input type="checkbox"  id ="lin_alg" checked data-toggle="toggle" data-on="Linear" data-off="Linear" value = "1">
   {% else %}
   <input type="checkbox"  id ="lin_alg" data-toggle="toggle" data-on="Linear" data-off="Linear" value = "0"> 
