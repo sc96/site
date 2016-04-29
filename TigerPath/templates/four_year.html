@@ -61,10 +61,6 @@
 </head>
 <body style="padding-top: 70px; padding-bottom: 70px;">
 
-    
-
-
-<body>
 
 <!--Colors used: dark orange: #FF8F00; light orange for hover: #FFB352-->
 <script>
@@ -97,7 +93,6 @@ BootstrapDialog.confirm({
 
 <nav class="navbar navbar-inverse navbar-fixed-top">
   <div class="container-fluid">
-
     <ul class="nav navbar-nav">
       <li class="active"><a href="#">Four Year</a></li>
       <li><a href="/degreeprogress">Degree Progress</a></li> 
@@ -123,276 +118,262 @@ BootstrapDialog.confirm({
 </nav>
 
 <div class="container-fluid">
-<div class="jumbotron text-center">
-  <div class='container' id='box'>
-  <h1 style="color:#ff8f00">Your Four Year Plan</h1>
-  </div>
-</div>
+    <div class="jumbotron text-center">
+      <div class='container' id='box'>
+      <h1 style="color:#ff8f00">Your Four Year Plan</h1>
+      </div>
+    </div>
+    
+        <br>
+        <div class="row">               
+                    
+         
+         <div class = "panel panel-default">
+       <div class = "panel-heading">
+          <h1 class = "panel-title" style="text-align:center"><b>
+             </b>
+          </h1>
+       </div>
+       
+       <div class = "panel-body">
+         
+                
+         <div class="row">
+             <div class="col-md-6">
+             <div class="list_group">
+                    <a class="list-group-item active">Freshman Fall</a>
+                 {% for x in fresh_fall %}
+                   <span>
+                   <form class= "form-inline" id = "{{x.course.listings}}" action= "" method= "post">{% csrf_token %}
+                    <a class="list-group-item">{{ x.course }} {{x.course.title}}
+                        <i class="glyphicon glyphicon-minus pull-right link" id ="{{x.course.listings}}" onclick="rmv(this.id)"></i></a>
+                    <input type="hidden" name="term" value ="FRF">
+                    <input type="hidden" name="remove" value={{x.course.listings}}>
+                  </form>
+                </span>
+                 {% endfor %}
+                 </div>
+             </div>
+             <div class="col-md-6">
+             <div class="list_group">
+                    <a class="list-group-item active">Freshman Spring</a>
+                 {% for x in fresh_spring %}
+                    <span>
+                    <form class= "form-inline" id = "{{x.course.listings}}" action= "" method= "post">{% csrf_token %}
+                    <a class="list-group-item" >{{ x.course }} {{x.course.title}}
+                        <i class="glyphicon glyphicon-minus pull-right link" id ="{{x.course.listings}}" onclick="rmv(this.id)"></i></a>
+                    <input type="hidden" name="term" value ="FRS">
+                    <input type="hidden" name="remove" value={{x.course.listings}}>
+                  </form>
+                </span>
+                 {% endfor %}
+             </div>
+             </div>
+         </div>
+         <br>
 
+         <div class="row">
+             <div class="col-md-6">
+             <div class="list_group">
+                    <a class="list-group-item active">Sophomore Fall</a>
+                 {% for x in soph_fall %}
+                    <span>
+                    <form class= "form-inline" id = "{{x.course.listings}}"  action= "" method= "post">{% csrf_token %}
+                    <a class="list-group-item" >{{ x.course }} {{x.course.title}}
+                    <i class="glyphicon glyphicon-minus pull-right link" id = "{{x.course.listings}}" onclick="rmv(this.id)"></i></a>
+                    <input type="hidden" name="term" value ="SOF">
+                    <input type="hidden" name="remove" value={{x.course.listings}}>
+                  </form>
+                </span>
+                 {% endfor %}
+             </div>
+            </div>
+             <div class="col-md-6">
+             <div class="list_group">
+                    <a class="list-group-item active">Sophomore Spring</a>
+                 {% for x in soph_spring %}
+                    <span>
+                     <form class= "form-inline" id = "{{x.course.listings}}"  action= "" method= "post">{% csrf_token %}
+                    <a class="list-group-item" >{{ x.course }} {{x.course.title}}
+                    <i class="glyphicon glyphicon-minus pull-right link" id="{{x.course.listings}}" onclick="rmv(this.id)"></i></a>
+                    <input type="hidden" name="term" value ="SOS">
+                    <input type="hidden" name="remove" value={{x.course.listings}}>
+                  </form>
+                </span>
+                 {% endfor %}
+            </div> 
+             </div>
+          </div>
+          <br>
+                    
+         <div class="row">
+             <div class="col-md-6">
+                 <div class="list_group">
+                 <a class="list-group-item active">Junior Fall</a>
+                 {% for x in junior_fall %}
+                 <span>
+                    <form class= "form-inline" id = "{{x.course.listings}}" action= "" method= "post">{% csrf_token %}
+                    <a class="list-group-item" >{{ x.course }} {{x.course.title}}
+                    <i class="glyphicon glyphicon-minus pull-right link" id = "{{x.course.listings}}" onclick="rmv(this.id)"></i></a>
+                    <input type="hidden" name="term" value ="JRF">
+                    <input type="hidden" name="remove" value={{x.course.listings}}>
+                  </form>
+                </span>
+                 {% endfor %}
+                 </div>
+             </div>
+             <div class="col-md-6">
+                <div class="list_group">
+                    <a class="list-group-item active">Junior Spring</a>
+                     {% for x in junior_spring %}
+                     <span>
+                        <form class= "form-inline" id = "{{x.course.listings}}" action= "" method= "post">{% csrf_token %}
+                    <a class="list-group-item" n>{{ x.course }} {{x.course.title}}
+                    <i class="glyphicon glyphicon-minus pull-right link" id="{{x.course.listings}}" onclick="rmv(this.id)"></i></a>
+                    <input type="hidden" name="term" value ="JRS">
+                    <input type="hidden" name="remove" value={{x.course.listings}}>
+                  </form>
+                </span>
+                     {% endfor %}
+                 </div>
+             </div>
+             </div>
+             <br>
+                    
+        <div class="row">
+             <div class="col-md-6">
+             <div class="list_group">
+                    <a class="list-group-item active">Senior Fall</a>
+                     {% for x in senior_fall %}
+                      <span>
+                        <form class= "form-inline" id = "{{x.course.listings}}" action= "" method= "post">{% csrf_token %}
+                    <a class="list-group-item">{{ x.course }} {{x.course.title}}
+                    <i class="glyphicon glyphicon-minus pull-right link" id="{{x.course.listings}}" onclick="rmv(this.id)"></i></a>
+                    <input type="hidden" name="term" value ="SRF">
+                    <input type="hidden" name="remove" value={{x.course.listings}}>
+                  </form>
+                </span>
+                     {% endfor %}
+             </div>
+             </div>
+             <div class="col-md-6">
+             <div class="list_group">
+                    <a class="list-group-item active">Senior Spring</a>
+                 {% for x in senior_spring %}
+                    <span>
+                    <form class= "form-inline"id = "{{x.course.listings}}" action= "" method= "post">{% csrf_token %}
+                    <a class="list-group-item" >{{ x.course }} {{x.course.title}}
+                    <i class="glyphicon glyphicon-minus pull-right link" id="{{x.course.listings}}" onclick="rmv(this.id)"></i></a>
+                    <input type="hidden" name="term" value ="SRS">
+                    <input type="hidden" name="remove" value={{x.course.listings}}>
+                  </form>
+                </span>
+                 {% endfor %}
+             </div>
+             </div>
+         </div>
+         
+         
+         <br>
+        <div class="row" >
+            <div class="col-md-12" >
+             <div class="list_group" >
+                    <a class="list-group-item active" style="background-color:#ff4d4d">Summer and Other Term Courses</a>
+                    <!-- NEED INFORMATION PASSED IN -->
 
-        <!--div class="col-md-6">
-                 <div id="custom-search">
+            </div>
+        </div>
+          </div>
+     </div>
+      </div>
+    <br>
+    <br>
+     <div class="row">
+        <h5>Add a class to a semester</h5>
+                <span id="custom-search">
                     <form class = "form-inline" action = "" method = "get" >
-                         <input type="text" class="form-control input-lg" placeholder="Search Course Registrar" value = "{{test}}" name="q" />
+                        <div class="input-group col-md-12">
+                            <input type="text" class="form-control input-lg" placeholder="Type course (e.g. COS 126)" value = "{{test}}" name="q" />
                             <span class="input-group-btn">
                                 <button  id="search-btn" class="btn btn-info btn-lg" type="submit" >
                                     <i class="glyphicon glyphicon-search"></i>
                                 </button>
                             </span>
+                        </div>
                     </form>
-                </div>
-        </div-->
-    </div>
-    <br>
-    <div class="row">               
-                
-     
-     <div class = "panel panel-default">
-   <div class = "panel-heading">
-      <h1 class = "panel-title" style="text-align:center"><b>
-         </b>
-      </h1>
-   </div>
-   
-   <div class = "panel-body">
-     
-            
-     <div class="row">
-         <div class="col-md-6">
-         <div class="list_group">
-                <a class="list-group-item active">Freshman Fall</a>
-             {% for x in fresh_fall %}
-               <span>
-               <form class= "form-inline" id = "{{x.course.listings}}" action= "" method= "post">{% csrf_token %}
-                <a class="list-group-item">{{ x.course }} {{x.course.title}}
-                    <i class="glyphicon glyphicon-minus pull-right link" id ="{{x.course.listings}}" onclick="rmv(this.id)"></i></a>
-                <input type="hidden" name="term" value ="FRF">
-                <input type="hidden" name="remove" value={{x.course.listings}}>
-              </form>
-            </span>
-             {% endfor %}
-             </div>
-         </div>
-         <div class="col-md-6">
-         <div class="list_group">
-                <a class="list-group-item active">Freshman Spring</a>
-             {% for x in fresh_spring %}
-                <span>
-                <form class= "form-inline" id = "{{x.course.listings}}" action= "" method= "post">{% csrf_token %}
-                <a class="list-group-item" >{{ x.course }} {{x.course.title}}
-                    <i class="glyphicon glyphicon-minus pull-right link" id ="{{x.course.listings}}" onclick="rmv(this.id)"></i></a>
-                <input type="hidden" name="term" value ="FRS">
-                <input type="hidden" name="remove" value={{x.course.listings}}>
-              </form>
-            </span>
-             {% endfor %}
-         </div>
-         </div>
-     </div>
-     <br>
+                </span>
 
-     <div class="row">
-         <div class="col-md-6">
-         <div class="list_group">
-                <a class="list-group-item active">Sophomore Fall</a>
-             {% for x in soph_fall %}
-                <span>
-                <form class= "form-inline" id = "{{x.course.listings}}"  action= "" method= "post">{% csrf_token %}
-                <a class="list-group-item" >{{ x.course }} {{x.course.title}}
-                <i class="glyphicon glyphicon-minus pull-right link" id = "{{x.course.listings}}" onclick="rmv(this.id)"></i></a>
-                <input type="hidden" name="term" value ="SOF">
-                <input type="hidden" name="remove" value={{x.course.listings}}>
-              </form>
-            </span>
-             {% endfor %}
-         </div>
-        </div>
-         <div class="col-md-6">
-         <div class="list_group">
-                <a class="list-group-item active">Sophomore Spring</a>
-             {% for x in soph_spring %}
-                <span>
-                 <form class= "form-inline" id = "{{x.course.listings}}"  action= "" method= "post">{% csrf_token %}
-                <a class="list-group-item" >{{ x.course }} {{x.course.title}}
-                <i class="glyphicon glyphicon-minus pull-right link" id="{{x.course.listings}}" onclick="rmv(this.id)"></i></a>
-                <input type="hidden" name="term" value ="SOS">
-                <input type="hidden" name="remove" value={{x.course.listings}}>
-              </form>
-            </span>
-             {% endfor %}
-        </div> 
-         </div>
-      </div>
-      <br>
-                
-     <div class="row">
-         <div class="col-md-6">
-             <div class="list_group">
-             <a class="list-group-item active">Junior Fall</a>
-             {% for x in junior_fall %}
-             <span>
-                <form class= "form-inline" id = "{{x.course.listings}}" action= "" method= "post">{% csrf_token %}
-                <a class="list-group-item" >{{ x.course }} {{x.course.title}}
-                <i class="glyphicon glyphicon-minus pull-right link" id = "{{x.course.listings}}" onclick="rmv(this.id)"></i></a>
-                <input type="hidden" name="term" value ="JRF">
-                <input type="hidden" name="remove" value={{x.course.listings}}>
-              </form>
-            </span>
-             {% endfor %}
-             </div>
-         </div>
-         <div class="col-md-6">
-            <div class="list_group">
-                <a class="list-group-item active">Junior Spring</a>
-                 {% for x in junior_spring %}
-                 <span>
-                    <form class= "form-inline" id = "{{x.course.listings}}" action= "" method= "post">{% csrf_token %}
-                <a class="list-group-item" n>{{ x.course }} {{x.course.title}}
-                <i class="glyphicon glyphicon-minus pull-right link" id="{{x.course.listings}}" onclick="rmv(this.id)"></i></a>
-                <input type="hidden" name="term" value ="JRS">
-                <input type="hidden" name="remove" value={{x.course.listings}}>
-              </form>
-            </span>
-                 {% endfor %}
-             </div>
-         </div>
-         </div>
-         <br>
-                
-    <div class="row">
-         <div class="col-md-6">
-         <div class="list_group">
-                <a class="list-group-item active">Senior Fall</a>
-                 {% for x in senior_fall %}
-                  <span>
-                    <form class= "form-inline" id = "{{x.course.listings}}" action= "" method= "post">{% csrf_token %}
-                <a class="list-group-item">{{ x.course }} {{x.course.title}}
-                <i class="glyphicon glyphicon-minus pull-right link" id="{{x.course.listings}}" onclick="rmv(this.id)"></i></a>
-                <input type="hidden" name="term" value ="SRF">
-                <input type="hidden" name="remove" value={{x.course.listings}}>
-              </form>
-            </span>
-                 {% endfor %}
-         </div>
-         </div>
-         <div class="col-md-6">
-         <div class="list_group">
-                <a class="list-group-item active">Senior Spring</a>
-             {% for x in senior_spring %}
-                <span>
-                <form class= "form-inline"id = "{{x.course.listings}}" action= "" method= "post">{% csrf_token %}
-                <a class="list-group-item" >{{ x.course }} {{x.course.title}}
-                <i class="glyphicon glyphicon-minus pull-right link" id="{{x.course.listings}}" onclick="rmv(this.id)"></i></a>
-                <input type="hidden" name="term" value ="SRS">
-                <input type="hidden" name="remove" value={{x.course.listings}}>
-              </form>
-            </span>
-             {% endfor %}
-         </div>
-         </div>
-     </div>
-     
-     
-     <br>
-    <div class="row" >
-        <div class="col-md-12" >
-         <div class="list_group" >
-                <a class="list-group-item active" style="background-color:#ff4d4d">Summer and Other Term Courses</a>
-                <!-- NEED INFORMATION PASSED IN -->
-
-        </div>
-    </div>
-      </div>
- </div>
-  </div>
-<br>
-<br>
- <div class="row">
-    <h5>Add a class to a semester</h5>
-            <span id="custom-search">
-                <form class = "form-inline" action = "" method = "get" >
-                    <div class="input-group col-md-12">
-                        <input type="text" class="form-control input-lg" placeholder="Type course (e.g. COS 126)" value = "{{test}}" name="q" />
-                        <span class="input-group-btn">
-                            <button  id="search-btn" class="btn btn-info btn-lg" type="submit" >
-                                <i class="glyphicon glyphicon-search"></i>
-                            </button>
-                        </span>
-                    </div>
-                </form>
-            </span>
-
-    {% if test_course %}
-    <div class="row"><br>
-      <div class="alert alert-success col-md-12" role="alert">
-        <b>Well Done!</b> You have successfully added <b>{{test_course}} {{test_course.title}}</b> to <b>{{sem}}</b>
-      </div>
-    </div>
-    {% endif %}
-    {% if removed_class %}
-    <div class="row"><br>
-      <div class="alert alert-success col-md-12" role="alert">
-        <b>Well Done!</b> You have successfully removed <b>{{removed_class}}</b>. 
-      </div>
-    </div>
-    {% endif %}
-    <!-- List the matche courses below -->
-    {% if matched_courses %}
-    <div class="row">
-      <p><br>Matched Courses</p>
-    </div>
-      <div class="list-group">
-        {% for x in matched_courses %}
-          <span class="list-group col-md-12">
-              <div class="btn-group" style="width: 100%">
-                <form class= "form-inline" action= "" method= "post">{% csrf_token %}
-                  <li class="list-group-item">{{x.listings}} {{x.title}} {{x.area}}
-                    <select class="form-control" name="semester">
-                        {% if x.F15 or x.F16 %}
-                        <option>Freshman Fall</option>
-                        {% endif %}                             
-                        {% if x.S15 or x.S16 %}
-                        <option>Freshman Spring</option>
-                        {% endif %}
-                        {% if x.F15 or x.F16 %}
-                        <option>Sophomore Fall</option>
-                        {% endif %}
-                        {% if x.S15 or x.S16 %}
-                        <option>Sophomore Spring</option>
-                        {% endif %}
-                        {% if x.F15 or x.F16 %}
-                        <option>Junior Fall</option>
-                        {% endif %}
-                        {% if x.S15 or x.S16 %}
-                        <option>Junior Spring</option>
-                        {% endif %}
-                        {% if x.F15 or x.F16 %}
-                        <option>Senior Fall</option>
-                        {% endif %}
-                        {% if x.S15 or x.S16 %}
-                        <option>Senior Spring</option>
-                        {% endif %}
-                    </select>
-                    <select class="form-control" name ="COSreq">
-                        <option>N/A</option>
-                        <option>Theory</option>
-                        <option>Systems</option>
-                        <option>Applications</option>
-                        <option>Other</option>
-                    </select>
-                    <input type="hidden" name="listing" value={{x.listings}}>
-                    <input type="submit" class="btn btn-info" value="Add Class">
-                  </li>
-                </form>
-              </div>
-          </span>
-          {% endfor %}
+        {% if test_course %}
+        <div class="row"><br>
+          <div class="alert alert-success col-md-12" role="alert">
+            <b>Well Done!</b> You have successfully added <b>{{test_course}} {{test_course.title}}</b> to <b>{{sem}}</b>
           </div>
-    {% endif %}
+        </div>
+        {% endif %}
+        {% if removed_class %}
+        <div class="row"><br>
+          <div class="alert alert-success col-md-12" role="alert">
+            <b>Well Done!</b> You have successfully removed <b>{{removed_class}}</b>. 
+          </div>
+        </div>
+        {% endif %}
+        <!-- List the matche courses below -->
+        {% if matched_courses %}
+        <div class="row">
+          <p><br>Matched Courses</p>
+        </div>
+          <div class="list-group">
+            {% for x in matched_courses %}
+              <span class="list-group col-md-12">
+                  <div class="btn-group" style="width: 100%">
+                    <form class= "form-inline" action= "" method= "post">{% csrf_token %}
+                      <li class="list-group-item">{{x.listings}} {{x.title}} {{x.area}}
+                        <select class="form-control" name="semester">
+                            {% if x.F15 or x.F16 %}
+                            <option>Freshman Fall</option>
+                            {% endif %}                             
+                            {% if x.S15 or x.S16 %}
+                            <option>Freshman Spring</option>
+                            {% endif %}
+                            {% if x.F15 or x.F16 %}
+                            <option>Sophomore Fall</option>
+                            {% endif %}
+                            {% if x.S15 or x.S16 %}
+                            <option>Sophomore Spring</option>
+                            {% endif %}
+                            {% if x.F15 or x.F16 %}
+                            <option>Junior Fall</option>
+                            {% endif %}
+                            {% if x.S15 or x.S16 %}
+                            <option>Junior Spring</option>
+                            {% endif %}
+                            {% if x.F15 or x.F16 %}
+                            <option>Senior Fall</option>
+                            {% endif %}
+                            {% if x.S15 or x.S16 %}
+                            <option>Senior Spring</option>
+                            {% endif %}
+                        </select>
+                        <select class="form-control" name ="COSreq">
+                            <option>N/A</option>
+                            <option>Theory</option>
+                            <option>Systems</option>
+                            <option>Applications</option>
+                            <option>Other</option>
+                        </select>
+                        <input type="hidden" name="listing" value={{x.listings}}>
+                        <input type="submit" class="btn btn-info" value="Add Class">
+                      </li>
+                    </form>
+                  </div>
+              </span>
+              {% endfor %}
+              </div>
+        {% endif %}
 
-</div>
+    </div>
 
-</div>
+    </div>
 </div> <!-- Container-fluid -->
 
 <!-- <script type="text/babel" src="/../../static/scripts/react_course_search.js"></script> -->
