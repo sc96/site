@@ -220,11 +220,11 @@ function update_Info() {
   <p><b>Have you placed out of these courses?</b></p>
 </div>
 <div style = "text-align:center">
-<label class="checkbox-inline" style = "text-align:center">
+<label class="checkbox-inline" style = "text-align:center" id = "calc_1">
 {% if calc_1|stringformat:"s" == "0" %}
-  <input type="checkbox"   id ="calc_1"data-toggle="toggle" data-on="Calc1" data-off="Calc1" value = "0">
+  <input type="checkbox" data-toggle="toggle" data-on="Calc1" data-off="Calc1" value = "0">
   {% else %}
-  <input type="checkbox"  id ="calc_1"  checked data-toggle="toggle" data-on="Calc1" data-off="Calc1" value = "1"> 
+  <input type="checkbox" checked data-toggle="toggle" data-on="Calc1" data-off="Calc1" value = "1"> 
   {% endif %}
 </label>
 <label class="checkbox-inline">
