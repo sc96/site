@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from .models import Student, Course, COS_BSE, Entry, Approved_Course, Engineer, Outside_Course, AAS, AFS, AMS, NEU, MUS, GHP, FIN, CWR,AP_Credit
+from .models import Student, Course, COS_BSE, URB, Entry, Approved_Course, Engineer, Outside_Course, AAS, AFS, AMS, NEU, MUS, GHP, FIN, CWR,AP_Credit
 from django.contrib.auth.decorators import login_required
 import re
 from itertools import chain
@@ -1123,6 +1123,34 @@ def ghp(request):
 	context = {'science_on': science_on, 'science_off': science_off, 'stats_on': stats_on, 'stats_off': stats_off,
 	'core_on': core_on, 'core_off': core_off, 'elective_on': elective_on, 'elective_off': elective_off}
 	return render(request, 'ghp.html', context)
+
+@login_required # Cas authentication for this url.
+# African Studies
+def urb(request):
+	current_user = request.user
+	student = Student.objects.get(student_id=current_user.username)
+	all_courses = Entry.objects.filter(student_id=current_user.username).values_list('course_id', flat=True).order_by('course_id') # all of the student's courses
+	intro = URB.objects.filter(intro=1).values_list('course_id', flat=True).order_by('course_id')
+	social = URB.objects.filter(social=1).values_list('course_id', flat=True).order_by('course_id')
+	human = URB.objects.filter(human=1).values_list('course_id', flat=True).order_by('course_id')
+	engineer = URB.objects.filter(engineer=1).values_list('course_id', flat=True).order_by('course_id')
+
+	intro_on = title(compare_lists(all_courses, intro)["similarities"])
+	intro_off = title(compare_lists(all_courses, intro)["differences"])
+
+	social_on = title(compare_lists(all_courses, social)["similarities"])
+	social_off = title(compare_lists(all_courses, social)["differences"])
+
+	human_on = title(compare_lists(all_courses, human)["similarities"])
+	human_off = title(compare_lists(all_courses, human)["differences"])
+
+	engineer_on = title(compare_lists(all_courses, engineer)["similarities"])
+	engineer_off = title(compare_lists(all_courses, engineer)["differences"])
+
+	context = {'intro_on': intro_on, 'intro_off': intro_off, 'social_on': social_on, 'social_off': social_off,
+	'human_on': human_on, 'human_off': human_off, 'engineer_on': engineer_on, 'engineer_off': engineer_off}
+	return render(request, 'urb.html', context)
+
 
 @login_required # Cas authentication for this url.
 # African Studies
