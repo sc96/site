@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from .models import Student, Course, COS_BSE, Entry, Approved_Course, Engineer, Outside_Course, AAS, AFS, AMS, NEU, AP_Credit
+from .models import Student, Course, COS_BSE, Entry, Approved_Course, Engineer, Outside_Course, AAS, AFS, AMS, NEU, MUS, AP_Credit
 from django.contrib.auth.decorators import login_required
 import re
 from itertools import chain
@@ -910,6 +910,27 @@ def ams(request):
 	'elective_on': elective_on, 'elective_off': elective_off}
 	return render(request, 'ams.html', context)
 
+def mus(request):
+	current_user = request.user
+	student = Student.objects.get(student_id=current_user.username)
+	all_courses = Entry.objects.filter(student_id=current_user.username).values_list('course_id', flat=True).order_by('course_id') # all of the student's courses
+	intro = MUS.objects.filter(intro=1).values_list('course_id', flat=True).order_by('course_id')
+	perform = MUS.objects.filter(perform=1).values_list('course_id', flat=True).order_by('course_id')
+	elective = MUS.objects.filter(elective=1).values_list('course_id', flat=True).order_by('course_id')
+
+	intro_on = title(compare_lists(all_courses, req)["similarities"])
+	intro_off = title(compare_lists(all_courses, req)["differences"])
+
+	perform_on = title(compare_lists(all_courses, disease)["similarities"])
+	perform_off = title(compare_lists(all_courses, disease)["differences"])
+
+	elective_on = title(compare_lists(all_courses, circuits)["similarities"])
+	elective_off = title(compare_lists(all_courses, circuits)["differences"])
+
+	context = {'intro_on': intro_on, 'intro_off': intro_off, 'perform_on': perform_on, 'perform_off': perform_off,
+	'elective_on': elective_on, 'elective_off': elective_off}
+	return render(request, 'mus.html', context)
+
 def neu(request):
 	current_user = request.user
 	student = Student.objects.get(student_id=current_user.username)
@@ -934,4 +955,6 @@ def neu(request):
 	context = {'req_on': req_on, 'req_off': req_off, 'disease_on': disease_on, 'disease_off': disease_off,
 	'circuits_on': circuits_on, 'circuits_off': circuits_off, 'social_on': social_on, 'social_off': social_off}
 	return render(request, 'neu.html', context)
+	
+	
 
