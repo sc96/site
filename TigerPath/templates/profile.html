@@ -189,7 +189,7 @@ function update_Info() {
 <div style = "text-align:center">
 <label class="checkbox-inline" style = "text-align:center">
 
-{% if ap_dict["calc_1"]|stringformat:"s" == "1" %}
+{% if ap_dict['calc_1']|stringformat:"s" == "1" %}
   <input type="checkbox" name="calc_1"  id ="hidCalc1" checked data-toggle="toggle" data-on="Calc1" data-off="Calc1" value = "1">
   {% else %}
   <input type="checkbox" name="calc_1"  id ="hidCalc1" data-toggle="toggle" data-on="Calc1" data-off="Calc1" value = "0"> 
