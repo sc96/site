@@ -204,8 +204,12 @@ def profile(request):
 		cert1 = request.POST["cert1"]
 		cert2 = request.POST["cert2"]
 		cert3 = request.POST["cert3"]
+		calc_1 = request.POST["calc_1"]
+		calc_2 = request.POST["calc_3"]
+		calc_3 = request.POST["calc_2"]
+		calc_1 = request.POST["lin_alg"]
 		student.update_info(student, firstN, lastN, engineerBool, publicBool, 
-			cert1, cert2, cert3)
+			cert1, cert2, cert3, calc_1, calc_2, calc_3)
 			
     
 	# getting strings for context variable
