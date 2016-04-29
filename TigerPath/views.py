@@ -237,7 +237,7 @@ def profile(request):
 	lin_alg = student.lin_alg
 	gen_chem = student.gen_chem
 	physics = student.physics
-	cos = sudent.cos
+	cos = student.cos
 
 	ap_dict = {"calc_1": calc_1, "calc_2": calc_2, "calc_3": calc_3, "lin_alg" : lin_alg, 'gen_chem': gen_chem, 'physics': physics, 'cos': cos}
 	context = {'user': current_user.username, 'firstN': firstN, 'lastN': lastN,
