@@ -289,7 +289,7 @@ def degree_progress(request):
 	# all of the requirement lists
 	# can probably combine a lot of things here into one function - maybe i want the approved courses in their own list? idk
 	# COS BSE Major
-	if (student.engineerBool == "1"):
+	if (student.engineerBool):
 		# BSE requirements - all
 	
 	# this should probably be hard coded
