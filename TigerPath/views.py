@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from .models import Student, Course, COS_BSE, Entry, Approved_Course, Engineer, Outside_Course, AAS, AFS, AMS, NEU, MUS, GHP, FIN, AP_Credit
+from .models import Student, Course, COS_BSE, Entry, Approved_Course, Engineer, Outside_Course, AAS, AFS, AMS, NEU, MUS, GHP, FIN, CWR,AP_Credit
 from django.contrib.auth.decorators import login_required
 import re
 from itertools import chain
@@ -949,7 +949,7 @@ def certificates(request):
 	ghp = GHP.objects.values_list('course_id', flat=True).order_by('course_id')
 	mus = MUS.objects.values_list('course_id', flat=True).order_by('course_id')
 	neu = NEU.objects.values_list('course_id', flat=True).order_by('course_id')
-	fin = FIN.objects.values_list('course_id', flat=True).order_by('course_id')
+	cwr = CWR.objects.values_list('course_id', flat=True).order_by('course_id')
 	
 	nsimilar = num_compare(all_courses, aas)
 	cert_dict["African American Studies"]=num_compare(all_courses, aas)
@@ -959,6 +959,7 @@ def certificates(request):
 	cert_dict["Musical Performance"]=num_compare(all_courses, mus)
 	cert_dict["Global Health and Health Policy"]=num_compare(all_courses, ghp)
 	cert_dict["Finance"]=num_compare(all_courses, fin)
+	cert_dict["Creative Writing"]=num_compare(all_courses, fin)
 	top_3=[]
 	for i in range(0, 3):
 		maximum = max(cert_dict, key=lambda i: cert_dict[i])
@@ -1123,6 +1124,23 @@ def ghp(request):
 	'core_on': core_on, 'core_off': core_off, 'elective_on': elective_on, 'elective_off': elective_off}
 	return render(request, 'ghp.html', context)
 
+@login_required # Cas authentication for this url.
+# African Studies
+def cwr(request):
+	current_user = request.user
+	student = Student.objects.get(student_id=current_user.username)
+	all_courses = Entry.objects.filter(student_id=current_user.username).values_list('course_id', flat=True).order_by('course_id') # all of the student's courses
+	two = GHP.objects.filter(two=1).values_list('course_id', flat=True).order_by('course_id')
+	three = GHP.objects.filter(three=1).values_list('course_id', flat=True).order_by('course_id')
+	
+	two_on = title(compare_lists(all_courses, two)["similarities"])
+	two_off = title(compare_lists(all_courses, two)["differences"])
+
+	three_on = title(compare_lists(all_courses, three)["similarities"])
+	three_off = title(compare_lists(all_courses, three)["differences"])
+
+	context = {'two_on': two_on, 'two_off': two_off, 'three_on': three_on, 'three_off': three_off}
+	return render(request, 'ghp.html', context)
 
 @login_required
 def mus(request):
