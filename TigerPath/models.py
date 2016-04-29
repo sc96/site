@@ -180,7 +180,7 @@ class Student(models.Model):
 		obj = Entry.objects.filter(student=s, course=c)
 		obj.delete()
 
-	def update_info(self, student, firstN, lastN, engineerBool, publicBool, cert1, cert2, cert3):
+	def update_info(self, student, firstN, lastN, engineerBool, publicBool, cert1, cert2, cert3, calc_1, calc_2, calc_3, lin_alg):
 		student.first_name = firstN
 		student.last_name = lastN
 		student.engineerBool = engineerBool
@@ -188,6 +188,11 @@ class Student(models.Model):
 		student.cert1 = cert1
 		student.cert2 = cert2
 		student.cert3 = cert3
+		student.calc_1 = calc_1
+		student.calc_2 = calc_2
+		student.calc_3 = calc_3
+		student.lin_alg = lin_alg
+
 		student.save()
 
     # if you ever figure out how to request without refreshing, send them individually!
