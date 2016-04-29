@@ -289,7 +289,7 @@ def degree_progress(request):
 	# all of the requirement lists
 	# can probably combine a lot of things here into one function - maybe i want the approved courses in their own list? idk
 	# COS BSE Major
-	if (student.engineerBool == 1):
+	if (student.engineerBool == "1"):
 		# BSE requirements - all
 	
 	# this should probably be hard coded
@@ -315,9 +315,9 @@ def degree_progress(request):
 		if (student.lin_alg == 1 and AP_Credit.objects.filter(student_name=current_user.username, course_id="1160").count() == 0):
 			a = AP_Credit(student_name = current_user.username, course_id = "1160")
 			a.save()
-	if(student.gen_chem == 1 and AP_Credit.objects.filter(student_name=current_user.username, course_id="1354").count() == 0):
-		a = AP_Credit(student_name = current_user.username, course_id = "1354")
-		a.save()
+		if(student.gen_chem == 1 and AP_Credit.objects.filter(student_name=current_user.username, course_id="1354").count() == 0):
+			a = AP_Credit(student_name = current_user.username, course_id = "1354")
+			a.save()
 		if(student.physics == 1 and AP_Credit.objects.filter(student_name=current_user.username, course_id="763").count() == 0 and AP_Credit.objects.filter(student_name=current_user.username, course_id="2016").count() == 0):
 			a = AP_Credit(student_name = current_user.username, course_id = "2016")
 			a.save()
