@@ -83,33 +83,33 @@ function update_Info() {
     var calc_1 = document.getElementById("calc_1")
     var input = document.getElementById("hidcalc_1");
     if (calc_1.checked == true) 
-      input.value = "9"
+      input.value = "1"
     else
-      input.value = "9"
+      input.value = "0"
 
     var calc_2 = document.getElementById("calc_2")
     var input = document.getElementById("hidcalc_2");
     if (calc_2.checked == true)
-      input.value = "8"
+      input.value = "1"
     else
-      input.value = "8"
+      input.value = "0"
 
     
 
     var calc_3 = document.getElementById("calc_3")
     var input = document.getElementById("hidcalc_3");
     if (calc_3.checked == true)
-      input.value = "7"
+      input.value = "1"
     else
-      input.value = "7"
+      input.value = "0"
 
 
     var lin_alg = document.getElementById("lin_alg")
     var input = document.getElementById("hidlin");
     if (lin_alg.checked == true)
-      input.value = "6"
+      input.value = "1"
     else
-      input.value = "6"
+      input.value = "0"
 
 
 }
@@ -233,9 +233,9 @@ function update_Info() {
 </label>
 <label class="checkbox-inline">
   {% if calc_3|stringformat:"s" == "1" %}
-  <input type="checkbox"   id ="calc_3" checked data-toggle="toggle" data-on="Calc3" data-off="Calc1" value = "1">
+  <input type="checkbox"   id ="calc_3" checked data-toggle="toggle" data-on="Calc3" data-off="Calc3" value = "1">
   {% else %}
-  <input type="checkbox"  id ="calc_3" data-toggle="toggle" data-on="Calc1" data-off="Calc3" value = "0"> 
+  <input type="checkbox"  id ="calc_3" data-toggle="toggle" data-on="Calc3" data-off="Calc3" value = "0"> 
   {% endif %} 
 <label class="checkbox-inline">
   {% if lin_alg|stringformat:"s" == "1" %}

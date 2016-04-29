@@ -225,13 +225,7 @@ def profile(request):
 	cert2 = student.cert2
 	cert3 = student.cert3
 
-	student.cert1 = "NONE"
-	student.cert2 = "NONE"
-	student.cert3 = "NONE"
-	student.calc1 = "0"
-	student.calc2 = "0"
-	student.calc3 = "1"
-	student.lin_alg = "1"
+
 
 	calc_1 = student.calc_1
 	calc_2 = student.calc_2
