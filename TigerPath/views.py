@@ -210,8 +210,11 @@ def profile(request):
 		calc_2 = request.POST["calc_2"]
 		calc_3 = request.POST["calc_3"]
 		lin_alg = request.POST["lin_alg"]
+		gen_chem = request.POST["gen_chem"]
+		physics = request.POST["physics"]
+		cos = request.POST["cos"]
 		student.update_info(student, firstN, lastN, engineerBool, publicBool, 
-			cert1, cert2, cert3, calc_1, calc_2, calc_3, lin_alg)
+			cert1, cert2, cert3, calc_1, calc_2, calc_3, lin_alg, gen_chem, physics, cos)
 
 
 			
@@ -227,20 +230,22 @@ def profile(request):
 
 
 
+
 	calc_1 = student.calc_1
 	calc_2 = student.calc_2
 	calc_3 =  student.calc_3
 	lin_alg = student.lin_alg
+	gen_chem = sudent.gen_chem
+	physics = student.physics
+	cos = sudent.cos
 
-	ap_dict = {"calc_1": calc_1, "calc_2": calc_2, "calc_3": calc_3, "lin_alg" : lin_alg}
-	''' context = {'user': current_user.username, 'firstN': firstN, 'lastN': lastN,
-	 'engineerBool': engineerBool, 'publicBool': publicBool, 'cert1': cert1,
-	 'cert2': cert2, 'cert3': cert3, 'ap_dict': ap_dict} '''
-
-
+	ap_dict = {"calc_1": calc_1, "calc_2": calc_2, "calc_3": calc_3, "lin_alg" : lin_alg, 'gen_chem': gen_chem, 'physics': physics, 'cos': cos}
 	context = {'user': current_user.username, 'firstN': firstN, 'lastN': lastN,
 	 'engineerBool': engineerBool, 'publicBool': publicBool, 'cert1': cert1,
-	 'cert2': cert2, 'cert3': cert3, 'calc_1': calc_1,'calc_2': calc_2, 'calc_3': calc_3, 'lin_alg' : lin_alg } 
+	 'cert2': cert2, 'cert3': cert3, 'ap_dict': ap_dict} 
+
+
+	
 
 	return render(request, 'profile.html', context)
 

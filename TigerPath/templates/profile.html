@@ -66,14 +66,14 @@ function update_Info() {
 
     var calc_1 = document.getElementById("calc_1")
     var input = document.getElementById("hidcalc_1");
-    if (calc_1.checked == true) 
+    if (calc_1.checked) 
       input.value = "1"
     else
       input.value = "0"
 
     var calc_2 = document.getElementById("calc_2")
     var input = document.getElementById("hidcalc_2");
-    if (calc_2.checked == true)
+    if (calc_2.checked)
       input.value = "1"
     else
       input.value = "0"
@@ -82,18 +82,41 @@ function update_Info() {
 
     var calc_3 = document.getElementById("calc_3")
     var input = document.getElementById("hidcalc_3");
-    if (calc_3.checked == false)
-      input.value = "0"
-    else
+    if (calc_3.checked)
       input.value = "1"
+    else
+      input.value = "0"
 
 
     var lin_alg = document.getElementById("lin_alg")
     var input = document.getElementById("hidlin");
-    if (lin_alg.checked == false)
-      input.value = "0"
-    else
+    if (lin_alg.checked)
       input.value = "1"
+    else
+      input.value = "0"
+
+
+
+    var gen_chem = document.getElementById("lin_alg")
+    var input = document.getElementById("hidchem");
+    if (gen_chem.checked)
+      input.value = "1"
+    else
+      input.value = "0"
+
+    var physics = document.getElementById("lin_alg")
+    var input = document.getElementById("hidphy");
+    if (physics.checked)
+      input.value = "1"
+    else
+      input.value = "0"
+
+    var cos = document.getElementById("lin_alg")
+    var input = document.getElementById("hidcos");
+    if (cos.checked)
+      input.value = "1"
+    else
+      input.value = "0"
 
 
 }
@@ -202,37 +225,88 @@ function update_Info() {
 </div>
 <div style = "text-align:center">
 <label class="checkbox-inline" style = "text-align:center">
-{% if calc_1|stringformat:"s" == "1" %}
-  <input type="checkbox"   id ="calc_1" checked data-toggle="toggle" data-on="Calc1" data-off="Calc1" value = "1">
+{% if ap_dict.calc_1|stringformat:"s" == "1" %}
+  <input type="checkbox"   id ="calc_1" checked data-toggle="toggle" data-on="Calc1" data-off="Calc1" >
   {% else %}
-  <input type="checkbox"  id ="calc_1" data-toggle="toggle" data-on="Calc1" data-off="Calc1" value = "0"> 
+  <input type="checkbox"  id ="calc_1" data-toggle="toggle" data-on="Calc1" data-off="Calc1" > 
   {% endif %}
 </label>
 <label class="checkbox-inline">
-  
-  <input type="checkbox"  id ="calc_2" data-on="Calc2" data-off="Calc2"
-   {% if calc_2|stringformat:"s" == "1" %} checked data-toggle="toggle"
-   {% else %}
-   data-toggle="toggle"
-   {% endif %} >
+{% if ap_dict.calc_2|stringformat:"s" == "1" %} 
+  <input type="checkbox"   id ="calc_2" checked data-toggle="toggle" data-on="Calc2" data-off="Calc2" >
+  {% else %}
+  <input type="checkbox"  id ="calc_2" data-toggle="toggle" data-on="Calc2" data-off="Calc2" > 
+  {% endif %}
 </label>
 <label class="checkbox-inline">
-  {% if calc_3|stringformat:"s" == "1" %}
-  <input type="checkbox"   id ="calc_3" checked data-toggle="toggle" data-on="Calc3" data-off="Calc3" value = "1">
+  {% if ap_dict.calc_3|stringformat:"s" == "1" %}
+  <input type="checkbox"   id ="calc_3" checked data-toggle="toggle" data-on="Calc3" data-off="Calc3">
   {% else %}
-  <input type="checkbox"  id ="calc_3" data-toggle="toggle" data-on="Calc3" data-off="Calc3" value = "0"> 
+  <input type="checkbox"  id ="calc_3" data-toggle="toggle" data-on="Calc3" data-off="Calc3" > 
   {% endif %} 
 <label class="checkbox-inline">
-  {% if lin_alg|stringformat:"s" == "1" %}
-  <input type="checkbox"  id ="lin_alg" checked data-toggle="toggle" data-on="Linear" data-off="Linear" value = "1">
+  {% if ap_dict.lin_alg|stringformat:"s" == "1" %}
+  <input type="checkbox"  id ="lin_alg" checked data-toggle="toggle" data-on="Linear" data-off="Linear">
   {% else %}
-  <input type="checkbox"  id ="lin_alg" data-toggle="toggle" data-on="Linear" data-off="Linear" value = "0"> 
+  <input type="checkbox"  id ="lin_alg" data-toggle="toggle" data-on="Linear" data-off="Linear" > 
   {% endif %} 
 </label>
+
+<label class="checkbox-inline">
+{% if ap_dict.calc_2|stringformat:"s" == "1" %} 
+  <input type="checkbox"   id ="calc_2" checked data-toggle="toggle" data-on="Calc2" data-off="Calc2" >
+  {% else %}
+  <input type="checkbox"  id ="calc_2" data-toggle="toggle" data-on="Calc2" data-off="Calc2" > 
+  {% endif %}
+</label>
+<label class="checkbox-inline">
+  {% if ap_dict.calc_3|stringformat:"s" == "1" %}
+  <input type="checkbox"   id ="calc_3" checked data-toggle="toggle" data-on="Calc3" data-off="Calc3">
+  {% else %}
+  <input type="checkbox"  id ="calc_3" data-toggle="toggle" data-on="Calc3" data-off="Calc3" > 
+  {% endif %} 
+<label class="checkbox-inline">
+  {% if ap_dict.lin_alg|stringformat:"s" == "1" %}
+  <input type="checkbox"  id ="lin_alg" checked data-toggle="toggle" data-on="Linear" data-off="Linear">
+  {% else %}
+  <input type="checkbox"  id ="lin_alg" data-toggle="toggle" data-on="Linear" data-off="Linear" > 
+  {% endif %} 
+</label>
+
+
+</div>
+</div>
+</div>
+<div class="col-sm-6 col-centered"> 
+<div style = "text-align:center">
+
+<label class="checkbox-inline" style = "text-align:center">
+{% if ap_dict.gen_chem|stringformat:"s" == "1" %}
+  <input type="checkbox"   id ="gen_chem" checked data-toggle="toggle" data-on="Chem" data-off="Chem" >
+  {% else %}
+  <input type="checkbox"  id ="gen_chem" data-toggle="toggle" data-on="Chem" data-off="Chem" > 
+  {% endif %}
+</label>
+
+<label class="checkbox-inline" style = "text-align:center">
+{% if ap_dict.physics|stringformat:"s" == "1" %}
+  <input type="checkbox"   id ="physics" checked data-toggle="toggle" data-on="Physics" data-off="Physics" >
+  {% else %}
+  <input type="checkbox"  id ="physics" data-toggle="toggle" data-on="Physics" data-off="Physics" > 
+  {% endif %}
+</label>
+
+<label class="checkbox-inline" style = "text-align:center">
+{% if ap_dict.cos|stringformat:"s" == "1" %}
+  <input type="checkbox"   id ="cos" checked data-toggle="toggle" data-on="Cos" data-off="Cos" >
+  {% else %}
+  <input type="checkbox"  id ="cos" data-toggle="toggle" data-on="Chem" data-off="Cos" > 
+  {% endif %}
+</label>
+
 </div>
 </div>
 
-</div>
 </div>
 
 
@@ -255,6 +329,9 @@ function update_Info() {
 <input type="hidden" name="calc_2" id = "hidcalc_2">
 <input type="hidden" name="calc_3" id = "hidcalc_3">
 <input type="hidden" name="lin_alg" id = "hidlin">
+<input type="hidden" name="gen_chem" id = "hidchem">
+<input type="hidden" name="physics" id = "hidphy">
+<input type="hidden" name="cos" id = "hidcos">
 
 </button>
 </form>
