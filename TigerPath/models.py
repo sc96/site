@@ -255,10 +255,8 @@ class Outside_Course(models.Model):
 	student = models.ForeignKey(Student, on_delete=models.CASCADE)
 	course_name=models.CharField(max_length=30, primary_key = True)
 	requirement = models.CharField(max_length=30) # Theory, Systems, Technology and Society IT Track, etc.
-	major = models.CharField(max_length=30) #COS_BSE or COS_AB
-	certificate = models.CharField(max_length=30) #GSS or EAS or another certificate code
 	distribution = models.CharField(max_length=30) #LA or SA or something
-
+	engineer = models.CharField(max_length=30)
 	#def select_major():
 
 	#WILLIAM ADDED
