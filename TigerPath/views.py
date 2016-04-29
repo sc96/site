@@ -924,11 +924,11 @@ def fin(request):
 	current_user = request.user
 	student = Student.objects.get(student_id=current_user.username)
 	all_courses = Entry.objects.filter(student_id=current_user.username).values_list('course_id', flat=True).order_by('course_id') # all of the student's courses
-	mat = FIN.objects.filter(foundation=1).values_list('course_id', flat=True).order_by('course_id')
-	eco = FIN.objects.filter(culture=1).values_list('course_id', flat=True).order_by('course_id')
-	stat = FIN.objects.filter(history=1).values_list('course_id', flat=True).order_by('course_id')
-	core = FIN.objects.filter(science=1).values_list('course_id', flat=True).order_by('course_id')
-	elective = FIN.objects.filter(politics=1).values_list('course_id', flat=True).order_by('course_id')
+	mat = FIN.objects.filter(mat=1).values_list('course_id', flat=True).order_by('course_id')
+	eco = FIN.objects.filter(eco=1).values_list('course_id', flat=True).order_by('course_id')
+	stat = FIN.objects.filter(stat=1).values_list('course_id', flat=True).order_by('course_id')
+	core = FIN.objects.filter(core=1).values_list('course_id', flat=True).order_by('course_id')
+	elective = FIN.objects.filter(elective=1).values_list('course_id', flat=True).order_by('course_id')
 
 	mat_on = title(compare_lists(all_courses, foundation)["similarities"])
 	mat_off = title(compare_lists(all_courses, foundation)["differences"])
