@@ -178,6 +178,11 @@ class Student(models.Model):
 		student.cert3 = cert3
 		student.save()
 
+	def update_calc1(self, student, calc_1):
+		student.calc_1 = calc_1
+		student.save()
+
+
 
 
 # Relevant when they are "adding" a course to their four year plan
