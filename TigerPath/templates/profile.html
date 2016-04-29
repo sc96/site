@@ -257,8 +257,14 @@ function update_Info() {
 </div>
 
 <div class="row row-centered">
-<div class="col-sm-6 col-centered" >
+<!-- skip a line -->
+</div>
 
+
+
+<div class="row row-centered">
+<div class="col-sm-6 col-centered" >
+<div style = "text-align:center">
 
 <label class="checkbox-inline" style = "text-align:center">
 {% if ap_dict.gen_chem|stringformat:"s" == "1" %}
@@ -280,11 +286,11 @@ function update_Info() {
 {% if ap_dict.cos|stringformat:"s" == "1" %}
   <input type="checkbox"   id ="cos" checked data-toggle="toggle" data-on="Cos" data-off="Cos" >
   {% else %}
-  <input type="checkbox"  id ="cos" data-toggle="toggle" data-on="Chem" data-off="Cos" > 
+  <input type="checkbox"  id ="cos" data-toggle="toggle" data-on="Cos" data-off="Cos" > 
   {% endif %}
 </label>
 
-
+</div>
 </div>
 </div>
 
