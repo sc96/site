@@ -91,7 +91,8 @@
     </ul>
   </div>
 </nav>
-<div class="container">
+<div class="container" style="background-color:#F3F3F3">
+<br>
 <div class="jumbotron text-center">
   <div class='container' id='box'>
   <h1 style="color:#ff8f00">COS Course Data</h1>
@@ -205,7 +206,7 @@ var x = document.getElementById(String(object));
   }
 </script>
 
-<div class="container" style="background-color:#F3F3F3">
+<div class="container">
  {% if removed_class %}
     <div class="row"><br>
       <div class="alert alert-success col-md-12" role="alert">
@@ -213,29 +214,25 @@ var x = document.getElementById(String(object));
       </div>
     </div>
   {% endif %}
-
-      <div class="container">
-    <div class="btn-group btn-group-justified" role="group" aria-label="...">
-  <div class="btn-group" role="group">
-    <a href="{% url 'views.cos_data_semester' %}"><button type="button" class="btn btn-default">By Semester</button></a>
-  </div>
-  <div class="btn-group" role="group">
-    <a href="{% url 'views.cos_data_course' %}"><button type="button" class="btn btn-default">By Course</button></a>
-  </div>
-  <div class="btn-group" role="group">
-    <a href="{% url 'views.cos_data_req' %}"><button type="button" class="btn btn-default">By Requirement</button></a>
-  </div>
-</div>
-         
-
-     
-   </div>
-   </div>
- </div>
- 
 </div>
 
+<div class="container">
+    <div class="col-md-12">
+      <div class="btn-group btn-group-justified" role="group" aria-label="...">
+      <div class="btn-group" role="group">
+        <a href="{% url 'views.cos_data_semester' %}"><button type="button" class="btn btn-default">By Semester</button></a>
+      </div>
+      <div class="btn-group" role="group">
+        <a href="{% url 'views.cos_data_course' %}"><button type="button" class="btn btn-default">By Course</button></a>
+      </div>
+      <div class="btn-group" role="group">
+        <a href="{% url 'views.cos_data_req' %}"><button type="button" class="btn btn-default">By Requirement</button></a>
+      </div>
+  </div>
+</div>         
 </div> <!-- CONTAINER-->
+<br>
+</div> <!--  Main CONTAINER-->
 </body>
 </html>
 
