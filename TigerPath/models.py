@@ -145,6 +145,15 @@ class GSS(models.Model):
 	def __str__(self):
 		return str(self.course_id)
 		
+class HEL(models.Model):
+	cert_name="Hellenic Studies"
+	course_id = models.IntegerField(primary_key=True)
+	admission = models.IntegerField()
+	sems = models.IntegerField()
+
+	def __str__(self):
+		return str(self.course_id)
+		
 class QCB(models.Model):
 	cert_name="Quantitative and Computational Biolog"
 	course_id = models.IntegerField(primary_key=True)
