@@ -106,6 +106,15 @@ class ROB(models.Model):
 	def __str__(self):
 		return str(self.course_id)
 		
+class LIN(models.Model):
+	cert_name="Linguistics"
+	course_id = models.IntegerField(primary_key=True)
+	intro = models.IntegerField()
+	elective = models.IntegerField()
+
+	def __str__(self):
+		return str(self.course_id)
+		
 class NEU(models.Model):
 	cert_name="Neuroscience"
 	course_id = models.IntegerField(primary_key=True)
