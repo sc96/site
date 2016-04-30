@@ -766,8 +766,8 @@ def four_year(request,search):
 
 @login_required # Cas authentication for this url.
 # if you got a course at Princeton to count as a COS departmental
-dist = ["la", "sa", "ha", "em", "ec", "qr", "stl", "stn"]
 def outside_course_approval(request):
+	dist = ["la", "sa", "ha", "em", "ec", "qr", "stl", "stn"]
 	current_user = request.user
 	student = Student.objects.get(student_id=current_user.username)
 	context = {}
