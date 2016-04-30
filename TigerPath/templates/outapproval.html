@@ -142,7 +142,7 @@ function check_dist(text) {
 <p>Req fulfileld is: {{ req }}<p>
 {% if req %}
 <div class="form-group">
-  <form class = "form-inline" action = "" method = "post" id="classType">{% csrf_token %}
+  <form class = "form" action = "" method = "post" id="classType">{% csrf_token %}
     <label for="course_name">Course Name:</label>
     <input type="text" class="form-control" id="course_name" placeholder="e.g. Summer Photography Class at NYU" value="{{ courseName }}" name="course_title">
     {% if req == "COS" %}
