@@ -103,14 +103,11 @@
 <script>
 var dist_code= ["la", "sa", "ha", "em", "ec", "qr", "stl", "stn"];
 //Remove an item from your course list
+var cached_requirement = "na";
 function Submit_Class(object) {
   var x = document.getElementById(String(object));
-  x.submit();
+  cached_requirement = x.value;
 }
-
-</script>
-<script>
-
 
 function check_dist(text) {
       var index = dist_code.indexOf(text.toLowerCase());
@@ -132,16 +129,69 @@ function check_dist(text) {
         document.getElementById('dist_error')
       );}
     }
+
+function structure_form(text) {
+  var query = text;
+    var CosReq = React.createClass({displayName: 'CosReq',
+    render: function() {
+      return (
+        React.createElement('fieldset', 
+          {className:"form-group"},
+          React.createElement('label',
+            {className: 'form-control',
+             name: 'COSreq'}),
+           React.createElement(
+            "select",
+            { "class": "form-control", name: "COSreq" },
+            React.createElement(
+              "option",
+              { value: "na" },
+              "N/A"
+            ),
+            React.createElement(
+              "option",
+              { value: "theory" },
+              "Theory"
+            ),
+            React.createElement(
+              "option",
+              { value: "systems" },
+              "Systems"
+            ),
+            React.createElement(
+              "option",
+              { value: "apps" },
+              "Applications"
+            ),
+            React.createElement(
+              "option",
+              { value: "other" },
+              "Other"
+            )
+          )
+        ));
+    }
+  });
+  if  (cached_requirement == 'COS'){
+    ReactDOM.render(
+    React.createElement(CosReq, null),
+    document.getElementById('Test_COS')
+    );}
+
+}
 </script>
 <!-- End script -->
-
+<fieldset class="form-group">
+    <label for="formGroupExampleInput">Example label</label>
+    <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Example input">
+  </fieldset>
 
 <div class="container">
   
 <div class="form-group">
    <form class = "form-inline" action = "" method = "post" id="classType">{% csrf_token %}
     <label for="fulfills">Please cite what type of requirement this class fulfills</label>
-    <select class="form-control" name ="reqs" onChange="Submit_Class('classType')">
+    <select class="form-control" id = 'reqs' name ="reqs" onChange="Submit_Class('reqs')">
       <option value ="na">Generic (No Requirements)</option>
       <option value="distribute">Distribution</option>
       <option value="BSE">BSE PreReq</option>
@@ -151,11 +201,13 @@ function check_dist(text) {
   </form>
 </div> <!-- Form -->
 <p>Req fulfileld is: {{ req }}<p>
+<div id="Test_COS"></div>
 {% if req %}
 <div class="form-group">
   <form class = "form" action = "" method = "post" id="classType">{% csrf_token %}
     <label for="course_name">Course Name:</label>
     <input type="text" class="form-control" id="course_name" placeholder="e.g. Summer Photography Class at NYU" value="{{ courseName }}" name="course_title">
+
     {% if req == "COS" %}
     <label for="COSreq">List COS requirements this fulfills</label>
     <select class="form-control" name ="COSreq">
