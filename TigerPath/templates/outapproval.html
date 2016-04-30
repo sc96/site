@@ -263,6 +263,7 @@ var DistError = React.createClass({displayName: 'DistError',
         );
       }
       });
+
 var DistComponent = React.createClass({
   displayName: "DistComponent",  
   getInitialState: function() {
@@ -273,6 +274,8 @@ var DistComponent = React.createClass({
     if (index < 0){
         var txt = this.data;
         var err = React.createElement(DistError, null);
+        console.log(txt);
+        console.log(this.props.children);
         err.update(txt);
         ReactDOM.render(
         err,
@@ -281,7 +284,6 @@ var DistComponent = React.createClass({
   },
   handleChange: function(event) {
       this.setState({data: event.target.value});
-      
     },
   render: function() {
     return React.createElement(
