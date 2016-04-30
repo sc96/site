@@ -769,13 +769,6 @@ def four_year(request,search):
 def outside_course_approval(request):
 	current_user = request.user
 	student = Student.objects.get(student_id=current_user.username)
-	if request.method == 'POST':
-		if 'classType' in request.POST:
-			req = request.POST['req']
-		if 
-
-
-
 	context = {}
 	return render(request, 'outapproval.html', context)
 	
@@ -1254,5 +1247,21 @@ def qcb(request):
 	'research_on': research_on, 'research_off': research_off, 'elective_on': elective_on, 'elective_off': elective_off}
 	return render(request, 'qcb.html', context)
 	
+@login_required
+def gss(request):
+	current_user = request.user
+	student = Student.objects.get(student_id=current_user.username)
+	all_courses = Entry.objects.filter(student_id=current_user.username).values_list('course_id', flat=True).order_by('course_id') # all of the student's courses
+	intro = GSS.objects.filter(intro=1).values_list('course_id', flat=True).order_by('course_id')
+	gss = GSS.objects.filter(gss=1).values_list('course_id', flat=True).order_by('course_id')
+
+	intro_on = title(compare_lists(all_courses, intro)["similarities"])
+	intro_off = title(compare_lists(all_courses, intro)["differences"])
+
+	gss_on = title(compare_lists(all_courses, gss)["similarities"])
+	gss_off = title(compare_lists(all_courses, gss)["differences"])
+
+	context = {'intro_on': intro_on, 'intro_off': intro_off, 'gss_on': gss_on, 'gss_off': gss_off}
+	return render(request, 'gss.html', context)
 	
 
