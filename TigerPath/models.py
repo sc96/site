@@ -106,6 +106,15 @@ class NEU(models.Model):
 	def __str__(self):
 		return str(self.course_id)
 		
+class GSS(models.Model):
+	cert_name="Gender and Sexuality Studies"
+	course_id = models.IntegerField(primary_key=True)
+	intro = models.IntegerField()
+	gss = models.IntegerField()
+
+	def __str__(self):
+		return str(self.course_id)
+		
 class QCB(models.Model):
 	cert_name="Quantitative and Computational Biolog"
 	course_id = models.IntegerField(primary_key=True)
