@@ -309,8 +309,9 @@ def degree_progress(request):
 		elif(re.match(r'(ARA|BCS|CHI|CZE|FRE|GER|HEB|HIN|ITA|JPN|KOR|LAT|POL|POR|RUS|SPA|SWA|TUR|TWI|URD)', course.listings)):
 			student_foreign.append(d)
 		
-		if (re.match(r'MAT3|MAT4|ELE3|ELE4|PHY3|PHY4|ORF3|ORF4', course.listings)):
-			extra_other.append(d)
+		if (re.search(r'MAT3|MAT4|ELE3|ELE4|PHY3|PHY4|ORF3|ORF4', course.listings)):
+			if (Not(re.search(r'COS', course.listings))):
+				extra_other.append(d)
 
 	# something to think about: COS 340 can't pop up in "Other" and in "Theory"
 	# all of the requirement lists
