@@ -1357,7 +1357,7 @@ def hel(request):
 	admission = HEL.objects.filter(admission=1).values_list('course_id', flat=True).order_by('course_id')
 	sems = HEL.objects.filter(sems=1).values_list('course_id', flat=True).order_by('course_id')
 
-	admisssion_on = title(compare_lists(all_courses, admission)["similarities"])
+	admission_on = title(compare_lists(all_courses, admission)["similarities"])
 	admission_off = title(compare_lists(all_courses, admission)["differences"])
 
 	sems_on = title(compare_lists(all_courses, sems)["similarities"])
