@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from .models import Student, Course, COS_BSE, URB, LIN, Entry, Approved_Course, GSS, Engineer, Outside_Course, ROB, AAS, EAS, AFS, AMS, NEU, MUS, GHP, FIN, QCB, CWR, AP_Credit
+from .models import Student, Course, COS_BSE, URB, LIN, Entry, Approved_Course, GSS, VPL, Engineer, Outside_Course, ROB, AAS, EAS, AFS, AMS, NEU, MUS, GHP, FIN, QCB, CWR, AP_Credit
 from django.contrib.auth.decorators import login_required
 import re
 from itertools import chain
@@ -989,6 +989,7 @@ def certificates(request):
 	qcb = QCB.objects.values_list('course_id', flat=True).order_by('course_id')
 	eas = EAS.objects.values_list('course_id', flat=True).order_by('course_id')
 	rob = ROB.objects.values_list('course_id', flat=True).order_by('course_id')
+	vpl = ROB.objects.values_list('course_id', flat=True).order_by('course_id')
 	
 	nsimilar = num_compare(all_courses, aas)
 	cert_dict["African American Studies"]=num_compare(all_courses, aas)
@@ -1002,6 +1003,7 @@ def certificates(request):
 	cert_dict["Quantitative and Computational Biology"]=num_compare(all_courses, qcb)
 	cert_dict["East Asian Studies"]=num_compare(all_courses, eas)
 	cert_dict["Robotics and Intelligent Systems"]=num_compare(all_courses, rob)
+	cert_dict["Values and Public Life"]=num_compare(all_courses, vpl)
 	
 	top_3=[]
 	for i in range(0, 3):
@@ -1260,6 +1262,28 @@ def neu(request):
 	context = {'req_on': req_on, 'req_off': req_off, 'disease_on': disease_on, 'disease_off': disease_off,
 	'circuits_on': circuits_on, 'circuits_off': circuits_off, 'social_on': social_on, 'social_off': social_off}
 	return render(request, 'neu.html', context)
+	
+@login_required
+def vpl(request):
+	current_user = request.user
+	student = Student.objects.get(student_id=current_user.username)
+	all_courses = Entry.objects.filter(student_id=current_user.username).values_list('course_id', flat=True).order_by('course_id') # all of the student's courses
+	core_1 = VPL.objects.filter(core_1=1).values_list('course_id', flat=True).order_by('course_id')
+	core_2 = VPL.objects.filter(core_2=1).values_list('course_id', flat=True).order_by('course_id')
+	core_3 = VPL.objects.filter(core_3=1).values_list('course_id', flat=True).order_by('course_id')
+
+	core_1_on = title(compare_lists(all_courses, core_1)["similarities"])
+	core_1_off = title(compare_lists(all_courses, core_1)["differences"])
+
+	core_2_on = title(compare_lists(all_courses, core_2)["similarities"])
+	core_2_off = title(compare_lists(all_courses, core_2)["differences"])
+
+	core_3_on = title(compare_lists(all_courses, core_3)["similarities"])
+	core_3_off = title(compare_lists(all_courses, core_3)["differences"])
+	
+	context = {'core_1_on': core_1_on, 'core_1_off': core_1_off, 'core_2_on': core_2_on, 'core_2_off': core_2_off,
+	'core_3_on': core_3_on, 'core_3_off': core_3_off}
+	return render(request, 'vpl.html', context)
 	
 @login_required
 def qcb(request):

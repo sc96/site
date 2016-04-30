@@ -126,6 +126,16 @@ class NEU(models.Model):
 	def __str__(self):
 		return str(self.course_id)
 		
+class VPL(models.Model):
+	cert_name="Values and Public life"
+	course_id = models.IntegerField(primary_key=True)
+	core_1 = models.IntegerField()
+	core_2 = models.IntegerField()
+	core_3 = models.IntegerField()
+
+	def __str__(self):
+		return str(self.course_id)
+		
 class GSS(models.Model):
 	cert_name="Gender and Sexuality Studies"
 	course_id = models.IntegerField(primary_key=True)

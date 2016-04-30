@@ -49,6 +49,7 @@ urlpatterns = [
     url(r'^eas/$', views.eas),
     url(r'^rob/$', views.rob),
     url(r'^lin/$', views.lin),
+    url(r'^vpl/$', views.vpl),
     url(r'^outsidecourseapproval/$', views.outside_course_approval),
     url(r'^cosdata/$', views.cos_data),
     url(r'^cosdatasemester/$', views.cos_data_semester),
