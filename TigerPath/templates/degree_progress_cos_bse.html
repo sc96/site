@@ -445,7 +445,10 @@ var x = document.getElementById(String(object));
      <div class="row">
          <div class="col-md-3">
          <div class="list_group" style="text-align:center">
-                <a class="list-group-item active">Calculus I</a>
+                <a class="list-group-item active">Calculus I
+                {% if math_1_on|length >= 1 %} <i class="glyphicon glyphicon-ok pull-right link4"></i> 
+                {% else %} <i class="glyphicon glyphicon-remove pull-right link3"></i> 
+                {% endif %}</a> 
               {% for x in math_1_on %}
                <span>
                <form class= "form-inline" id = "{{x.course.listings}}">
@@ -467,7 +470,10 @@ var x = document.getElementById(String(object));
 
         <div class="col-md-3">
          <div class="list_group" style="text-align:center">
-                <a class="list-group-item active">Calc II</a>
+                <a class="list-group-item active">Calc II
+                {% if math_2_on|length >= 1 %} <i class="glyphicon glyphicon-ok pull-right link4"></i> 
+                {% else %} <i class="glyphicon glyphicon-remove pull-right link3"></i> 
+                {% endif %}</a> 
              {% for x in math_2_on %}
                <span>
                <form class= "form-inline" id = "{{x.course.listings}}">
@@ -490,7 +496,10 @@ var x = document.getElementById(String(object));
 
          <div class="col-md-3">
          <div class="list_group" style="text-align:center">
-                <a class="list-group-item active">Calc III</a>
+                <a class="list-group-item active">Calc III
+                {% if math_3_on|length >= 1 %} <i class="glyphicon glyphicon-ok pull-right link4"></i> 
+                {% else %} <i class="glyphicon glyphicon-remove pull-right link3"></i> 
+                {% endif %}</a> 
               {% for x in math_3_on %}
                <span>
                <form class= "form-inline" id = "{{x.course.listings}}">
@@ -512,7 +521,10 @@ var x = document.getElementById(String(object));
     
          <div class="col-md-3">
          <div class="list_group" style="text-align:center">
-                <a class="list-group-item active">Linear Algebra</a>
+                <a class="list-group-item active">Linear Algebra
+                {% if math_4_on|length >= 1 %} <i class="glyphicon glyphicon-ok pull-right link4"></i> 
+                {% else %} <i class="glyphicon glyphicon-remove pull-right link3"></i> 
+                {% endif %}</a> 
               {% for x in math_4_on %}
                <span>
                <form class= "form-inline" id = "{{x.course.listings}}">
@@ -535,7 +547,10 @@ var x = document.getElementById(String(object));
      <div class="row">    
          <div class="col-md-3">
          <div class="list_group" style="text-align:center">
-                <a class="list-group-item active">Physics I</a>
+                <a class="list-group-item active">Physics I
+                {% if physics_1_on|length >= 1 %} <i class="glyphicon glyphicon-ok pull-right link4"></i> 
+                {% else %} <i class="glyphicon glyphicon-remove pull-right link3"></i> 
+                {% endif %}</a> 
               {% for x in physics_1_on %}
                <span>
                <form class= "form-inline" id = "{{x.course.listings}}">
@@ -557,7 +572,10 @@ var x = document.getElementById(String(object));
          
          <div class="col-md-3">
          <div class="list_group" style="text-align:center">
-                <a class="list-group-item active">Physics II</a>
+                <a class="list-group-item active">Physics II
+                {% if physics_2_on|length >= 3 %} <i class="glyphicon glyphicon-ok pull-right link4"></i> 
+                {% else %} <i class="glyphicon glyphicon-remove pull-right link3"></i> 
+                {% endif %}</a> 
               {% for x in physics_2_on %}
                <span>
                <form class= "form-inline" id = "{{x.course.listings}}">
@@ -579,7 +597,10 @@ var x = document.getElementById(String(object));
          
          <div class="col-md-3">
          <div class="list_group" style="text-align:center">
-                <a class="list-group-item active">Chemistry</a>
+                <a class="list-group-item active">Chemistry
+                {% if chem_1_on|length >= 1 %} <i class="glyphicon glyphicon-ok pull-right link4"></i> 
+                {% else %} <i class="glyphicon glyphicon-remove pull-right link3"></i> 
+                {% endif %}</a> 
              {% for x in chem_1_on %}
                <span>
                <form class= "form-inline" id = "{{x.course.listings}}">
@@ -601,7 +622,10 @@ var x = document.getElementById(String(object));
          
          <div class="col-md-3">
          <div class="list_group" style="text-align:center">
-                <a class="list-group-item active">Computer Science</a>
+                <a class="list-group-item active">Computer Science
+                {% if cos_1_on|length >= 1 %} <i class="glyphicon glyphicon-ok pull-right link4"></i> 
+                {% else %} <i class="glyphicon glyphicon-remove pull-right link3"></i> 
+                {% endif %}</a> 
              {% for x in cos_1_on %}
                <span>
                <form class= "form-inline" id = "{{x.course.listings}}">
