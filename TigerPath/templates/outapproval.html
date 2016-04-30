@@ -248,7 +248,7 @@ function Submit_Class(object) {
 var dist_code= ["la", "sa", "ha", "em", "ec", "qr", "stl", "stn", ""];
 var DistError = React.createClass({displayName: 'DistError',
       getInitialState: function() {
-        return {data: []};
+        return {data: ["hello"]};
       },
       update: function(txt) {
         this.setState({data: txt});
@@ -275,7 +275,7 @@ var DistComponent = React.createClass({
         var txt = this.state.data;
         var err = React.createElement(DistError, null);
         console.log(txt);
-        console.log(err);
+        console.log(err.state);
         ReactDOM.render(
         err,
         document.getElementById('dist_error')
