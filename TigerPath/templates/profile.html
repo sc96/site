@@ -226,7 +226,8 @@ function update_Info() {
 <div style = "text-align:center">
   <p><b>Have you placed out of these courses?</b></p>
 </div>
-<div style = "text-align:center">
+  
+  <div class="row">
 <label class="checkbox-inline" style = "text-align:center">
 {% if ap_dict.calc_1|stringformat:"s" == "1" %}
   <input type="checkbox"   id ="calc_1" checked data-toggle="toggle" data-on="Calc1" data-off="Calc1" >
@@ -234,6 +235,8 @@ function update_Info() {
   <input type="checkbox"  id ="calc_1" data-toggle="toggle" data-on="Calc1" data-off="Calc1" > 
   {% endif %}
 </label>
+</div>
+    <div class="row">
 <label class="checkbox-inline">
 {% if ap_dict.calc_2|stringformat:"s" == "1" %} 
   <input type="checkbox"   id ="calc_2" checked data-toggle="toggle" data-on="Calc2" data-off="Calc2" >
@@ -241,12 +244,17 @@ function update_Info() {
   <input type="checkbox"  id ="calc_2" data-toggle="toggle" data-on="Calc2" data-off="Calc2" > 
   {% endif %}
 </label>
+</div>
+<div class="row">
 <label class="checkbox-inline">
   {% if ap_dict.calc_3|stringformat:"s" == "1" %}
   <input type="checkbox"   id ="calc_3" checked data-toggle="toggle" data-on="Calc3" data-off="Calc3">
   {% else %}
   <input type="checkbox"  id ="calc_3" data-toggle="toggle" data-on="Calc3" data-off="Calc3" > 
   {% endif %} 
+  </label>
+  </div>
+  <div class="row">
 <label class="checkbox-inline">
   {% if ap_dict.lin_alg|stringformat:"s" == "1" %}
   <input type="checkbox"  id ="lin_alg" checked data-toggle="toggle" data-on="Linear" data-off="Linear">
@@ -255,19 +263,7 @@ function update_Info() {
   {% endif %} 
 </label>
 </div>
-</div>
-
-<div class="col-sm-6 col-centered" >
-<div style = "text-align:center">
-<p> <!-- Empty paragraph: Janky margin creation lol -->     </p>
-</div>
-</div>
-
-
-
-<div class="col-sm-6 col-centered" >
-<div style = "text-align:center">
-
+<div class="row">
 <label class="checkbox-inline" style = "text-align:center">
 {% if ap_dict.gen_chem|stringformat:"s" == "1" %}
   <input type="checkbox"   id ="gen_chem" checked data-toggle="toggle" data-on="Chem" data-off="Chem" >
@@ -275,7 +271,8 @@ function update_Info() {
   <input type="checkbox"  id ="gen_chem" data-toggle="toggle" data-on="Chem" data-off="Chem" > 
   {% endif %}
 </label>
-
+</div>
+<div class="row">
 <label class="checkbox-inline" style = "text-align:center">
 {% if ap_dict.physics|stringformat:"s" == "1" %}
   <input type="checkbox"   id ="physics" checked data-toggle="toggle" data-on="Physics" data-off="Physics" >
@@ -283,7 +280,8 @@ function update_Info() {
   <input type="checkbox"  id ="physics" data-toggle="toggle" data-on="Physics" data-off="Physics" > 
   {% endif %}
 </label>
-
+</div>
+<div class="row">
 <label class="checkbox-inline" style = "text-align:center">
 {% if ap_dict.cos|stringformat:"s" == "1" %}
   <input type="checkbox"   id ="cos" checked data-toggle="toggle" data-on="Cos" data-off="Cos" >
@@ -295,21 +293,10 @@ function update_Info() {
 </div>
 
 
-
-
-</div>
 </div>
 
 
-<div class = "container-fluid">
-<div class ="row">
-<div class="alert alert-success col-md-12" role="alert">
 
-<b> test </b>
-
-</div>
-</div>
-</div>
 
 
 
