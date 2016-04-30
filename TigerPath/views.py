@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from .models import Student, Course, COS_BSE, URB, Entry, Approved_Course, GSS, Engineer, Outside_Course, ROB, AAS, EAS, AFS, AMS, NEU, MUS, GHP, FIN, QCB, CWR, AP_Credit
+from .models import Student, Course, COS_BSE, URB, LIN, Entry, Approved_Course, GSS, Engineer, Outside_Course, ROB, AAS, EAS, AFS, AMS, NEU, MUS, GHP, FIN, QCB, CWR, AP_Credit
 from django.contrib.auth.decorators import login_required
 import re
 from itertools import chain
@@ -1352,4 +1352,20 @@ def rob(request):
 	'cog_on': cog_on, 'cog_off': cog_off, 'elective_on': elective_on, 'elective_off': elective_off}
 	return render(request, 'rob.html', context)
 
+@login_required
+def lin(request):
+	current_user = request.user
+	student = Student.objects.get(student_id=current_user.username)
+	all_courses = Entry.objects.filter(student_id=current_user.username).values_list('course_id', flat=True).order_by('course_id') # all of the student's courses
+	intro = LIN.objects.filter(intro=1).values_list('course_id', flat=True).order_by('course_id')
+	elective = LIN.objects.filter(elective=1).values_list('course_id', flat=True).order_by('course_id')
+
+	intro_on = title(compare_lists(all_courses, intro)["similarities"])
+	intro_off = title(compare_lists(all_courses, intro)["differences"])
+
+	elective_on = title(compare_lists(all_courses, elective)["similarities"])
+	elective_off = title(compare_lists(all_courses, elective)["differences"])
+
+	context = {'intro_on': intro_on, 'intro_off': intro_off, 'elective_on': elective_on, 'elective_off': elective_off}
+	return render(request, 'lin.html', context)
 
