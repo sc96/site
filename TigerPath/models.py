@@ -273,7 +273,7 @@ class Student(models.Model):
 	def remove_courseSummer(self, course, student):
 		s = student
 		c = course
-		obj = Outside_Course.filter(student_id = s, course_name = c)
+		obj = Outside_Course.filter(student = s, course_name = c)
 		obj.delete()
 
 
