@@ -263,14 +263,18 @@ var DistComponent = React.createClass({
   getInitialState: function() {
         return {data: []};
       },
-  check_dist: function(text) {
-      var index = dist_code.indexOf(text);
-      var query = text;
-      if (index < 0){
+  componentDidUpdate: function() {
+    if (index < 0){
         ReactDOM.render(
         React.createElement(DistError, null),
         document.getElementById('dist_error')
       );}
+  }
+  check_dist: function(text) {
+      var index = dist_code.indexOf(text);
+      var query = text;
+      setState({data: text});
+      
     },
   render: function() {
     return React.createElement(
