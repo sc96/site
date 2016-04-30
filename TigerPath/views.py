@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from .models import Student, Course, COS_BSE, URB, Entry, Approved_Course, Engineer, Outside_Course, AAS, AFS, AMS, NEU, MUS, GHP, FIN, CWR,AP_Credit
+from .models import Student, Course, COS_BSE, URB, Entry, Approved_Course, Engineer, Outside_Course, AAS, AFS, AMS, NEU, MUS, GHP, FIN, QCB, CWR, AP_Credit
 from django.contrib.auth.decorators import login_required
 import re
 from itertools import chain
@@ -957,6 +957,7 @@ def certificates(request):
 	mus = MUS.objects.values_list('course_id', flat=True).order_by('course_id')
 	neu = NEU.objects.values_list('course_id', flat=True).order_by('course_id')
 	cwr = CWR.objects.values_list('course_id', flat=True).order_by('course_id')
+	qcb = CWR.objects.values_list('course_id', flat=True).order_by('course_id')
 	
 	nsimilar = num_compare(all_courses, aas)
 	cert_dict["African American Studies"]=num_compare(all_courses, aas)
@@ -966,7 +967,9 @@ def certificates(request):
 	cert_dict["Musical Performance"]=num_compare(all_courses, mus)
 	cert_dict["Global Health and Health Policy"]=num_compare(all_courses, ghp)
 	cert_dict["Finance"]=num_compare(all_courses, fin)
-	cert_dict["Creative Writing"]=num_compare(all_courses, fin)
+	cert_dict["Creative Writing"]=num_compare(all_courses, cwr)
+	cert_dict["Quantitative and Computational Biology"]=num_compare(all_courses, qcb)
+	
 	top_3=[]
 	for i in range(0, 3):
 		maximum = max(cert_dict, key=lambda i: cert_dict[i])
@@ -1224,6 +1227,32 @@ def neu(request):
 	context = {'req_on': req_on, 'req_off': req_off, 'disease_on': disease_on, 'disease_off': disease_off,
 	'circuits_on': circuits_on, 'circuits_off': circuits_off, 'social_on': social_on, 'social_off': social_off}
 	return render(request, 'neu.html', context)
+	
+@login_required
+def qcb(request):
+	current_user = request.user
+	student = Student.objects.get(student_id=current_user.username)
+	all_courses = Entry.objects.filter(student_id=current_user.username).values_list('course_id', flat=True).order_by('course_id') # all of the student's courses
+	isc = QCB.objects.filter(isc=1).values_list('course_id', flat=True).order_by('course_id')
+	regular = QCB.objects.filter(regular=1).values_list('course_id', flat=True).order_by('course_id')
+	research = QCB.objects.filter(research=1).values_list('course_id', flat=True).order_by('course_id')
+	elective = QCB.objects.filter(elective=1).values_list('course_id', flat=True).order_by('course_id')
+
+	isc_on = title(compare_lists(all_courses, isc)["similarities"])
+	isc_off = title(compare_lists(all_courses, isc)["differences"])
+
+	regular_on = title(compare_lists(all_courses, regular)["similarities"])
+	regular_off = title(compare_lists(all_courses, regular)["differences"])
+
+	research_on = title(compare_lists(all_courses, research)["similarities"])
+	research_off = title(compare_lists(all_courses, research)["differences"])
+	
+	elective_on = title(compare_lists(all_courses, elective)["similarities"])
+	elective_off = title(compare_lists(all_courses, elective)["differences"])
+
+	context = {'isc_on': isc_on, 'isc_off': isc_off, 'regular_on': regular_on, 'regular_off': regular_off,
+	'research_on': research_on, 'research_off': research_off, 'elective_on': elective_on, 'elective_off': elective_off}
+	return render(request, 'qcb.html', context)
 	
 	
 
