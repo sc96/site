@@ -250,6 +250,9 @@ var DistError = React.createClass({displayName: 'DistError',
       getInitialState: function() {
         return {data: []};
       },
+      update: function(txt) {
+        this.setState({data: txt});
+      }
       render: function() {
         return (
           React.createElement('div', 
@@ -267,10 +270,10 @@ var DistComponent = React.createClass({
       },
   componentDidUpdate: function() {
     var index = dist_code.indexOf(this.data);
-    var txt = this.data;
     if (index < 0){
+        var txt = this.data;
         var err = React.createElement(DistError, null);
-        err.setState({data: txt});
+        err.update(txt);
         ReactDOM.render(
         err,
         document.getElementById('dist_error')
