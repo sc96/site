@@ -310,8 +310,7 @@ def degree_progress(request):
 			student_foreign.append(d)
 		
 		if (re.match(r'(MAT3|MAT4|ELE3|ELE4|PHY3|PHY4|ORF3|ORF4)', course.listings)):
-			if (Not(re.match(r'COS', course.listings))):
-				extra_other.append(d)
+			extra_other.append(d)
 
 	# something to think about: COS 340 can't pop up in "Other" and in "Theory"
 	# all of the requirement lists
