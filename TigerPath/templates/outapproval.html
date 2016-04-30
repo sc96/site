@@ -248,7 +248,7 @@ function Submit_Class(object) {
 var dist_code= ["la", "sa", "ha", "em", "ec", "qr", "stl", "stn"];
 var DistComponent = React.createClass({
   displayName: "DistComponent",  
-  check_dist: function() {
+  check_dist: function(text) {
       var index = dist_code.indexOf(text.toLowerCase());
       var query = text;
       var DistError = React.createClass({displayName: 'DistError',
