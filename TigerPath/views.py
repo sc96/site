@@ -982,7 +982,7 @@ def certificates(request):
 	qcb = QCB.objects.values_list('course_id', flat=True).order_by('course_id')
 	eas = EAS.objects.values_list('course_id', flat=True).order_by('course_id')
 	rob = ROB.objects.values_list('course_id', flat=True).order_by('course_id')
-	vpl = ROB.objects.values_list('course_id', flat=True).order_by('course_id')
+	vpl = VPL.objects.values_list('course_id', flat=True).order_by('course_id')
 	hel = HEL.objects.values_list('course_id', flat=True).order_by('course_id')
 	
 	nsimilar = num_compare(all_courses, aas)
@@ -998,7 +998,7 @@ def certificates(request):
 	cert_dict["East Asian Studies"]=num_compare(all_courses, eas)
 	cert_dict["Robotics and Intelligent Systems"]=num_compare(all_courses, rob)
 	cert_dict["Values and Public Life"]=num_compare(all_courses, vpl)
-	cert_dict["Hellenic Studies"]=num_compare(all_courses, vpl)
+	cert_dict["Hellenic Studies"]=num_compare(all_courses, hel)
 	
 	top_3=[]
 	for i in range(0, 3):
@@ -1357,7 +1357,7 @@ def hel(request):
 	admission = HEL.objects.filter(admission=1).values_list('course_id', flat=True).order_by('course_id')
 	sems = HEL.objects.filter(sems=1).values_list('course_id', flat=True).order_by('course_id')
 
-	admisssion_on = title(compare_lists(all_courses, admission)["similarities"])
+	admission_on = title(compare_lists(all_courses, admission)["similarities"])
 	admission_off = title(compare_lists(all_courses, admission)["differences"])
 
 	sems_on = title(compare_lists(all_courses, sems)["similarities"])
