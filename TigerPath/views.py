@@ -581,26 +581,26 @@ def degree_progress(request):
 		
 		# ap credit working now
 		if (AP_Credit.objects.filter(student_name=current_user.username, course_id="538").exists()):
-			(student.calc_1 == 1):
+			if (student.calc_1 == 1):
 				math_1_credit = AP_Credit.objects.filter(student_name=current_user.username, course_id="538").values_list('course_id', flat=True)
 		math_1_on = title(compare_lists(chain(all_courses, math_1_credit), math_1)["similarities"])
 		math_1_off = title(compare_lists(chain(all_courses, math_1_credit), math_1)["differences"])
 		#math_1_off=[]
 		
 		if (AP_Credit.objects.filter(student_name=current_user.username, course_id="1029").exists()):
-			(student.calc_2 == 1):
+			if (student.calc_2 == 1):
 				math_2_credit = AP_Credit.objects.filter(student_name=current_user.username, course_id="1029").values_list('course_id', flat=True)
 		math_2_on = title(compare_lists(map(int, chain(all_courses, math_2_credit)), math_2)["similarities"])
 		math_2_off = title(compare_lists(map(int, chain(all_courses, math_2_credit)), math_2)["differences"])
 		
 		if (AP_Credit.objects.filter(student_name=current_user.username, course_id="1176").exists()):
-			(student.calc_3 == 1):
+			if (student.calc_3 == 1):
 				math_3_credit = AP_Credit.objects.filter(student_name=current_user.username, course_id="1176").values_list('course_id', flat=True)
 		math_3_on = title(compare_lists(map(int, chain(all_courses, math_3_credit)), math_3)["similarities"])
 		math_3_off = title(compare_lists(map(int, chain(all_courses, math_3_credit)), math_3)["differences"])
 		
 		if (AP_Credit.objects.filter(student_name=current_user.username, course_id="1160").exists()):
-			(student.lin_alg == 1):
+			if (student.lin_alg == 1):
 				math_4_credit = AP_Credit.objects.filter(student_name=current_user.username, course_id="1160").values_list('course_id', flat=True)
 		math_4_on = title(compare_lists(map(int, chain(all_courses, math_4_credit)), math_4)["similarities"])
 		math_4_off = title(compare_lists(map(int, chain(all_courses, math_4_credit)), math_4)["differences"])
