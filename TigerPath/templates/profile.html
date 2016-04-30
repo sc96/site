@@ -139,7 +139,10 @@ function update_Info() {
     alert.appendChild(b)
     row.appendChild(alert)
     container.appendChild(row)
-    document.body.appendChild(container)
+  //  document.body.appendChild(container)
+    title = document.getElementById("titlediv");
+    body = document.body
+    body.insertBefore(container, title)
 
   
 
@@ -181,7 +184,7 @@ function update_Info() {
 
 
 
-<div class="container">
+<div class="container" id ="titlediv">
   
   <div class="page-header" style="color:#ff8f00">
   <div style="text-align:center">
