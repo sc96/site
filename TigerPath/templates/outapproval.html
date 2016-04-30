@@ -110,16 +110,27 @@ function Submit_Class(object) {
 
 </script>
 <script>
+
+
 function check_dist(text) {
       var index = dist_code.indexOf(text.toLowerCase());
       var query = text;
+      var DistError = React.createClass({displayName: 'DistError',
+      render: function() {
+        return (
+          React.createElement('div', 
+            {className:"alert alert-warning col-md-12"},
+            {role: "alert"},
+            "Error: Invalid dist code."
+          )
+        );
+      }
+    });
       if  (index < 0){
         ReactDOM.render(
-          <div class="alert alert-warning col-md-12" role="alert">
-              <b>Error:</b> query not a legal distribution code.
-          </div>,
-          document.getElementById('dist_error')
-        );}
+        React.createElement(DistError, null),
+        document.getElementById('dist_error')
+      );}
     }
 </script>
 <!-- End script -->
