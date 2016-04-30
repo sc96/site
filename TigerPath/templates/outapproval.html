@@ -121,7 +121,7 @@ function check_dist(text) {
 <div class="form-group">
    <form class = "form-inline" action = "" method = "post" id="classType">
     <label for="fulfills">Please cite what type of requirement this class fulfills</label>
-    <select class="form-control" name ="reqs" onChange="Submit(classType)">
+    <select class="form-control" name ="reqs" onChange="Submit('classType')">
       <option value ="na">Generic (No Requirements)</option>
       <option value="distribute">Distribution</option>
       <option value="BSE">BSE PreReq</option>
@@ -160,7 +160,7 @@ function check_dist(text) {
     {% endif %}
     {% if req == "distribute" %}
     <label for="Distribution">State approved distribution area:</label>
-    <input type="text" class="form-control" name="Distribution" placeholder="e.g. SA" value="{{ courseName }}" onChange="check_dist()">
+    <input type="text" class="form-control" name="Distribution" placeholder="e.g. SA" value="{{ courseName }}" onChange="check_dist(this.value)">
     {% endif %}
     <input type="submit" class="btn btn-info" value="Add Class">
   </form>
