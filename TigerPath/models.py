@@ -126,6 +126,17 @@ class QCB(models.Model):
 	def __str__(self):
 		return str(self.course_id)
 		
+class EAS(models.Model):
+	cert_name="East Asian Studies"
+	course_id = models.IntegerField(primary_key=True)
+	chin = models.IntegerField()
+	japan = models.IntegerField()
+	korean = models.IntegerField()
+	upper = models.IntegerField()
+
+	def __str__(self):
+		return str(self.course_id)
+		
 class MUS(models.Model):
 	cert_name="Musical Performance"
 	course_id = models.IntegerField(primary_key=True)
