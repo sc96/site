@@ -116,40 +116,14 @@
   </form>
 </div> <!-- Form -->
 <p>Req fulfileld is: {{ req }}<p>
-<div id="Test_COS"></div>
 {% if req %}
 <div class="form-group">
   <form class = "form" action = "" method = "post" id="classType">{% csrf_token %}
     <label for="course_name">Course Name:</label>
     <input type="text" class="form-control" id="course_name" placeholder="e.g. Summer Photography Class at NYU" value="{{ courseName }}" name="course_title">
-
-    {% if req == "COS" %}
-    <label for="COSreq">List COS requirements this fulfills</label>
-    <select class="form-control" name ="COSreq">
-      <option value= "na">N/A</option>
-      <option value= "theory">Theory</option>
-      <option value="systems">Systems</option>
-      <option value="apps">Applications</option>
-      <option value="other">Other</option>
-    </select>
-    {% endif %}
-    {% if req == "BSE" %}
-    <label for="BSEreq">Choose BSE general requirement this fulfills</label>
-    <select class="form-control" name ="BSEreq">
-      <option value="c1">Calc 1</option>
-      <option value="c2">Calc 2</option>
-      <option value="c3">Calc 3</option>
-      <option value="comp">General Computing</option>
-      <option value="chm">General Chemistry</option>
-      <option value="phm">Physics - Mechanics </option>
-      <option value="phem">Physics - EM </option>
-      <option value="other">Other</option>
-    </select>
-    {% endif %}
-    {% if req == "distribute" %}
-    <label for="Distribution">State approved distribution area:</label>
-    <input type="text" class="form-control" name="Distribution" placeholder="e.g. SA" value="{{ courseName }}" onChange="check_dist(this.value)">
-    {% endif %}
+    <div id="Test_COS"></div>
+    <div id="Test_BSE"></div>
+    <div id="Test_dist"></div>
      <span id="dist_error" class="row"></span>
      <br>
     <input type="submit" class="btn btn-info" value="Add Class">
@@ -236,10 +210,96 @@ function check_dist(text) {
       );
     }
   });
+  var BseReq = = React.createClass({
+  displayName: "NewComponent",
+
+  render: function render() {
+    return React.createElement(
+      "div",
+      null,
+      React.createElement(
+        "label",
+        { htmlFor: "BSEreq" },
+        "Choose BSE general requirement this fulfills"
+      ),
+      React.createElement(
+        "select",
+        { className: "form-control", name: "BSEreq" },
+        React.createElement(
+          "option",
+          { value: "c1" },
+          "Calc 1"
+        ),
+        React.createElement(
+          "option",
+          { value: "c2" },
+          "Calc 2"
+        ),
+        React.createElement(
+          "option",
+          { value: "c3" },
+          "Calc 3"
+        ),
+        React.createElement(
+          "option",
+          { value: "comp" },
+          "General Computing"
+        ),
+        React.createElement(
+          "option",
+          { value: "chm" },
+          "General Chemistry"
+        ),
+        React.createElement(
+          "option",
+          { value: "phm" },
+          "Physics - Mechanics "
+        ),
+        React.createElement(
+          "option",
+          { value: "phem" },
+          "Physics - EM "
+        ),
+        React.createElement(
+          "option",
+          { value: "other" },
+          "Other"
+        )
+      )
+    );
+  }
+});
+var DistComponent = React.createClass({
+  displayName: "DistComponent",
+
+  render: function render() {
+    return React.createElement(
+      "div",
+      null,
+      React.createElement(
+        "label",
+        { htmlFor: "Distribution" },
+        "State approved distribution area:"
+      ),
+      React.createElement("input", { type: "text", className: "form-control", name: "Distribution", placeholder: "e.g. SA", defaultValue: "{{ courseName }}", onchange: "check_dist(this.value)" })
+    );
+  }
+});
+
   if  (cached_requirement == 'na'){
     ReactDOM.render(
     React.createElement(CosReq, null),
     document.getElementById('Test_COS')
+    );}
+  if  (cached_requirement == 'na'){
+    ReactDOM.render(
+    React.createElement(BseReq, null),
+    document.getElementById('Test_BSE')
+    );}
+  if  (cached_requirement == 'na'){
+    ReactDOM.render(
+    React.createElement(DistComponent, null),
+    document.getElementById('Test_dist')
     );}
 
 </script>
