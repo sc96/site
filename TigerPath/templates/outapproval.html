@@ -264,16 +264,16 @@ var DistComponent = React.createClass({
         return {data: []};
       },
   componentDidUpdate: function() {
+    var index = dist_code.indexOf(text);
+    var query = text;
     if (index < 0){
         ReactDOM.render(
         React.createElement(DistError, null),
         document.getElementById('dist_error')
       );}
   }
-  check_dist: function(text) {
-      var index = dist_code.indexOf(text);
-      var query = text;
-      setState({data: text});
+  handleChange: function(event) {
+      this.setState({data: event.target.value});
       
     },
   render: function() {
@@ -285,7 +285,7 @@ var DistComponent = React.createClass({
         { htmlFor: "Distribution" },
         "State approved distribution area:"
       ),
-      React.createElement("input", { type: "text", className: "form-control", name: "Distribution", placeholder: "e.g. SA", onChange: this.check_dist(this.data) })
+      React.createElement("input", { type: "text", className: "form-control", name: "Distribution", placeholder: "e.g. SA", onChange: this.handleChange)
     );
   }
 });
