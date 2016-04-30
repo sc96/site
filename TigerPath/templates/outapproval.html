@@ -115,8 +115,6 @@
     </select>
   </form>
 </div> <!-- Form -->
-<p>Req fulfileld is: {{ req }}<p>
-{% if req %}
 <div class="form-group">
   <form class = "form" action = "" method = "post" id="classType">{% csrf_token %}
     <label for="course_name">Course Name:</label>
@@ -129,7 +127,6 @@
     <input type="submit" class="btn btn-info" value="Add Class">
   </form>
 </div> <!-- form-group -->
-{% endif %}
 
 
 
