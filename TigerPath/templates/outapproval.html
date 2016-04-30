@@ -245,13 +245,17 @@ function Submit_Class(object) {
     );
   }
 });
-var dist_code= ["la", "sa", "ha", "em", "ec", "qr", "stl", "stn"];
+var dist_code= ["la", "sa", "ha", "em", "ec", "qr", "stl", "stn", ""];
 var DistComponent = React.createClass({
   displayName: "DistComponent",  
+  getInitialState: function() {
+        return {data: []};
+      },
   check_dist: function(text) {
       var index = dist_code.indexOf(text);
       var query = text;
       var DistError = React.createClass({displayName: 'DistError',
+      
       render: function() {
         return (
           React.createElement('div', 
@@ -277,7 +281,7 @@ var DistComponent = React.createClass({
         { htmlFor: "Distribution" },
         "State approved distribution area:"
       ),
-      React.createElement("input", { type: "text", className: "form-control", name: "Distribution", placeholder: "e.g. SA", defaultValue: "{{ courseName }}", onChange: this.check_dist(this.value) })
+      React.createElement("input", { type: "text", className: "form-control", name: "Distribution", placeholder: "e.g. SA", onChange: this.check_dist(this.data) })
     );
   }
 });
