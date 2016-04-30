@@ -766,17 +766,35 @@ def four_year(request,search):
 
 @login_required # Cas authentication for this url.
 # if you got a course at Princeton to count as a COS departmental
+dist = ["la", "sa", "ha", "em", "ec", "qr", "stl", "stn"]
 def outside_course_approval(request):
 	current_user = request.user
 	student = Student.objects.get(student_id=current_user.username)
+	context = {}
 	if request.method == 'POST':
 		if 'classType' in request.POST:
 			req = request.POST['req']
-		if 
-
-
-
-	context = {}
+			context['req'] = req
+		elif 'course_title' in request.POST:
+			title = request.POST['course_title']
+			context['title'] = title
+			if "COSreq" in request.POST:
+				COSreq = request.POST["COSreq"]
+				context['COSreq'] = COSreq
+			if "BSEreq" in request.POST:
+				BSEreq = request.POST["BSEreq"]
+				context['BSEreq'] = BSEreq
+			if "Distribution" in request.POST:
+				distr = request.POST["Distribution"]
+				context['distr'] = distr
+	inv_dept = False
+	if request.method == 'GET':
+			if 'q' in request.GET:
+				dep_search = request.GET['q']:
+				if dep_search.lower() not in dist:
+					inv_dept = True		
+	context['inv_dept'] = inv_dept
+	
 	return render(request, 'outapproval.html', context)
 	
 @login_required # Cas authentication for this url.
