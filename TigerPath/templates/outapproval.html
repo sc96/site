@@ -246,17 +246,11 @@ function Submit_Class(object) {
   }
 });
 var dist_code= ["la", "sa", "ha", "em", "ec", "qr", "stl", "stn", ""];
-var DistComponent = React.createClass({
-  displayName: "DistComponent",  
-  getInitialState: function() {
-        return {data: []};
-      },
-  check_dist: function(text) {
+function check_dist(text) {
       var index = dist_code.indexOf(text);
       var query = text;
       var DistError = React.createClass({displayName: 'DistError',
-      
-      render: function() {
+            render: function() {
         return (
           React.createElement('div', 
             {className:"alert alert-danger col-md-12", 
@@ -272,6 +266,11 @@ var DistComponent = React.createClass({
         document.getElementById('dist_error')
       );}
     },
+var DistComponent = React.createClass({
+  displayName: "DistComponent",  
+  getInitialState: function() {
+        return {data: []};
+      },  
   render: function() {
     return React.createElement(
       "div",
@@ -281,7 +280,7 @@ var DistComponent = React.createClass({
         { htmlFor: "Distribution" },
         "State approved distribution area:"
       ),
-      React.createElement("input", { type: "text", className: "form-control", name: "Distribution", placeholder: "e.g. SA", onChange: this.check_dist(this.data) })
+      React.createElement("input", { type: "text", className: "form-control", name: "Distribution", placeholder: "e.g. SA", onChange: check_dist(this.data)})
     );
   }
 });
