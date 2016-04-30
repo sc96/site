@@ -228,6 +228,7 @@ var x = document.getElementById(String(object));
         <div class="col-md-4">
          <div class="list_group" style="text-align:center">
                 <a class="list-group-item active">Theory</a>
+                {% if {theory_on|length} >= 2 %} hello {% endif %}
              {% for x in theory_on %}
                <span>
                <form class= "form-inline" id = "{{x.course.listings}}">
