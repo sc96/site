@@ -771,7 +771,6 @@ def outside_course_approval(request):
 	current_user = request.user
 	student = Student.objects.get(student_id=current_user.username)
 	context = {}
-<<<<<<< HEAD
 	if request.method == 'POST':
 		if 'classType' in request.POST:
 			req = request.POST['req']
@@ -795,10 +794,8 @@ def outside_course_approval(request):
 				if dep_search.lower() not in dist:
 					inv_dept = True		
 	context['inv_dept'] = inv_dept
-=======
->>>>>>> origin/master
 	return render(request, 'outapproval.html', context)
-	
+
 @login_required # Cas authentication for this url.
 # if you got a course at Princeton to count as a COS departmental
 def cos_data_semester(request):
