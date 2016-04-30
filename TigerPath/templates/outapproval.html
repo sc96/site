@@ -101,12 +101,15 @@
 
 <!-- Script to check department code -->
 <script>
+var dist_code= ["la", "sa", "ha", "em", "ec", "qr", "stl", "stn"]
 //Remove an item from your course list
 function Submit_class(object) {
   var x = document.getElementById(String(object));
   x.submit();
 };
+function check_dist(text) {
 
+}
 
 
 </script>
@@ -132,7 +135,7 @@ function Submit_class(object) {
   <form class = "form-inline" action = "" method = "post" id="classType">
     <label for="course_name">Course Name:</label>
     <input type="text" class="form-control" id="course_name" placeholder="e.g. Summer Photography Class at NYU" value="{{ courseName }}" name="course_title">
-    {% if req==COS %}
+    {% if req == "COS" %}
     <label for="COSreq">List COS requirements this fulfills</label>
     <select class="form-control" name ="COSreq">
       <option value= "na">N/A</option>
@@ -142,7 +145,7 @@ function Submit_class(object) {
       <option value="other">Other</option>
     </select>
     {% endif %}
-    {% if req==BSE %}
+    {% if req == "BSE" %}
     <label for="BSEreq">Choose BSE general requirement this fulfills</label>
     <select class="form-control" name ="BSEreq">
       <option value="c1">Calc 1</option>
@@ -155,9 +158,9 @@ function Submit_class(object) {
       <option value="other">Other</option>
     </select>
     {% endif %}
-    {% if req==dist %}
+    {% if req == "dist" %}
     <label for="Distribution">State approved distribution area:</label>
-    <input type="text" class="form-control" name="Distribution" placeholder="e.g. SA" value="{{ courseName }}">
+    <input type="text" class="form-control" name="Distribution" placeholder="e.g. SA" value="{{ courseName }}" onChange="check_dist()">
     {% endif %}
     <input type="submit" class="btn btn-info" value="Add Class">
   </form>
