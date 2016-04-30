@@ -555,7 +555,10 @@ var x = document.getElementById(String(object));
      <div class="row">
          <div class="col-md-4">
          <div class="list_group" style="text-align:center">
-                <a class="list-group-item active">LA</a>
+                <a class="list-group-item active">LA
+                {% if student_la|length >= 2 %} <i class="glyphicon glyphicon-ok pull-right link4"></i> 
+                {% else %} <i class="glyphicon glyphicon-remove pull-right link3"></i> 
+                {% endif %}</a> 
              {% for x in student_la %}
                <span>
                  <form class= "form-inline" id = "{{x.course.listings}}">
@@ -572,7 +575,10 @@ var x = document.getElementById(String(object));
 
         <div class="col-md-4">
          <div class="list_group" style="text-align:center">
-                <a class="list-group-item active">EC</a>
+                <a class="list-group-item active">EC
+                {% if student_ec|length >= 1 %} <i class="glyphicon glyphicon-ok pull-right link4"></i> 
+                {% else %} <i class="glyphicon glyphicon-remove pull-right link3"></i> 
+                {% endif %}</a> 
              {% for x in student_ec %}
                <span>
                <form class= "form-inline" id = "{{x.course.listings}}">
@@ -589,7 +595,10 @@ var x = document.getElementById(String(object));
 
          <div class="col-md-4">
          <div class="list_group">
-                <a class="list-group-item active" style="text-align:center">EM</a>
+                <a class="list-group-item active" style="text-align:center">EM
+                {% if student_em|length >= 1 %} <i class="glyphicon glyphicon-ok pull-right link4"></i> 
+                {% else %} <i class="glyphicon glyphicon-remove pull-right link3"></i> 
+                {% endif %}</a> 
              {% for x in student_em %}
                <span>
                <form class= "form-inline" id = "{{x.course.listings}}">
@@ -607,7 +616,10 @@ var x = document.getElementById(String(object));
          
          <div class="col-md-4">
          <div class="list_group">
-                <a class="list-group-item active" style="text-align:center">SA</a>
+                <a class="list-group-item active" style="text-align:center">SA
+                {% if student_sa|length >= 2 %} <i class="glyphicon glyphicon-ok pull-right link4"></i> 
+                {% else %} <i class="glyphicon glyphicon-remove pull-right link3"></i> 
+                {% endif %}</a> 
              {% for x in student_sa %}
                <span>
                <form class= "form-inline" id = "{{x.course.listings}}">
@@ -622,7 +634,10 @@ var x = document.getElementById(String(object));
          
          <div class="col-md-4">
          <div class="list_group">
-                <a class="list-group-item active" style="text-align:center">HA</a>
+                <a class="list-group-item active" style="text-align:center">HA
+                {% if student_ha|length >= 1 %} <i class="glyphicon glyphicon-ok pull-right link4"></i> 
+                {% else %} <i class="glyphicon glyphicon-remove pull-right link3"></i> 
+                {% endif %}</a> 
              {% for x in student_ha %}
                <span>
                <form class= "form-inline" id = "{{x.course.listings}}">
@@ -637,7 +652,10 @@ var x = document.getElementById(String(object));
          
          <div class="col-md-4">
          <div class="list_group">
-                <a class="list-group-item active" style="text-align:center">Writing Seminar</a>
+                <a class="list-group-item active" style="text-align:center">Writing Seminar
+                {% if student_wri|length >= 1 %} <i class="glyphicon glyphicon-ok pull-right link4"></i> 
+                {% else %} <i class="glyphicon glyphicon-remove pull-right link3"></i> 
+                {% endif %}</a> 
              {% for x in student_wri %}
                <span>
                <form class= "form-inline" id = "{{x.course.listings}}">
@@ -671,7 +689,10 @@ var x = document.getElementById(String(object));
          
         <div class="col-md-4">
         <div class="list_group">
-              <a class="list-group-item active" style="text-align:center">STL/STN</a>
+              <a class="list-group-item active" style="text-align:center">STL/STN
+              {% if student_stln|length >= 2 %} <i class="glyphicon glyphicon-ok pull-right link4"></i> 
+                {% else %} <i class="glyphicon glyphicon-remove pull-right link3"></i> 
+                {% endif %}</a> 
             {% for x in student_stln %}
               <span>
               <form class= "form-inline" id = "{{x.course.listings}}">
