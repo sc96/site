@@ -277,7 +277,7 @@ var DistComponent = React.createClass({
         { htmlFor: "Distribution" },
         "State approved distribution area:"
       ),
-      React.createElement("input", { type: "text", className: "form-control", name: "Distribution", placeholder: "e.g. SA", defaultValue: "{{ courseName }}", onChange: check_dist(this.value) })
+      React.createElement("input", { type: "text", className: "form-control", name: "Distribution", placeholder: "e.g. SA", defaultValue: "{{ courseName }}", onChange: this.check_dist(this.value) })
     );
   }
 });
