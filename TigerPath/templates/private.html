@@ -1,0 +1,80 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+
+{% block content %}
+
+<html>
+<head>
+  
+  <title>TigerPath | Private</title>
+  
+   
+</head>
+<body style="padding-top: 70px; padding-bottom: 70px;">
+
+
+    
+    
+<nav class="navbar navbar-inverse navbar-fixed-top">
+  <div class="container-fluid">
+
+    <ul class="nav navbar-nav">
+      <li><a href="/fouryear">Four Year</a></li>
+      <li><a href="/degreeprogress">Degree Progress</a></li> 
+      <li><a href="/certificates">Certificates</a></li> 
+      <!--li><a href="/princetoncourseapproval">Princeton Course Approval</a></li--> 
+      <li><a href="/outsidecourseapproval">Outside Course Approval</a></li> 
+      <li><a href="/schedulesharing">Schedule Sharing</a></li> 
+      <li><a href="/cosdata">COS Data</a></li>  
+    </ul>
+    <ul class="nav navbar-nav navbar-right">
+        <li><a href="/about">About</a></li> 
+        <li class="dropdown active">  
+    <a class="dropdown-toggle" data-hover="dropdown" data-delay="100" data-close-others="false">
+        {{ user }} <b class="caret"></b>
+    </a>
+    <ul class="dropdown-menu">
+      <li class="active"><a href="/profile"><span class="glyphicon glyphicon-cog"></span> Profile</a></li>
+        <li><a href="/logout"><span class="glyphicon glyphicon-log-in"></span> Log out</a></li>
+    </ul>
+</li>  
+
+    </ul>
+  </div>
+</nav>
+
+
+
+
+<div class="container" id ="titlediv">
+  
+  <div class="page-header" style="color:#ff8f00">
+  <div style="text-align:center">
+  <h1>Sorry! User is private.</h1>
+  </div>
+</div>
+
+<!-- Form with all the questions -->
+
+
+
+
+
+
+
+
+
+
+
+<nav class="navbar navbar-default navbar-fixed-bottom">
+  <div class="container"> 
+  <div style="text-align:center"><br>
+     TigerPath | COS 333 Project made by: Natalie Wertz, Sam Cheng, William Hinthorn, Viveque Ramji, Bennett Victor
+  </div>
+  </div>
+</nav>
+
+</body>
+</html>
+{% endblock %}
+
