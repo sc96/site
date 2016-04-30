@@ -263,6 +263,7 @@ def degree_progress(request):
 	student_sa=[]
 	student_wri=[]
 	student_foreign=[]
+	student_stln=[]
 	current_user = request.user
 	student = Student.objects.get(student_id=str(current_user.username))
 	student_major = student.student_major
@@ -300,6 +301,8 @@ def degree_progress(request):
 			student_em.append(d)
 		elif (course.area=='EC'):
 			student_ec.append(d)
+		elif (course.area=='STN' || course.area=='STL'):
+			student_stln.append(d)
 		elif(re.match(r'WRI1', course.listings)):
 			student_wri.append(d)
 		elif(re.match(r'(ARA|BCS|CHI|CZE|FRE|GER|HEB|HIN|ITA|JPN|KOR|LAT|POL|POR|RUS|SPA|SWA|TUR|TWI|URD)', course.listings)):
@@ -616,12 +619,13 @@ def degree_progress(request):
 		student_ha=title(student_ha)
 		student_em=title(student_em)
 		student_ec=title(student_ec)
+		student_stln=title(student_stln)
 		student_wri=title(student_wri)
 		student_foreign=title(student_foreign)
 		
 		context = {'theory_on': theory_on, 'theory_off': theory_off, 'systems_on': systems_on, 'systems_off': systems_off,
 		'apps_on': apps_on, 'apps_off': apps_off, 'other_on': other_on, 'other_off': other_off,
-		'iw_on': iw_on, 'iw_off': iw_off, 'core_on': core_on, 'core_off': core_off,
+		'iw_on': iw_on, 'iw_off': iw_off, 'core_on': core_on, 'core_off': core_off, 'student_stln': student_stln,
 		'student_sa': student_sa, 'student_la': student_la, 'student_ha': student_ha, 'student_ec': student_ec,
 		'student_em': student_em, 'student_foreign': student_foreign, 'student_wri': student_wri,
 		'math_1_on': math_1_on, 'math_1_off': math_1_off, 'math_2_on': math_2_on, 'math_2_off': math_2_off, 'math_3_on': math_3_on, 'math_3_off': math_3_off,
