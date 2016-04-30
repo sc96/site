@@ -982,7 +982,7 @@ def certificates(request):
 	qcb = QCB.objects.values_list('course_id', flat=True).order_by('course_id')
 	eas = EAS.objects.values_list('course_id', flat=True).order_by('course_id')
 	rob = ROB.objects.values_list('course_id', flat=True).order_by('course_id')
-	vpl = ROB.objects.values_list('course_id', flat=True).order_by('course_id')
+	vpl = VPL.objects.values_list('course_id', flat=True).order_by('course_id')
 	hel = HEL.objects.values_list('course_id', flat=True).order_by('course_id')
 	
 	nsimilar = num_compare(all_courses, aas)
