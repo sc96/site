@@ -790,7 +790,7 @@ def outside_course_approval(request):
 	inv_dept = False
 	if request.method == 'GET':
 			if 'q' in request.GET:
-				dep_search = request.GET['q']:
+				dep_search = request.GET['q']
 				if dep_search.lower() not in dist:
 					inv_dept = True		
 	context['inv_dept'] = inv_dept
