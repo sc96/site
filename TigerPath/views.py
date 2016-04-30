@@ -998,7 +998,7 @@ def certificates(request):
 	cert_dict["East Asian Studies"]=num_compare(all_courses, eas)
 	cert_dict["Robotics and Intelligent Systems"]=num_compare(all_courses, rob)
 	cert_dict["Values and Public Life"]=num_compare(all_courses, vpl)
-	cert_dict["Hellenic Studies"]=num_compare(all_courses, vpl)
+	cert_dict["Hellenic Studies"]=num_compare(all_courses, hel)
 	
 	top_3=[]
 	for i in range(0, 3):
