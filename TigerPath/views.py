@@ -309,7 +309,7 @@ def degree_progress(request):
 		elif(re.match(r'(ARA|BCS|CHI|CZE|FRE|GER|HEB|HIN|ITA|JPN|KOR|LAT|POL|POR|RUS|SPA|SWA|TUR|TWI|URD)', course.listings)):
 			student_foreign.append(d)
 		
-		if (re.match(r'(MAT3|MAT4|ELE3|ELE4|PHY3|PHY4|ORF3|ORF4)', course.listings)):
+		if (re.match(r'MAT3|MAT4|ELE3|ELE4|PHY3|PHY4|ORF3|ORF4', course.listings)):
 			extra_other.append(d)
 
 	# something to think about: COS 340 can't pop up in "Other" and in "Theory"
@@ -712,7 +712,7 @@ def four_year(request,search):
 			#sem = time[semester]
 			student.remove_course(removed_class, student, sem)
 
-		else if 'removeSummer' in request.POST:
+		elif 'removeSummer' in request.POST:
 			removed_class = request.POST['removeSummer']
 			student.remove_courseSummer(removed_class, student)
 			
