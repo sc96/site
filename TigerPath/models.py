@@ -347,6 +347,8 @@ class Outside_Course(models.Model):
 	engineer = models.CharField(max_length=30)
 	#def select_major():
 
+	def __str__(self):
+		return self.course_name
 	#WILLIAM ADDED
 	# def add_course(Course, semester):
 	# 	self.student_courses.add(course)
