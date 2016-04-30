@@ -120,6 +120,18 @@ function update_Info() {
       input.value = "0"
 
 
+    var isEmpty = document.getElementById('success').innerHTML === ""
+
+    if (isEmpty) {
+      var element = document.getElementById("success")
+      var para = document.createElement("b")
+      var node = document.createTextNode("Successfully saved!");
+      para.appendChild(node)
+      element.appendChild(para)
+
+  }
+
+
 }
 </script>
 
@@ -372,10 +384,10 @@ For more information on placing out of classes, visit this <a href="https://www.
 -->
 
 
+
 <div class="container-fluid"> 
   <div class="row">
       <div class="alert alert-success col-md-12" role="alert" id = "success">
-      <b> Successfully saved! </b>
       </div>
     </div>
 </div>
