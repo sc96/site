@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from .models import Student, Course, COS_BSE, URB, Entry, Approved_Course, Engineer, Outside_Course, AAS, AFS, AMS, NEU, MUS, GHP, FIN, QCB, CWR, AP_Credit
+from .models import Student, Course, COS_BSE, URB, Entry, Approved_Course, GSS, Engineer, Outside_Course, AAS, AFS, AMS, NEU, MUS, GHP, FIN, QCB, CWR, AP_Credit
 from django.contrib.auth.decorators import login_required
 import re
 from itertools import chain
@@ -794,7 +794,6 @@ def outside_course_approval(request):
 				if dep_search.lower() not in dist:
 					inv_dept = True		
 	context['inv_dept'] = inv_dept
-	
 	return render(request, 'outapproval.html', context)
 	
 @login_required # Cas authentication for this url.
@@ -1272,5 +1271,21 @@ def qcb(request):
 	'research_on': research_on, 'research_off': research_off, 'elective_on': elective_on, 'elective_off': elective_off}
 	return render(request, 'qcb.html', context)
 	
+@login_required
+def gss(request):
+	current_user = request.user
+	student = Student.objects.get(student_id=current_user.username)
+	all_courses = Entry.objects.filter(student_id=current_user.username).values_list('course_id', flat=True).order_by('course_id') # all of the student's courses
+	intro = GSS.objects.filter(intro=1).values_list('course_id', flat=True).order_by('course_id')
+	gss = GSS.objects.filter(gss=1).values_list('course_id', flat=True).order_by('course_id')
+
+	intro_on = title(compare_lists(all_courses, intro)["similarities"])
+	intro_off = title(compare_lists(all_courses, intro)["differences"])
+
+	gss_on = title(compare_lists(all_courses, gss)["similarities"])
+	gss_off = title(compare_lists(all_courses, gss)["differences"])
+
+	context = {'intro_on': intro_on, 'intro_off': intro_off, 'gss_on': gss_on, 'gss_off': gss_off}
+	return render(request, 'gss.html', context)
 	
 

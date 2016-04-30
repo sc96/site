@@ -118,7 +118,7 @@
 <div class="form-group">
   <form class = "form-inline" action = "" method = "post" id="classType">
     <label for="course_name">Course Name:</label>
-    <input type="text" class="form-control" id="course_name" placeholder="e.g. Summer Photography Class at NYU" value="{{ courseName }}">
+    <input type="text" class="form-control" id="course_name" placeholder="e.g. Summer Photography Class at NYU" value="{{ courseName }}" name="course_title">
     {% if req==COS %}
     <label for="COSreq">List COS requirements this fulfills</label>
     <select class="form-control" name ="COSreq">
