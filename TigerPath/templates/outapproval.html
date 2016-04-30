@@ -89,9 +89,7 @@
   </div>
 </nav>
 
-<script>
 
-</script>
 
 <div class="container">
 <div class="jumbotron text-center">
@@ -99,6 +97,17 @@
   <h1 style="color:#ff8f00; background-color:rgba(0, 0, 0, 0.5);">Approve a Non-Princeton Course</h1>
   </div>
 </div>
+
+
+<!-- Script to check department code -->
+<script>
+check
+
+
+
+</script>
+<!-- End script -->
+
 
 <div class="container">
   
@@ -122,24 +131,24 @@
     {% if req==COS %}
     <label for="COSreq">List COS requirements this fulfills</label>
     <select class="form-control" name ="COSreq">
-      <option>N/A</option>
-      <option>Theory</option>
-      <option>Systems</option>
-      <option>Applications</option>
-      <option>Other</option>
+      <option value= "na">N/A</option>
+      <option value= "theory">Theory</option>
+      <option value="systems">Systems</option>
+      <option value="apps">Applications</option>
+      <option value="other">Other</option>
     </select>
     {% endif %}
     {% if req==BSE %}
     <label for="BSEreq">Choose BSE general requirement this fulfills</label>
     <select class="form-control" name ="BSEreq">
-      <option>Calc 1</option>
-      <option>Calc 2</option>
-      <option>Calc 3</option>
-      <option>General Computing</option>
-      <option>General Chemistry</option>
-      <option>Physics - Mechanics </option>
-      <option>Physica - EM </option>
-      <option>Other</option>
+      <option value="c1">Calc 1</option>
+      <option value="c2">Calc 2</option>
+      <option value="c3">Calc 3</option>
+      <option value="comp">General Computing</option>
+      <option value="chm">General Chemistry</option>
+      <option value="phm">Physics - Mechanics </option>
+      <option value="phem">Physics - EM </option>
+      <option value="other">Other</option>
     </select>
     {% endif %}
     {% if req==dist %}
