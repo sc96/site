@@ -101,17 +101,25 @@
 
 <!-- Script to check department code -->
 <script>
-var dist_code= ["la", "sa", "ha", "em", "ec", "qr", "stl", "stn"]
+var dist_code= ["la", "sa", "ha", "em", "ec", "qr", "stl", "stn"];
 //Remove an item from your course list
 function Submit_class(object) {
   var x = document.getElementById(String(object));
   x.submit();
-};
-function check_dist(text) {
-
 }
 
-
+</script>
+<script type="text/babel">
+function check_dist(text) {
+      var index = dist_code.indexOf(text.toLowerCase());
+      if  (index < 0){
+        ReactDOM.render(
+          <div class="alert alert-warning col-md-12" role="alert">
+              <b>Error:</b> this.text not a legal distribution code.
+          </div>,
+          document.getElementById('dist_error')
+        );}
+    }
 </script>
 <!-- End script -->
 
@@ -162,6 +170,7 @@ function check_dist(text) {
     <label for="Distribution">State approved distribution area:</label>
     <input type="text" class="form-control" name="Distribution" placeholder="e.g. SA" value="{{ courseName }}" onChange="check_dist(this.value)">
     {% endif %}
+     <div id="dist_error" class="row"><br></div>
     <input type="submit" class="btn btn-info" value="Add Class">
   </form>
 </div> <!-- form-group -->
