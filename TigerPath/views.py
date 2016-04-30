@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from .models import Student, Course, COS_BSE, URB, Entry, Approved_Course, GSS, Engineer, Outside_Course, AAS, EAS, AFS, AMS, NEU, MUS, GHP, FIN, QCB, CWR, AP_Credit
+from .models import Student, Course, COS_BSE, URB, Entry, Approved_Course, GSS, Engineer, Outside_Course, ROB, AAS, EAS, AFS, AMS, NEU, MUS, GHP, FIN, QCB, CWR, AP_Credit
 from django.contrib.auth.decorators import login_required
 import re
 from itertools import chain
@@ -581,27 +581,23 @@ def degree_progress(request):
 		
 		# ap credit working now
 		if (AP_Credit.objects.filter(student_name=current_user.username, course_id="538").exists()):
-			if (student.calc_1 == 1):
-				math_1_credit = AP_Credit.objects.filter(student_name=current_user.username, course_id="538").values_list('course_id', flat=True)
+			math_1_credit = AP_Credit.objects.filter(student_name=current_user.username, course_id="538").values_list('course_id', flat=True)
 		math_1_on = title(compare_lists(chain(all_courses, math_1_credit), math_1)["similarities"])
 		math_1_off = title(compare_lists(chain(all_courses, math_1_credit), math_1)["differences"])
 		#math_1_off=[]
 		
 		if (AP_Credit.objects.filter(student_name=current_user.username, course_id="1029").exists()):
-			if (student.calc_2 == 1):
-				math_2_credit = AP_Credit.objects.filter(student_name=current_user.username, course_id="1029").values_list('course_id', flat=True)
+			math_2_credit = AP_Credit.objects.filter(student_name=current_user.username, course_id="1029").values_list('course_id', flat=True)
 		math_2_on = title(compare_lists(map(int, chain(all_courses, math_2_credit)), math_2)["similarities"])
 		math_2_off = title(compare_lists(map(int, chain(all_courses, math_2_credit)), math_2)["differences"])
 		
 		if (AP_Credit.objects.filter(student_name=current_user.username, course_id="1176").exists()):
-			if (student.calc_3 == 1):
-				math_3_credit = AP_Credit.objects.filter(student_name=current_user.username, course_id="1176").values_list('course_id', flat=True)
+			math_3_credit = AP_Credit.objects.filter(student_name=current_user.username, course_id="1176").values_list('course_id', flat=True)
 		math_3_on = title(compare_lists(map(int, chain(all_courses, math_3_credit)), math_3)["similarities"])
 		math_3_off = title(compare_lists(map(int, chain(all_courses, math_3_credit)), math_3)["differences"])
 		
 		if (AP_Credit.objects.filter(student_name=current_user.username, course_id="1160").exists()):
-			if (student.lin_alg == 1):
-				math_4_credit = AP_Credit.objects.filter(student_name=current_user.username, course_id="1160").values_list('course_id', flat=True)
+			math_4_credit = AP_Credit.objects.filter(student_name=current_user.username, course_id="1160").values_list('course_id', flat=True)
 		math_4_on = title(compare_lists(map(int, chain(all_courses, math_4_credit)), math_4)["similarities"])
 		math_4_off = title(compare_lists(map(int, chain(all_courses, math_4_credit)), math_4)["differences"])
 		
@@ -988,6 +984,7 @@ def certificates(request):
 	cwr = CWR.objects.values_list('course_id', flat=True).order_by('course_id')
 	qcb = QCB.objects.values_list('course_id', flat=True).order_by('course_id')
 	eas = EAS.objects.values_list('course_id', flat=True).order_by('course_id')
+	rob = ROB.objects.values_list('course_id', flat=True).order_by('course_id')
 	
 	nsimilar = num_compare(all_courses, aas)
 	cert_dict["African American Studies"]=num_compare(all_courses, aas)
@@ -1000,6 +997,7 @@ def certificates(request):
 	cert_dict["Creative Writing"]=num_compare(all_courses, cwr)
 	cert_dict["Quantitative and Computational Biology"]=num_compare(all_courses, qcb)
 	cert_dict["East Asian Studies"]=num_compare(all_courses, eas)
+	cert_dict["Robotics and Intelligent Systems"]=num_compare(all_courses, rob)
 	
 	top_3=[]
 	for i in range(0, 3):
@@ -1328,4 +1326,30 @@ def gss(request):
 	context = {'intro_on': intro_on, 'intro_off': intro_off, 'gss_on': gss_on, 'gss_off': gss_off}
 	return render(request, 'gss.html', context)
 	
+@login_required
+def rob(request):
+	current_user = request.user
+	student = Student.objects.get(student_id=current_user.username)
+	all_courses = Entry.objects.filter(student_id=current_user.username).values_list('course_id', flat=True).order_by('course_id') # all of the student's courses
+	lab = ROB.objects.filter(lab=1).values_list('course_id', flat=True).order_by('course_id')
+	control = ROB.objects.filter(control=1).values_list('course_id', flat=True).order_by('course_id')
+	cog = ROB.objects.filter(cog=1).values_list('course_id', flat=True).order_by('course_id')
+	elective = ROB.objects.filter(elective=1).values_list('course_id', flat=True).order_by('course_id')
+
+	lab_on = title(compare_lists(all_courses, lab)["similarities"])
+	lab_off = title(compare_lists(all_courses, lab)["differences"])
+
+	control_on = title(compare_lists(all_courses, control)["similarities"])
+	control_off = title(compare_lists(all_courses, control)["differences"])
+
+	cog_on = title(compare_lists(all_courses, cog)["similarities"])
+	cog_off = title(compare_lists(all_courses, cog)["differences"])
+	
+	elective_on = title(compare_lists(all_courses, elective)["similarities"])
+	elective_off = title(compare_lists(all_courses, elective)["differences"])
+
+	context = {'lab_on': lab_on, 'lab_off': lab_off, 'control_on': control_on, 'control_off': control_off,
+	'cog_on': cog_on, 'cog_off': cog_off, 'elective_on': elective_on, 'elective_off': elective_off}
+	return render(request, 'rob.html', context)
+
 
