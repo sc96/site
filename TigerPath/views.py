@@ -784,8 +784,8 @@ def outside_course_approval(request):
 	student = Student.objects.get(student_id=current_user.username)
 	context = {}
 	if request.method == 'POST':
-		if 'classType' in request.POST:
-			req = request.POST['req']
+		if 'reqs' in request.POST:
+			req = request.POST['reqs']
 			context['req'] = req
 		elif 'course_title' in request.POST:
 			title = request.POST['course_title']
