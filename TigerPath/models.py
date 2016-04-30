@@ -95,8 +95,19 @@ class URB(models.Model):
 	def __str__(self):
 		return str(self.course_id)
 		
-class NEU(models.Model):
+class ROB(models.Model):
 	cert_name="Neuroscience"
+	course_id = models.IntegerField(primary_key=True)
+	lab = models.IntegerField()
+	control = models.IntegerField()
+	cog = models.IntegerField()
+	elective = models.IntegerField()
+
+	def __str__(self):
+		return str(self.course_id)
+		
+class ROB(models.Model):
+	cert_name="Robotics and Intelligent Systems"
 	course_id = models.IntegerField(primary_key=True)
 	req = models.IntegerField()
 	disease = models.IntegerField()
