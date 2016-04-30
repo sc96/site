@@ -989,6 +989,7 @@ def certificates(request):
 	qcb = QCB.objects.values_list('course_id', flat=True).order_by('course_id')
 	eas = EAS.objects.values_list('course_id', flat=True).order_by('course_id')
 	rob = ROB.objects.values_list('course_id', flat=True).order_by('course_id')
+	vpl = ROB.objects.values_list('course_id', flat=True).order_by('course_id')
 	
 	nsimilar = num_compare(all_courses, aas)
 	cert_dict["African American Studies"]=num_compare(all_courses, aas)
@@ -1002,6 +1003,7 @@ def certificates(request):
 	cert_dict["Quantitative and Computational Biology"]=num_compare(all_courses, qcb)
 	cert_dict["East Asian Studies"]=num_compare(all_courses, eas)
 	cert_dict["Robotics and Intelligent Systems"]=num_compare(all_courses, rob)
+	cert_dict["Values and Public Life"]=num_compare(all_courses, vpl)
 	
 	top_3=[]
 	for i in range(0, 3):
