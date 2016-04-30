@@ -977,7 +977,7 @@ def share(request, shared_user):
 
 
     otherstudent = Student.objects.get(student_id=shared_user)
-
+    
     if (otherstudent.publicBool == 1):
 
 		context = {'user': current_user.username,'shared_user': shared_user, 'fresh_fall': all_frf, 'fresh_spring': all_frs, 
