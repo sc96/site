@@ -270,18 +270,15 @@ BootstrapDialog.confirm({
                     <!-- NEED INFORMATION PASSED IN -->
                      {% for x in student_outside %}
                       <span>
-<<<<<<< HEAD
                         <form class= "form-inline" id = "{{x.course_name}}" action= "" method= "post">{% csrf_token %}
                     <a class="list-group-item">{{ x.course_name }}
                     <i class="glyphicon glyphicon-minus pull-right link" id="{{x.course_name}}" onclick="rmv(this.id)"></i></a>
                     <input type="hidden" name="removeSummer" value="{{x.course_name}}">
-=======
                         <form class= "form-inline" id = "{{x}}" action= "" method= "post">{% csrf_token %}
                     <a class="list-group-item">{{ x }}
                     <!--i class="glyphicon glyphicon-minus pull-right link" id="{{x.course_name}}" onclick="rmv(this.id)"></i--></a>
                     <input type="hidden" name="term" value ="SRF">
                     <input type="hidden" name="remove" value="{{x.course_name}}">
->>>>>>> 5863e75221c771d199732649bc7c4697fbac0032
                   </form>
                 </span>
                      {% endfor %}
