@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from .models import Student, Course, COS_BSE, URB, LIN, Entry, Approved_Course, GSS, VPL, Engineer, Outside_Course, ROB, AAS, EAS, AFS, AMS, NEU, MUS, GHP, FIN, QCB, CWR, AP_Credit
+from .models import Student, Course, COS_BSE, URB, LIN, Entry, Approved_Course, GSS, VPL, HEL, Engineer, Outside_Course, ROB, AAS, EAS, AFS, AMS, NEU, MUS, GHP, FIN, QCB, CWR, AP_Credit
 from django.contrib.auth.decorators import login_required
 import re
 from itertools import chain
@@ -983,6 +983,7 @@ def certificates(request):
 	eas = EAS.objects.values_list('course_id', flat=True).order_by('course_id')
 	rob = ROB.objects.values_list('course_id', flat=True).order_by('course_id')
 	vpl = ROB.objects.values_list('course_id', flat=True).order_by('course_id')
+	hel = HEL.objects.values_list('course_id', flat=True).order_by('course_id')
 	
 	nsimilar = num_compare(all_courses, aas)
 	cert_dict["African American Studies"]=num_compare(all_courses, aas)
@@ -997,6 +998,7 @@ def certificates(request):
 	cert_dict["East Asian Studies"]=num_compare(all_courses, eas)
 	cert_dict["Robotics and Intelligent Systems"]=num_compare(all_courses, rob)
 	cert_dict["Values and Public Life"]=num_compare(all_courses, vpl)
+	cert_dict["Hellenic Studies"]=num_compare(all_courses, vpl)
 	
 	top_3=[]
 	for i in range(0, 3):
@@ -1346,6 +1348,23 @@ def gss(request):
 
 	context = {'intro_on': intro_on, 'intro_off': intro_off, 'gss_on': gss_on, 'gss_off': gss_off}
 	return render(request, 'gss.html', context)
+	
+@login_required
+def hel(request):
+	current_user = request.user
+	student = Student.objects.get(student_id=current_user.username)
+	all_courses = Entry.objects.filter(student_id=current_user.username).values_list('course_id', flat=True).order_by('course_id') # all of the student's courses
+	admission = HEL.objects.filter(admission=1).values_list('course_id', flat=True).order_by('course_id')
+	sems = HEL.objects.filter(sems=1).values_list('course_id', flat=True).order_by('course_id')
+
+	admisssion_on = title(compare_lists(all_courses, admission)["similarities"])
+	admission_off = title(compare_lists(all_courses, admission)["differences"])
+
+	sems_on = title(compare_lists(all_courses, sems)["similarities"])
+	sems_off = title(compare_lists(all_courses, sems)["differences"])
+
+	context = {'admission_on': admission_on, 'admission_off': admission_off, 'sems_on': sems_on, 'sems_off': sems_off}
+	return render(request, 'hel.html', context)
 	
 @login_required
 def rob(request):
