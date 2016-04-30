@@ -3,65 +3,17 @@
 
 {% block content %}
 
-<html>
 <head>
-  <meta charset="utf-8">
-  <title>TigerPath | COS Data</title>
-  <link rel="stylesheet" href="/../../static/css/bootstrap.css">
-  <script  src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-  <script  src="/../../static/js/react.js"></script>
-  <script  src="/../../static/js/react-dom.js"></script>
-  <script  src="/../../static/js/bootstrap.js"></script>
-  <script  src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.8.24/browser.min.js"></script>
-  <script  src="/../../static/js/react-bootstrap.min.js"></script>
-  <script  src="/../../static/js/JSXTransformer.js"></script>
-  
-    <style type="text/css">
-    .jumbotron {
-        position: relative;
-        background: center center;
-        overflow: hidden;
-        background-image: url("/static/pics/code.png");
-        background-size: cover;
-        height: 100%;
-        color: #FFA500;
-        padding-bottom: 20px
-    }
-    .jumbotron .btn-primary {
-        background: #ff8c00;
-        border-color: #ff8c00
-    }
-    .jumbotron .btn-primary:hover {
-        background: #ffa500
-    }
-    .jumbotron p {
-        color: #ffffff;
-        max-width: 75%;
-        margin: 1em auto 2em
-    }
-    .navbar+.jumbotron {
-        margin-top: -20px
-    }
-    .jumbotron .lang-logo {
-        display: block;
-        background: #ff8c00;
-        border-radius: 50%;
-        overflow: hidden;
-        width: 100px;
-        height: 100px;
-        margin: auto;
-        border: 2px solid white
-    }
-    .jumbotron .lang-logo img {
-        max-width: 100%
-    }
-  </style>
-  
-  
+  <title>TigerPath | GSS</title>
 </head>
 <body style="padding-top: 70px; padding-bottom: 70px;">
 
     
+<div class="container">
+  <div class="page-header" style="color:#ff8f00;" style ='background-color: #2ba6cb;'>
+  <h1>Gender and Sexuality Studies</h1>
+</div>
+</div>
 
 
 <nav class="navbar navbar-inverse navbar-fixed-top">
@@ -71,10 +23,9 @@
       <li><a href="/fouryear">Four Year</a></li>
       <li><a href="/degreeprogress">Degree Progress</a></li> 
       <li><a href="/certificates">Certificates</a></li> 
-      <!--li><a href="/princetoncourseapproval">Princeton Course Approval</a></li--> 
       <li><a href="/outsidecourseapproval">Outside Course Approval</a></li> 
       <li><a href="/schedulesharing">Schedule Sharing</a></li> 
-      <li class="active"><a href="#">COS Data</a></li> 
+      <li><a href="/cosdata">COS Data</a></li>  
     </ul>
     <ul class="nav navbar-nav navbar-right">
         <li><a href="/about">About</a></li> 
@@ -91,13 +42,6 @@
     </ul>
   </div>
 </nav>
-<div class="container" style="background-color:#F3F3F3">
-<br>
-<div class="jumbotron text-center">
-  <div class='container' id='box'>
-  <h1 style="color:#ff8f00; background-color:rgba(0, 0, 0, 0.5);">COS Course Data</h1>
-  </div>
-</div>
 
 
 <script>
@@ -214,25 +158,78 @@ var x = document.getElementById(String(object));
       </div>
     </div>
   {% endif %}
+
+  <div class="panel-heading">
+    <h4>Requirements: 1 class from Intro, 4 classes from Elective</h4> 
+  </div> <!-- panel heading -->
+
+<div class = "panel panel-default">
+   <div class = "panel-heading">
+      <h1 class = "panel-title" style="text-align:center"><b>
+         GSS Requirements</b>
+      </h1>
+   </div>
+   
+   <div class = "panel-body">
+      
+
+     <div class="row">
+
+        <div class="col-md-6">
+         <div class="list_group" style="text-align:center">
+                <a class="list-group-item active">Intro</a>
+             {% for x in intro_on %}
+               <span>
+               <form class= "form-inline" id = "{{x.course.listings}}">
+                <a class="list-group-item list-group-item-success" name ="{{x.course.listings}}" >{{ x }} 
+                  </a>
+             
+              </form>
+            </span>
+             {% endfor %}
+             {% for x in intro_off %}
+               <span>
+               <form class= "form-inline" id = "{{x.course.listings}}">
+                <a class="list-group-item list-group-item-danger" name ="{{x.course.listings}}" >{{ x }}</a>
+              </form>
+            </span>
+             {% endfor %}
+            </div>
+         </div>
+
+
+         <div class="col-md-6">
+         <div class="list_group">
+                <a class="list-group-item active" style="text-align:center">Elective</a>
+             {% for x in gss_on %}
+               <span>
+               <form class= "form-inline" id = "{{x.course.listings}}">
+                <a class="list-group-item list-group-item-success" style="text-align:center" name ="{{x.course.listings}}" >{{ x }}
+                    </a>
+               
+              </form>
+            </span>
+             {% endfor %}
+             {% for x in gss_off %}
+               <span>
+               <form class= "form-inline" id = "{{x.course.listings}}">
+                <a class="list-group-item list-group-item-danger" style="text-align:center" name ="{{x.course.listings}}" >{{ x }} </a>
+                
+              </form>
+            </span>
+             {% endfor %}
+            </div>
+         </div>
+         
+         </div>
+         
+          
+   </div>
+ </div>
+ 
 </div>
 
-<div class="container">
-    <div class="col-md-12">
-      <div class="btn-group btn-group-justified" role="group" aria-label="...">
-      <div class="btn-group" role="group">
-        <a href="{% url 'views.cos_data_semester' %}"><button type="button" class="btn btn-default">By Semester</button></a>
-      </div>
-      <div class="btn-group" role="group">
-        <a href="{% url 'views.cos_data_course' %}"><button type="button" class="btn btn-default">By Course</button></a>
-      </div>
-      <div class="btn-group" role="group">
-        <a href="{% url 'views.cos_data_req' %}"><button type="button" class="btn btn-default">By Requirement</button></a>
-      </div>
-  </div>
-</div>         
-</div> <!-- CONTAINER-->
-<br>
-</div> <!--  Main CONTAINER-->
+
 </body>
 </html>
 

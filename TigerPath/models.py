@@ -106,6 +106,37 @@ class NEU(models.Model):
 	def __str__(self):
 		return str(self.course_id)
 		
+class GSS(models.Model):
+	cert_name="Gender and Sexuality Studies"
+	course_id = models.IntegerField(primary_key=True)
+	intro = models.IntegerField()
+	gss = models.IntegerField()
+
+	def __str__(self):
+		return str(self.course_id)
+		
+class QCB(models.Model):
+	cert_name="Quantitative and Computational Biolog"
+	course_id = models.IntegerField(primary_key=True)
+	isc = models.IntegerField()
+	regular = models.IntegerField()
+	research = models.IntegerField()
+	elective = models.IntegerField()
+
+	def __str__(self):
+		return str(self.course_id)
+		
+class EAS(models.Model):
+	cert_name="East Asian Studies"
+	course_id = models.IntegerField(primary_key=True)
+	chin = models.IntegerField()
+	japan = models.IntegerField()
+	korean = models.IntegerField()
+	upper = models.IntegerField()
+
+	def __str__(self):
+		return str(self.course_id)
+		
 class MUS(models.Model):
 	cert_name="Musical Performance"
 	course_id = models.IntegerField(primary_key=True)
