@@ -270,6 +270,7 @@ def degree_progress(request):
 	all_courses = Entry.objects.filter(student_id=current_user.username).values_list('course_id', flat=True).order_by('course_id') # all of the student's courses
 	all_entries = Entry.objects.filter(student_id=current_user.username) #all of the student's entries
 	save_other = []
+	extra_other=[]
 	#dist_courses = Entry.objects.filter(student_id=current_user.username)
 
 	removed_class = ""
@@ -307,6 +308,9 @@ def degree_progress(request):
 			student_wri.append(d)
 		elif(re.match(r'(ARA|BCS|CHI|CZE|FRE|GER|HEB|HIN|ITA|JPN|KOR|LAT|POL|POR|RUS|SPA|SWA|TUR|TWI|URD)', course.listings)):
 			student_foreign.append(d)
+		
+		if (re.match(r'(MAT3|MAT4|ELE3|ELE4|PHY3|PHY4|ORF3|ORF4)', course.listings)):
+			extra_other.append(d)
 
 	# something to think about: COS 340 can't pop up in "Other" and in "Theory"
 	# all of the requirement lists
@@ -393,6 +397,7 @@ def degree_progress(request):
 			# will fix this bug a little later... 4/9/2016 ....!!!!
 		other_on = compare_lists(all_courses, other_courses)["similarities"]
 		other_on = chain(other_on, save_other)
+		other_on = chain(other_on, extra_other)
 		for t in all_entries.filter(req="Other").values_list('course_id', flat=True).order_by('course_id'):
 			other_on.append(t.course_id)
 		other_on = title(other_on)
@@ -564,6 +569,7 @@ def degree_progress(request):
 			# will fix this bug a little later... 4/9/2016 ....!!!!
 		other_on = compare_lists(all_courses, other_courses)["similarities"]
 		other_on = chain(other_on, save_other)
+		other_on = chain(other_on, extra_other)
 		for t in all_entries.filter(req="Other").values_list('course_id', flat=True).order_by('course_id'):
 			other_on.append(t.course_id)
 		other_on = title(other_on)

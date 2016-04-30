@@ -10,7 +10,6 @@
   <link rel="stylesheet" href="/../../static/css/bootstrap.css">
   <script  src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
   <script  src="/../../static/js/react.js"></script>
-  <script  src="/../../static/js/react-dom.js"></script>
   <script  src="/../../static/js/bootstrap.js"></script>
   <script  src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.8.24/browser.min.js"></script>
   <script  src="/../../static/js/react-bootstrap.min.js"></script>
@@ -271,10 +270,18 @@ BootstrapDialog.confirm({
                     <!-- NEED INFORMATION PASSED IN -->
                      {% for x in student_outside %}
                       <span>
+<<<<<<< HEAD
                         <form class= "form-inline" id = "{{x.course_name}}" action= "" method= "post">{% csrf_token %}
                     <a class="list-group-item">{{ x.course_name }}
                     <i class="glyphicon glyphicon-minus pull-right link" id="{{x.course_name}}" onclick="rmv(this.id)"></i></a>
                     <input type="hidden" name="removeSummer" value="{{x.course_name}}">
+=======
+                        <form class= "form-inline" id = "{{x}}" action= "" method= "post">{% csrf_token %}
+                    <a class="list-group-item">{{ x }}
+                    <!--i class="glyphicon glyphicon-minus pull-right link" id="{{x.course_name}}" onclick="rmv(this.id)"></i--></a>
+                    <input type="hidden" name="term" value ="SRF">
+                    <input type="hidden" name="remove" value="{{x.course_name}}">
+>>>>>>> 5863e75221c771d199732649bc7c4697fbac0032
                   </form>
                 </span>
                      {% endfor %}
