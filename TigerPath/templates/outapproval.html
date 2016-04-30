@@ -109,11 +109,13 @@ function Submit_Class(object) {
 }
 
 </script>
-<script type="text/babel">
+<script >
 function check_dist(text) {
       var index = dist_code.indexOf(text.toLowerCase());
       var query = text;
       if  (index < 0){
+</script>
+<script type="text/babel">
         ReactDOM.render(
           <div class="alert alert-warning col-md-12" role="alert">
               <b>Error:</b> query not a legal distribution code.
