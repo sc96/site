@@ -130,53 +130,52 @@ function check_dist(text) {
       );}
     }
 
-function structure_form(text) {
-  var query = text;
-    var CosReq = React.createClass({
-      displayName: "CosReq",
 
-      render: function render() {
-        return React.createElement(
-          "div",
-          null,
+  var query = text;
+  var CosReq = React.createClass({
+    displayName: "CosReq",
+
+    render: function render() {
+      return React.createElement(
+        "div",
+        null,
+        React.createElement(
+          "label",
+          { htmlFor: "COSreq" },
+          "List COS requirements this fulfills"
+        ),
+        React.createElement(
+          "select",
+          { className: "form-control", name: "COSreq" },
           React.createElement(
-            "label",
-            { htmlFor: "COSreq" },
-            "List COS requirements this fulfills"
+            "option",
+            { value: "na" },
+            "N/A"
           ),
           React.createElement(
-            "select",
-            { className: "form-control", name: "COSreq" },
-            React.createElement(
-              "option",
-              { value: "na" },
-              "N/A"
-            ),
-            React.createElement(
-              "option",
-              { value: "theory" },
-              "Theory"
-            ),
-            React.createElement(
-              "option",
-              { value: "systems" },
-              "Systems"
-            ),
-            React.createElement(
-              "option",
-              { value: "apps" },
-              "Applications"
-            ),
-            React.createElement(
-              "option",
-              { value: "other" },
-              "Other"
-            )
+            "option",
+            { value: "theory" },
+            "Theory"
+          ),
+          React.createElement(
+            "option",
+            { value: "systems" },
+            "Systems"
+          ),
+          React.createElement(
+            "option",
+            { value: "apps" },
+            "Applications"
+          ),
+          React.createElement(
+            "option",
+            { value: "other" },
+            "Other"
           )
-        );
-      }
-    });
-  };
+        )
+      );
+    }
+  });
   if  (cached_requirement == 'na'){
     ReactDOM.render(
     React.createElement(CosReq, null),
