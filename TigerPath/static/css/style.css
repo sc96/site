@@ -24,6 +24,15 @@ body {
   cursor: pointer;
 }
 
+.link3{
+  color:#f00;
+}
+
+.link4{
+  color:#A6D785;
+}
+
+
 .btn-primary .btn-smaller {
 	width: 10px;
 }
