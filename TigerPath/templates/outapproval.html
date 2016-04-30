@@ -133,34 +133,13 @@
 </div>
 <!-- Script to check department code -->
 <script>
-var dist_code= ["la", "sa", "ha", "em", "ec", "qr", "stl", "stn"];
+
 //Remove an item from your course list
 var cached_requirement = "na";
 function Submit_Class(object) {
   var x = document.getElementById(String(object));
   cached_requirement = x.value;
 }
-
-function check_dist(text) {
-      var index = dist_code.indexOf(text.toLowerCase());
-      var query = text;
-      var DistError = React.createClass({displayName: 'DistError',
-      render: function() {
-        return (
-          React.createElement('div', 
-            {className:"alert alert-danger col-md-12", 
-            role: "alert"},
-            "Error: " + query + " is an invalid dist code."
-          )
-        );
-      }
-    });
-      if  (index < 0){
-        ReactDOM.render(
-        React.createElement(DistError, null),
-        document.getElementById('dist_error')
-      );}
-    }
 
 
   var CosReq = React.createClass({
@@ -268,8 +247,28 @@ function check_dist(text) {
 });
 var DistComponent = React.createClass({
   displayName: "DistComponent",
-
-  render: function render() {
+  var dist_code= ["la", "sa", "ha", "em", "ec", "qr", "stl", "stn"],
+  check_dist: function() {
+      var index = dist_code.indexOf(text.toLowerCase());
+      var query = text;
+      var DistError = React.createClass({displayName: 'DistError',
+      render: function() {
+        return (
+          React.createElement('div', 
+            {className:"alert alert-danger col-md-12", 
+            role: "alert"},
+            "Error: " + query + " is an invalid dist code."
+          )
+        );
+      }
+    }),
+      if  (index < 0){
+        ReactDOM.render(
+        React.createElement(DistError, null),
+        document.getElementById('dist_error')
+      );}
+    }
+  render: function() {
     return React.createElement(
       "div",
       null,
