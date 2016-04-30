@@ -3243,8 +3243,8 @@ fieldset[disabled] .btn-success.focus {
 }
 .btn-info:hover {
   color: #fff;
-  background-color: #FFB352;
-  border-color: #FFB352;
+  background-color: #FF8F00;
+  border-color: #FF8F00;
 }
 .btn-info:active,
 .btn-info.active,
