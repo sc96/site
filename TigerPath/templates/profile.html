@@ -120,16 +120,40 @@ function update_Info() {
       input.value = "0"
 
 
-    var isEmpty = document.getElementById('success').innerText == ""
 
-    if (isEmpty) {
-      var element = document.getElementById("success")
-      var para = document.createElement("b")
-      var node = document.createTextNode("Successfully saved!");
-      para.appendChild(node)
-      element.appendChild(para)
+  
+  //  var isEmpty = document.getElementById('success').innerText == ""
 
-  }
+  //  if (isEmpty) {
+   //   var element = document.getElementById("success")
+    //  var para = document.createElement("b")
+     // var node = document.createTextNode("Successfully saved!");
+    //  para.appendChild(node)
+    //  element.appendChild(para)
+    // }
+
+
+    var container = document.createElement('div')
+    container.className = "container-fluid"
+
+    var row = document.createElement('div')
+    row.className = "row"
+
+    var alert = document.createElement('div')
+    alert.className  = "alert alert-success col-md-12"
+    alert.role = "alert"
+    alert.id = "success"
+
+    var b = document.createElement('b')
+    var text = document.createTextNode("Successfully saved!");
+
+    b.appendChild(text)
+    alert.appendChild(b)
+    row.appendChild(alert)
+    container.appendChild(row)
+    document.body.appendChild(container)
+
+  
 
 
 }
@@ -390,14 +414,14 @@ For more information on placing out of classes, visit this <a href="https://www.
 </div>
 </div>
 
-
-<!--Pressing save button will attach message inside this div. Leave empty  -->
+<!--
+Pressing save button will attach message inside this div. Leave empty  
 <div class="container-fluid"> 
   <div class="row">
       <div class="alert alert-success col-md-12" role="alert" id = "success">
       </div>
     </div>
-</div>
+</div> -->
 
 
 
