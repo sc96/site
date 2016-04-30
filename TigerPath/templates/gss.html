@@ -4,14 +4,14 @@
 {% block content %}
 
 <head>
-  <title>TigerPath | QCB</title>
+  <title>TigerPath | GSS</title>
 </head>
 <body style="padding-top: 70px; padding-bottom: 70px;">
 
     
 <div class="container">
   <div class="page-header" style="color:#ff8f00;" style ='background-color: #2ba6cb;'>
-  <h1>Quantitative and Computational Biology</h1>
+  <h1>Gender and Sexuality Studies</h1>
 </div>
 </div>
 
@@ -159,10 +159,14 @@ var x = document.getElementById(String(object));
     </div>
   {% endif %}
 
+  <div class="panel-heading">
+    <h4>Requirements: 1 class from Intro, 4 classes from Elective</h4> 
+  </div> <!-- panel heading -->
+
 <div class = "panel panel-default">
    <div class = "panel-heading">
       <h1 class = "panel-title" style="text-align:center"><b>
-         QCB Requirements</b>
+         GSS Requirements</b>
       </h1>
    </div>
    
@@ -171,10 +175,10 @@ var x = document.getElementById(String(object));
 
      <div class="row">
 
-        <div class="col-md-4">
+        <div class="col-md-6">
          <div class="list_group" style="text-align:center">
-                <a class="list-group-item active">ISC Track</a>
-             {% for x in isc_on %}
+                <a class="list-group-item active">Intro</a>
+             {% for x in intro_on %}
                <span>
                <form class= "form-inline" id = "{{x.course.listings}}">
                 <a class="list-group-item list-group-item-success" name ="{{x.course.listings}}" >{{ x }} 
@@ -183,7 +187,7 @@ var x = document.getElementById(String(object));
               </form>
             </span>
              {% endfor %}
-             {% for x in isc_off %}
+             {% for x in intro_off %}
                <span>
                <form class= "form-inline" id = "{{x.course.listings}}">
                 <a class="list-group-item list-group-item-danger" name ="{{x.course.listings}}" >{{ x }}</a>
@@ -194,57 +198,10 @@ var x = document.getElementById(String(object));
          </div>
 
 
-         <div class="col-md-4">
-         <div class="list_group">
-                <a class="list-group-item active" style="text-align:center">Regular Track</a>
-             {% for x in regular_on %}
-               <span>
-               <form class= "form-inline" id = "{{x.course.listings}}">
-                <a class="list-group-item list-group-item-success" style="text-align:center" name ="{{x.course.listings}}" >{{ x }}
-                    </a>
-               
-              </form>
-            </span>
-             {% endfor %}
-             {% for x in regular_off %}
-               <span>
-               <form class= "form-inline" id = "{{x.course.listings}}">
-                <a class="list-group-item list-group-item-danger" style="text-align:center" name ="{{x.course.listings}}" >{{ x }} </a>
-                
-              </form>
-            </span>
-             {% endfor %}
-            </div>
-         </div>
-         
-         <div class="col-md-4">
-         <div class="list_group" style="text-align:center">
-                <a class="list-group-item active">Research</a>
-             {% for x in research_on %}
-               <span>
-               <form class= "form-inline" id = "{{x.course.listings}}">
-                <a class="list-group-item list-group-item-success" name ="{{x.course.listings}}" >{{ x }} 
-                  </a>
-             
-              </form>
-            </span>
-             {% endfor %}
-             {% for x in research_off %}
-               <span>
-               <form class= "form-inline" id = "{{x.course.listings}}">
-                <a class="list-group-item list-group-item-danger" name ="{{x.course.listings}}" >{{ x }}</a>
-              </form>
-            </span>
-             {% endfor %}
-            </div>
-            </div>
-         </div><br>
-         
-          <div class="row"> 
-         <div class="col-md-4">
+         <div class="col-md-6">
          <div class="list_group">
                 <a class="list-group-item active" style="text-align:center">Elective</a>
-             {% for x in elective_on %}
+             {% for x in gss_on %}
                <span>
                <form class= "form-inline" id = "{{x.course.listings}}">
                 <a class="list-group-item list-group-item-success" style="text-align:center" name ="{{x.course.listings}}" >{{ x }}
@@ -253,7 +210,7 @@ var x = document.getElementById(String(object));
               </form>
             </span>
              {% endfor %}
-             {% for x in elective_off %}
+             {% for x in gss_off %}
                <span>
                <form class= "form-inline" id = "{{x.course.listings}}">
                 <a class="list-group-item list-group-item-danger" style="text-align:center" name ="{{x.course.listings}}" >{{ x }} </a>
@@ -263,8 +220,10 @@ var x = document.getElementById(String(object));
              {% endfor %}
             </div>
          </div>
-
-   </div>
+         
+         </div>
+         
+          
    </div>
  </div>
  
