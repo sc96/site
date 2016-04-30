@@ -272,6 +272,10 @@ class Student(models.Model):
 
 	def remove_courseSummer(self, course, student):
 		s = student
+		c = course
+		obj = Outside_Course.filter(student_id = s, course_name = c)
+		obj.delete()
+
 
 	def update_info(self, student, firstN, lastN, engineerBool, publicBool, cert1, cert2, cert3, calc_1, calc_2, calc_3, lin_alg, gen_chem, physics, cos):
 		student.first_name = firstN
