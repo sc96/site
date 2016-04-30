@@ -760,12 +760,12 @@ def four_year(request,search):
 
 	student_outside=[]
 	outside_courses = Outside_Course.objects.filter(student_id=current_user.username) # list of the student's outside courses
-	for c in outside_courses.iterator():
-		student_outside.append(c.course_name)
+	#for c in outside_courses.iterator():
+	#	student_outside.append(c.course_name)
 
 	context = {'user': current_user.username,'fresh_fall': all_frf, 'fresh_spring': all_frs, 
 	'soph_fall': all_sof, 'soph_spring': all_sos, 'junior_fall': all_jrf, 'junior_spring': all_jrs,
-	'senior_fall': all_srf, 'senior_spring': all_srs, 'student_outside': student_outside,'test': test, 'matched_courses': matched_courses, 'test_course': added_class, 'sem': semester,
+	'senior_fall': all_srf, 'senior_spring': all_srs, 'student_outside': outside_courses,'test': test, 'matched_courses': matched_courses, 'test_course': added_class, 'sem': semester,
 	 'removed_class': removed_class }
 	return render(request, 'four_year.html', context, )
 
