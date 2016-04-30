@@ -123,7 +123,7 @@ function check_dist(text) {
     <label for="fulfills">Please cite what type of requirement this class fulfills</label>
     <select class="form-control" name ="reqs" onChange="Submit(classType)">
       <option value ="na">Generic (No Requirements)</option>
-      <option value="dist">Distribution</option>
+      <option value="distribute">Distribution</option>
       <option value="BSE">BSE PreReq</option>
       <option value="COS">COS Requirement</option>
       <option value="other">Other</option>
@@ -158,7 +158,7 @@ function check_dist(text) {
       <option value="other">Other</option>
     </select>
     {% endif %}
-    {% if req == "dist" %}
+    {% if req == "distribute" %}
     <label for="Distribution">State approved distribution area:</label>
     <input type="text" class="form-control" name="Distribution" placeholder="e.g. SA" value="{{ courseName }}" onChange="check_dist()">
     {% endif %}
