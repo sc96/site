@@ -246,15 +246,7 @@ function Submit_Class(object) {
   }
 });
 var dist_code= ["la", "sa", "ha", "em", "ec", "qr", "stl", "stn", ""];
-var DistComponent = React.createClass({
-  displayName: "DistComponent",  
-  getInitialState: function() {
-        return {data: []};
-      },
-  check_dist: function(text) {
-      var index = dist_code.indexOf(text);
-      var query = text;
-      var DistError = React.createClass({displayName: 'DistError',
+var DistError = React.createClass({displayName: 'DistError',
       
       render: function() {
         return (
@@ -266,6 +258,14 @@ var DistComponent = React.createClass({
         );
       }
       });
+var DistComponent = React.createClass({
+  displayName: "DistComponent",  
+  getInitialState: function() {
+        return {data: []};
+      },
+  check_dist: function(text) {
+      var index = dist_code.indexOf(text);
+      var query = text;
       if (index < 0){
         ReactDOM.render(
         React.createElement(DistError, null),
