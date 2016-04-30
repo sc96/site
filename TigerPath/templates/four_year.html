@@ -90,36 +90,6 @@ BootstrapDialog.confirm({
 
 </script>
 
-<script>
-//Remove an item from your course list
-function rmvtest(object) {
-BootstrapDialog.confirm({
-            title: 'Remove a course:',
-            message: 'Are you sure you want to remove (yes i am) from your course list?'),
-            type: BootstrapDialog.TYPE_WARNING, // <-- Default value is BootstrapDialog.TYPE_PRIMARY
-            closable: true, // <-- Default value is false
-            draggable: true, // <-- Default value is false
-            btnCancelLabel: 'No', // <-- Default value is 'Cancel',
-            btnOKLabel: 'Drop it!', // <-- Default value is 'OK',
-            btnOKClass: 'btn-warning', // <-- If you didn't specify it, dialog type will be used,
-            callback: function(result) {
-                // result will be true if button was click, while it will be false if users close the dialog directly.
-                if(result) {
-                    var x = document.getElementById(String(object));
-                    x.submit();
-                    result.close();
-                }else {
-                    return;
-                }
-            }
-        });
- 
-}
-
-</script>
-
-
-
 
 <nav class="navbar navbar-inverse navbar-fixed-top">
   <div class="container-fluid">
