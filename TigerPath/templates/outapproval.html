@@ -272,7 +272,7 @@ var DistComponent = React.createClass({
   componentDidUpdate: function() {
     var index = dist_code.indexOf(this.data);
     if (index < 0){
-        var txt = this.data;
+        var txt = this.state.data;
         var err = React.createElement(DistError, null);
         console.log(txt);
         console.log(this.props.children);
