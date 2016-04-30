@@ -247,13 +247,15 @@ function Submit_Class(object) {
 });
 var dist_code= ["la", "sa", "ha", "em", "ec", "qr", "stl", "stn", ""];
 var DistError = React.createClass({displayName: 'DistError',
-      
+      getInitialState: function() {
+        return {data: []};
+      },
       render: function() {
         return (
           React.createElement('div', 
             {className:"alert alert-danger col-md-12", 
             role: "alert"},
-            "Error: is an invalid dist code."
+            "Error: ".concat(String(this.data), "is an invalid dist code.")
           )
         );
       }
@@ -266,8 +268,10 @@ var DistComponent = React.createClass({
   componentDidUpdate: function() {
     var index = dist_code.indexOf(this.data);
     if (index < 0){
+        var err = React.createElement(DistError, null);
+        err.setState({data: this.data});
         ReactDOM.render(
-        React.createElement(DistError, null),
+        err,
         document.getElementById('dist_error')
       );}
   },
