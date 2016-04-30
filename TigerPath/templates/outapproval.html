@@ -132,17 +132,21 @@ function check_dist(text) {
 
 function structure_form(text) {
   var query = text;
-    var CosReq = React.createClass({displayName: 'CosReq',
-    render: function() {
-      return (
-        React.createElement('fieldset', 
-          {className:"form-group"},
-          React.createElement('label',
-            {className: 'form-control',
-             name: 'COSreq'}),
-           React.createElement(
+    var CosReq = React.createClass({
+      displayName: "CosReq",
+
+      render: function render() {
+        return React.createElement(
+          "div",
+          null,
+          React.createElement(
+            "label",
+            { htmlFor: "COSreq" },
+            "List COS requirements this fulfills"
+          ),
+          React.createElement(
             "select",
-            { "class": "form-control", name: "COSreq" },
+            { className: "form-control", name: "COSreq" },
             React.createElement(
               "option",
               { value: "na" },
@@ -169,15 +173,15 @@ function structure_form(text) {
               "Other"
             )
           )
-        ));
-    }
-  });
-  if  (cached_requirement == 'COS'){
+        );
+      }
+    });
+  };
+  if  (cached_requirement == 'na'){
     ReactDOM.render(
     React.createElement(CosReq, null),
     document.getElementById('Test_COS')
     );}
-
 }
 </script>
 <!-- End script -->
