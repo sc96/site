@@ -266,6 +266,7 @@ var DistComponent = React.createClass({
   check_dist: function(text) {
       var index = dist_code.indexOf(text);
       var query = text;
+      setState({data: text});
       if (index < 0){
         ReactDOM.render(
         React.createElement(DistError, null),
