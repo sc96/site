@@ -47,6 +47,7 @@ urlpatterns = [
     url(r'^qcb/$', views.qcb),
     url(r'^gss/$', views.gss),
     url(r'^eas/$', views.eas),
+    url(r'^rob/$', views.rob),
     url(r'^outsidecourseapproval/$', views.outside_course_approval),
     url(r'^cosdata/$', views.cos_data),
     url(r'^cosdatasemester/$', views.cos_data_semester),
