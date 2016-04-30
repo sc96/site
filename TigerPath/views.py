@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from .models import Student, Course, COS_BSE, URB, Entry, Approved_Course, GSS, Engineer, Outside_Course, AAS, AFS, AMS, NEU, MUS, GHP, FIN, QCB, CWR, AP_Credit
+from .models import Student, Course, COS_BSE, URB, Entry, Approved_Course, GSS, Engineer, Outside_Course, AAS, EAS, AFS, AMS, NEU, MUS, GHP, FIN, QCB, CWR, AP_Credit
 from django.contrib.auth.decorators import login_required
 import re
 from itertools import chain
@@ -771,6 +771,7 @@ def outside_course_approval(request):
 	current_user = request.user
 	student = Student.objects.get(student_id=current_user.username)
 	context = {}
+<<<<<<< HEAD
 	if request.method == 'POST':
 		if 'classType' in request.POST:
 			req = request.POST['req']
@@ -794,6 +795,8 @@ def outside_course_approval(request):
 				if dep_search.lower() not in dist:
 					inv_dept = True		
 	context['inv_dept'] = inv_dept
+=======
+>>>>>>> origin/master
 	return render(request, 'outapproval.html', context)
 	
 @login_required # Cas authentication for this url.
@@ -974,7 +977,8 @@ def certificates(request):
 	mus = MUS.objects.values_list('course_id', flat=True).order_by('course_id')
 	neu = NEU.objects.values_list('course_id', flat=True).order_by('course_id')
 	cwr = CWR.objects.values_list('course_id', flat=True).order_by('course_id')
-	qcb = CWR.objects.values_list('course_id', flat=True).order_by('course_id')
+	qcb = QCB.objects.values_list('course_id', flat=True).order_by('course_id')
+	eas = EAS.objects.values_list('course_id', flat=True).order_by('course_id')
 	
 	nsimilar = num_compare(all_courses, aas)
 	cert_dict["African American Studies"]=num_compare(all_courses, aas)
@@ -986,6 +990,7 @@ def certificates(request):
 	cert_dict["Finance"]=num_compare(all_courses, fin)
 	cert_dict["Creative Writing"]=num_compare(all_courses, cwr)
 	cert_dict["Quantitative and Computational Biology"]=num_compare(all_courses, qcb)
+	cert_dict["East Asian Studies"]=num_compare(all_courses, eas)
 	
 	top_3=[]
 	for i in range(0, 3):
@@ -1270,6 +1275,32 @@ def qcb(request):
 	context = {'isc_on': isc_on, 'isc_off': isc_off, 'regular_on': regular_on, 'regular_off': regular_off,
 	'research_on': research_on, 'research_off': research_off, 'elective_on': elective_on, 'elective_off': elective_off}
 	return render(request, 'qcb.html', context)
+	
+@login_required
+def eas(request):
+	current_user = request.user
+	student = Student.objects.get(student_id=current_user.username)
+	all_courses = Entry.objects.filter(student_id=current_user.username).values_list('course_id', flat=True).order_by('course_id') # all of the student's courses
+	chin = EAS.objects.filter(chin=1).values_list('course_id', flat=True).order_by('course_id')
+	japan = EAS.objects.filter(japan=1).values_list('course_id', flat=True).order_by('course_id')
+	korean = EAS.objects.filter(korean=1).values_list('course_id', flat=True).order_by('course_id')
+	upper = EAS.objects.filter(upper=1).values_list('course_id', flat=True).order_by('course_id')
+
+	chin_on = title(compare_lists(all_courses, chin)["similarities"])
+	chin_off = title(compare_lists(all_courses, chin)["differences"])
+
+	japan_on = title(compare_lists(all_courses, japan)["similarities"])
+	japan_off = title(compare_lists(all_courses, japan)["differences"])
+
+	korean_on = title(compare_lists(all_courses, korean)["similarities"])
+	korean_off = title(compare_lists(all_courses, korean)["differences"])
+	
+	upper_on = title(compare_lists(all_courses, upper)["similarities"])
+	upper_off = title(compare_lists(all_courses, upper)["differences"])
+
+	context = {'chin_on': chin_on, 'chin_off': chin_off, 'japan_on': japan_on, 'japan_off': japan_off,
+	'korean_on': korean_on, 'korean_off': korean_off, 'upper_on': upper_on, 'upper_off': upper_off}
+	return render(request, 'eas.html', context)	
 	
 @login_required
 def gss(request):
