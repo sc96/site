@@ -769,6 +769,12 @@ def four_year(request,search):
 def outside_course_approval(request):
 	current_user = request.user
 	student = Student.objects.get(student_id=current_user.username)
+	if request.method == 'POST':
+		if 'classType' in request.POST:
+			req = request.POST['req']
+
+
+
 	context = {}
 	return render(request, 'outapproval.html', context)
 	
