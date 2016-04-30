@@ -99,6 +99,67 @@
 </div>
 
 
+
+
+<div class="container">
+  
+<div class="form-group">
+   <form class = "form-inline" action = "" method = "post" id="classType">{% csrf_token %}
+    <label for="fulfills">Please cite what type of requirement this class fulfills</label>
+    <select class="form-control" id = 'reqs' name ="reqs" onChange="Submit_Class('reqs')">
+      <option value ="na">Generic (No Requirements)</option>
+      <option value="distribute">Distribution</option>
+      <option value="BSE">BSE PreReq</option>
+      <option value="COS">COS Requirement</option>
+      <option value="other">Other</option>
+    </select>
+  </form>
+</div> <!-- Form -->
+<p>Req fulfileld is: {{ req }}<p>
+<div id="Test_COS"></div>
+{% if req %}
+<div class="form-group">
+  <form class = "form" action = "" method = "post" id="classType">{% csrf_token %}
+    <label for="course_name">Course Name:</label>
+    <input type="text" class="form-control" id="course_name" placeholder="e.g. Summer Photography Class at NYU" value="{{ courseName }}" name="course_title">
+
+    {% if req == "COS" %}
+    <label for="COSreq">List COS requirements this fulfills</label>
+    <select class="form-control" name ="COSreq">
+      <option value= "na">N/A</option>
+      <option value= "theory">Theory</option>
+      <option value="systems">Systems</option>
+      <option value="apps">Applications</option>
+      <option value="other">Other</option>
+    </select>
+    {% endif %}
+    {% if req == "BSE" %}
+    <label for="BSEreq">Choose BSE general requirement this fulfills</label>
+    <select class="form-control" name ="BSEreq">
+      <option value="c1">Calc 1</option>
+      <option value="c2">Calc 2</option>
+      <option value="c3">Calc 3</option>
+      <option value="comp">General Computing</option>
+      <option value="chm">General Chemistry</option>
+      <option value="phm">Physics - Mechanics </option>
+      <option value="phem">Physics - EM </option>
+      <option value="other">Other</option>
+    </select>
+    {% endif %}
+    {% if req == "distribute" %}
+    <label for="Distribution">State approved distribution area:</label>
+    <input type="text" class="form-control" name="Distribution" placeholder="e.g. SA" value="{{ courseName }}" onChange="check_dist(this.value)">
+    {% endif %}
+     <span id="dist_error" class="row"></span>
+     <br>
+    <input type="submit" class="btn btn-info" value="Add Class">
+  </form>
+</div> <!-- form-group -->
+{% endif %}
+
+
+
+</div>
 <!-- Script to check department code -->
 <script>
 var dist_code= ["la", "sa", "ha", "em", "ec", "qr", "stl", "stn"];
@@ -183,66 +244,8 @@ function check_dist(text) {
 
 </script>
 <!-- End script -->
-
-<div class="container">
-  
-<div class="form-group">
-   <form class = "form-inline" action = "" method = "post" id="classType">{% csrf_token %}
-    <label for="fulfills">Please cite what type of requirement this class fulfills</label>
-    <select class="form-control" id = 'reqs' name ="reqs" onChange="Submit_Class('reqs')">
-      <option value ="na">Generic (No Requirements)</option>
-      <option value="distribute">Distribution</option>
-      <option value="BSE">BSE PreReq</option>
-      <option value="COS">COS Requirement</option>
-      <option value="other">Other</option>
-    </select>
-  </form>
-</div> <!-- Form -->
-<p>Req fulfileld is: {{ req }}<p>
-<div id="Test_COS"></div>
-{% if req %}
-<div class="form-group">
-  <form class = "form" action = "" method = "post" id="classType">{% csrf_token %}
-    <label for="course_name">Course Name:</label>
-    <input type="text" class="form-control" id="course_name" placeholder="e.g. Summer Photography Class at NYU" value="{{ courseName }}" name="course_title">
-
-    {% if req == "COS" %}
-    <label for="COSreq">List COS requirements this fulfills</label>
-    <select class="form-control" name ="COSreq">
-      <option value= "na">N/A</option>
-      <option value= "theory">Theory</option>
-      <option value="systems">Systems</option>
-      <option value="apps">Applications</option>
-      <option value="other">Other</option>
-    </select>
-    {% endif %}
-    {% if req == "BSE" %}
-    <label for="BSEreq">Choose BSE general requirement this fulfills</label>
-    <select class="form-control" name ="BSEreq">
-      <option value="c1">Calc 1</option>
-      <option value="c2">Calc 2</option>
-      <option value="c3">Calc 3</option>
-      <option value="comp">General Computing</option>
-      <option value="chm">General Chemistry</option>
-      <option value="phm">Physics - Mechanics </option>
-      <option value="phem">Physics - EM </option>
-      <option value="other">Other</option>
-    </select>
-    {% endif %}
-    {% if req == "distribute" %}
-    <label for="Distribution">State approved distribution area:</label>
-    <input type="text" class="form-control" name="Distribution" placeholder="e.g. SA" value="{{ courseName }}" onChange="check_dist(this.value)">
-    {% endif %}
-     <span id="dist_error" class="row"></span>
-     <br>
-    <input type="submit" class="btn btn-info" value="Add Class">
-  </form>
-</div> <!-- form-group -->
-{% endif %}
-
-
-
-</div>
 </body>
 </html>
+
+
 {% endblock %}
