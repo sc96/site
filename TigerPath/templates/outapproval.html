@@ -103,7 +103,7 @@
 <script>
 var dist_code= ["la", "sa", "ha", "em", "ec", "qr", "stl", "stn"];
 //Remove an item from your course list
-function Submit_class(object) {
+function Submit_Class(object) {
   var x = document.getElementById(String(object));
   x.submit();
 }
@@ -129,7 +129,7 @@ function check_dist(text) {
 <div class="form-group">
    <form class = "form-inline" action = "" method = "post" id="classType">
     <label for="fulfills">Please cite what type of requirement this class fulfills</label>
-    <select class="form-control" name ="reqs" onChange="Submit('classType')">
+    <select class="form-control" name ="reqs" onChange="Submit_Class('classType')">
       <option value ="na">Generic (No Requirements)</option>
       <option value="distribute">Distribution</option>
       <option value="BSE">BSE PreReq</option>
