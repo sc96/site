@@ -101,7 +101,11 @@
 
 <!-- Script to check department code -->
 <script>
-check
+//Remove an item from your course list
+function Submit_class(object) {
+  var x = document.getElementById(String(object));
+  x.submit();
+};
 
 
 
@@ -123,7 +127,7 @@ check
     </select>
   </form>
 </div> <!-- Form -->
-{% req %}
+{% if req %}
 <div class="form-group">
   <form class = "form-inline" action = "" method = "post" id="classType">
     <label for="course_name">Course Name:</label>
@@ -158,7 +162,7 @@ check
     <input type="submit" class="btn btn-info" value="Add Class">
   </form>
 </div> <!-- form-group -->
-{% req %}
+{% endif %}
 
 
 
