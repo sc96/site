@@ -301,7 +301,7 @@ def degree_progress(request):
 			student_em.append(d)
 		elif (course.area=='EC'):
 			student_ec.append(d)
-		elif (course.area=='STN' || course.area=='STL'):
+		elif (course.area=='STN' or course.area=='STL'):
 			student_stln.append(d)
 		elif(re.match(r'WRI1', course.listings)):
 			student_wri.append(d)
