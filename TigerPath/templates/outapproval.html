@@ -119,7 +119,8 @@ function check_dist(text) {
       render: function() {
         return (
           React.createElement('div', 
-            {className:"DistError"},
+            {className:"alert alert-warning col-md-12", 
+            role: "alert"},
             "Error: " + query + " is an invalid dist code."
           )
         );
