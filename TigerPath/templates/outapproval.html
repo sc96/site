@@ -249,7 +249,7 @@ var dist_code= ["la", "sa", "ha", "em", "ec", "qr", "stl", "stn"];
 var DistComponent = React.createClass({
   displayName: "DistComponent",  
   check_dist: function(text) {
-      var index = dist_code.indexOf(text.toLowerCase());
+      var index = dist_code.indexOf(text);
       var query = text;
       var DistError = React.createClass({displayName: 'DistError',
       render: function() {
