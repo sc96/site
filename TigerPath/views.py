@@ -811,6 +811,23 @@ def outside_course_approval(request):
 				context['COSreq'] = COSreq
 			if "BSEreq" in request.POST:
 				BSEreq = request.POST["BSEreq"]
+				# if BSEreq == "calc_1":
+				# 	student.calc_1 = "1"
+				# elif BSEreq == "calc_2":
+				# 	student.calc_2 = "1"
+				# elif BSEreq == "calc_3":
+				# 	student.calc_3 = "1"
+				# elif BSEreq == "cos":
+				# 	student.cos = "1"
+				# elif BSEreq == "gen_chem":
+				# 	student.gen_chem = "1"
+				# elif BSEreq == "physics_mech":
+				# 	student.physics = "1"				#HELLLP - Need to break into semesters
+				# elif BSEreq == "physics_em":
+				# 	student.physics = "1"
+				# else:
+				# 	continue
+				#student.save()
 				context['BSEreq'] = BSEreq
 			if "Distribution" in request.POST:
 				distr = request.POST["Distribution"]
