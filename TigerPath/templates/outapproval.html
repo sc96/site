@@ -356,7 +356,7 @@ var DistComponent = React.createClass({
       },
   componentDidUpdate: function() {
     var dist_code= ["la", "sa", "ha", "em", "ec", "qr", "stl", "stn", ""];
-    var index = dist_code.indexOf(this.state.data);
+    var index = dist_code.indexOf(this.state.data.toLowerCase());
     // console.log(index);
     // console.log(this.state.data);
     if (index < 0){
