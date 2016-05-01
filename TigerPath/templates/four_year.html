@@ -125,7 +125,23 @@ BootstrapDialog.confirm({
       </div>
     </div>
 
-        <br>    
+        <br> 
+         {% if test_course %}
+        <div class="row"><br>
+          <div class="alert alert-success col-md-12" role="alert">
+            <b>Well Done!</b> You have successfully added <b>{{test_course}} {{test_course.title}}</b> to <b>{{sem}}</b>
+          </div>
+        </div>
+        <br>
+        {% endif %}
+        {% if removed_class %}
+        <div class="row"><br>
+          <div class="alert alert-success col-md-12" role="alert">
+            <b>Well Done!</b> You have successfully removed <b>{{removed_class}}</b>. 
+          </div>
+        </div>
+        <br>
+        {% endif %}   
                 
          <div class="row">
              <div class="col-md-6">
@@ -302,20 +318,7 @@ BootstrapDialog.confirm({
         </div> <!-- Column -->
     </div> <!-- row -->
     <br>
-        {% if test_course %}
-        <div class="row"><br>
-          <div class="alert alert-success col-md-12" role="alert">
-            <b>Well Done!</b> You have successfully added <b>{{test_course}} {{test_course.title}}</b> to <b>{{sem}}</b>
-          </div>
-        </div>
-        {% endif %}
-        {% if removed_class %}
-        <div class="row"><br>
-          <div class="alert alert-success col-md-12" role="alert">
-            <b>Well Done!</b> You have successfully removed <b>{{removed_class}}</b>. 
-          </div>
-        </div>
-        {% endif %}
+       
         <!-- List the matche courses below -->
         {% if matched_courses %}
         <div class="row">
