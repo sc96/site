@@ -133,11 +133,17 @@ BootstrapDialog.confirm({
           </div>
         </div>
         <br>
-        {% endif %}
-        {% if removed_class %}
+        {% elif removed_class %}
         <div class="row"><br>
           <div class="alert alert-success col-md-12" role="alert">
             <b>Well Done!</b> You have successfully removed <b>{{removed_class}}</b>. 
+          </div>
+        </div>
+        <br>
+        {% else %}
+        <div class="row"><br>
+          <div class="alert alert-info col-md-12" role="alert">
+            <b>Welcome to your 4-Year Plan!</b> To add and drop classes, use the search bar at the bottom of the page, or press the minus sign next to your list of classes.
           </div>
         </div>
         <br>
