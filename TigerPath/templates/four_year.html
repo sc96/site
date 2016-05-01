@@ -123,10 +123,8 @@ BootstrapDialog.confirm({
       <div class='container' id='box'>
       <h1 style="color:#ff8f00; background-color:rgba(0, 0, 0, 0.5);">Your Four Year Plan</h1>
       </div>
-    </div>
-
-        <br> 
-         {% if test_course %}
+    </div> 
+        {% if test_course %}
         <div class="row"><br>
           <div class="alert alert-success col-md-12" role="alert">
             <b>Well Done!</b> You have successfully added <b>{{test_course}} {{test_course.title}}</b> to <b>{{sem}}</b>
@@ -143,7 +141,7 @@ BootstrapDialog.confirm({
         {% else %}
         <div class="row"><br>
           <div class="alert alert-info col-md-12" role="alert">
-            <b>Welcome to your 4-Year Plan!</b> To add and drop classes, use the search bar at the bottom of the page, or press the minus sign next to your list of classes.
+            <b>Welcome to your 4-Year Plan!</b> To add a class, use the search bar at the bottom of the page. Remove a class by pressing the minus sign next to each entry in your courselist.
           </div>
         </div>
         <br>
