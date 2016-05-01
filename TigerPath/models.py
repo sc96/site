@@ -314,7 +314,7 @@ class Student(models.Model):
 		r = req
 		d = dist
 		br = bsereq
-		if Outside_Course.objects.filter(student=student, course=course).exists():
+		if Outside_Course.objects.filter(student=student, course_name=course).exists():
 			return;
 		e = Outside_Course(student=s, course_name=c, requirement=r, distribution=d, engineer=br)
 		e.save()
