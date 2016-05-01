@@ -276,8 +276,10 @@ var DistComponent = React.createClass({
     if (index < 0){
         var txt = this.state.data;
         var err = React.createElement(DistError, null);
+        console.log(index);
         console.log(txt);
-        console.log(err.state);
+        console.log(err);
+        console.log(err.props);
         ReactDOM.render(
         err,
         document.getElementById('dist_error')
