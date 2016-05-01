@@ -134,6 +134,8 @@ var FulfilledComp = React.createClass({
      },
   handleChange: function(event) {
   this.setState({value: event.target.value});
+  cached_requirement = this.state.value;
+  console.log(cached_requirement);
   },
 
   render: function render() {
