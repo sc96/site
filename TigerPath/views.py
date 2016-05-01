@@ -815,7 +815,7 @@ def outside_course_approval(request):
 			if "Distribution" in request.POST:
 				distr = request.POST["Distribution"]
 				context['distr'] = distr
-		
+		student.add_outside_course(title, student, COSreq, distr, BSEreq)
 	
 	return render(request, 'outapproval.html', context)
 
