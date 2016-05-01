@@ -273,9 +273,9 @@ var DistComponent = React.createClass({
       },
   componentDidUpdate: function() {
     var dist_code= ["la", "sa", "ha", "em", "ec", "qr", "stl", "stn", ""];
-    var index = dist_code.indexOf(this.data);
+    var index = dist_code.indexOf(this.state.data);
     console.log(index);
-    console.log(this.data);
+    console.log(this.state.data);
     if (index < 0){
         var err = React.createElement(DistError, null);
         ReactDOM.render(
