@@ -124,28 +124,26 @@ BootstrapDialog.confirm({
       <h1 style="color:#ff8f00; background-color:rgba(0, 0, 0, 0.5);">Your Four Year Plan</h1>
       </div>
     </div> 
-        {% if test_course %}
-        <div class="row"><br>
-          <div class="alert alert-success col-md-12" role="alert">
-            <b>Well Done!</b> You have successfully added <b>{{test_course}} {{test_course.title}}</b> to <b>{{sem}}</b>
-          </div>
-        </div>
-        <br>
-        {% elif removed_class %}
-        <div class="row"><br>
-          <div class="alert alert-success col-md-12" role="alert">
-            <b>Well Done!</b> You have successfully removed <b>{{removed_class}}</b>. 
-          </div>
-        </div>
-        <br>
-        {% else %}
         <div class="row">
-          <div class="alert alert-info col-md-12" role="alert">
-            <b>Welcome to your 4-Year Plan!</b> To add a class, use the search bar at the bottom of the page. Remove a class by pressing the minus sign next to each entry in your courselist.
-          </div>
-        </div>
-        <br>
-        {% endif %}   
+          <div class="col-md-12">
+          {% if test_course %}
+            <div class="alert alert-success col-md-12" role="alert">
+               <b>Well Done!</b> You have successfully added <b>{{test_course}} {{test_course.title}}</b> to <b>{{sem}}</b>
+            </div>
+          
+          <br>
+          {% elif removed_class %}
+            <div class="alert alert-success col-md-12" role="alert">
+              <b>Well Done!</b> You have successfully removed <b>{{removed_class}}</b>. 
+            </div>      
+          {% else %}
+            <div class="alert alert-info col-md-12" role="alert">
+              <b>Welcome to your 4-Year Plan!</b> To add a class, use the search bar at the bottom of the page. Remove a class by pressing the minus sign next to each entry in your courselist.
+            </div>     
+          <br>
+          {% endif %}  
+         </div>
+        </div> 
                 
          <div class="row">
              <div class="col-md-6">
