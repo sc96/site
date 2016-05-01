@@ -277,7 +277,7 @@ var DistComponent = React.createClass({
         var txt = this.state.data;
         var err = React.createElement(DistError, null);
         console.log(txt);
-        console.log(err.state.value);
+        console.log(err.state);
         ReactDOM.render(
         err,
         document.getElementById('dist_error')
