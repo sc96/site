@@ -103,18 +103,7 @@
 
 <div class="container">
   
-<div class="form-group">
-   <form class = "form-inline" action = "" method = "post" id="classType">{% csrf_token %}
-    <label for="fulfills">Please cite what type of requirement this class fulfills</label>
-    <select class="form-control" id = 'reqs' name ="reqs" onChange="Submit_Class('reqs')">
-      <option value ="na">Generic (No Requirements)</option>
-      <option value="distribute">Distribution</option>
-      <option value="BSE">BSE PreReq</option>
-      <option value="COS">COS Requirement</option>
-      <option value="other">Other</option>
-    </select>
-  </form>
-</div> <!-- Form -->
+<div id="Test_Type"></div>
 <div class="form-group">
   <form class = "form" action = "" method = "post" id="classType">{% csrf_token %}
     <label for="course_name">Course Name:</label>
@@ -136,10 +125,63 @@
 
 //Remove an item from your course list
 var cached_requirement = "na";
-function Submit_Class(object) {
-  var x = document.getElementById(String(object));
-  cached_requirement = x.value;
-}
+var FulfilledComp = React.createClass({
+  displayName: "NewComponent",
+  getInitialState: function() {
+         return {
+             value: 'select'
+         }
+     },
+  handleChange: function(event) {
+  this.setState({value: event.target.value});
+  },
+
+  render: function render() {
+    return React.createElement(
+      "div",
+      null,
+      React.createElement(
+        "label",
+        { htmlFor: "reqs" },
+        "Please cite what type of requirement this class fulfills"
+      ),
+      React.createElement(
+        "select",
+        { className: "form-control", id: "reqs", name: "reqs", onchange: this.handleChange, value: this.state.value},
+        React.createElement(
+          "option",
+          { value: "na" },
+          "Generic (No Requirements)"
+        ),
+        React.createElement(
+          "option",
+          { value: "distribute" },
+          "Distribution"
+        ),
+        React.createElement(
+          "option",
+          { value: "BSE" },
+          "BSE PreReq"
+        ),
+        React.createElement(
+          "option",
+          { value: "COS" },
+          "COS Requirement"
+        ),
+        React.createElement(
+          "option",
+          { value: "other" },
+          "Other"
+        )
+      )
+    );
+  }
+});
+//Create the initial drodown box
+ReactDOM.render(
+    React.createElement(FulfilledComp, null),
+    document.getElementById('Test_Type')
+    );}
 
 
   var CosReq = React.createClass({
