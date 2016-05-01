@@ -146,10 +146,6 @@ var FulfilledComp = React.createClass({
              value: 'select'
          }
      },
-  componentDidUpdate: function() {
-    cached_requirement = this.state.value
-    renderElements();
-  },
   handleChange: function(event) {
   this.setState({value: event.target.value});
   cached_requirement = event.target.value;
@@ -356,7 +352,7 @@ var DistComponent = React.createClass({
   displayName: "DistComponent",  
   
   getInitialState: function() {
-        return {data: []};
+        return {data: ""};
       },
   componentDidUpdate: function() {
     var dist_code= ["la", "sa", "ha", "em", "ec", "qr", "stl", "stn", ""];
