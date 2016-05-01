@@ -124,8 +124,7 @@
     <div id="Test_Name"></div>
     <div id="Test_COS"></div>
     <div id="Test_BSE"></div>
-    <div id="Test_dist"></div>
-     <span id="dist_error" class="row"></span>
+    <div id="Test_dist"><span id="dist_error" class="row"></span></div>
      <br>
     <input type="submit" class="btn btn-info" value="Add Class">
   </form>
@@ -167,8 +166,8 @@ var FulfilledComp = React.createClass({
         { className: "form-control", id: "reqs", name: "reqs", defaultValue: "Select:", onChange: this.handleChange, value: this.state.value},
         React.createElement(
           "option",
-          { value: "na" },
-          "Generic (No Requirements)"
+          { value: "select" },
+          "Select:"
         ),
         React.createElement(
           "option",
@@ -187,8 +186,8 @@ var FulfilledComp = React.createClass({
         ),
         React.createElement(
           "option",
-          { value: "other" },
-          "Other"
+          { value: "na" },
+          "Generic (No Requirements)"
         )
       )
     );
