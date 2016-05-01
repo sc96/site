@@ -250,7 +250,6 @@ var DistError = React.createClass({displayName: 'DistError',
       getInitialState: function() {
         return {data: ["hello"]};
       },
-      message: "what",
       update: function(txt) {
         this.setState({data: txt});
       },
@@ -259,7 +258,7 @@ var DistError = React.createClass({displayName: 'DistError',
           React.createElement('div', 
             {className:"alert alert-danger col-md-12", 
             role: "alert"},
-            "Error: ".concat(String(this.props.message), " is an invalid dist code.")
+            "Error: ".concat(String(this.state.data), " is an invalid dist code.")
           )
         );
       }
@@ -282,6 +281,10 @@ var DistComponent = React.createClass({
         err,
         document.getElementById('dist_error')
       );}
+    else {
+      ReactDOM.render( React.createElement('span', null);
+        , document.getElementById('dist_error'))
+    }
   },
   handleChange: function(event) {
       this.setState({data: event.target.value});
