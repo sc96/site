@@ -136,6 +136,7 @@ var FulfilledComp = React.createClass({
   this.setState({value: event.target.value});
   cached_requirement = event.target.value;
   console.log(cached_requirement);
+  renderElements();
   },
 
   render: function render() {
@@ -347,22 +348,23 @@ var DistComponent = React.createClass({
     ));
 
   }});
-
-  if  (cached_requirement == 'na'){
-    ReactDOM.render(
-    React.createElement(CosReq, null),
-    document.getElementById('Test_COS')
-    );}
-  if  (cached_requirement == 'na'){
-    ReactDOM.render(
-    React.createElement(BseReq, null),
-    document.getElementById('Test_BSE')
-    );}
-  if  (cached_requirement == 'na'){
-    ReactDOM.render(
-    React.createElement(DistComponent, null),
-    document.getElementById('Test_dist')
-    );}
+  renderElements: function() {
+    if  (cached_requirement == 'COS'){
+      ReactDOM.render(
+      React.createElement(CosReq, null),
+      document.getElementById('Test_COS')
+      );}
+    if  (cached_requirement == 'BSE'){
+      ReactDOM.render(
+      React.createElement(BseReq, null),
+      document.getElementById('Test_BSE')
+      );}
+    if  (cached_requirement == 'distribute'){
+      ReactDOM.render(
+      React.createElement(DistComponent, null),
+      document.getElementById('Test_dist')
+      );}
+  }
 
 </script>
 <!-- End script -->
