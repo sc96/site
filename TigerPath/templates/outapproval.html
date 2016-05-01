@@ -102,6 +102,21 @@
 
 
 <div class="container">
+<div class = "panel panel-default">
+<p>Posted valued:</p>
+{% if title %}
+<p>Title of class is: {{title}}<p>
+{% endif %}
+{% if COSreq %}
+<p>COS req fulfilled is: {{COSreq}}<p>
+{% endif %}
+{% if BSEreq %}
+<p>BSE req fulfilled is: {{BSEreq}}<p>
+{% endif %}
+{% if distr %}
+<p>Distribution area covered is: {{distr}}<p>
+{% endif %}
+<div>
   
 <div id="Test_Type"></div>
 <div class="form-group">
@@ -118,7 +133,7 @@
 
 
 
-</div>
+</div> <!-- container -->
 <!-- Script to check department code -->
 <script>
 
