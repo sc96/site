@@ -100,8 +100,8 @@
 
 
 
-
-<div class="container">
+<!-- Testing Posted values-->
+<!-- <div class="container">
 <div class = "panel panel-default">
 <p>Posted valued:</p>
 {% if title %}
@@ -116,7 +116,7 @@
 {% if distr %}
 <p>Distribution area covered is: {{distr}}<p>
 {% endif %}
-<div>
+<div> -->
   
 <div id="Test_Type"></div>
 <div class="form-group">
@@ -357,8 +357,8 @@ var DistComponent = React.createClass({
   componentDidUpdate: function() {
     var dist_code= ["la", "sa", "ha", "em", "ec", "qr", "stl", "stn", ""];
     var index = dist_code.indexOf(this.state.data);
-    console.log(index);
-    console.log(this.state.data);
+    // console.log(index);
+    // console.log(this.state.data);
     if (index < 0){
         var err = React.createElement(DistError, null);
         ReactDOM.render(
