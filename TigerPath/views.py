@@ -797,11 +797,13 @@ def outside_course_approval(request):
 	current_user = request.user
 	student = Student.objects.get(student_id=current_user.username)
 	context = {}
+
 	if request.method == 'POST':
-		if 'reqs' in request.POST:
-			req = request.POST['reqs']
-			context['req'] = req
-		elif 'course_title' in request.POST:
+		title = ""
+		COSreq = "na"
+		BSEreq = "na"
+		distr = "na"
+		if 'course_title' in request.POST:
 			title = request.POST['course_title']
 			context['title'] = title
 			if "COSreq" in request.POST:
@@ -813,6 +815,7 @@ def outside_course_approval(request):
 			if "Distribution" in request.POST:
 				distr = request.POST["Distribution"]
 				context['distr'] = distr
+		
 	
 	return render(request, 'outapproval.html', context)
 

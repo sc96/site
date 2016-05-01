@@ -307,7 +307,17 @@ class Student(models.Model):
 		student.calc_3 = calc_3
 		student.save()
 
-
+	def add_outside_course(self, course, student, req = 'na', dist='na', bsereq='na'):
+		# put student ID and course ID into student-course DB
+		s = student
+		c = course
+		r = req
+		d = dist
+		br = bsereq
+		if Outside_Course.objects.filter(student=student, course=course).exists():
+			return;
+		e = Outside_Course(student=s, course_name=c, requirement=r, distribution=d, engineer=br)
+		e.save()
 
 
 # Relevant when they are "adding" a course to their four year plan
@@ -349,30 +359,4 @@ class Outside_Course(models.Model):
 
 	def __str__(self):
 		return self.course_name
-	#WILLIAM ADDED
-	# def add_course(Course, semester):
-	# 	self.student_courses.add(course)
-	# 	self.save()
-
-	# def drop_course(course, semester):
-	# 	self.student_courses.remove(course)
-
-	#def courses_taken(self):
-		# SELECT * 
-		#FROM  `TigerPath_student` 
-		#WHERE  `student_id` =1
-		#LIMIT 0 , 30
-
-	#def required_areas(self):
-		#'''returns a list of distribution and concentration specific requirements. * need
-		#to append certificate-specific requirements'''
-	#	return student_major.get_requirements(student_major.major_code)
-	#student_certificates = [] #How to get multiple certificates?
-	#Should we consider linking in other information? i.e. rescollege, biodata, etc? or na
-
-#	def change_major(self):
-	#	self.student_major = models.ForeignKey(Major, on_delete= models.CASCADE)
-
-#	def get_classes(self):
-		# want to return a list of all of the classes the student has stored in their four year plan
-	#	return self.student_id.( #.....
+	
