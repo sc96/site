@@ -332,7 +332,7 @@ var CourseName = React.createClass({
 
 var DistError = React.createClass({displayName: 'DistError',
       getInitialState: function() {
-        return {data: ["hello"]};
+        return {data: [" "]};
       },
       update: function(txt) {
         this.setState({data: txt});
@@ -342,7 +342,7 @@ var DistError = React.createClass({displayName: 'DistError',
           React.createElement('div', 
             {className:"alert alert-danger col-md-12", 
             role: "alert"},
-            "Error: ".concat(String(this.state.data), " is an invalid dist code.")
+            "Error:".concat(String(this.state.data), " is an invalid dist code.")
           )
         );
       }
