@@ -282,8 +282,9 @@ var DistComponent = React.createClass({
         document.getElementById('dist_error')
       );}
     else {
-      ReactDOM.render( React.createElement('span', null);
-        , document.getElementById('dist_error'))
+      ReactDOM.render(
+        React.createElement('span', null),
+        document.getElementById('dist_error'));
     }
   },
   handleChange: function(event) {
