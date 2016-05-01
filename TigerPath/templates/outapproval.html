@@ -126,7 +126,8 @@
     <div id="Test_BSE"></div>
     <div id="Test_dist"><span id="dist_error" class="row"></span></div>
      <br>
-    <input type="submit" class="btn btn-info" value="Add Class">
+     <div id="Test_Button"></span></div>
+    
   </form>
 </div> <!-- form-group -->
 
@@ -386,11 +387,29 @@ var DistComponent = React.createClass({
     ));
 
   }});
+  var FormButton = React.createClass({
+    displayName: "FormButton",
+
+    render: function render() {
+      return React.createElement("input", { type: "submit", className: "btn btn-info", defaultValue: "Add Class" });
+    }
+  });
   function renderElements() {
     if  (cached_requirement != 'select'){
       ReactDOM.render(
       React.createElement(CourseName, null),
       document.getElementById('Test_Name')
+      );}
+    else {
+      ReactDOM.render(
+      React.createElement('div', null),
+      document.getElementById('Test_Name')
+      );
+    }
+    if  (cached_requirement != 'select'){
+      ReactDOM.render(
+      React.createElement(FormButton, null),
+      document.getElementById('Test_Button')
       );}
     else {
       ReactDOM.render(
