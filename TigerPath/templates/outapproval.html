@@ -354,16 +354,37 @@ var DistComponent = React.createClass({
       React.createElement(CosReq, null),
       document.getElementById('Test_COS')
       );}
+    else {
+      ReactDOM.render(
+      React.createElement('div', null),
+      document.getElementById('Test_COS')
+      );
+
+    }
     if  (cached_requirement == 'BSE'){
       ReactDOM.render(
       React.createElement(BseReq, null),
       document.getElementById('Test_BSE')
       );}
+    else {
+      ReactDOM.render(
+      React.createElement('div', null),
+      document.getElementById('Test_BSE')
+      );
+
+    }
     if  (cached_requirement == 'distribute'){
       ReactDOM.render(
       React.createElement(DistComponent, null),
       document.getElementById('Test_dist')
       );}
+    else {
+      ReactDOM.render(
+      React.createElement('div', null),
+      document.getElementById('Test_dist')
+      );
+
+    }
   }
 
 </script>
