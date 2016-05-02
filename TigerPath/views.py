@@ -425,16 +425,24 @@ def degree_progress(request):
 			# Need to add logic for only hilighting 2 theory courses then overflowing others into "other" section
 			# Maybe don't display everything...display ones that only have "other"
 	
+		other_sa = Outside_Course.objects.filter(student_id = student, distribution="sa")
 		other_la = Outside_Course.objects.filter(student_id = student, distribution="la")
+		other_ha = Outside_Course.objects.filter(student_id = student, distribution="ha")
+		other_em = Outside_Course.objects.filter(student_id = student, distribution="em")
+		other_ec = Outside_Course.objects.filter(student_id = student, distribution="ec")
 		#other_la_2 = Outside_Course.objects.filter(requirement="LA")
 		#other_la = chain(other_la_1, other_la_2)
 			# Distribution Requirements
 		student_sa=title(student_sa)
+		student_sa = list(chain(student_sa, other_sa))
 		student_la=title(student_la)
 		student_la = list(chain(student_la, other_la))
 		student_ha=title(student_ha)
+		student_ha = list(chain(student_ha, other_ha))
 		student_em=title(student_em)
+		student_em = list(chain(student_em, other_em))
 		student_ec=title(student_ec)
+		student_ec = list(chain(student_ec, other_ec))
 		student_wri=title(student_wri)
 		student_foreign=title(student_foreign)
 	
@@ -460,13 +468,13 @@ def degree_progress(request):
 		chem_1_credit=[0000]
 		cos_1_credit=[0000]
 		
-		other_math1 = Outside_Course.objects.filter(engineer="calc_1").values_list('course_name', flat=True).order_by('course_name')
-		other_math2 = Outside_Course.objects.filter(engineer="calc_2") 
-		other_math3 = Outside_Course.objects.filter(engineer="calc_3")
-		other_cos = Outside_Course.objects.filter(engineer="cos")
-		other_phy1 = Outside_Course.objects.filter(engineer="physics_mech")
-		other_phy2 = Outside_Course.objects.filter(engineer="Physics_em")
-		other_chem = Outside_Course.objects.filter(engineer="gen_chem")
+		other_math1 = Outside_Course.objects.filter(student_id = student, engineer="calc_1")
+		other_math2 = Outside_Course.objects.filter(student_id = student, engineer="calc_2") 
+		other_math3 = Outside_Course.objects.filter(student_id = student, engineer="calc_3")
+		other_cos = Outside_Course.objects.filter(student_id = student, engineer="cos")
+		other_phy1 = Outside_Course.objects.filter(student_id = student, engineer="physics_mech")
+		other_phy2 = Outside_Course.objects.filter(student_id = student, engineer="Physics_em")
+		other_chem = Outside_Course.objects.filter(student_id = student, engineer="gen_chem")
 		
 		# ap credit working now
 		if (AP_Credit.objects.filter(student_name=current_user.username, course_id="538").exists()):
