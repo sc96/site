@@ -369,11 +369,11 @@ def degree_progress(request):
 		theory_on = compare_lists(all_courses, theory_courses)["similarities"]
 		for t in all_entries.filter(req="Theory").values_list('course_id', flat=True).order_by('course_id'):
 			theory_on.append(t)
-		while len(theory_on) > 2:
-			save_other.append(theory_on.pop(0))
 		theory_on = title(theory_on)
 		theory_off = title(compare_lists(all_courses, theory_courses)["differences"])
 		theory_on = chain(theory_on, other_theory)
+		while len(theory_on) > 2:
+			save_other.append(theory_on.pop(0))
 		
 		systems_on = compare_lists(all_courses, systems_courses)["similarities"]
 		for t in all_entries.filter(req="Systems").values_list('course_id', flat=True).order_by('course_id'):
