@@ -410,6 +410,7 @@ def degree_progress(request):
 			# will fix this bug a little later... 4/9/2016 ....!!!!
 		other_on = compare_lists(all_courses, other_courses)["similarities"]
 		other_on = title(other_on)
+		extra_other = title(extra_other)
 		other_on = chain(other_on, save_other)
 		other_on = chain(other_on, extra_other)
 		#for t in all_entries.filter(req="Other").values_list('course_id', flat=True).order_by('course_id'):
