@@ -63,6 +63,7 @@ urlpatterns = [
     url(r'^jud/$', views.jud),
     url(r'^apm/$', views.apm),
     url(r'^apc/$', views.apc),
+    url(r'^env/$', views.env),
     url(r'^rus/$', views.rus),
     url(r'^sas/$', views.sas),
     url(r'^bio/$', views.bio),
