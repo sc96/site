@@ -81,7 +81,7 @@ SECRET_KEY = 'b%5tu%(nr6=@t)_mz)3e03ntd$svm!!w6t0mmi-#@4-r=z0xr&'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
-# SECURITY WARNING: Allows for header attacks?
+# SECURITY WARNING: * Allows for header attacks. use tigerpath.herokuapp.com
 ALLOWED_HOSTS = ['tigerpath.herokuapp.com']
 
 
