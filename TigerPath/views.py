@@ -1376,6 +1376,11 @@ def dan(request):
 	return render(request, 'dan.html', context)
 	
 @login_required
+def lac(request):
+	context = []
+	return render(request, 'lac.html', context)
+	
+@login_required
 def nes(request):
 	context = []
 	return render(request, 'nes.html', context)
