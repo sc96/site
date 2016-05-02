@@ -1381,6 +1381,11 @@ def bio(request):
 	return render(request, 'bio.html', context)
 
 @login_required
+def arc(request):
+	context = []
+	return render(request, 'arc.html', context)
+
+@login_required
 def dan(request):
 	context = []
 	return render(request, 'dan.html', context)
