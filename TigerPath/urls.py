@@ -74,5 +74,5 @@ urlpatterns = [
     # CAS. No changes needed for the other urls.
     url(r'^login$', cas.views.login, name='login'),
     url(r'^logout$', cas.views.logout, name='logout'),
-    url(r'^.*', views.notFound)
+   # url(r'^.*', views.notFound)
 ]
