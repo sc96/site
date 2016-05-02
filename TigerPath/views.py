@@ -576,29 +576,41 @@ def degree_progress(request):
 		other_courses = COS_BSE.objects.filter(other=1).values_list('course_id', flat=True).order_by('course_id')
 		iw_courses = COS_BSE.objects.filter(iw=1).values_list('course_id', flat=True).order_by('course_id')
 		
+		# other courses
+		other_theory = Outside_Course.objects.filter(student_id = student, requirement="theory")
+		other_systems = Outside_Course.objects.filter(student_id = student, requirement="systems") 
+		other_apps = Outside_Course.objects.filter(student_id = student, requirement="apps")
+		other_other = Outside_Course.objects.filter(student_id = student, requirement="other")
+		
 		theory_on = compare_lists(all_courses, theory_courses)["similarities"]
 		for t in all_entries.filter(req="Theory").values_list('course_id', flat=True).order_by('course_id'):
 			theory_on.append(t)
-		while len(theory_on) > 2:
-			save_other.append(theory_on.pop(0))
 		theory_on = title(theory_on)
 		theory_off = title(compare_lists(all_courses, theory_courses)["differences"])
+		theory_on = list(chain(other_theory, theory_on))
+		while len(theory_on) > 2:
+			save_other.append(theory_on.pop(0))
+
 		
 		systems_on = compare_lists(all_courses, systems_courses)["similarities"]
 		for t in all_entries.filter(req="Systems").values_list('course_id', flat=True).order_by('course_id'):
 			systems_on.append(t)
-		while len(systems_on) > 2:
-			save_other.append(systems_on.pop(0))
 		systems_on = title(systems_on)
 		systems_off = title(compare_lists(all_courses, systems_courses)["differences"])
+		systems_on = list(chain(other_systems, systems_on))
+		while len(systems_on) > 2:
+			save_other.append(systems_on.pop(0))
+	
 	
 		apps_on = compare_lists(all_courses, apps_courses)["similarities"]
 		for t in all_entries.filter(req="Applications").values_list('course_id', flat=True).order_by('course_id'):
 			apps_on.append(t)
-		while len(apps_on) > 2:
-			save_other.append(apps_on.pop(0))
 		apps_on = title(apps_on)
 		apps_off = title(compare_lists(all_courses, apps_courses)["differences"])
+		apps_on = list(chain(other_apps, apps_on))
+		while len(apps_on) > 2:
+			save_other.append(apps_on.pop(0))
+	
 	
 		iw_on = compare_lists(all_courses, iw_courses)["similarities"] #iw is for BSE only
 		while len(iw_on) > 4:
@@ -610,16 +622,20 @@ def degree_progress(request):
 			# other should have all classes in "other" that the user hasn't already taken
 			# will fix this bug a little later... 4/9/2016 ....!!!!
 		other_on = compare_lists(all_courses, other_courses)["similarities"]
+		other_on = title(other_on)
+		extra_other = title(extra_other)
 		other_on = chain(other_on, save_other)
 		other_on = chain(other_on, extra_other)
-		for t in all_entries.filter(req="Other").values_list('course_id', flat=True).order_by('course_id'):
-			other_on.append(t.course_id)
-		other_on = title(other_on)
+		other_on = chain(other_on, other_other)
+		#for t in all_entries.filter(req="Other").values_list('course_id', flat=True).order_by('course_id'):
+		#	other_on.append(t.course_id)
 		other_off = title(compare_lists(all_courses, other_courses)["differences"])
 	
 	
 		core_on = title(compare_lists(all_courses, core_courses)["similarities"])
 		core_off = title(compare_lists(all_courses, core_courses)["differences"])
+	
+	
 		
 		math_1_credit=[0000]
 		math_2_credit=[0000]
@@ -630,12 +646,21 @@ def degree_progress(request):
 		chem_1_credit=[0000]
 		cos_1_credit=[0000]
 		
+	other_math1 = Outside_Course.objects.filter(student_id = student, engineer="calc_1")
+		other_math2 = Outside_Course.objects.filter(student_id = student, engineer="calc_2") 
+		other_math3 = Outside_Course.objects.filter(student_id = student, engineer="calc_3")
+		other_cos = Outside_Course.objects.filter(student_id = student, engineer="cos")
+		other_phy1 = Outside_Course.objects.filter(student_id = student, engineer="physics_mech")
+		other_phy2 = Outside_Course.objects.filter(student_id = student, engineer="Physics_em")
+		other_chem = Outside_Course.objects.filter(student_id = student, engineer="gen_chem")
+		
 		# ap credit working now
 		if (AP_Credit.objects.filter(student_name=current_user.username, course_id="538").exists()):
 			if (student.calc_1 == 1):
 				math_1_credit = AP_Credit.objects.filter(student_name=current_user.username, course_id="538").values_list('course_id', flat=True)
 		math_1_on = title(compare_lists(chain(all_courses, math_1_credit), math_1)["similarities"])
 		math_1_off = title(compare_lists(chain(all_courses, math_1_credit), math_1)["differences"])
+		math_1_on = list(chain(math_1_on, other_math1))
 		#math_1_off=[]
 		
 		if (AP_Credit.objects.filter(student_name=current_user.username, course_id="1029").exists()):
@@ -643,12 +668,14 @@ def degree_progress(request):
 				math_2_credit = AP_Credit.objects.filter(student_name=current_user.username, course_id="1029").values_list('course_id', flat=True)
 		math_2_on = title(compare_lists(map(int, chain(all_courses, math_2_credit)), math_2)["similarities"])
 		math_2_off = title(compare_lists(map(int, chain(all_courses, math_2_credit)), math_2)["differences"])
+		math_2_on = list(chain(math_2_on, other_math2))
 		
 		if (AP_Credit.objects.filter(student_name=current_user.username, course_id="1176").exists()):
 			if (student.calc_3 == 1):
 				math_3_credit = AP_Credit.objects.filter(student_name=current_user.username, course_id="1176").values_list('course_id', flat=True)
 		math_3_on = title(compare_lists(map(int, chain(all_courses, math_3_credit)), math_3)["similarities"])
 		math_3_off = title(compare_lists(map(int, chain(all_courses, math_3_credit)), math_3)["differences"])
+		math_3_on = list(chain(math_3_on, other_math3))
 		
 		if (AP_Credit.objects.filter(student_name=current_user.username, course_id="1160").exists()):
 			if (student.lin_alg == 1):
@@ -662,12 +689,29 @@ def degree_progress(request):
 	
 	
 			# Distribution Requirements
+		other_sa = Outside_Course.objects.filter(student_id = student, distribution="sa")
+		other_la = Outside_Course.objects.filter(student_id = student, distribution="la")
+		other_ha = Outside_Course.objects.filter(student_id = student, distribution="ha")
+		other_em = Outside_Course.objects.filter(student_id = student, distribution="em")
+		other_ec = Outside_Course.objects.filter(student_id = student, distribution="ec")
+		other_stn = Outside_Course.objects.filter(student_id = student, distribution="stn")
+		other_stl = Outside_Course.objects.filter(student_id = student, distribution="stl")
+		#other_la_2 = Outside_Course.objects.filter(requirement="LA")
+		#other_la = chain(other_la_1, other_la_2)
+			# Distribution Requirements
 		student_sa=title(student_sa)
+		student_sa = list(chain(student_sa, other_sa))
 		student_la=title(student_la)
+		student_la = list(chain(student_la, other_la))
 		student_ha=title(student_ha)
+		student_ha = list(chain(student_ha, other_ha))
 		student_em=title(student_em)
+		student_em = list(chain(student_em, other_em))
 		student_ec=title(student_ec)
+		student_ec = list(chain(student_ec, other_ec))
 		student_stln=title(student_stln)
+		student_stln = list(chain(student_stln, other_stl))
+		student_stln = list(chain(student_stln, other_stn))
 		student_wri=title(student_wri)
 		student_foreign=title(student_foreign)
 		
