@@ -1376,6 +1376,11 @@ def rus(request):
 	return render(request, 'rus.html', context)
 
 @login_required
+def bio(request):
+	context = []
+	return render(request, 'bio.html', context)
+
+@login_required
 def dan(request):
 	context = []
 	return render(request, 'dan.html', context)
