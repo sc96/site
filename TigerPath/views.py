@@ -474,7 +474,7 @@ def degree_progress(request):
 				math_1_credit = AP_Credit.objects.filter(student_name=current_user.username, course_id="538").values_list('course_id', flat=True)
 		math_1_on = title(compare_lists(chain(all_courses, math_1_credit), math_1)["similarities"])
 		math_1_off = title(compare_lists(chain(all_courses, math_1_credit), math_1)["differences"])
-		math_1_on = chain(math_1_on, other_math1)
+		math_1_on = list(chain(math_1_on, other_math1))
 		#math_1_off=[]
 		
 		if (AP_Credit.objects.filter(student_name=current_user.username, course_id="1029").exists()):
@@ -482,14 +482,14 @@ def degree_progress(request):
 				math_2_credit = AP_Credit.objects.filter(student_name=current_user.username, course_id="1029").values_list('course_id', flat=True)
 		math_2_on = title(compare_lists(map(int, chain(all_courses, math_2_credit)), math_2)["similarities"])
 		math_2_off = title(compare_lists(map(int, chain(all_courses, math_2_credit)), math_2)["differences"])
-		math_2_on = chain(math_2_on, other_math2)
+		math_2_on = list(chain(math_2_on, other_math2))
 		
 		if (AP_Credit.objects.filter(student_name=current_user.username, course_id="1176").exists()):
 			if (student.calc_3 == 1):
 				math_3_credit = AP_Credit.objects.filter(student_name=current_user.username, course_id="1176").values_list('course_id', flat=True)
 		math_3_on = title(compare_lists(map(int, chain(all_courses, math_3_credit)), math_3)["similarities"])
 		math_3_off = title(compare_lists(map(int, chain(all_courses, math_3_credit)), math_3)["differences"])
-		math_3_on = chain(math_3_on, other_math3)
+		math_3_on = list(chain(math_3_on, other_math3))
 		
 		if (AP_Credit.objects.filter(student_name=current_user.username, course_id="1160").exists()):
 			if (student.lin_alg == 1):
@@ -502,7 +502,7 @@ def degree_progress(request):
 				physics_1_credit = AP_Credit.objects.filter(student_name=current_user.username, course_id="2016").values_list('course_id', flat=True)
 		physics_1_on = title(compare_lists(map(int, chain(all_courses, physics_1_credit)), physics_1)["similarities"])
 		physics_1_off = title(compare_lists(map(int, chain(all_courses, physics_1_credit)), physics_1)["differences"])
-		physics_1_on = chain(physics_1_on, other_phy1)
+		physics_1_on = list(chain(physics_1_on, other_phy1))
 		#physics_1_on = chain(all_courses, physics_1_credit)
 		#physics_1_off = physics_1
 		
@@ -511,7 +511,7 @@ def degree_progress(request):
 				physics_2_credit = AP_Credit.objects.filter(student_name=current_user.username, course_id="763").values_list('course_id', flat=True)
 		physics_2_on = title(compare_lists(map(int, chain(all_courses, physics_2_credit)), physics_2)["similarities"])
 		physics_2_off = title(compare_lists(map(int, chain(all_courses, physics_2_credit)), physics_2)["differences"])
-		physics_2_on = chain(physics_2_on, other_phy2)
+		physics_2_on = list(chain(physics_2_on, other_phy2))
 		
 		
 		if (AP_Credit.objects.filter(student_name=current_user.username, course_id="1354").exists()):
@@ -519,14 +519,14 @@ def degree_progress(request):
 				chem_1_credit = AP_Credit.objects.filter(student_name=current_user.username, course_id="1354").values_list('course_id', flat=True)
 		chem_1_on = title(compare_lists(map(int, chain(all_courses, chem_1_credit)), chem_1)["similarities"])
 		chem_1_off = title(compare_lists(map(int, chain(all_courses, chem_1_credit)), chem_1)["differences"])
-		chem_1_on = chain(chem_1_on, other_chem)
+		chem_1_on = list(chain(chem_1_on, other_chem))
 		
 		if (AP_Credit.objects.filter(student_name=current_user.username, course_id="444").exists()):
 			if (student.cos == 1):
 				cos_1_credit = AP_Credit.objects.filter(student_name=current_user.username, course_id="444").values_list('course_id', flat=True)
 		cos_1_on = title(compare_lists(map(int, chain(all_courses, cos_1_credit)), cos_1)["similarities"])
 		cos_1_off = title(compare_lists(map(int, chain(all_courses, cos_1_credit)), cos_1)["differences"])
-		cos_1_on = chain(cos_1_on, other_cos)
+		cos_1_on = list(chain(cos_1_on, other_cos))
 	
 			# could literally just pass every certificate thing to this page....but that would be really dumb and bad
 			# still in the process of getting new ideas for certificates...it can def be done tho...still thinking
