@@ -1368,6 +1368,11 @@ def dan(request):
 	return render(request, 'dan.html', context)
 	
 @login_required
+def vis(request):
+	context = []
+	return render(request, 'vis.html', context)
+	
+@login_required
 def thr(request):
 	context = []
 	return render(request, 'thr.html', context)
