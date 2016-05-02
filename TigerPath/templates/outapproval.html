@@ -152,6 +152,7 @@
 
 //Remove an item from your course list
 var cached_requirement = "select";
+var dist_error = false;
 var FulfilledComp = React.createClass({
   displayName: "NewComponent",
   getInitialState: function() {
@@ -373,6 +374,7 @@ var DistComponent = React.createClass({
     // console.log(index);
     // console.log(this.state.data);
     if (index < 0){
+        dist_error = true;
         var err = React.createElement(DistError, null);
         ReactDOM.render(
         err,
@@ -380,6 +382,7 @@ var DistComponent = React.createClass({
       );}
     else {
       ReactDOM.render(
+        dist_error = false;
         React.createElement('span', null),
         document.getElementById('dist_error'));
     }
@@ -419,7 +422,7 @@ var DistComponent = React.createClass({
       document.getElementById('Test_Name')
       );
     }
-    if  (cached_requirement != 'select'){
+    if  (cached_requirement != 'select' && dist_error != true){
       ReactDOM.render(
       React.createElement(FormButton, null),
       document.getElementById('Test_Button')
