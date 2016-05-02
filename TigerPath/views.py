@@ -1394,6 +1394,12 @@ def lac(request):
 def nes(request):
 	context = []
 	return render(request, 'nes.html', context)
+
+@login_required
+def egb(request):
+	context = []
+	return render(request, 'egb.html', context)
+	
 	
 @login_required
 def jud(request):
