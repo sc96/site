@@ -53,9 +53,12 @@
 		<img src="/../../static/pics/cryingtiger.jpg" class="img-rounded center-block" alt="Page Error" width="304" height="236">
 		</div>
 	</div>
-	<div class="row">
-		<div class= "col-md-12 center-block"> Oops! That page cannot be found! If something is broken, please contact one of the creators at the email found on the <a href="{% url 'views.about' %}">about</a> page!</div>
-	</div>
+	<div class="row"><br>
+	    <div class="alert alert-warning col-md-12" role="alert">
+	      <b>Oops!</b> That page cannot be found! If something is broken, please contact one of the creators at the email found on the <a href="{% url 'views.about' %}">about</a> page!
+	    </div>
+  	</div>
+	
 
 
 
