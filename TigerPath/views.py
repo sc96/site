@@ -169,6 +169,9 @@ def home(request):
 	# context = {'user': current_user.username}
 	return render(request, 'index.html')
 
+def notFound(request):
+	return render(request, 'pagenotfound.html')
+
 @login_required # Cas authentication for this url.
 def profile(request):
 	current_user = request.user;
