@@ -646,7 +646,7 @@ def degree_progress(request):
 		chem_1_credit=[0000]
 		cos_1_credit=[0000]
 		
-	other_math1 = Outside_Course.objects.filter(student_id = student, engineer="calc_1")
+		other_math1 = Outside_Course.objects.filter(student_id = student, engineer="calc_1")
 		other_math2 = Outside_Course.objects.filter(student_id = student, engineer="calc_2") 
 		other_math3 = Outside_Course.objects.filter(student_id = student, engineer="calc_3")
 		other_cos = Outside_Course.objects.filter(student_id = student, engineer="cos")
