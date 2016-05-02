@@ -1,0 +1,68 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+
+{% block content %}
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>TigerPath | Outside Courses</title>
+  <link rel="stylesheet" href="/../../static/css/bootstrap.css">
+  <script  src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+  <script  src="/../../static/js/react.js"></script>
+  <script  src="/../../static/js/react-dom.js"></script>
+  <script  src="/../../static/js/bootstrap.js"></script>
+  <script  src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.8.24/browser.min.js"></script>
+  <script  src="/../../static/js/react-bootstrap.min.js"></script>
+  <script  src="/../../static/js/JSXTransformer.js"></script>
+  
+  
+</head>
+<body style="padding-top: 70px; padding-bottom: 70px;">
+ 
+
+    
+<nav class="navbar navbar-inverse navbar-fixed-top">
+  <div class="container-fluid">
+
+    <ul class="nav navbar-nav">
+      <li><a href="/fouryear">Four Year</a></li>
+      <li><a href="/degreeprogress">Degree Progress</a></li> 
+      <li><a href="/certificates">Certificates</a></li> 
+      <li><a href="#">Outside Course Approval</a></li> 
+      <li><a href="/schedulesharing">Schedule Sharing</a></li> 
+      <li><a href="/cosdata">COS Data</a></li>  
+    </ul>
+    <ul class="nav navbar-nav navbar-right">
+        <li><a href="/about">About</a></li> 
+        <li class="dropdown">  
+    <a class="dropdown-toggle" data-hover="dropdown" data-delay="100" data-close-others="false">
+        {{ user }} <b class="caret"></b>
+    </a>
+    <ul class="dropdown-menu">
+      <li><a href="/profile"><span class="glyphicon glyphicon-cog"></span> Profile</a></li>
+        <li><a href="/logout"><span class="glyphicon glyphicon-log-in"></span> Log out</a></li>
+    </ul>
+</li>  
+
+    </ul>
+  </div>
+</nav>
+<div class="container">
+	<div class="row">
+		<div class="col-md-12">
+		<img src="/../../static/pics/cryingtiger.jpg" class="img-responsive center-block" alt="Page Error" width="304" height="236">
+		</div>
+	</div>
+	<div class="row"><br>
+	    <div class="alert alert-warning col-md-12" role="alert">
+	      <b>Oops!</b> That page cannot be found! If something is broken, please contact one of the creators at the email found on the <a href="{% url 'views.about' %}">about</a> page!
+	    </div>
+  	</div>
+	
+
+
+
+</body>
+</html>
+
+{% endblock %}
