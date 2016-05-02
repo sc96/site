@@ -63,6 +63,7 @@ urlpatterns = [
     url(r'^jud/$', views.jud),
     url(r'^rus/$', views.rus),
     url(r'^sas/$', views.sas),
+    url(r'^bio/$', views.bio),
     url(r'^outsidecourseapproval/$', views.outside_course_approval),
     url(r'^cosdata/$', views.cos_data),
     url(r'^cosdatasemester/$', views.cos_data_semester),
