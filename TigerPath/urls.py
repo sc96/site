@@ -57,6 +57,7 @@ urlpatterns = [
     url(r'^thr/$', views.thr),
     url(r'^vis/$', views.vis),
     url(r'^nes/$', views.nes),
+    url(r'^egb/$', views.egb),
     url(r'^hum/$', views.hum),
     url(r'^lac/$', views.lac),
     url(r'^jud/$', views.jud),
