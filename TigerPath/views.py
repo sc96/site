@@ -425,9 +425,9 @@ def degree_progress(request):
 			# Need to add logic for only hilighting 2 theory courses then overflowing others into "other" section
 			# Maybe don't display everything...display ones that only have "other"
 	
-		other_la_1 = Outside_Course.objects.filter(requirement="la")
-		other_la_2 = Outside_Course.objects.filter(requirement="LA")
-		other_la = chain(other_la_1, other_la_2)
+		other_la = Outside_Course.objects.filter(distribution="la")
+		#other_la_2 = Outside_Course.objects.filter(requirement="LA")
+		#other_la = chain(other_la_1, other_la_2)
 			# Distribution Requirements
 		student_sa=title(student_sa)
 		student_la=title(student_la)
