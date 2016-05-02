@@ -431,7 +431,7 @@ def degree_progress(request):
 			# Distribution Requirements
 		student_sa=title(student_sa)
 		student_la=title(student_la)
-		student_la = chain(student_la, other_la)
+		student_la = list(chain(student_la, other_la))
 		student_ha=title(student_ha)
 		student_em=title(student_em)
 		student_ec=title(student_ec)
