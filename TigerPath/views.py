@@ -365,6 +365,9 @@ def degree_progress(request):
 		
 		# other courses
 		other_theory = Outside_Course.objects.filter(requirement="theory")
+		other_systems = Outside_Course.objects.filter(requirement="systems") 
+		other_apps = Outside_Course.objects.filter(requirement="apps")
+		other_other = Outside_Course.objects.filter(requirement="other")
 		
 		theory_on = compare_lists(all_courses, theory_courses)["similarities"]
 		for t in all_entries.filter(req="Theory").values_list('course_id', flat=True).order_by('course_id'):
@@ -383,6 +386,7 @@ def degree_progress(request):
 			save_other.append(systems_on.pop(0))
 		systems_on = title(systems_on)
 		systems_off = title(compare_lists(all_courses, systems_courses)["differences"])
+		systems_on = chain(other_systems, systems_on)
 	
 		apps_on = compare_lists(all_courses, apps_courses)["similarities"]
 		for t in all_entries.filter(req="Applications").values_list('course_id', flat=True).order_by('course_id'):
@@ -404,8 +408,8 @@ def degree_progress(request):
 		other_on = compare_lists(all_courses, other_courses)["similarities"]
 		other_on = chain(other_on, save_other)
 		other_on = chain(other_on, extra_other)
-		for t in all_entries.filter(req="Other").values_list('course_id', flat=True).order_by('course_id'):
-			other_on.append(t.course_id)
+		#for t in all_entries.filter(req="Other").values_list('course_id', flat=True).order_by('course_id'):
+		#	other_on.append(t.course_id)
 		other_on = title(other_on)
 		other_off = title(compare_lists(all_courses, other_courses)["differences"])
 	
