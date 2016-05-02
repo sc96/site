@@ -1366,6 +1366,11 @@ def mus(request):
 def lao(request):
 	context = []
 	return render(request, 'lao.html', context)
+	
+@login_required
+def las(request):
+	context = []
+	return render(request, 'las.html', context)
 
 @login_required
 def neu(request):
