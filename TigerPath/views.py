@@ -1381,6 +1381,11 @@ def dan(request):
 	return render(request, 'dan.html', context)
 	
 @login_required
+def sas(request):
+	context = []
+	return render(request, 'sas.html', context)
+	
+@login_required
 def lac(request):
 	context = []
 	return render(request, 'lac.html', context)
