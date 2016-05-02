@@ -169,8 +169,14 @@ def home(request):
 	# context = {'user': current_user.username}
 	return render(request, 'index.html')
 
-def notFound(request):
-	return render(request, 'pagenotfound.html')
+# def notFound(request):
+# 	return render(request, 'pagenotfound.html')
+def handler404(request):
+    response = render_to_response('pagenotfound.html', {},
+                                  context_instance=RequestContext(request))
+    response.status_code = 404
+    return response
+
 
 @login_required # Cas authentication for this url.
 def profile(request):
