@@ -1371,6 +1371,11 @@ def hum(request):
 	return render(request, 'hum.html', context)
 
 @login_required
+def rus(request):
+	context = []
+	return render(request, 'rus.html', context)
+
+@login_required
 def dan(request):
 	context = []
 	return render(request, 'dan.html', context)
