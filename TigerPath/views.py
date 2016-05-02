@@ -382,19 +382,22 @@ def degree_progress(request):
 		systems_on = compare_lists(all_courses, systems_courses)["similarities"]
 		for t in all_entries.filter(req="Systems").values_list('course_id', flat=True).order_by('course_id'):
 			systems_on.append(t)
-		while len(systems_on) > 2:
-			save_other.append(systems_on.pop(0))
 		systems_on = title(systems_on)
 		systems_off = title(compare_lists(all_courses, systems_courses)["differences"])
-		systems_on = chain(other_systems, systems_on)
+		systems_on = list(chain(other_systems, systems_on))
+		while len(systems_on) > 2:
+			save_other.append(systems_on.pop(0))
+	
 	
 		apps_on = compare_lists(all_courses, apps_courses)["similarities"]
 		for t in all_entries.filter(req="Applications").values_list('course_id', flat=True).order_by('course_id'):
 			apps_on.append(t)
-		while len(apps_on) > 2:
-			save_other.append(apps_on.pop(0))
 		apps_on = title(apps_on)
 		apps_off = title(compare_lists(all_courses, apps_courses)["differences"])
+		apps_on = list(chain(other_apps, apps_on))
+		while len(apps_on) > 2:
+			save_other.append(apps_on.pop(0))
+	
 	
 		iw_on = compare_lists(all_courses, iw_courses)["similarities"] #iw is for BSE only
 		while len(iw_on) > 1:
