@@ -375,6 +375,7 @@ var DistComponent = React.createClass({
     // console.log(this.state.data);
     if (index < 0){
         dist_error = true;
+        renderElements();
         var err = React.createElement(DistError, null);
         ReactDOM.render(
         err,
@@ -382,6 +383,7 @@ var DistComponent = React.createClass({
       );}
     else {
       dist_error = false;
+      renderElements();
       ReactDOM.render(       
         React.createElement('span', null),
         document.getElementById('dist_error'));
