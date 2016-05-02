@@ -1363,6 +1363,11 @@ def mus(request):
 	return render(request, 'mus.html', context)
 
 @login_required
+def lao(request):
+	context = []
+	return render(request, 'lao.html', context)
+
+@login_required
 def neu(request):
 	current_user = request.user
 	student = Student.objects.get(student_id=current_user.username)
