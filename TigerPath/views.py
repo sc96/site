@@ -371,7 +371,7 @@ def degree_progress(request):
 			theory_on.append(t)
 		theory_on = title(theory_on)
 		theory_off = title(compare_lists(all_courses, theory_courses)["differences"])
-		theory_on = chain(theory_on, other_theory)
+		theory_on = list(chain(theory_on, other_theory))
 		while len(theory_on) > 2:
 			save_other.append(theory_on.pop(0))
 		
