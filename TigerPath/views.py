@@ -1366,6 +1366,11 @@ def mus(request):
 	return render(request, 'mus.html', context)
 
 @login_required
+def hum(request):
+	context = []
+	return render(request, 'hum.html', context)
+
+@login_required
 def dan(request):
 	context = []
 	return render(request, 'dan.html', context)
