@@ -1396,6 +1396,11 @@ def apc(request):
 	return render(request, 'apc.html', context)
 
 @login_required
+def env(request):
+	context = []
+	return render(request, 'env.html', context)
+
+@login_required
 def dan(request):
 	context = []
 	return render(request, 'dan.html', context)
