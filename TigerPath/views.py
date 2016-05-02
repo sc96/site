@@ -1363,6 +1363,16 @@ def mus(request):
 	return render(request, 'mus.html', context)
 
 @login_required
+def dan(request):
+	context = []
+	return render(request, 'dan.html', context)
+	
+@login_required
+def thr(request):
+	context = []
+	return render(request, 'thr.html', context)
+
+@login_required
 def lao(request):
 	context = []
 	return render(request, 'lao.html', context)
