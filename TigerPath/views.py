@@ -364,10 +364,10 @@ def degree_progress(request):
 		iw_courses = COS_BSE.objects.filter(iw=1).values_list('course_id', flat=True).order_by('course_id')
 		
 		# other courses
-		other_theory = Outside_Course.objects.filter(requirement="theory")
-		other_systems = Outside_Course.objects.filter(requirement="systems") 
-		other_apps = Outside_Course.objects.filter(requirement="apps")
-		other_other = Outside_Course.objects.filter(requirement="other")
+		other_theory = Outside_Course.objects.filter(student_id = student, requirement="theory")
+		other_systems = Outside_Course.objects.filter(student_id = student, requirement="systems") 
+		other_apps = Outside_Course.objects.filter(student_id = student, requirement="apps")
+		other_other = Outside_Course.objects.filter(student_id = student, requirement="other")
 		
 		theory_on = compare_lists(all_courses, theory_courses)["similarities"]
 		for t in all_entries.filter(req="Theory").values_list('course_id', flat=True).order_by('course_id'):
@@ -425,7 +425,7 @@ def degree_progress(request):
 			# Need to add logic for only hilighting 2 theory courses then overflowing others into "other" section
 			# Maybe don't display everything...display ones that only have "other"
 	
-		other_la = Outside_Course.objects.filter(distribution="la")
+		other_la = Outside_Course.objects.filter(student_id = student, distribution="la")
 		#other_la_2 = Outside_Course.objects.filter(requirement="LA")
 		#other_la = chain(other_la_1, other_la_2)
 			# Distribution Requirements
