@@ -363,6 +363,9 @@ def degree_progress(request):
 		other_courses = COS_BSE.objects.filter(other=1).values_list('course_id', flat=True).order_by('course_id')
 		iw_courses = COS_BSE.objects.filter(iw=1).values_list('course_id', flat=True).order_by('course_id')
 		
+		# other courses
+		other_theory = Outside_Course.objects.filter(requirement="theory")
+		
 		theory_on = compare_lists(all_courses, theory_courses)["similarities"]
 		for t in all_entries.filter(req="Theory").values_list('course_id', flat=True).order_by('course_id'):
 			theory_on.append(t)
@@ -370,6 +373,7 @@ def degree_progress(request):
 			save_other.append(theory_on.pop(0))
 		theory_on = title(theory_on)
 		theory_off = title(compare_lists(all_courses, theory_courses)["differences"])
+		theory_on = chain(theory_on, other_theory)
 		
 		systems_on = compare_lists(all_courses, systems_courses)["similarities"]
 		for t in all_entries.filter(req="Systems").values_list('course_id', flat=True).order_by('course_id'):
