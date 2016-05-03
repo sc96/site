@@ -833,9 +833,13 @@ def four_year(request,search):
 	matched_courses = ""
 	if request.method == 'GET':
 		if 'the_query' in request.GET:
-			print "Finding courses"
 			query_text = request.GET.get('the_query')
 			matched_courses = course_search(query_text)
+			context['matched_courses'] = matched_courses
+			return HttpResponse(
+            json.dumps(),
+            content_type="application/json"
+        )
 	# if 'q' in request.GET:
 	# 	test = request.GET["q"]
 	# matched_courses = course_search(test);
