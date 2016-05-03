@@ -842,7 +842,7 @@ def four_year(request, search="na"):
 			matched_courses = course_search(query_text)
 			context['matched_courses'] = matched_courses
 			return HttpResponse(
-            json.dumps(),
+            json.dumps(context),
             content_type="application/json"
         )
 	# if 'q' in request.GET:
