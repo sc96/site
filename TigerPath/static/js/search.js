@@ -16,8 +16,9 @@ function search_courses() {
         // handle a successful response
         success : function(json) {
             $('#course-search-text').val(''); // remove the value from the input
-            for (var x in json.matched_courses){
-            	for (var y in x){
+            courses = json.matched_courses
+            for (var x in courses){
+            	for (var y in courses[x]){
             		console.log(json[x][y]);
             	}
             	
