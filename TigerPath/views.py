@@ -1416,6 +1416,11 @@ def env(request):
 	return render(request, 'env.html', context)
 
 @login_required
+def mat(request):
+	context = []
+	return render(request, 'mat.html', context)
+
+@login_required
 def dan(request):
 	context = []
 	return render(request, 'dan.html', context)
@@ -1931,3 +1936,31 @@ def pla(request):
 	context = {'l1_on': l1_on, 'l1_off': l1_off, 'l2_on': l2_on, 'l2_off': l2_off}
 	return render(request, 'pla.html', context)
 	
+def tas(request):
+	current_user = request.user
+	student = Student.objects.get(student_id=current_user.username)
+	all_courses = Entry.objects.filter(student_id=current_user.username).values_list('course_id', flat=True).order_by('course_id') # all of the student's courses
+	l1 = TAS.objects.filter(core=1).values_list('course_id', flat=True).order_by('course_id')
+	l2 = TAS.objects.filter(technology=1).values_list('course_id', flat=True).order_by('course_id')
+	l3 = TAS.objects.filter(societal=1).values_list('course_id', flat=True).order_by('course_id')
+	l4 = TAS.objects.filter(breadth_t=1).values_list('course_id', flat=True).order_by('course_id')
+	l5 = TAS.objects.filter(breadth_s=1).values_list('course_id', flat=True).order_by('course_id')
+
+	l1_on = title(compare_lists(all_courses, l1)["similarities"])
+	l1_off = title(compare_lists(all_courses, l1)["differences"])
+
+	l2_on = title(compare_lists(all_courses, l2)["similarities"])
+	l2_off = title(compare_lists(all_courses, l2)["differences"])
+
+	l3_on = title(compare_lists(all_courses, l3)["similarities"])
+	l3_off = title(compare_lists(all_courses, l3)["differences"])
+	
+	l4_on = title(compare_lists(all_courses, l4)["similarities"])
+	l4_off = title(compare_lists(all_courses, l4)["differences"])
+
+	l5_on = title(compare_lists(all_courses, l5)["similarities"])
+	l5_off = title(compare_lists(all_courses, l5)["differences"])
+
+	context = {'l1_on': l1_on, 'l1_off': l1_off, 'l2_on': l2_on, 'l2_off': l2_off,
+	'l3_on': l3_on, 'l3_off': l3_off, 'l4_on': l4_on, 'l4_off': l4_off,  'l5_on': l5_on, 'l5_off': l5_off}
+	return render(request, 'tas.html', context)
