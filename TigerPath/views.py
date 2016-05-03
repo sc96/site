@@ -793,7 +793,19 @@ def add_class(student, course, semester, req):
 	sem = time[semester]
 	student.add_course(course, student, sem, req)
 
-
+def divideByEntry(matched_courses):
+	values = {}
+	for x in matched_courses:
+		values['x.listings'] = [
+			x.listings,
+			x.title,
+			x.area,
+			x.S15,
+			x.F15,
+			x.S16,
+			x.F16
+			]
+	return values
 
 @login_required # Cas authentication for this url.
 def four_year(request, search="na"):
@@ -840,7 +852,8 @@ def four_year(request, search="na"):
 		if 'the_query' in request.GET:
 			query_text = request.GET.get('the_query')
 			matched_courses = course_search(query_text)
-			context['matched_courses'] = matched_courses
+
+			context['matched_courses'] = divideByEntry(matched_courses)
 			return HttpResponse(
             json.dumps(context),
             content_type="application/json"
