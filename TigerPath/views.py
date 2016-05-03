@@ -416,10 +416,10 @@ def degree_progress(request):
 	
 	
 		iw_on = compare_lists(all_courses, iw_courses)["similarities"] #iw is for BSE only
+		iw_on = title(iw_on)
+		iw_off = title(compare_lists(all_courses, iw_courses)["differences"])
 		while len(iw_on) > 1:
 			save_other.append(iw_on.pop(0))
-		iw_on = list(title(iw_on))
-		iw_off = title(compare_lists(all_courses, iw_courses)["differences"])
 	
 	
 			# other should have all classes in "other" that the user hasn't already taken
