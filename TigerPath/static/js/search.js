@@ -9,7 +9,7 @@ function search_courses() {
     console.log("search_courses!") // sanity check
     console.log($('#course-search-text').val())
     $.ajax({
-        url : "create_post/", // the endpoint
+        url : "", // the endpoint
         type : "POST", // http method
         data : { the_query : $('#course-search-text').val() }, // data sent with the post request
 
