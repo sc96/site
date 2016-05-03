@@ -26,7 +26,7 @@ function search_courses() {
             console.log(json.matched_courses); // log the returned json to the console
              console.log("success"); // another sanity check
              for (var x in json.matched_courses){
-            		 $("#courses-found").prepend("<li><strong>"+json.matched_courses[x][0]+"</strong> - <em> "+json.matched_courses[x][1]+"</em> - <span> " + "something" + "</span></li>");
+            		 $("#courses-found").append("<li><strong>"+json.matched_courses[x][0]+"</strong> - <em> "+json.matched_courses[x][1]+"</em> - <span> " + "something" + "</span></li>");
        		  }
     			console.log("success"); // another sanity check
 		},	
@@ -42,3 +42,57 @@ function search_courses() {
 };
 });
 
+
+// <!-- List the matche courses below -->
+//         {% if matched_courses %}
+//         <div class="row">
+//           <p><br>Matched Courses</p>
+       
+//           <div class="list-group">
+//             {% for x in matched_courses %}
+//               <span class="list-group col-md-12">
+//                   <div class="btn-group" style="width: 100%">
+//                     <form class= "form-inline" action= "" method= "post">{% csrf_token %}
+//                       <li class="list-group-item">{{x.listings}} {{x.title}} {{x.area}}
+//                         <select class="form-control" name="semester">
+//                             {% if x.F15 or x.F16 %}
+//                             <option>Freshman Fall</option>
+//                             {% endif %}                             
+//                             {% if x.S15 or x.S16 %}
+//                             <option>Freshman Spring</option>
+//                             {% endif %}
+//                             {% if x.F15 or x.F16 %}
+//                             <option>Sophomore Fall</option>
+//                             {% endif %}
+//                             {% if x.S15 or x.S16 %}
+//                             <option>Sophomore Spring</option>
+//                             {% endif %}
+//                             {% if x.F15 or x.F16 %}
+//                             <option>Junior Fall</option>
+//                             {% endif %}
+//                             {% if x.S15 or x.S16 %}
+//                             <option>Junior Spring</option>
+//                             {% endif %}
+//                             {% if x.F15 or x.F16 %}
+//                             <option>Senior Fall</option>
+//                             {% endif %}
+//                             {% if x.S15 or x.S16 %}
+//                             <option>Senior Spring</option>
+//                             {% endif %}
+//                         </select>
+//                         <select class="form-control" name ="COSreq">
+//                             <option>N/A</option>
+//                             <option>Theory</option>
+//                             <option>Systems</option>
+//                             <option>Applications</option>
+//                             <option>Other</option>
+//                         </select>
+//                         <input type="hidden" name="listing" value={{x.listings}}>
+//                         <input type="submit" class="btn btn-info" value="Add Class">
+//                       </li>
+//                     </form>
+//                   </div>
+//               </span>
+//               {% endfor %}
+//               </div>
+//         {% endif %}
