@@ -43,42 +43,43 @@ function search_courses() {
             		 }
             		 if (Fall == true && Spring == true) {
             		 	$("#courses-found").append(
-            		 		'<option>Freshman Fall</option>
-                            <option>Freshman Spring</option>
-                            <option>Sophomore Fall</option>
-                            <option>Sophomore Spring</option>
-                            <option>Junior Fall</option>
-                            <option>Junior Spring</option>
-                            <option>Senior Fall</option>
-                            <option>Senior Spring</option>');
+            		 		'<option>Freshman Fall</option>' +
+                            '<option>Freshman Spring</option>' +
+                            '<option>Sophomore Fall</option>' +
+                            '<option>Sophomore Spring</option>' +
+                            '<option>Junior Fall</option>' +
+                            '<option>Junior Spring</option>' +
+                            '<option>Senior Fall</option>' +
+                            '<option>Senior Spring</option>');
             		 } else if (Spring == true && Fall == false){
             		   	$("#courses-found").append(
-            		   		'<option>Freshman Spring</option>
-                            <option>Sophomore Spring</option>
-                            <option>Junior Spring</option>
-                            <option>Senior Spring</option>');
+            		   		'<option>Freshman Spring</option>' +
+                            '<option>Sophomore Spring</option>' +
+                           ' <option>Junior Spring</option>' +
+                            '<option>Senior Spring</option>');
             		 } else{
             		 	$("#courses-found").append(
-            		   		'<option>Freshman Fall</option>
-                            <option>Sophomore Fall</option>
-                            <option>Junior Fall</option>
-                            <option>Senior Fall</option>');
+            		   		'<option>Freshman Fall</option>' +
+                           '<option>Sophomore Fall</option>' +
+                            '<option>Junior Fall</option>' +
+                            '<option>Senior Fall</option>');
             		 }
-            		 $("#courses-found").append('</select>
-                        <select class="form-control" name ="COSreq">
-                            <option>N/A</option>
-                            <option>Theory</option>
-                            <option>Systems</option>
-                            <option>Applications</option>
-                            <option>Other</option>
-                        </select>
-                        <input type="hidden" name="listing" value='+ courses[x][0] +'>
-                        <input type="submit" class="btn btn-info" value="Add Class">
-                      </li>
-                    </form>
-                  </div>
-              </span>
-              ');            		 
+            		 $("#courses-found").append(
+            		 	'</select>' +
+                       '<select class="form-control" name ="COSreq">' +
+                            '<option>N/A</option>' +
+                            '<option>Theory</option>' +
+                            '<option>Systems</option>' +
+                            '<option>Applications</option>' +
+                            '<option>Other</option>' +
+                        '</select>' +
+                        '<input type="hidden" name="listing" value='+ courses[x][0] +'>' +
+                        '<input type="submit" class="btn btn-info" value="Add Class">' +
+                      '</li>' +
+                    '</form>' +
+                  '</div>' +
+              '</span>'
+              );            		 
        		  }
        		  $("#courses-found").append('</div>');
     			console.log("success"); // another sanity check
