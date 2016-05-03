@@ -160,7 +160,7 @@ var x = document.getElementById(String(object));
   {% endif %}
   
       <div class="panel-heading">
-    <h4>Requirements: 1 class from Statistics, 1 class from Optimization, 1 class from Probability, 1 class from Uncertainty</h4> 
+    <h4>Requirements: 1 class from Statistics, 1 class from Optimization, 1 class from Probability, 1 class from Uncertainty, 1 from Management</h4> 
   </div> <!-- panel heading -->
 
 <div class = "panel panel-default">
@@ -248,6 +248,30 @@ var x = document.getElementById(String(object));
          <div class="col-md-4">
          <div class="list_group">
                 <a class="list-group-item active" style="text-align:center">Uncertainty</a>
+             {% for x in l4_on %}
+               <span>
+               <form class= "form-inline" id = "{{x.course.listings}}">
+                <a class="list-group-item list-group-item-success" style="text-align:center" name ="{{x.course.listings}}" >{{ x }}
+                    </a>
+               
+              </form>
+            </span>
+             {% endfor %}
+             {% for x in l4_off %}
+               <span>
+               <form class= "form-inline" id = "{{x.course.listings}}">
+                <a class="list-group-item list-group-item-danger" style="text-align:center" name ="{{x.course.listings}}" >{{ x }} </a>
+                
+              </form>
+            </span>
+             {% endfor %}
+            </div>
+         </div>
+         
+                  <div class="row"> 
+         <div class="col-md-4">
+         <div class="list_group">
+                <a class="list-group-item active" style="text-align:center">Management</a>
              {% for x in l4_on %}
                <span>
                <form class= "form-inline" id = "{{x.course.listings}}">
