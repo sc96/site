@@ -3,6 +3,7 @@ from .models import (Student, Course, COS_BSE, Entry, Approved_Course, Engineer,
 					VPL, HEL, AAS, EAS, AFS, AMS, NEU, MUS, GHP, FIN, QCB, CWR, TPP, TIC, PSE, APC, EPS, EGR, PHY, ECS, GEO, JAZ, MED, PLA, SML)
 from django.contrib.auth.decorators import login_required
 import re
+import json
 from django.http import HttpResponse
 from itertools import chain
 
