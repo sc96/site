@@ -418,7 +418,7 @@ def degree_progress(request):
 		iw_on = compare_lists(all_courses, iw_courses)["similarities"] #iw is for BSE only
 		while len(iw_on) > 1:
 			save_other.append(iw_on.pop(0))
-		iw_on = title(iw_on)
+		iw_on = list(title(iw_on))
 		iw_off = title(compare_lists(all_courses, iw_courses)["differences"])
 	
 	
