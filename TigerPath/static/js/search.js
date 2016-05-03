@@ -21,13 +21,66 @@ function search_courses() {
             	for (var y in courses[x]){
             		console.log(courses[x][y]);
             	}
-            	
+
             }
-            console.log(json.matched_courses); // log the returned json to the console
-             console.log("success"); // another sanity check
+            $('#courses-found').before("<div class='row'><p><br>Matched Courses</p>"); //Header
+          	$("#courses-found").append("<div class='list-group'>");
              for (var x in json.matched_courses){
-            		 $("#courses-found").append("<li><strong>"+json.matched_courses[x][0]+"</strong> - <em> "+json.matched_courses[x][1]+"</em> - <span> " + "something" + "</span></li>");
+             		var Fall = false;
+             		var Spring = true;
+            		 $("#courses-found").append(
+				              "<span class='list-group col-md-12'>" +
+				                  '<div class="btn-group" style="width: 100%">' +
+				                    '<form class= "form-inline" action= "" method= "post">{% csrf_token %}' +
+				                      '<li class="list-group-item">' + courses[x][0] + " " + courses[x][1] + " " + courses[x][2] +
+				                        '<select class="form-control" name="semester">');
+            		 //Conditional lists for adding
+            		 if (courses[x][2] == 1 || courses[x][4] == 1){
+            		 	Spring = true;
+            		 }
+            		 if (courses[x][3] == 1 || courses[x][5] == 1){
+            		 	Fall = true;
+            		 }
+            		 if (Fall == true && Spring == true) {
+            		 	$("#courses-found").append(
+            		 		'<option>Freshman Fall</option>
+                            <option>Freshman Spring</option>
+                            <option>Sophomore Fall</option>
+                            <option>Sophomore Spring</option>
+                            <option>Junior Fall</option>
+                            <option>Junior Spring</option>
+                            <option>Senior Fall</option>
+                            <option>Senior Spring</option>');
+            		 } else if (Spring == true && Fall == false){
+            		   	$("#courses-found").append(
+            		   		'<option>Freshman Spring</option>
+                            <option>Sophomore Spring</option>
+                            <option>Junior Spring</option>
+                            <option>Senior Spring</option>');
+            		 } else{
+            		 	$("#courses-found").append(
+            		   		'<option>Freshman Fall</option>
+                            <option>Sophomore Fall</option>
+                            <option>Junior Fall</option>
+                            <option>Senior Fall</option>');
+            		 }
+            		 $("#courses-found").append('</select>
+                        <select class="form-control" name ="COSreq">
+                            <option>N/A</option>
+                            <option>Theory</option>
+                            <option>Systems</option>
+                            <option>Applications</option>
+                            <option>Other</option>
+                        </select>
+                        <input type="hidden" name="listing" value='+ courses[x][0] +'>
+                        <input type="submit" class="btn btn-info" value="Add Class">
+                      </li>
+                    </form>
+                  </div>
+              </span>
+              ');            		 
        		  }
+       		  $("#courses-found").append('</div>');
     			console.log("success"); // another sanity check
 		},	
 
@@ -43,56 +96,44 @@ function search_courses() {
 });
 
 
-// <!-- List the matche courses below -->
-//         {% if matched_courses %}
-//         <div class="row">
-//           <p><br>Matched Courses</p>
-       
-//           <div class="list-group">
-//             {% for x in matched_courses %}
-//               <span class="list-group col-md-12">
-//                   <div class="btn-group" style="width: 100%">
-//                     <form class= "form-inline" action= "" method= "post">{% csrf_token %}
-//                       <li class="list-group-item">{{x.listings}} {{x.title}} {{x.area}}
-//                         <select class="form-control" name="semester">
-//                             {% if x.F15 or x.F16 %}
-//                             <option>Freshman Fall</option>
-//                             {% endif %}                             
-//                             {% if x.S15 or x.S16 %}
-//                             <option>Freshman Spring</option>
-//                             {% endif %}
-//                             {% if x.F15 or x.F16 %}
-//                             <option>Sophomore Fall</option>
-//                             {% endif %}
-//                             {% if x.S15 or x.S16 %}
-//                             <option>Sophomore Spring</option>
-//                             {% endif %}
-//                             {% if x.F15 or x.F16 %}
-//                             <option>Junior Fall</option>
-//                             {% endif %}
-//                             {% if x.S15 or x.S16 %}
-//                             <option>Junior Spring</option>
-//                             {% endif %}
-//                             {% if x.F15 or x.F16 %}
-//                             <option>Senior Fall</option>
-//                             {% endif %}
-//                             {% if x.S15 or x.S16 %}
-//                             <option>Senior Spring</option>
-//                             {% endif %}
-//                         </select>
-//                         <select class="form-control" name ="COSreq">
-//                             <option>N/A</option>
-//                             <option>Theory</option>
-//                             <option>Systems</option>
-//                             <option>Applications</option>
-//                             <option>Other</option>
-//                         </select>
-//                         <input type="hidden" name="listing" value={{x.listings}}>
-//                         <input type="submit" class="btn btn-info" value="Add Class">
-//                       </li>
-//                     </form>
-//                   </div>
-//               </span>
-//               {% endfor %}
-//               </div>
-//         {% endif %}
+                            {% if x.F15 or x.F16 %}
+                            <option>Freshman Fall</option>
+                            {% endif %}                             
+                            {% if x.S15 or x.S16 %}
+                            <option>Freshman Spring</option>
+                            {% endif %}
+                            {% if x.F15 or x.F16 %}
+                            <option>Sophomore Fall</option>
+                            {% endif %}
+                            {% if x.S15 or x.S16 %}
+                            <option>Sophomore Spring</option>
+                            {% endif %}
+                            {% if x.F15 or x.F16 %}
+                            <option>Junior Fall</option>
+                            {% endif %}
+                            {% if x.S15 or x.S16 %}
+                            <option>Junior Spring</option>
+                            {% endif %}
+                            {% if x.F15 or x.F16 %}
+                            <option>Senior Fall</option>
+                            {% endif %}
+                            {% if x.S15 or x.S16 %}
+                            <option>Senior Spring</option>
+                            {% endif %}
+                        </select>
+                        <select class="form-control" name ="COSreq">
+                            <option>N/A</option>
+                            <option>Theory</option>
+                            <option>Systems</option>
+                            <option>Applications</option>
+                            <option>Other</option>
+                        </select>
+                        <input type="hidden" name="listing" value={{x.listings}}>
+                        <input type="submit" class="btn btn-info" value="Add Class">
+                      </li>
+                    </form>
+                  </div>
+              </span>
+              {% endfor %}
+              </div>
+        {% endif %}
