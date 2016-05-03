@@ -644,7 +644,7 @@ def degree_progress(request):
 		#save_other = title(save_other)
 		other_on = chain(other_on, save_other)
 		other_on = chain(other_on, extra_other)
-		other_on = chain(other_on, other_other)
+		other_on = list(chain(other_on, other_other))
 		#for t in all_entries.filter(req="Other").values_list('course_id', flat=True).order_by('course_id'):
 		#	other_on.append(t.course_id)
 		other_off = title(compare_lists(all_courses, other_courses)["differences"])
