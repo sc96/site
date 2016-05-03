@@ -1164,7 +1164,7 @@ def certificates(request):
 	cert_dict["Translation and Intercultural Communication"]=num_compare(all_courses, tic)
 	
 	top_3=[]
-	for i in range(0, 3):
+	for i in range(0, 5):
 		maximum = max(cert_dict, key=lambda i: cert_dict[i])
 		top_3.append(maximum)
 		cert_dict.pop(maximum, None)
