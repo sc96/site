@@ -16,11 +16,15 @@ function search_courses() {
         // handle a successful response
         success : function(json) {
             $('#course-search-text').val(''); // remove the value from the input
-            console.log(json.matched_courses[0]); // log the returned json to the console
-            console.log("success"); // another sanity check
-            for (x in json.matched_courses) {
-           		 $("#courses-found").prepend("<li><strong>"+x[0]+"</strong> - <em> "+x[1]+"</em> - <span> "something"</span></li>");
-       		 }
+            for (x in json.matched_courses){
+            	console.log(x)
+            	console.log(x[0])
+            }
+            console.log(json.matched_courses); // log the returned json to the console
+          //   console.log("success"); // another sanity check
+          //   for (x in json.matched_courses) {
+          //  		 $("#courses-found").prepend("<li><strong>"+x[0]+"</strong> - <em> "+x[1]+"</em> - <span> "something"</span></li>");
+       		 // }
     			console.log("success"); // another sanity check
 },	
 
