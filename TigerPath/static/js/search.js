@@ -19,7 +19,7 @@ function search_courses() {
             courses = json.matched_courses
             for (var x in courses){
             	for (var y in courses[x]){
-            		console.log(json[x][y]);
+            		console.log(courses[x][y]);
             	}
             	
             }
