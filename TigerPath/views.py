@@ -1497,10 +1497,10 @@ def pse(request):
 	current_user = request.user
 	student = Student.objects.get(student_id=current_user.username)
 	all_courses = Entry.objects.filter(student_id=current_user.username).values_list('course_id', flat=True).order_by('course_id') # all of the student's courses
-	a1 = APC.objects.filter(a1=1).values_list('course_id', flat=True).order_by('course_id')
-	a2 = APC.objects.filter(a2=1).values_list('course_id', flat=True).order_by('course_id')
-	b1 = APC.objects.filter(b1=1).values_list('course_id', flat=True).order_by('course_id')
-	b2 = APC.objects.filter(b2=1).values_list('course_id', flat=True).order_by('course_id')
+	a1 = PSE.objects.filter(a1=1).values_list('course_id', flat=True).order_by('course_id')
+	a2 = PSE.objects.filter(a2=1).values_list('course_id', flat=True).order_by('course_id')
+	b1 = PSE.objects.filter(b1=1).values_list('course_id', flat=True).order_by('course_id')
+	b2 = PSE.objects.filter(b2=1).values_list('course_id', flat=True).order_by('course_id')
 
 	a1_on = title(compare_lists(all_courses, a1)["similarities"])
 	a1_off = title(compare_lists(all_courses, a1)["differences"])
