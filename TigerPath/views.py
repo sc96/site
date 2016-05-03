@@ -1491,6 +1491,63 @@ def neu(request):
 	context = {'req_on': req_on, 'req_off': req_off, 'disease_on': disease_on, 'disease_off': disease_off,
 	'circuits_on': circuits_on, 'circuits_off': circuits_off, 'social_on': social_on, 'social_off': social_off}
 	return render(request, 'neu.html', context)
+
+@login_required
+def pse(request):
+	current_user = request.user
+	student = Student.objects.get(student_id=current_user.username)
+	all_courses = Entry.objects.filter(student_id=current_user.username).values_list('course_id', flat=True).order_by('course_id') # all of the student's courses
+	a1 = APC.objects.filter(a1=1).values_list('course_id', flat=True).order_by('course_id')
+	a2 = APC.objects.filter(a2=1).values_list('course_id', flat=True).order_by('course_id')
+	b1 = APC.objects.filter(b1=1).values_list('course_id', flat=True).order_by('course_id')
+	b2 = APC.objects.filter(b2=1).values_list('course_id', flat=True).order_by('course_id')
+
+	a1_on = title(compare_lists(all_courses, a1)["similarities"])
+	a1_off = title(compare_lists(all_courses, a1)["differences"])
+
+	a2_on = title(compare_lists(all_courses, a2)["similarities"])
+	a2_off = title(compare_lists(all_courses, a2)["differences"])
+
+	b1_on = title(compare_lists(all_courses, b1)["similarities"])
+	b1_off = title(compare_lists(all_courses, b1)["differences"])
+	
+	b2_on = title(compare_lists(all_courses, b2)["similarities"])
+	b2_off = title(compare_lists(all_courses, b2)["differences"])
+
+	context = {'a1_on': a1_on, 'a1_off': a1_off, 'b1_on': b1_on, 'b1_off': b1_off,
+	'a2_on': a2_on, 'a2_off': a2_off, 'b2_on': b2_on, 'b2_off': b2_off}
+	return render(request, 'pse.html', context)
+	
+@login_required
+def tpp(request):
+	current_user = request.user
+	student = Student.objects.get(student_id=current_user.username)
+	all_courses = Entry.objects.filter(student_id=current_user.username).values_list('course_id', flat=True).order_by('course_id') # all of the student's courses
+	req = TPP.objects.filter(list_1=1).values_list('course_id', flat=True).order_by('course_id')
+
+	req_on = title(compare_lists(all_courses, req)["similarities"])
+	req_off = title(compare_lists(all_courses, req)["differences"])
+
+
+	context = {'req_on': req_on, 'req_off': req_off}
+	return render(request, 'tpp.html', context)
+	
+@login_required
+def tic(request):
+	current_user = request.user
+	student = Student.objects.get(student_id=current_user.username)
+	all_courses = Entry.objects.filter(student_id=current_user.username).values_list('course_id', flat=True).order_by('course_id') # all of the student's courses
+	l1 = TIC.objects.filter(core=1).values_list('course_id', flat=True).order_by('course_id')
+	l2 = TIC.objects.filter(elective=1).values_list('course_id', flat=True).order_by('course_id')
+
+	l1_on = title(compare_lists(all_courses, l1)["similarities"])
+	l1_off = title(compare_lists(all_courses, l1)["differences"])
+
+	l2_on = title(compare_lists(all_courses, l2)["similarities"])
+	l2_off = title(compare_lists(all_courses, l2)["differences"])
+
+	context = {'l1_on': l1_on, 'l1_off': l1_off, 'l2_on': l2_on, 'l2_off': l2_off}
+	return render(request, 'tic.html', context)
 	
 @login_required
 def vpl(request):
