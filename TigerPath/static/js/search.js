@@ -24,10 +24,10 @@ function search_courses() {
             	
             }
             console.log(json.matched_courses); // log the returned json to the console
-          //   console.log("success"); // another sanity check
-          //   for (x in json.matched_courses) {
-          //  		 $("#courses-found").prepend("<li><strong>"+x[0]+"</strong> - <em> "+x[1]+"</em> - <span> "something"</span></li>");
-       		 // }
+             console.log("success"); // another sanity check
+             for (var x in json.matched_courses) {
+            		 $("#courses-found").prepend("<li><strong>"+json.matched_courses[x][0]+"</strong> - <em> "+json.matched_courses[x][1]+"</em> - <span> "something"</span></li>");
+       		  }
     			console.log("success"); // another sanity check
 		},	
 
