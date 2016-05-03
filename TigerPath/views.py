@@ -1870,7 +1870,7 @@ def med(request):
 	current_user = request.user
 	student = Student.objects.get(student_id=current_user.username)
 	all_courses = Entry.objects.filter(student_id=current_user.username).values_list('course_id', flat=True).order_by('course_id') # all of the student's courses
-	l1 = MED.objects.filter(intro=1).values_list('course_id', flat=True).order_by('course_id')
+	l1 = MED.objects.filter(core=1).values_list('course_id', flat=True).order_by('course_id')
 	l2 = MED.objects.filter(elective=1).values_list('course_id', flat=True).order_by('course_id')
 
 	l1_on = title(compare_lists(all_courses, l1)["similarities"])
