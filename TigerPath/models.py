@@ -145,12 +145,74 @@ class PLA(models.Model):
 	def __str__(self):
 		return str(self.course_id)
 		
-class MED(models.Model):
-	cert_name="Medieval Studies"
+class JAZ(models.Model):
+	cert_name="Jazz Studies"
 	course_id = models.IntegerField(primary_key=True)
-	core = models.IntegerField()
+	history = models.IntegerField()
+	theory = models.IntegerField()
+	performance = models.IntegerField()
+	culture = models.IntegerField()
+
+	def __str__(self):
+		return str(self.course_id)
+		
+class GEO(models.Model):
+	cert_name="Geological Engineering"
+	course_id = models.IntegerField(primary_key=True)
 	elective = models.IntegerField()
 
+	def __str__(self):
+		return str(self.course_id)
+		
+class ECS(models.Model):
+	cert_name="European Cultural Studies"
+	course_id = models.IntegerField(primary_key=True)
+	intro = models.IntegerField()
+	elective = models.IntegerField()
+
+	def __str__(self):
+		return str(self.course_id)
+		
+class PHY(models.Model):
+	cert_name="Engineering Physics"
+	course_id = models.IntegerField(primary_key=True)
+	mat = models.IntegerField()
+	phy = models.IntegerField()
+
+	def __str__(self):
+		return str(self.course_id)
+		
+class EGR(models.Model):
+	cert_name="Engineering and Management System"
+	course_id = models.IntegerField(primary_key=True)
+	stats = models.IntegerField()
+	opt = models.IntegerField()
+	prob = models.IntegerField()
+	uncert = models.IntegerField()
+	manage = models.IntegerField()
+
+	def __str__(self):
+		return str(self.course_id)
+		
+	
+class EPS(models.Model):
+	cert_name="European Politics and Society"
+	course_id = models.IntegerField(primary_key=True)
+	sem = models.IntegerField()
+	culture = models.IntegerField()
+	history = models.IntegerField()
+	social = models.IntegerField()
+
+	def __str__(self):
+		return str(self.course_id)
+		
+class APC(models.Model):
+	cert_name="Neuroscience"
+	course_id = models.IntegerField(primary_key=True)
+	pre = models.IntegerField()
+	core = models.IntegerField()
+	dept = models.IntegerField()
+	outside = models.IntegerField()
 
 	def __str__(self):
 		return str(self.course_id)
