@@ -256,6 +256,16 @@ class TIC(models.Model):
 
 	def __str__(self):
 		return str(self.course_id)
+
+
+class MED(models.Model):
+	cert_name="Medieval Studies"
+	course_id = models.IntegerField(primary_key=True)
+	core = models.IntegerField()
+	elective = models.IntegerField()
+
+	def __str__(self):
+		return str(self.course_id)
 		
 class VPL(models.Model):
 	cert_name="Values and Public life"
