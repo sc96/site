@@ -796,7 +796,7 @@ def add_class(student, course, semester, req):
 
 
 @login_required # Cas authentication for this url.
-def four_year(request,search):
+def four_year(request):
 	context = {}
 	current_user = request.user
 	try:
