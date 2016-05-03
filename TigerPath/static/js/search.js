@@ -18,7 +18,7 @@ function search_courses() {
             $('#course-search-text').val(''); // remove the value from the input
             for (var x in json.matched_courses){
             	for (var y in x){
-            		console.log(x[y]);
+            		console.log(json[x][y]);
             	}
             	
             }
