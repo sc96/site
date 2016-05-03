@@ -4,14 +4,14 @@
 {% block content %}
 
 <head>
-  <title>TigerPath | ARC</title>
+  <title>TigerPath | APC</title>
 </head>
 <body style="padding-top: 70px; padding-bottom: 70px;">
 
     
 <div class="container">
   <div class="page-header" style="color:#ff8f00;" style ='background-color: #2ba6cb;'>
-  <h1>Architecture and Engineering</h1>
+  <h1>Applications of Computing</h1>
 </div>
 </div>
 
@@ -158,15 +158,124 @@ var x = document.getElementById(String(object));
       </div>
     </div>
   {% endif %}
-
-  <div class="panel-heading">
-    <h4>Requirements: Students interested in finding out more about the Architecture and Engineering certificate and funding opportunities should schedule an appointment.</h4> 
+  
+      <div class="panel-heading">
+    <h4>Requirements: 2 classes from Pre-Reqs, 4 classes from at least 2 of the remaining three areas (Molecular Mechanisms, Circuits and Systems, and Cognition and Social Neuroscience)</h4> 
   </div> <!-- panel heading -->
 
+<div class = "panel panel-default">
+   <div class = "panel-heading">
+      <h1 class = "panel-title" style="text-align:center"><b>
+         APC Requirements</b>
+      </h1>
+   </div>
+   
+   <div class = "panel-body">
+      
+
+     <div class="row">
+
+        <div class="col-md-4">
+         <div class="list_group" style="text-align:center">
+                <a class="list-group-item active">Pre-Req</a>
+             {% for x in l1_on %}
+               <span>
+               <form class= "form-inline" id = "{{x.course.listings}}">
+                <a class="list-group-item list-group-item-success" name ="{{x.course.listings}}" >{{ x }} 
+                  </a>
+             
+              </form>
+            </span>
+             {% endfor %}
+             {% for x in l1_off %}
+               <span>
+               <form class= "form-inline" id = "{{x.course.listings}}">
+                <a class="list-group-item list-group-item-danger" name ="{{x.course.listings}}" >{{ x }}</a>
+              </form>
+            </span>
+             {% endfor %}
+            </div>
+         </div>
+
+
+         <div class="col-md-4">
+         <div class="list_group">
+                <a class="list-group-item active" style="text-align:center">Core</a>
+             {% for x in l2_on %}
+               <span>
+               <form class= "form-inline" id = "{{x.course.listings}}">
+                <a class="list-group-item list-group-item-success" style="text-align:center" name ="{{x.course.listings}}" >{{ x }}
+                    </a>
+               
+              </form>
+            </span>
+             {% endfor %}
+             {% for x in l2_off %}
+               <span>
+               <form class= "form-inline" id = "{{x.course.listings}}">
+                <a class="list-group-item list-group-item-danger" style="text-align:center" name ="{{x.course.listings}}" >{{ x }} </a>
+                
+              </form>
+            </span>
+             {% endfor %}
+            </div>
+         </div>
+         
+         <div class="col-md-4">
+         <div class="list_group" style="text-align:center">
+                <a class="list-group-item active">Upper-Level</a>
+             {% for x in l3_on %}
+               <span>
+               <form class= "form-inline" id = "{{x.course.listings}}">
+                <a class="list-group-item list-group-item-success" name ="{{x.course.listings}}" >{{ x }} 
+                  </a>
+             
+              </form>
+            </span>
+             {% endfor %}
+             {% for x in l3_off %}
+               <span>
+               <form class= "form-inline" id = "{{x.course.listings}}">
+                <a class="list-group-item list-group-item-danger" name ="{{x.course.listings}}" >{{ x }}</a>
+              </form>
+            </span>
+             {% endfor %}
+            </div>
+            </div>
+         </div><br>
+         
+          <div class="row"> 
+         <div class="col-md-4">
+         <div class="list_group">
+                <a class="list-group-item active" style="text-align:center">Outside Course</a>
+             {% for x in l4_on %}
+               <span>
+               <form class= "form-inline" id = "{{x.course.listings}}">
+                <a class="list-group-item list-group-item-success" style="text-align:center" name ="{{x.course.listings}}" >{{ x }}
+                    </a>
+               
+              </form>
+            </span>
+             {% endfor %}
+             {% for x in l4_off %}
+               <span>
+               <form class= "form-inline" id = "{{x.course.listings}}">
+                <a class="list-group-item list-group-item-danger" style="text-align:center" name ="{{x.course.listings}}" >{{ x }} </a>
+                
+              </form>
+            </span>
+             {% endfor %}
+            </div>
+         </div>
+
+   </div>
+   </div>
+ </div>
  
 </div>
+
+
 </body>
 </html>
 
 {% endblock %}
-      
