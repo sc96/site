@@ -126,6 +126,34 @@ class NEU(models.Model):
 	def __str__(self):
 		return str(self.course_id)
 		
+class PSE(models.Model):
+	cert_name="Program in Sustainable Energy"
+	course_id = models.IntegerField(primary_key=True)
+	a1 = models.IntegerField()
+	a2 = models.IntegerField()
+	b1 = models.IntegerField()
+	b2 = models.IntegerField()
+
+	def __str__(self):
+		return str(self.course_id)
+		
+class TPP(models.Model):
+	cert_name="Teacher Preparation Program"
+	course_id = models.IntegerField(primary_key=True)
+	list_1 = models.IntegerField()
+
+	def __str__(self):
+		return str(self.course_id)
+
+class TIC(models.Model):
+	cert_name="Translation and Intercultural Communication"
+	course_id = models.IntegerField(primary_key=True)
+	core = models.IntegerField()
+	elective = models.IntegerField()
+
+	def __str__(self):
+		return str(self.course_id)
+		
 class VPL(models.Model):
 	cert_name="Values and Public life"
 	course_id = models.IntegerField(primary_key=True)
