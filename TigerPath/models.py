@@ -126,6 +126,35 @@ class NEU(models.Model):
 	def __str__(self):
 		return str(self.course_id)
 		
+class SML(models.Model):
+	cert_name="Stats and Machine Learning"
+	course_id = models.IntegerField(primary_key=True)
+	stats = models.IntegerField()
+	machine = models.IntegerField()
+	electives = models.IntegerField()
+
+	def __str__(self):
+		return str(self.course_id)
+		
+class PLA(models.Model):
+	cert_name="Planets and Life"
+	course_id = models.IntegerField(primary_key=True)
+	intro = models.IntegerField()
+	elective = models.IntegerField()
+
+	def __str__(self):
+		return str(self.course_id)
+		
+class MED(models.Model):
+	cert_name="Medieval Studies"
+	course_id = models.IntegerField(primary_key=True)
+	core = models.IntegerField()
+	elective = models.IntegerField()
+
+
+	def __str__(self):
+		return str(self.course_id)
+		
 class PSE(models.Model):
 	cert_name="Program in Sustainable Energy"
 	course_id = models.IntegerField(primary_key=True)
