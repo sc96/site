@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from .models import Student, Course, COS_BSE, URB, LIN, Entry, Approved_Course, GSS, VPL, HEL, Engineer, Outside_Course, ROB, AAS, EAS, AFS, AMS, NEU, MUS, GHP, FIN, QCB, CWR, AP_Credit, TPP, TIC, PSE
+from .models import Student, Course, COS_BSE, Entry, Approved_Course, Engineer, Outside_Course, AP_Credit, ROB, URB, LIN, GSS, VPL, HEL, AAS, EAS, AFS, AMS, NEU, MUS, GHP, FIN, QCB, CWR, TPP, TIC, PSE, APC, EPS, EGR, PHY, ECS, GEO, JAZ, MED, PLA, SML
 from django.contrib.auth.decorators import login_required
 import re
 from itertools import chain
@@ -1700,3 +1700,234 @@ def lin(request):
 	context = {'intro_on': intro_on, 'intro_off': intro_off, 'elective_on': elective_on, 'elective_off': elective_off}
 	return render(request, 'lin.html', context)
 
+@login_required
+def apc(request):
+	current_user = request.user
+	student = Student.objects.get(student_id=current_user.username)
+	all_courses = Entry.objects.filter(student_id=current_user.username).values_list('course_id', flat=True).order_by('course_id') # all of the student's courses
+	l1 = APC.objects.filter(pre=1).values_list('course_id', flat=True).order_by('course_id')
+	l2 = APC.objects.filter(core=1).values_list('course_id', flat=True).order_by('course_id')
+	l3 = APC.objects.filter(dept=1).values_list('course_id', flat=True).order_by('course_id')
+	l4 = APC.objects.filter(outside=1).values_list('course_id', flat=True).order_by('course_id')
+
+	l1_on = title(compare_lists(all_courses, l1)["similarities"])
+	l1_off = title(compare_lists(all_courses, l1)["differences"])
+
+	l2_on = title(compare_lists(all_courses, l2)["similarities"])
+	l2_off = title(compare_lists(all_courses, l2)["differences"])
+
+	l3_on = title(compare_lists(all_courses, l3)["similarities"])
+	l3_off = title(compare_lists(all_courses, l3)["differences"])
+	
+	l4_on = title(compare_lists(all_courses, l4)["similarities"])
+	l4_off = title(compare_lists(all_courses, l4)["differences"])
+
+	context = {'l1_on': l1_on, 'l1_off': l1_off, 'l2_on': l2_on, 'l2_off': l2_off,
+	'l3_on': l3_on, 'l3_off': l3_off, 'l4_on': l4_on, 'l4_off': l4_off}
+	return render(request, 'apc.html', context)
+	
+def eps(request):
+	current_user = request.user
+	student = Student.objects.get(student_id=current_user.username)
+	all_courses = Entry.objects.filter(student_id=current_user.username).values_list('course_id', flat=True).order_by('course_id') # all of the student's courses
+	l1 = EPS.objects.filter(sem=1).values_list('course_id', flat=True).order_by('course_id')
+	l2 = EPS.objects.filter(culture=1).values_list('course_id', flat=True).order_by('course_id')
+	l3 = EPS.objects.filter(history=1).values_list('course_id', flat=True).order_by('course_id')
+	l4 = EPS.objects.filter(social=1).values_list('course_id', flat=True).order_by('course_id')
+
+	l1_on = title(compare_lists(all_courses, l1)["similarities"])
+	l1_off = title(compare_lists(all_courses, l1)["differences"])
+
+	l2_on = title(compare_lists(all_courses, l2)["similarities"])
+	l2_off = title(compare_lists(all_courses, l2)["differences"])
+
+	l3_on = title(compare_lists(all_courses, l3)["similarities"])
+	l3_off = title(compare_lists(all_courses, l3)["differences"])
+	
+	l4_on = title(compare_lists(all_courses, l4)["similarities"])
+	l4_off = title(compare_lists(all_courses, l4)["differences"])
+
+	context = {'l1_on': l1_on, 'l1_off': l1_off, 'l2_on': l2_on, 'l2_off': l2_off,
+	'l3_on': l3_on, 'l3_off': l3_off, 'l4_on': l4_on, 'l4_off': l4_off}
+	return render(request, 'eps.html', context)
+	
+def egr(request):
+	current_user = request.user
+	student = Student.objects.get(student_id=current_user.username)
+	all_courses = Entry.objects.filter(student_id=current_user.username).values_list('course_id', flat=True).order_by('course_id') # all of the student's courses
+	l1 = EGR.objects.filter(stats=1).values_list('course_id', flat=True).order_by('course_id')
+	l2 = EGR.objects.filter(opt=1).values_list('course_id', flat=True).order_by('course_id')
+	l3 = EGR.objects.filter(prob=1).values_list('course_id', flat=True).order_by('course_id')
+	l4 = EGR.objects.filter(uncert=1).values_list('course_id', flat=True).order_by('course_id')
+	l5 = EGR.objects.filter(manage=1).values_list('course_id', flat=True).order_by('course_id')
+
+	l1_on = title(compare_lists(all_courses, l1)["similarities"])
+	l1_off = title(compare_lists(all_courses, l1)["differences"])
+
+	l2_on = title(compare_lists(all_courses, l2)["similarities"])
+	l2_off = title(compare_lists(all_courses, l2)["differences"])
+
+	l3_on = title(compare_lists(all_courses, l3)["similarities"])
+	l3_off = title(compare_lists(all_courses, l3)["differences"])
+	
+	l4_on = title(compare_lists(all_courses, l4)["similarities"])
+	l4_off = title(compare_lists(all_courses, l4)["differences"])
+
+	l5_on = title(compare_lists(all_courses, l5)["similarities"])
+	l5_off = title(compare_lists(all_courses, l5)["differences"])
+
+	context = {'l1_on': l1_on, 'l1_off': l1_off, 'l2_on': l2_on, 'l2_off': l2_off,
+	'l3_on': l3_on, 'l3_off': l3_off, 'l4_on': l4_on, 'l4_off': l4_off,  'l5_on': l5_on, 'l5_off': l5_off}
+	return render(request, 'egr.html', context)
+
+def phy(request):
+	current_user = request.user
+	student = Student.objects.get(student_id=current_user.username)
+	all_courses = Entry.objects.filter(student_id=current_user.username).values_list('course_id', flat=True).order_by('course_id') # all of the student's courses
+	l1 = PHY.objects.filter(mat=1).values_list('course_id', flat=True).order_by('course_id')
+	l2 = PHY.objects.filter(phy=1).values_list('course_id', flat=True).order_by('course_id')
+
+	l1_on = title(compare_lists(all_courses, l1)["similarities"])
+	l1_off = title(compare_lists(all_courses, l1)["differences"])
+
+	l2_on = title(compare_lists(all_courses, l2)["similarities"])
+	l2_off = title(compare_lists(all_courses, l2)["differences"])
+
+	context = {'l1_on': l1_on, 'l1_off': l1_off, 'l2_on': l2_on, 'l2_off': l2_off}
+	return render(request, 'phy.html', context)
+
+def ecs(request):
+	current_user = request.user
+	student = Student.objects.get(student_id=current_user.username)
+	all_courses = Entry.objects.filter(student_id=current_user.username).values_list('course_id', flat=True).order_by('course_id') # all of the student's courses
+	l1 = ECS.objects.filter(intro=1).values_list('course_id', flat=True).order_by('course_id')
+	l2 = ECS.objects.filter(elective=1).values_list('course_id', flat=True).order_by('course_id')
+
+	l1_on = title(compare_lists(all_courses, l1)["similarities"])
+	l1_off = title(compare_lists(all_courses, l1)["differences"])
+
+	l2_on = title(compare_lists(all_courses, l2)["similarities"])
+	l2_off = title(compare_lists(all_courses, l2)["differences"])
+
+
+	context = {'l1_on': l1_on, 'l1_off': l1_off, 'l2_on': l2_on, 'l2_off': l2_off}
+	return render(request, 'ecs.html', context)
+	
+def geo(request):
+	current_user = request.user
+	student = Student.objects.get(student_id=current_user.username)
+	all_courses = Entry.objects.filter(student_id=current_user.username).values_list('course_id', flat=True).order_by('course_id') # all of the student's courses
+	l1 = GEO.objects.filter(elective=1).values_list('course_id', flat=True).order_by('course_id')
+
+	l1_on = title(compare_lists(all_courses, l1)["similarities"])
+	l1_off = title(compare_lists(all_courses, l1)["differences"])
+
+
+	context = {'l1_on': l1_on, 'l1_off': l1_off}
+	return render(request, 'geo.html', context)
+	
+def jaz(request):
+	current_user = request.user
+	student = Student.objects.get(student_id=current_user.username)
+	all_courses = Entry.objects.filter(student_id=current_user.username).values_list('course_id', flat=True).order_by('course_id') # all of the student's courses
+	l1 = JAZ.objects.filter(history=1).values_list('course_id', flat=True).order_by('course_id')
+	l2 = JAZ.objects.filter(theory=1).values_list('course_id', flat=True).order_by('course_id')
+	l3 = JAZ.objects.filter(performance=1).values_list('course_id', flat=True).order_by('course_id')
+	l4 = JAZ.objects.filter(culture=1).values_list('course_id', flat=True).order_by('course_id')
+
+	l1_on = title(compare_lists(all_courses, l1)["similarities"])
+	l1_off = title(compare_lists(all_courses, l1)["differences"])
+
+	l2_on = title(compare_lists(all_courses, l2)["similarities"])
+	l2_off = title(compare_lists(all_courses, l2)["differences"])
+
+	l3_on = title(compare_lists(all_courses, l3)["similarities"])
+	l3_off = title(compare_lists(all_courses, l3)["differences"])
+	
+	l4_on = title(compare_lists(all_courses, l4)["similarities"])
+	l4_off = title(compare_lists(all_courses, l4)["differences"])
+
+	context = {'l1_on': l1_on, 'l1_off': l1_off, 'l2_on': l2_on, 'l2_off': l2_off,
+	'l3_on': l3_on, 'l3_off': l3_off, 'l4_on': l4_on, 'l4_off': l4_off}
+	return render(request, 'jaz.html', context)
+	
+def eps(request):
+	current_user = request.user
+	student = Student.objects.get(student_id=current_user.username)
+	all_courses = Entry.objects.filter(student_id=current_user.username).values_list('course_id', flat=True).order_by('course_id') # all of the student's courses
+	l1 = EPS.objects.filter(sem=1).values_list('course_id', flat=True).order_by('course_id')
+	l2 = EPS.objects.filter(culture=1).values_list('course_id', flat=True).order_by('course_id')
+	l3 = EPS.objects.filter(history=1).values_list('course_id', flat=True).order_by('course_id')
+	l4 = EPS.objects.filter(social=1).values_list('course_id', flat=True).order_by('course_id')
+
+	l1_on = title(compare_lists(all_courses, l1)["similarities"])
+	l1_off = title(compare_lists(all_courses, l1)["differences"])
+
+	l2_on = title(compare_lists(all_courses, l2)["similarities"])
+	l2_off = title(compare_lists(all_courses, l2)["differences"])
+
+	l3_on = title(compare_lists(all_courses, l3)["similarities"])
+	l3_off = title(compare_lists(all_courses, l3)["differences"])
+	
+	l4_on = title(compare_lists(all_courses, l4)["similarities"])
+	l4_off = title(compare_lists(all_courses, l4)["differences"])
+
+	context = {'l1_on': l1_on, 'l1_off': l1_off, 'l2_on': l2_on, 'l2_off': l2_off,
+	'l3_on': l3_on, 'l3_off': l3_off, 'l4_on': l4_on, 'l4_off': l4_off}
+	return render(request, 'eps.html', context)
+	
+def med(request):
+	current_user = request.user
+	student = Student.objects.get(student_id=current_user.username)
+	all_courses = Entry.objects.filter(student_id=current_user.username).values_list('course_id', flat=True).order_by('course_id') # all of the student's courses
+	l1 = MED.objects.filter(intro=1).values_list('course_id', flat=True).order_by('course_id')
+	l2 = MED.objects.filter(elective=1).values_list('course_id', flat=True).order_by('course_id')
+
+	l1_on = title(compare_lists(all_courses, l1)["similarities"])
+	l1_off = title(compare_lists(all_courses, l1)["differences"])
+
+	l2_on = title(compare_lists(all_courses, l2)["similarities"])
+	l2_off = title(compare_lists(all_courses, l2)["differences"])
+
+
+	context = {'l1_on': l1_on, 'l1_off': l1_off, 'l2_on': l2_on, 'l2_off': l2_off}
+	return render(request, 'med.html', context)
+	
+def sml(request):
+	current_user = request.user
+	student = Student.objects.get(student_id=current_user.username)
+	all_courses = Entry.objects.filter(student_id=current_user.username).values_list('course_id', flat=True).order_by('course_id') # all of the student's courses
+	l1 = SML.objects.filter(stats=1).values_list('course_id', flat=True).order_by('course_id')
+	l2 = SML.objects.filter(machine=1).values_list('course_id', flat=True).order_by('course_id')
+	l3 = SML.objects.filter(electives=1).values_list('course_id', flat=True).order_by('course_id')
+
+	l1_on = title(compare_lists(all_courses, l1)["similarities"])
+	l1_off = title(compare_lists(all_courses, l1)["differences"])
+
+	l2_on = title(compare_lists(all_courses, l2)["similarities"])
+	l2_off = title(compare_lists(all_courses, l2)["differences"])
+
+	l3_on = title(compare_lists(all_courses, l3)["similarities"])
+	l3_off = title(compare_lists(all_courses, l3)["differences"])
+
+	context = {'l1_on': l1_on, 'l1_off': l1_off, 'l2_on': l2_on, 'l2_off': l2_off,
+	'l3_on': l3_on, 'l3_off': l3_off}
+	return render(request, 'sml.html', context)
+	
+def pla(request):
+	current_user = request.user
+	student = Student.objects.get(student_id=current_user.username)
+	all_courses = Entry.objects.filter(student_id=current_user.username).values_list('course_id', flat=True).order_by('course_id') # all of the student's courses
+	l1 = PLA.objects.filter(intro=1).values_list('course_id', flat=True).order_by('course_id')
+	l2 = PLA.objects.filter(elective=1).values_list('course_id', flat=True).order_by('course_id')
+
+	l1_on = title(compare_lists(all_courses, l1)["similarities"])
+	l1_off = title(compare_lists(all_courses, l1)["differences"])
+
+	l2_on = title(compare_lists(all_courses, l2)["similarities"])
+	l2_off = title(compare_lists(all_courses, l2)["differences"])
+
+
+	context = {'l1_on': l1_on, 'l1_off': l1_off, 'l2_on': l2_on, 'l2_off': l2_off}
+	return render(request, 'pla.html', context)
+	
