@@ -26,9 +26,8 @@ function search_courses() {
           //  		 $("#courses-found").prepend("<li><strong>"+x[0]+"</strong> - <em> "+x[1]+"</em> - <span> "something"</span></li>");
        		 // }
     			console.log("success"); // another sanity check
-},	
+		},	
 
-        },
 
         // handle a non-successful response
         error : function(xhr,errmsg,err) {
@@ -38,6 +37,5 @@ function search_courses() {
         }
     });
 };
-
-
 });
+
