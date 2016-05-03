@@ -1118,6 +1118,21 @@ def certificates(request):
 	vpl = VPL.objects.values_list('course_id', flat=True).order_by('course_id')
 	hel = HEL.objects.values_list('course_id', flat=True).order_by('course_id')
 	
+	apc = APC.objects.values_list('course_id', flat=True).order_by('course_id')
+	eps = EPS.objects.values_list('course_id', flat=True).order_by('course_id')
+	egr = EGR.objects.values_list('course_id', flat=True).order_by('course_id')
+	phy = PHY.objects.values_list('course_id', flat=True).order_by('course_id')
+	ecs = ECS.objects.values_list('course_id', flat=True).order_by('course_id')
+	geo = GEO.objects.values_list('course_id', flat=True).order_by('course_id')
+	jaz = JAZ.objects.values_list('course_id', flat=True).order_by('course_id')
+	med = MED.objects.values_list('course_id', flat=True).order_by('course_id')
+	pla = PLA.objects.values_list('course_id', flat=True).order_by('course_id')
+	sml = SML.objects.values_list('course_id', flat=True).order_by('course_id')
+	pse = PSE.objects.values_list('course_id', flat=True).order_by('course_id')
+	tpp = TPP.objects.values_list('course_id', flat=True).order_by('course_id')
+	tas = TAS.objects.values_list('course_id', flat=True).order_by('course_id')
+	tic = TIC.objects.values_list('course_id', flat=True).order_by('course_id')
+	
 	nsimilar = num_compare(all_courses, aas)
 	cert_dict["African American Studies"]=num_compare(all_courses, aas)
 	cert_dict["African Studies"]=num_compare(all_courses, afs)
@@ -1132,6 +1147,21 @@ def certificates(request):
 	cert_dict["Robotics and Intelligent Systems"]=num_compare(all_courses, rob)
 	cert_dict["Values and Public Life"]=num_compare(all_courses, vpl)
 	cert_dict["Hellenic Studies"]=num_compare(all_courses, hel)
+	
+	cert_dict["Applications of Computing"]=num_compare(all_courses, apc)
+	cert_dict["Contemporary European Politics and Society"]=num_compare(all_courses, eps)
+	cert_dict["Engineering and Management Systems"]=num_compare(all_courses, egr)
+	cert_dict["Engineering Physics"]=num_compare(all_courses, phy)
+	cert_dict["European Cultural Studies"]=num_compare(all_courses, ecs)
+	cert_dict["Geological Engineering"]=num_compare(all_courses, geo)
+	cert_dict["Jazz Studies"]=num_compare(all_courses, jaz)
+	cert_dict["Sustainable Energy"]=num_compare(all_courses, pse)
+	cert_dict["Medieval Studies"]=num_compare(all_courses, med)
+	cert_dict["Planets and Life"]=num_compare(all_courses, pla)
+	cert_dict["Statistics and Machine Learning"]=num_compare(all_courses, sml)
+	cert_dict["Teacher Preparation"]=num_compare(all_courses, tpp)
+	cert_dict["Technology and Society"]=num_compare(all_courses, tas)
+	cert_dict["Translation and Intercultural Communication"]=num_compare(all_courses, tic)
 	
 	top_3=[]
 	for i in range(0, 3):
