@@ -126,6 +126,18 @@ class NEU(models.Model):
 	def __str__(self):
 		return str(self.course_id)
 		
+class TAS(models.Model):
+	cert_name="Technology and Society"
+	course_id = models.IntegerField(primary_key=True)
+	core = models.IntegerField()
+	technology = models.IntegerField()
+	societal = models.IntegerField()
+	breadth_t = models.IntegerField()
+	breadth_s = models.IntegerField()
+
+	def __str__(self):
+		return str(self.course_id)
+		
 class SML(models.Model):
 	cert_name="Stats and Machine Learning"
 	course_id = models.IntegerField(primary_key=True)
