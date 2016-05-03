@@ -427,7 +427,7 @@ def degree_progress(request):
 		other_on = compare_lists(all_courses, other_courses)["similarities"]
 		other_on = title(other_on)
 		extra_other = title(extra_other)
-		save_other = title(save_other)
+		#save_other = title(save_other)
 		other_on = chain(other_on, save_other)
 		other_on = chain(other_on, extra_other)
 		other_on = chain(other_on, other_other)
@@ -641,7 +641,7 @@ def degree_progress(request):
 		other_on = compare_lists(all_courses, other_courses)["similarities"]
 		other_on = title(other_on)
 		extra_other = title(extra_other)
-		save_other = title(save_other)
+		#save_other = title(save_other)
 		other_on = chain(other_on, save_other)
 		other_on = chain(other_on, extra_other)
 		other_on = chain(other_on, other_other)
