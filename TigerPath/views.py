@@ -796,7 +796,7 @@ def add_class(student, course, semester, req):
 def divideByEntry(matched_courses):
 	values = {}
 	for x in matched_courses:
-		values['x.listings'] = [
+		values[x.listings] = [
 			x.listings,
 			x.title,
 			x.area,
