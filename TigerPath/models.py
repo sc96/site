@@ -207,7 +207,7 @@ class EPS(models.Model):
 		return str(self.course_id)
 		
 class APC(models.Model):
-	cert_name="Neuroscience"
+	cert_name="Applications of Computing"
 	course_id = models.IntegerField(primary_key=True)
 	pre = models.IntegerField()
 	core = models.IntegerField()
