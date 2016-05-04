@@ -1,8 +1,8 @@
 $(function() {
 $('#course-search').on('submit', function(event){
-	event.preventDefault();
+	// event.preventDefault();
 	console.log("form submitted ya dumbass")
-	search_courses();
+	// search_courses();
 });
 
 function search_courses() {
