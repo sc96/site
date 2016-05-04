@@ -1,3 +1,67 @@
+var CourseSearch = React.createClass({
+
+  displayName: "CourseSearch",
+  getInitialState: function() {
+         return {
+             value: 'select'
+         }
+  },
+  handleChange: function(event) {
+  this.setState({value: event.target.value});
+  },
+
+  render: function render() {
+    return React.createElement(
+      "div",
+      null,
+      React.createElement(
+        "div",
+        { className: "row" },
+        React.createElement(
+          "div",
+          { className: "col-md-12" },
+          React.createElement(
+            "h5",
+            null,
+            "Add a class to a semester"
+          ),
+          React.createElement(
+            "span",
+            { id: "custom-search" },
+            React.createElement(
+              "form",
+              { id: "course-search", className: "form-inline", action: true, method: "get" },
+              React.createElement(
+                "div",
+                { className: "input-group col-md-12" },
+                React.createElement("input", { type: "text", className: "form-control input-lg", placeholder: "Type course (e.g. COS 126)", defaultValue: "{{test}}", id: "course-search-text", name: "q", value: this.state.value, onChange: this.handleChange}),
+                React.createElement(
+                  "span",
+                  { className: "input-group-btn" },
+                  React.createElement(
+                    "button",
+                    { id: "search-btn", className: "btn btn-info btn-lg", type: "submit" },
+                    React.createElement("i", { className: "glyphicon glyphicon-search" })
+                  )
+                )
+              )
+            )
+          )
+        ),
+        " "
+      ),
+      " ",
+      React.createElement("br", null)
+    );
+  }
+});
+
+
+
+
+
+
+
 $(function() {
 	
 $('#course-search').on('submit', function(event){
