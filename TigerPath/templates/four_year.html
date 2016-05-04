@@ -484,7 +484,6 @@ function search_courses() {
               }
               html += "</div></div>"
               $("#courses-found").append(html);
-               console.log("success"); // another sanity check
         },  
 
 
@@ -525,7 +524,6 @@ var CourseSearch = React.createClass({
   },
   handleChange: function(event) {
   this.setState({value: event.target.value});
-
   },
   componentDidUpdate: function() {
     search_courses();
