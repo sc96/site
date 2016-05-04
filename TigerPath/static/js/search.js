@@ -1,7 +1,11 @@
 $(function() {
 	
-$('#course-search').change(function(event){
+$('#course-search').on('submit', function(event){
 	event.preventDefault();
+	search_courses();
+});
+$('#course-search-text').change(function(event){
+	// event.preventDefault();
 	search_courses();
 });
 
