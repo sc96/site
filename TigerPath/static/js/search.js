@@ -28,21 +28,23 @@ function search_courses() {
              for (var x in json.matched_courses){
              		var Fall = false;
              		var Spring = true;
-            		 $("#courses-found").append(
-				              "<span class='list-group col-md-12'>" +
-				                  '<div class="btn-group" style="width: 100%">' +
-				                    '<form class= "form-inline" action= "" method= "post">{% csrf_token %}' +
-				                      '<li class="list-group-item">' + courses[x][0] + " " + courses[x][1] + " " + courses[x][2] +
-				                        '<select class="form-control" name="semester">');
-            		 //Conditional lists for adding
+             		//Conditional lists for adding
             		 if (courses[x][2] == 1 || courses[x][4] == 1){
             		 	Spring = true;
             		 }
             		 if (courses[x][3] == 1 || courses[x][5] == 1){
             		 	Fall = true;
             		 }
+            		 $("#courses-found").append(
+				              "<span class='list-group col-md-12'>" +
+				                  '<div class="btn-group" style="width: 100%">' +
+				                    '<form class= "form-inline" action= "" method= "post">{% csrf_token %}' +
+				                      '<li class="list-group-item">' + courses[x][0] + " " + courses[x][1] + " " + courses[x][2] +
+				                        );
+            		 
             		 if (Fall == true && Spring == true) {
             		 	$("#courses-found").append(
+            		 		'<select class="form-control" name="semester">' +
             		 		'<option>Freshman Fall</option>' +
                             '<option>Freshman Spring</option>' +
                             '<option>Sophomore Fall</option>' +
@@ -50,29 +52,33 @@ function search_courses() {
                             '<option>Junior Fall</option>' +
                             '<option>Junior Spring</option>' +
                             '<option>Senior Fall</option>' +
-                            '<option>Senior Spring</option>');
+                            '<option>Senior Spring</option>' +
+                            '</select>');
             		 } else if (Spring == true && Fall == false){
             		   	$("#courses-found").append(
+            		   		'<select class="form-control" name="semester">' +
             		   		'<option>Freshman Spring</option>' +
                             '<option>Sophomore Spring</option>' +
                            ' <option>Junior Spring</option>' +
-                            '<option>Senior Spring</option>');
+                            '<option>Senior Spring</option>' +
+                            '</select>');
             		 } else{
             		 	$("#courses-found").append(
+            		 		'<select class="form-control" name="semester">' +
             		   		'<option>Freshman Fall</option>' +
                            '<option>Sophomore Fall</option>' +
                             '<option>Junior Fall</option>' +
-                            '<option>Senior Fall</option>');
+                            '<option>Senior Fall</option>' +
+                            '</select>');
             		 }
             		 $("#courses-found").append(
-            		 	'</select>' +
-                       '<select class="form-control" name ="COSreq">' +
+            		 	    '<select class="form-control" name ="COSreq">' +
                             '<option>N/A</option>' +
                             '<option>Theory</option>' +
                             '<option>Systems</option>' +
                             '<option>Applications</option>' +
                             '<option>Other</option>' +
-                        '</select>' +
+                        	'</select>' +
                         '<input type="hidden" name="listing" value='+ courses[x][0] +'>' +
                         '<input type="submit" class="btn btn-info" value="Add Class">' +
                       '</li>' +
