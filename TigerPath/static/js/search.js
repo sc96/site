@@ -1,6 +1,6 @@
 $(function() {
 	
-$('#course-search').on('submit', function(event){
+$('#course-search').on('change', function(event){
 	event.preventDefault();
 	search_courses();
 });
@@ -16,7 +16,7 @@ function search_courses() {
         // handle a successful response
         success : function(json) {
         	var CSRF_TOKEN = getCookie('csrftoken');
-            $('#course-search-text').val(''); // remove the value from the input
+            // $('#course-search-text').val(''); // remove the value from the input
             courses = json.matched_courses
             // for (var x in courses){
             // 	for (var y in courses[x]){
