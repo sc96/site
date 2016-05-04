@@ -4,7 +4,7 @@ $('#course-search').on('submit', function(event){
 	event.preventDefault();
 	search_courses();
 });
-$('#course-search-text').change(function(event){
+$('#course-search').change(function(event){
 	// event.preventDefault();
 	search_courses();
 });
