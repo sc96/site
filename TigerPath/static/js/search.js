@@ -29,7 +29,7 @@ function search_courses() {
              for (var x in json.matched_courses){
              		var Fall = false;
              		var Spring = true;
-             		var element = $('')
+             		var element = $('<div></div>')
              		//Conditional lists for adding
             		 if (courses[x][2] == 1 || courses[x][4] == 1){
             		 	Spring = true;
