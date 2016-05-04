@@ -847,20 +847,20 @@ def four_year(request, search="na"):
 			student.add_course(added_class, student, sem, req)
 		#add_class(student, added_class, semester)
 	#Return matched courses for search bar
-	matched_courses = ""
-	if request.method == 'GET':
-		if 'the_query' in request.GET:
-			query_text = request.GET.get('the_query')
-			matched_courses = course_search(query_text)
+	# matched_courses = ""
+	# if request.method == 'GET':
+	# 	if 'the_query' in request.GET:
+	# 		query_text = request.GET.get('the_query')
+	# 		matched_courses = course_search(query_text)
 
-			context['matched_courses'] = divideByEntry(matched_courses)
-			return HttpResponse(
-            json.dumps(context),
-            content_type="application/json"
-        )
-	# if 'q' in request.GET:
-	# 	test = request.GET["q"]
-	# matched_courses = course_search(test);
+	# 		context['matched_courses'] = divideByEntry(matched_courses)
+	# 		return HttpResponse(
+ #            json.dumps(context),
+ #            content_type="application/json"
+        # )
+	if 'q' in request.GET:
+		test = request.GET["q"]
+	matched_courses = course_search(test);
 	
 	# getting list of courses for each semester
 	fresh_fall = Entry.objects.filter(student_id=current_user.username, semester="FRF")
