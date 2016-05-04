@@ -2,13 +2,12 @@ $(function() {
 	
 $('#course-search').on('submit', function(event){
 	event.preventDefault();
-	console.log("form submitted ya dumbass")
 	search_courses();
 });
 
 function search_courses() {
-    console.log("search_courses!") // sanity check
-    console.log($('#course-search-text').val())
+    // console.log("search_courses!") // sanity check
+    // console.log($('#course-search-text').val())
     $.ajax({
         url : "", // the endpoint
         type : "GET", // http method
@@ -93,7 +92,7 @@ function search_courses() {
        		  console.log(element);
        		  html += element;         		 
        		  }
-       		  html += "</div>"
+       		  html += "</div></div>"
        		  $("#courses-found").append(html);
     		   console.log("success"); // another sanity check
 		},	
