@@ -303,7 +303,7 @@ BootstrapDialog.confirm({
     <br>
     <br>
     <div id="search-bar"></div>
-     <div class="row">
+     <!-- <div class="row">
         <div class="col-md-12" >
         <h5>Add a class to a semester</h5>
                 <span id="custom-search">
@@ -320,7 +320,7 @@ BootstrapDialog.confirm({
                 </span>
         </div> <!-- Column -->
     </div> <!-- row -->
-    <br>
+    <br> -->
     <div id="courses-found" class='row'> </div>
 
 
@@ -391,10 +391,10 @@ $('#course-search').on('submit', function(event){
     event.preventDefault();
     search_courses();
 });
-$('#course-search').change(function(event){
-    // event.preventDefault();
-    search_courses();
-});
+// $('#course-search').change(function(event){
+//     // event.preventDefault();
+//     search_courses();
+// });
 
 function search_courses() {
     // console.log("search_courses!") // sanity check
