@@ -28,7 +28,7 @@ function search_courses() {
           	var html = "<div class='col-md-12'><p><br>Matched Courses</p><div class='list-group'>"; //Header
             for (var x in json.matched_courses){
              		var Fall = false;
-             		var Spring = true;
+             		var Spring = false;
              		var element = ""
              		//Conditional lists for adding
             		 if (courses[x][2] == 1 || courses[x][4] == 1){
@@ -88,7 +88,7 @@ function search_courses() {
                   '</div>' +
               '</span>'
               ;   
-              console.log(element);
+              // console.log(element);
        		  html += element;         		 
        		  }
        		  html += "</div></div>"
