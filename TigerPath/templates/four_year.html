@@ -395,6 +395,10 @@ var CourseSearch = React.createClass({
   },
   handleChange: function(event) {
   this.setState({value: event.target.value});
+
+  },
+  componentDidUpdate: function() {
+    search_courses();
   },
 
   render: function render() {
@@ -421,7 +425,7 @@ var CourseSearch = React.createClass({
               React.createElement(
                 "div",
                 { className: "input-group col-md-12" },
-                React.createElement("input", { type: "text", className: "form-control input-lg", placeholder: "Type course (e.g. COS 126)", defaultValue: "{{test}}", id: "course-search-text", name: "q", value: this.state.value, onChange: this.handleChange}),
+                React.createElement("input", { type: "text", className: "form-control input-lg", placeholder: "Type course (e.g. COS 126)", id: "course-search-text", name: "q", value: this.state.value, onChange: this.handleChange}),
                 React.createElement(
                   "span",
                   { className: "input-group-btn" },
