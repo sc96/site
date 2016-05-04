@@ -17,10 +17,10 @@ function search_courses() {
         success : function(json) {
             $('#course-search-text').val(''); // remove the value from the input
             courses = json.matched_courses
-            for (var x in courses){
-            	for (var y in courses[x]){
-            		console.log(courses[x][y]);
-            	}
+            // for (var x in courses){
+            // 	for (var y in courses[x]){
+            // 		console.log(courses[x][y]);
+            // 	}
 
             }
             //$('#courses-found').empty();
