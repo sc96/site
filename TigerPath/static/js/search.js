@@ -22,7 +22,7 @@ function search_courses() {
             // 		console.log(courses[x][y]);
             // 	}
 
-            }
+            //}
             //$('#courses-found').empty();
             $('#courses-found').before("<div class='row'><p><br>Matched Courses</p>"); //Header
           	$("#courses-found").append("<div class='list-group'>");
