@@ -1,6 +1,6 @@
 $(function() {
 	
-$('#course-search').on('change', function(event){
+$('#course-search').change(function(event){
 	event.preventDefault();
 	search_courses();
 });
