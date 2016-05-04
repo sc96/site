@@ -530,6 +530,10 @@ var CourseSearch = React.createClass({
   componentDidUpdate: function() {
     search_courses();
   },
+  handleSubmit: function(event) {
+    event.preventDefault();
+    search_courses();
+  },
 
   render: function render() {
     return React.createElement(
@@ -551,7 +555,7 @@ var CourseSearch = React.createClass({
             { id: "custom-search" },
             React.createElement(
               "form",
-              { id: "course-search", className: "form-inline", action: true, method: "get" },
+              { id: "course-search", className: "form-inline", action: true, method: "get", onSubmit: this.handleSubmit},
               React.createElement(
                 "div",
                 { className: "input-group col-md-12" },
