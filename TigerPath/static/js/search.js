@@ -40,7 +40,7 @@ function search_courses() {
             		 element +=
 				              "<span class='list-group col-md-12'>" +
 				                  '<div class="btn-group" style="width: 100%">' +
-				                    '<form class= "form-inline" action= "" method= "post">{% csrf_token %}' +
+				                    '<form class= "form-inline" action= "" method= "post">"{% csrf_token %}"' +
 				                      '<li class="list-group-item">' + courses[x][0] + " " + courses[x][1] + " " + courses[x][2];
             		 
             		 if (Fall == true && Spring == true) {
