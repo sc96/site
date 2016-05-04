@@ -1,3 +1,4 @@
+$(document).ready(function () {
 var CourseSearch = React.createClass({
 
   displayName: "CourseSearch",
@@ -57,10 +58,10 @@ var CourseSearch = React.createClass({
 });
 
 ReactDOM.render(
-      React.createElement('div', null),
+      React.createElement(CourseSearch, null),
       document.getElementById('search-bar')
       );
-
+});
 
 
 
