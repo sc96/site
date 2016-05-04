@@ -23,11 +23,13 @@ function search_courses() {
             	}
 
             }
+            //$('#courses-found').empty();
             $('#courses-found').before("<div class='row'><p><br>Matched Courses</p>"); //Header
           	$("#courses-found").append("<div class='list-group'>");
              for (var x in json.matched_courses){
              		var Fall = false;
              		var Spring = true;
+             		var element = $('')
              		//Conditional lists for adding
             		 if (courses[x][2] == 1 || courses[x][4] == 1){
             		 	Spring = true;
@@ -35,7 +37,7 @@ function search_courses() {
             		 if (courses[x][3] == 1 || courses[x][5] == 1){
             		 	Fall = true;
             		 }
-            		 $("#courses-found").append(
+            		 element.append(
 				              "<span class='list-group col-md-12'>" +
 				                  '<div class="btn-group" style="width: 100%">' +
 				                    '<form class= "form-inline" action= "" method= "post">{% csrf_token %}' +
@@ -43,7 +45,7 @@ function search_courses() {
 				                        );
             		 
             		 if (Fall == true && Spring == true) {
-            		 	$("#courses-found").append(
+            		 	element.append(
             		 		'<select class="form-control" name="semester">' +
             		 		'<option>Freshman Fall</option>' +
                             '<option>Freshman Spring</option>' +
@@ -55,7 +57,7 @@ function search_courses() {
                             '<option>Senior Spring</option>' +
                             '</select>');
             		 } else if (Spring == true && Fall == false){
-            		   	$("#courses-found").append(
+            		   	element.append(
             		   		'<select class="form-control" name="semester">' +
             		   		'<option>Freshman Spring</option>' +
                             '<option>Sophomore Spring</option>' +
@@ -63,7 +65,7 @@ function search_courses() {
                             '<option>Senior Spring</option>' +
                             '</select>');
             		 } else{
-            		 	$("#courses-found").append(
+            		 	element.append(
             		 		'<select class="form-control" name="semester">' +
             		   		'<option>Freshman Fall</option>' +
                            '<option>Sophomore Fall</option>' +
@@ -71,7 +73,7 @@ function search_courses() {
                             '<option>Senior Fall</option>' +
                             '</select>');
             		 }
-            		 $("#courses-found").append(
+            		 element.append(
             		 	    '<select class="form-control" name ="COSreq">' +
                             '<option>N/A</option>' +
                             '<option>Theory</option>' +
@@ -87,8 +89,9 @@ function search_courses() {
               '</span>'
               );            		 
        		  }
-       		  $("#courses-found").append('</div>');
-    			console.log("success"); // another sanity check
+       		  element.append('</div>');
+       		  $("#courses-found").append(element);
+    		console.log("success"); // another sanity check
 		},	
 
 
