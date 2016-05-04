@@ -56,7 +56,10 @@ var CourseSearch = React.createClass({
   }
 });
 
-
+ReactDOM.render(
+      React.createElement('div', null),
+      document.getElementById('search-bar')
+      );
 
 
 
