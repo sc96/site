@@ -25,7 +25,7 @@ function search_courses() {
 
             //}
             $('#courses-found').empty();
-          	var html = "<p><br>Matched Courses</p><div class='list-group'>"; //Header
+          	var html = "<div class='col-md-12'><p><br>Matched Courses</p><div class='list-group'>"; //Header
             for (var x in json.matched_courses){
              		var Fall = false;
              		var Spring = true;
@@ -91,7 +91,7 @@ function search_courses() {
               console.log(element);
        		  html += element;         		 
        		  }
-       		  html += "</div>"
+       		  html += "</div></div>"
        		  $("#courses-found").append(html);
     		   console.log("success"); // another sanity check
 		},	
