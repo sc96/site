@@ -302,6 +302,7 @@ BootstrapDialog.confirm({
        
     <br>
     <br>
+    <div id="search-bar"></div>
      <div class="row">
         <div class="col-md-12" >
         <h5>Add a class to a semester</h5>
@@ -382,6 +383,72 @@ BootstrapDialog.confirm({
 
     </div> <!-- Row for returned objects -->
 </div> <!-- Container -->
+<script>
+$(document).ready(function () {
+var CourseSearch = React.createClass({
+
+  displayName: "CourseSearch",
+  getInitialState: function() {
+         return {
+             value: 'select'
+         }
+  },
+  handleChange: function(event) {
+  this.setState({value: event.target.value});
+  },
+
+  render: function render() {
+    return React.createElement(
+      "div",
+      null,
+      React.createElement(
+        "div",
+        { className: "row" },
+        React.createElement(
+          "div",
+          { className: "col-md-12" },
+          React.createElement(
+            "h5",
+            null,
+            "Add a class to a semester"
+          ),
+          React.createElement(
+            "span",
+            { id: "custom-search" },
+            React.createElement(
+              "form",
+              { id: "course-search", className: "form-inline", action: true, method: "get" },
+              React.createElement(
+                "div",
+                { className: "input-group col-md-12" },
+                React.createElement("input", { type: "text", className: "form-control input-lg", placeholder: "Type course (e.g. COS 126)", defaultValue: "{{test}}", id: "course-search-text", name: "q", value: this.state.value, onChange: this.handleChange}),
+                React.createElement(
+                  "span",
+                  { className: "input-group-btn" },
+                  React.createElement(
+                    "button",
+                    { id: "search-btn", className: "btn btn-info btn-lg", type: "submit" },
+                    React.createElement("i", { className: "glyphicon glyphicon-search" })
+                  )
+                )
+              )
+            )
+          )
+        ),
+        " "
+      ),
+      " ",
+      React.createElement("br", null)
+    );
+  }
+});
+
+ReactDOM.render(
+      React.createElement(CourseSearch, null),
+      document.getElementById('search-bar')
+      );
+});
+</script>
 <script src="/../static/js/search.js"></script>
 <!-- <script type="text/babel" src="/../../static/scripts/react_course_search.js"></script> -->
 <!-- <script  src="/../../static/scripts/search_requests.js"></script>  -->
