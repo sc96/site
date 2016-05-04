@@ -42,7 +42,7 @@ function search_courses() {
 				              "<span class='list-group col-md-12'>" +
 				                  '<div class="btn-group" style="width: 100%">' +
 				                    '<form class= "form-inline" action= "" method= "post"><input type="hidden" name="csrfmiddlewaretoken" value=' + CSRF_TOKEN + '>' + //{% csrf_token %}
-				                      '<li class="list-group-item"><b>' + courses[x][0] + "<b>  " + courses[x][1] + " " + courses[x][2] + " ";
+				                      '<li class="list-group-item"><b>' + courses[x][0] + "</b>  " + courses[x][1] + " " + courses[x][2] + " ";
             		 
             		 if (Fall == true && Spring == true) {
             		 	element +=
