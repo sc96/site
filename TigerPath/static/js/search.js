@@ -41,8 +41,7 @@ function search_courses() {
 				              "<span class='list-group col-md-12'>" +
 				                  '<div class="btn-group" style="width: 100%">' +
 				                    '<form class= "form-inline" action= "" method= "post">{% csrf_token %}' +
-				                      '<li class="list-group-item">' + courses[x][0] + " " + courses[x][1] + " " + courses[x][2] +
-				                        );
+				                      '<li class="list-group-item">' + courses[x][0] + " " + courses[x][1] + " " + courses[x][2]);
             		 
             		 if (Fall == true && Spring == true) {
             		 	element.append(
@@ -91,7 +90,7 @@ function search_courses() {
        		  }
        		  element.append('</div>');
        		  $("#courses-found").append(element);
-    		console.log("success"); // another sanity check
+    		   console.log("success"); // another sanity check
 		},	
 
 
