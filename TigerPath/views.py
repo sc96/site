@@ -768,7 +768,7 @@ def course_search(query):
 	terms = query.split()
 	matched_courses = Course.objects.all()	
 	for x in terms:
-		if len(x) <= 0:
+		if len(x) <= 1:
 			continue;
 		elif x in commonTerms:
 			continue;
