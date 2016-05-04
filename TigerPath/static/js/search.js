@@ -1,4 +1,5 @@
 $(function() {
+	
 $('#course-search').on('submit', function(event){
 	event.preventDefault();
 	console.log("form submitted ya dumbass")
@@ -15,6 +16,7 @@ function search_courses() {
 
         // handle a successful response
         success : function(json) {
+        	var CSRF_TOKEN = "{{ csrf_token }}";
             $('#course-search-text').val(''); // remove the value from the input
             courses = json.matched_courses
             // for (var x in courses){
@@ -37,11 +39,12 @@ function search_courses() {
             		 if (courses[x][3] == 1 || courses[x][5] == 1){
             		 	Fall = true;
             		 }
+            		 
             		 element +=
 				              "<span class='list-group col-md-12'>" +
 				                  '<div class="btn-group" style="width: 100%">' +
-				                    '<form class= "form-inline" action= "" method= "post">"{% csrf_token %}"' +
-				                      '<li class="list-group-item">' + courses[x][0] + " " + courses[x][1] + " " + courses[x][2];
+				                    '<form class= "form-inline" action= "" method= "post"><input type="hidden" name="csrfmiddlewaretoken" value=' + CSRF_TOKEN> + //{% csrf_token %}
+				                      '<li class="list-group-item">' + courses[x][0] + " " + courses[x][1] + " " + courses[x][2] + " ";
             		 
             		 if (Fall == true && Spring == true) {
             		 	element +=
@@ -104,4 +107,23 @@ function search_courses() {
         }
     });
 };
+
+// Needed to get CSRF token
+function getCookie(name) {
+    var cookieValue = null;
+    if (document.cookie && document.cookie != '') {
+        var cookies = document.cookie.split(';');
+        for (var i = 0; i < cookies.length; i++) {
+            var cookie = jQuery.trim(cookies[i]);
+            // Does this cookie string begin with the name we want?
+            if (cookie.substring(0, name.length + 1) == (name + '=')) {
+                cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                break;
+            }
+        }
+    }
+    return cookieValue;
+}
+
+
 });
