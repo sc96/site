@@ -16,7 +16,7 @@ function search_courses() {
 
         // handle a successful response
         success : function(json) {
-        	var CSRF_TOKEN = "{{ csrf_token }}";
+        	var CSRF_TOKEN = getCookie('csrftoken');
             $('#course-search-text').val(''); // remove the value from the input
             courses = json.matched_courses
             // for (var x in courses){
@@ -43,7 +43,7 @@ function search_courses() {
             		 element +=
 				              "<span class='list-group col-md-12'>" +
 				                  '<div class="btn-group" style="width: 100%">' +
-				                    '<form class= "form-inline" action= "" method= "post"><input type="hidden" name="csrfmiddlewaretoken" value=' + CSRF_TOKEN + ">" + //{% csrf_token %}
+				                    '<form class= "form-inline" action= "" method= "post"><input type="hidden" name="csrfmiddlewaretoken" value=' + CSRF_TOKEN + '>' + //{% csrf_token %}
 				                      '<li class="list-group-item">' + courses[x][0] + " " + courses[x][1] + " " + courses[x][2] + " ";
             		 
             		 if (Fall == true && Spring == true) {
