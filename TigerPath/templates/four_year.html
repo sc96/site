@@ -420,13 +420,17 @@ function search_courses() {
             for (var x in json.matched_courses){
                     var Fall = false;
                     var Spring = false;
+                    var CS = false;
                     var element = ""
                     //Conditional lists for adding
-                     if (courses[x][2] == 1 || courses[x][4] == 1){
+                     if (courses[x][6] == 1 || courses[x][4] == 1){
                         Fall = true;
                      }
                      if (courses[x][3] == 1 || courses[x][5] == 1){
                         Spring = true;
+                     }
+                     if (courses[x][2] == "COS"){
+                        CS = true;
                      }
                      
                      element +=
@@ -464,14 +468,17 @@ function search_courses() {
                             '<option>Senior Fall</option>' +
                             '</select>';
                      }
-                     element +=
+                     if (CS == true) {
+                         element +=
                             '<select class="form-control" name ="COSreq">' +
                             '<option>N/A</option>' +
                             '<option>Theory</option>' +
                             '<option>Systems</option>' +
                             '<option>Applications</option>' +
                             '<option>Other</option>' +
-                            '</select>' +
+                            '</select>' ;
+                        }
+                        element +=
                         '<input type="hidden" name="listing" value='+ courses[x][0] +'>' +
                         '<input type="submit" class="btn btn-info" value="Add Class">' +
                       '</li>' +
