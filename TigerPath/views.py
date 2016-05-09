@@ -845,7 +845,7 @@ def four_year(request, search="na"):
 			added_class = Course.objects.get(listings=added_class)
 			semester = request.POST['semester']
 			sem = time[semester]
-			req = ''
+			req = 'N/A'
 			if 'COSreq' in request.POST:
 				req = request.POST['COSreq']
 			student.add_course(added_class, student, sem, req)
