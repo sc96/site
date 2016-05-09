@@ -4,10 +4,6 @@ $('#course-search').on('submit', function(event){
     event.preventDefault();
     search_courses();
 });
-// $('#course-search').change(function(event){
-//     // event.preventDefault();
-//     search_courses();
-// });
 
 function search_courses() {
     // console.log("search_courses!") // sanity check
