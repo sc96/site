@@ -14,7 +14,7 @@ time = {"Freshman Fall": "FRF", "Freshman Spring": "FRS",
 sems = {"FRF": "Freshman Fall", "FRS": "Freshman Spring",
 	"SOF": "Sophomore Fall", "SOS": "Sophomore Spring",
 	"JRF": "Junior Fall","JRS": "Junior Spring","SRF": "Senior Fall","SRS": "Senior Spring"}
-Cos_Requirements = {'N/A': '', 'Theory': '', 'Systems':'' , 'Applications': ', 'Other': ''}
+
 
 def title(list):
 	new_list=[]
