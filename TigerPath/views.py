@@ -14,6 +14,7 @@ time = {"Freshman Fall": "FRF", "Freshman Spring": "FRS",
 sems = {"FRF": "Freshman Fall", "FRS": "Freshman Spring",
 	"SOF": "Sophomore Fall", "SOS": "Sophomore Spring",
 	"JRF": "Junior Fall","JRS": "Junior Spring","SRF": "Senior Fall","SRS": "Senior Spring"}
+Cos_Requirements = {'N/A': '', 'Theory': '', 'Systems':'' , 'Applications': ', 'Other': ''}
 
 def title(list):
 	new_list=[]
@@ -388,39 +389,40 @@ def degree_progress(request):
 		other_apps = Outside_Course.objects.filter(student_id = student, requirement="apps")
 		other_other = Outside_Course.objects.filter(student_id = student, requirement="other")
 		
-		theory_on = compare_lists(all_courses, theory_courses)["similarities"]
+		comparison = compare_lists(all_courses, theory_courses)
+		theory_on = comparison["similarities"]
 		for t in all_entries.filter(req="Theory").values_list('course_id', flat=True).order_by('course_id'):
 			theory_on.append(t)
 		theory_on = title(theory_on)
-		theory_off = title(compare_lists(all_courses, theory_courses)["differences"])
+		theory_off = title(com["differences"])
 		theory_on = list(chain(other_theory, theory_on))
 		while len(theory_on) > 2:
 			save_other.append(theory_on.pop(0))
 
-		
-		systems_on = compare_lists(all_courses, systems_courses)["similarities"]
+		comparison = compare_lists(all_courses, systems_courses)
+		systems_on = comparison["similarities"]
 		for t in all_entries.filter(req="Systems").values_list('course_id', flat=True).order_by('course_id'):
 			systems_on.append(t)
 		systems_on = title(systems_on)
-		systems_off = title(compare_lists(all_courses, systems_courses)["differences"])
+		systems_off = title(comparison["differences"])
 		systems_on = list(chain(other_systems, systems_on))
 		while len(systems_on) > 2:
 			save_other.append(systems_on.pop(0))
 	
-	
-		apps_on = compare_lists(all_courses, apps_courses)["similarities"]
+		comparison = compare_lists(all_courses, apps_courses)
+		apps_on = comparison["similarities"]
 		for t in all_entries.filter(req="Applications").values_list('course_id', flat=True).order_by('course_id'):
 			apps_on.append(t)
 		apps_on = title(apps_on)
-		apps_off = title(compare_lists(all_courses, apps_courses)["differences"])
+		apps_off = title(comparison["differences"])
 		apps_on = list(chain(other_apps, apps_on))
 		while len(apps_on) > 2:
 			save_other.append(apps_on.pop(0))
 	
-	
-		iw_on = compare_lists(all_courses, iw_courses)["similarities"] #iw is for BSE only
+		comparison = compare_lists(all_courses, iw_courses)
+		iw_on = comparison["similarities"] #iw is for BSE only
 		iw_on = title(iw_on)
-		iw_off = title(compare_lists(all_courses, iw_courses)["differences"])
+		iw_off = title(comparison["differences"])
 		while len(iw_on) > 1:
 			save_other.append(iw_on.pop(0))
 	
@@ -843,7 +845,9 @@ def four_year(request, search="na"):
 			added_class = Course.objects.get(listings=added_class)
 			semester = request.POST['semester']
 			sem = time[semester]
-			req = request.POST['COSreq']
+			req = ''
+			if 'COSreq' in request.POST:
+				req = request.POST['COSreq']
 			student.add_course(added_class, student, sem, req)
 		#add_class(student, added_class, semester)
 	#Return matched courses for search bar
