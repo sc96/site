@@ -429,7 +429,7 @@ function search_courses() {
                      if (courses[x][3] == 1 || courses[x][5] == 1){
                         Spring = true;
                      }
-                     if ("COS" in courses[x][0]){
+                     if (courses[x][0].match("COS")){
                         CS = true;
                      }
                      
