@@ -774,7 +774,7 @@ def course_search(query):
 			continue;
 		elif x in commonTerms:
 			continue;
-		elif x in dist:
+		elif x.lower() in dist:
 			matched_courses = matched_courses.filter(area__icontains=x)
 		elif len(x) == 3 and x.isalpha() and x.upper() in dep:
 			matched_courses = matched_courses.filter(listings__icontains=x)
